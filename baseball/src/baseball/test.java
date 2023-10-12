@@ -1,6 +1,6 @@
 package baseball;
 
-public class test aaa bbb
+public class test aaa bbb ccc
 {
 
 }
