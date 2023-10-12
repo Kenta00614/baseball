@@ -1,5 +1,6 @@
 package baseball;
 
-public class test {
+public class test aaa
+{
 
 }
