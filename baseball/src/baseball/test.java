@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class test extends HttpServlet{
-	public void doPost(
+	public void doGet(
 			HttpServletRequest request, HttpServletResponse response
 		)throws ServletException, IOException {
 	}
