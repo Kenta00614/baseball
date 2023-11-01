@@ -13,8 +13,6 @@ public class TicketPurchase extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        request.getRequestDispatcher("ticket_purchase.jsp").forward(request, response);
+        request.getRequestDispatcher("/baseball/ticket_purchase.jsp").forward(request, response);
     }
-
-
 }
