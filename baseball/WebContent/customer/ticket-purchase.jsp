@@ -7,7 +7,7 @@
 
 <body>
     <div class="header">
-        <form action="/customer/ticket-application.jsp" method="get">
+        <form action="TicketApplication" method="get">
     　　　　<button type="submit">申し込む</button>
 　　　　</form>
     </div>

@@ -7,12 +7,12 @@
 
 <body>
     <div class="header">
-        <form action="" method="get">
+        <form action="TicketApplication" method="get">
     　　　　<button type="submit">前へ戻る</button>
 　　　　</form>
     </div>
     <div class="header">
-        <form action="" method="get">
+        <form action="Ticketselect" method="get">
     　　　　<button type="submit">座席選択へ進む</button>
 　　　　</form>
     </div>
