@@ -5,7 +5,7 @@
 <html>
 <body>
     <div class="header">
-        <form action="TicketSelect2" method="get">
+        <form action="TicketSelectBlock" method="get">
     　　　　<button type="submit">戻る</button>
 　　　　</form>
     </div>

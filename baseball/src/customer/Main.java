@@ -13,6 +13,6 @@ public class Main extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        request.getRequestDispatcher("/customer/Main.jsp").forward(request, response);
+        request.getRequestDispatcher("/customer/main.jsp").forward(request, response);
     }
 }
