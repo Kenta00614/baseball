@@ -2,7 +2,7 @@
 <!DOCTYPE configuration>
 <Context reloadable="true">
 	<Resource
-		name="jdbc/book"
+		name="jdbc/baseball"
 		auth="Container"
 		type="javax.sql.DataSource"
 		driverClassName="org.h2.Driver"
