@@ -5,7 +5,7 @@
 <html>
 <body>
     <div class="header">
-        <form action="" method="get">
+        <form action="Main" method="get">
     　　　　<button type="submit">メインメニューに戻る</button>
 　　　　</form>
     </div>

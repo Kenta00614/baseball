@@ -8,11 +8,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/TicketPurchase")
-public class TicketPurchase extends HttpServlet {
+@WebServlet("/TicketConfirm")
+public class TicketConfirm extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        request.getRequestDispatcher("/customer/ticketPurchase.jsp").forward(request, response);
+        request.getRequestDispatcher("/customer/ticketConfirm.jsp").forward(request, response);
     }
 }
