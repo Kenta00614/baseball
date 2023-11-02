@@ -5,12 +5,12 @@
 <html>
 <body>
     <div class="header">
-        <form action="TicketSelect" method="get">
+        <form action="TicketApplication" method="get">
     　　　　<button type="submit">戻る</button>
 　　　　</form>
     </div>
     <div class="header">
-        <form action="TicketSelect3" method="get">
+        <form action="TicketSelectBlock" method="get">
     　　　　<button type="submit">次へ</button>
 　　　　</form>
     </div>
