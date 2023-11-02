@@ -6,12 +6,12 @@
 <body>
     <div class="header">
         <form action="" method="get">
-    　　　　<button type="submit">戻る</button>
+    　　　　<button type="submit">共有</button>
 　　　　</form>
     </div>
     <div class="header">
         <form action="" method="get">
-    　　　　<button type="submit">次へ</button>
+    　　　　<button type="submit">QRコード</button>
 　　　　</form>
     </div>
 </body>

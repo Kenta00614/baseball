@@ -12,7 +12,7 @@
 　　　　</form>
     </div>
     <div class="header">
-        <form action="Ticketselect" method="get">
+        <form action="TicketSelect" method="get">
     　　　　<button type="submit">座席選択へ進む</button>
 　　　　</form>
     </div>

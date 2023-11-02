@@ -4,14 +4,10 @@
 
 <html>
 <body>
+
     <div class="header">
         <form action="" method="get">
-    　　　　<button type="submit">戻る</button>
-　　　　</form>
-    </div>
-    <div class="header">
-        <form action="" method="get">
-    　　　　<button type="submit">次へ</button>
+    　　　　<button type="submit">変更</button>
 　　　　</form>
     </div>
 </body>
