@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration>
+<Context reloadable="true">
+	<Resource
+		name="jdbc/baseball"
+		auth="Container"
+		type="javax.sql.DataSource"
+		driverClassName="org.h2.Driver"
+		url="jdbc:h2:tcp://localhost/~/baseball"
+		username="sa"
+		password=""
+	/>
+</Context>
