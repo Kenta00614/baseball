@@ -9,7 +9,11 @@
 <body>
 
 <p>１回目（五十里）</p>
+<<<<<<< HEAD
 <p>２回目（五十里）</p>
 
+=======
+<p>2回目（小野）</p>
+>>>>>>> branch 'master' of https://github.com/Kenta00614/baseball.git
 </body>
 </html>
