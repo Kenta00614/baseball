@@ -3,7 +3,6 @@
 <%@include file="header.jsp"%>
 
 <html>
-
 <body>
     <div class="header">
         <form action="TicketApplication" method="get">
