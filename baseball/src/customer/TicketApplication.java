@@ -13,6 +13,6 @@ public class TicketApplication extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        request.getRequestDispatcher("/customer/ticket-application.jsp").forward(request, response);
+        request.getRequestDispatcher("/customer/ticketApplication.jsp").forward(request, response);
     }
 }

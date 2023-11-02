@@ -3,13 +3,12 @@
 <%@include file="header.jsp"%>
 
 <html>
-
 <body>
+
     <div class="header">
-        <form action="TicketApplication" method="get">
-    　　　　<button type="submit">申し込む</button>
+        <form action="" method="get">
+    　　　　<button type="submit">会員退会</button>
 　　　　</form>
     </div>
 </body>
 </html>
-

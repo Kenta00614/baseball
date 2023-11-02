@@ -6,12 +6,12 @@
 <body>
     <div class="header">
         <form action="" method="get">
-    　　　　<button type="submit">次へ</button>
+    　　　　<button type="submit">席種・枚数選択に戻る</button>
 　　　　</form>
     </div>
     <div class="header">
         <form action="" method="get">
-    　　　　<button type="submit">次へ</button>
+    　　　　<button type="submit">購入</button>
 　　　　</form>
     </div>
 </body>
