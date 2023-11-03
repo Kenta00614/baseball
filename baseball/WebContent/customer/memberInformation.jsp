@@ -6,8 +6,13 @@
 <body>
 
     <div class="header">
-        <form action="WithdrawComplete" method="get">
+        <form action="MemberWithdraw" method="get">
     　　　　<button type="submit">会員退会</button>
+　　　　</form>
+    </div>
+        <div class="header">
+        <form action="InformationChange" method="get">
+    　　　　<button type="submit">会員情報変更</button>
 　　　　</form>
     </div>
 </body>

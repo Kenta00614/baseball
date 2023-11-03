@@ -6,9 +6,10 @@
 <body>
 
     <div class="header">
-        <form action="ChangeComplete" method="get">
-    　　　　<button type="submit">変更</button>
+        <form action="MemberInformation" method="get">
+    　　　　<button type="submit">メイン画面へ</button>
 　　　　</form>
     </div>
+
 </body>
 </html>
