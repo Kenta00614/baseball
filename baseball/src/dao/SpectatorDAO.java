@@ -37,7 +37,7 @@ public class SpectatorDAO extends DAO {
 		return spectator;
 	}
 
-//	引数のmailと同じものがあるか参照
+//	引数のmailと同じものがあるか参照戻り値は空白かmailの名前
 	public String searchSameMail(String mail)throws Exception {
 			String search="";
 			Connection con=getConnection();
