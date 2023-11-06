@@ -36,4 +36,23 @@ public class SpectatorDAO extends DAO {
 		con.close();
 		return spectator;
 	}
+
+//	引数のmailと同じものがあるか参照
+	public String searchSameMail(String mail)throws Exception {
+			String search="";
+			Connection con=getConnection();
+
+			PreparedStatement stdup=con.prepareStatement(
+					"SELECT * FROM SPECTATOR WHERE MAIL=?");
+				stdup.setString(1, mail);
+				ResultSet rsdup=stdup.executeQuery();
+				while (rsdup.next()) {
+					search=rsdup.getString("mail");
+				}
+
+			stdup.close();
+			con.close();
+			return search;
+		}
+
 }
