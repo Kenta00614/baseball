@@ -8,7 +8,6 @@ import bean.Spectator;
 
 public class SpectatorDAO extends DAO {
 
-//mailとpasswordで観戦客情報全てを取得するsearchSpecメソッド
 	public Spectator searchSpec(String mail, String password)
 		throws Exception {
 		Spectator spectator=null;
@@ -37,7 +36,6 @@ public class SpectatorDAO extends DAO {
 		return spectator;
 	}
 
-//	引数のmailと同じものがあるか参照戻り値は空白かmailの名前
 	public String searchSameMail(String mail)throws Exception {
 			String search="";
 			Connection con=getConnection();
