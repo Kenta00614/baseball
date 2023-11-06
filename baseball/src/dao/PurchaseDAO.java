@@ -20,6 +20,7 @@ public class PurchaseDAO extends DAO{
 
 		ResultSet rs=st.executeQuery();
 
+
 		while(rs.next()){
 			Purchase p=new Purchase();
 			p.setPurchaseId(rs.getInt("purchase_id"));
