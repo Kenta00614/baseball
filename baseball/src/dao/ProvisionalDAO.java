@@ -5,8 +5,6 @@ import java.sql.PreparedStatement;
 import java.util.UUID;
 
 public class ProvisionalDAO extends DAO {
-//新規会員登録
-//観戦客情報に同じ情報がないか確認、仮会員情報にUUIDを登録登録されたら戻り値1
 	public int insertProvisio(String mail, String name, String password, String tel) throws Exception{
 		Connection con=getConnection();
 		SpectatorDAO spectator=new SpectatorDAO();
