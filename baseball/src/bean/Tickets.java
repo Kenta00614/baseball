@@ -38,7 +38,7 @@ public class Tickets implements java.io.Serializable {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	public boolean isShared() {
+	public boolean getIsShared() {
 		return isShared;
 	}
 	public void setShared(boolean isShared) {

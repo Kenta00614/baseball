@@ -2,24 +2,14 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.util.UUID;
 
-public class ProvisionalDao extends DAO {
-//新規会員登録
-//観戦客情報に同じ情報がないか確認、仮会員情報にUUIDを登録登録されたら戻り値1
+public class ProvisionalDAO extends DAO {
 	public int insertProvisio(String mail, String name, String password, String tel) throws Exception{
 		Connection con=getConnection();
+		SpectatorDAO spectator=new SpectatorDAO();
 		int line=0;
-		String search="";
-
-		PreparedStatement stdup=con.prepareStatement(
-				"SELECT * FROM SPECTATOR WHERE MAIL=?");
-			stdup.setString(1, mail);
-			ResultSet rsdup=stdup.executeQuery();
-			while (rsdup.next()) {
-				search=rsdup.getString("mail");
-			}
+		String search=spectator.searchSameMail(mail);
 
 		if(!(search.equals(mail))){
 			PreparedStatement st=con.prepareStatement(

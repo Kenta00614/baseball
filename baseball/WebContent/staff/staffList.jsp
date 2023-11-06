@@ -15,5 +15,10 @@
     　　　　<button type="submit">職員情報の削除</button>
 　　　　</form>
     </div>
+        <div class="header">
+        <form action="StaffPass" method="get">
+    　　　　<button type="submit">パスワード再設定</button>
+　　　　</form>
+    </div>
 </body>
 </html>
