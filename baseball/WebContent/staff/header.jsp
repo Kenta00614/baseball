@@ -6,6 +6,6 @@
 <a href="../staff/.jsp">チケット確認</a>
 <a href="../staff/.jsp">販売停止</a>
 <a href="../staff/.jsp">払い戻し</a>
-<a href="../staff/.jsp">職員情報</a>
+<a href="../staff/staffList.jsp">職員情報</a>
 <a href="../staff/.jsp">ログアウト</a>
 

@@ -5,11 +5,11 @@
 <html>
 <body>
     <div class="header">
-        <form action="" method="get">
+        <form action="MemberInformation" method="get">
     　　　　<button type="submit">戻る</button>
 　　　　</form>
     </div>
-    <form action="#" method="post">
+    <form action="MemberConfirm" method="post">
         <h2>会員情報変更</h2>
         <label for="name">氏名</label>
         <input type="text" id="name" name="name" placeholder="OOOOO">
