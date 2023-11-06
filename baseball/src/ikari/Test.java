@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import bean.Tickets;
-import dao.TicketsDAO;
+import bean.Purchase;
+import dao.PurchaseDAO;
 
 @WebServlet("/test")
 public class Test extends HttpServlet{
@@ -31,14 +31,12 @@ public class Test extends HttpServlet{
 		out.println("<body>");
 
 		try{
-			TicketsDAO TD = new TicketsDAO();
-			List<Tickets> list=TD.getTicketsInfo(1);
+			PurchaseDAO PD = new PurchaseDAO();
+			List<Purchase> list=PD.getPurchaseInfo(1);
 
-			for(Tickets t : list){
-				out.println(t.getTicketsId());
-				out.println(t.getMatchId());
-				out.println(t.getStatus());
-				out.println(t.getIsShared());
+			for(Purchase p : list){
+				out.println(p.getPurchaseId());
+				out.println(p.getPurchaseAt());
 			}
 		}catch(Exception e){
 			e.printStackTrace(out);
