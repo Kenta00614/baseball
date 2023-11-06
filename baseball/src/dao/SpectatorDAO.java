@@ -3,7 +3,9 @@ package dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.UUID;
 
+import bean.Provisional;
 import bean.Spectator;
 
 public class SpectatorDAO extends DAO {
@@ -27,7 +29,7 @@ public class SpectatorDAO extends DAO {
 			spectator.setName(rs.getString("name"));
 			spectator.setPassword(rs.getString("password"));
 			spectator.setTel(rs.getString("tel"));
-			spectator.setPoint(rs.getString("point"));
+			spectator.setPoint(rs.getInt("point"));
 			spectator.setMail(rs.getString("mail"));
 		}
 
@@ -52,5 +54,27 @@ public class SpectatorDAO extends DAO {
 			con.close();
 			return search;
 		}
+
+//	新規会員登録
+	public int addNewSpec(UUID uuid) throws Exception{
+		Connection con=getConnection();
+		int line=0;
+
+//		uuidの情報取得
+		ProvisionalDAO provisional=new ProvisionalDAO();
+		Provisional search=provisional.searchUuid(uuid);
+
+		PreparedStatement st=con.prepareStatement(
+				"INSERT INTO SPECTATOR VALUES(NULL,?,?,?,?,NULL)");
+		st.setString(1,search.getName());
+		st.setString(2,search.getPassword());
+		st.setString(3,search.getTel());
+		st.setString(4,search.getMail());
+		line=st.executeUpdate();
+		st.close();
+		con.close();
+
+		return line;
+	}
 
 }

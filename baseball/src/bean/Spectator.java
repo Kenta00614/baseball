@@ -5,8 +5,15 @@ public class Spectator implements java.io.Serializable {
 	private String name;
 	private String password;
 	private String tel;
-	private String point;
+	private int point;
 	private String mail;
+
+	public int getPoint() {
+		return point;
+	}
+	public void setPoint(int point) {
+		this.point = point;
+	}
 
 	public int getSpectatorId() {
 		return spectatorId;
@@ -32,12 +39,7 @@ public class Spectator implements java.io.Serializable {
 	public void setTel(String tel) {
 		this.tel = tel;
 	}
-	public String getPoint() {
-		return point;
-	}
-	public void setPoint(String point) {
-		this.point = point;
-	}
+
 	public String getMail() {
 		return mail;
 	}
