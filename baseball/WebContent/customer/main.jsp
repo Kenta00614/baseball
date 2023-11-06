@@ -6,20 +6,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>スケジュール</title>
+    <title>メイン画面</title>
     <style>
-        table {
-            border-collapse: collapse;
-            width: 100%;
-        }
-        th, td {
-            border: 1px solid black;
-            padding: 8px 12px;
-            text-align: left;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
         .title {
             text-align: center;
             font-size: 24px;
@@ -55,21 +43,21 @@
 <div class="schedule">
     <div>第一試合 (第1回戦)</div>
     <div>未定</div>
-    <div>8:00 試合開始</div>
+    <div>8:00 </div>
     <div>未定</div>
 </div>
 
 <div class="schedule">
     <div>第二試合 (第1回戦)</div>
     <div>未定</div>
-    <div>11:00 試合開始</div>
+    <div>11:00</div>
     <div>未定</div>
 </div>
 
 <div class="schedule">
     <div>第三試合 (第1回戦)</div>
     <div>未定</div>
-    <div>14:00 試合開始</div>
+    <div>14:00 </div>
     <div>未定</div>
 </div>
 
