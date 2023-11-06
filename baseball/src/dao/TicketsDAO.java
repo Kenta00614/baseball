@@ -10,7 +10,7 @@ import bean.Tickets;
 
 public class TicketsDAO extends DAO{
 
-	//購入者番号からチケット情報を取得
+	//購入者番号からチケット番号、試合番号、チケットステータス、共有ステータスを取得
 	public List<Tickets> getTicketsInfo(int purchase_id) throws Exception{
 
 		List<Tickets> list=new ArrayList<>();
