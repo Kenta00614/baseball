@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import bean.Match;
@@ -31,5 +32,25 @@ public class MatchDAO extends DAO{
 		con.close();
 
 		return list;
+	}
+
+	//match_idから開催日を取得
+	public Date getEventDate(int match_id)throws Exception{
+
+		Connection con=getConnection();
+		PreparedStatement st=con.prepareStatement("SELECT EVENT_DATE FROM MATCH WHERE MATCH_ID = ?");
+		st.setInt(1, match_id);
+
+		ResultSet rs=st.executeQuery();
+
+		Date eventDate;
+
+		if(rs.next()){
+			eventDate = rs.getDate("event_date");
+		}else{
+			eventDate=null;
+		}
+
+		return eventDate;
 	}
 }
