@@ -17,5 +17,4 @@ public class DuelExp extends Duel {
 		this.schoolB2 = schoolB2;
 	}
 
-
 }
