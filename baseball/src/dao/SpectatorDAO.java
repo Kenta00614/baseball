@@ -55,12 +55,10 @@ public class SpectatorDAO extends DAO {
 			return search;
 		}
 
-//	新規会員登録
 	public int addNewSpec(UUID uuid) throws Exception{
 		Connection con=getConnection();
 		int line=0;
 
-//		uuidの情報取得
 		ProvisionalDAO provisional=new ProvisionalDAO();
 		Provisional search=provisional.searchUuid(uuid);
 
