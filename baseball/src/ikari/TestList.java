@@ -2,6 +2,7 @@ package ikari;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Date;
 import java.util.List;
 
 import javax.servlet.annotation.WebServlet;
@@ -9,8 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import bean.Tournament;
-import dao.TournamentDAO;
+import bean.Match;
+import dao.MatchDAO;
 
 @WebServlet("/testList")
 public class TestList extends HttpServlet{
@@ -34,18 +35,24 @@ public class TestList extends HttpServlet{
 		out.println("<body>");
 
 		try{
-			TournamentDAO D = new TournamentDAO();
+			MatchDAO D = new MatchDAO();
 
-			List<Tournament> list=D.getTournamentDetail();
+			List<Match> list=D.searchMatch(Date.valueOf("2023-10-23"));
 
-			for(Tournament t : list){
+			for(Match t : list){
+				out.println(t.getMatchId());
+				out.println("   ");
 				out.println(t.getTournamentId());
 				out.println("   ");
-				out.println(t.getYear());
+				out.println(t.getSaleStartAt());
 				out.println("   ");
-				out.println(t.getOrdinalNum());
+				out.println(t.getDuel1());
 				out.println("   ");
-				out.println(t.getName());
+				out.println(t.getDuel2());
+				out.println("   ");
+				out.println(t.getDuel3());
+				out.println("   ");
+				out.println(t.getDuel4());
 			}
 
 		}catch(Exception e){
