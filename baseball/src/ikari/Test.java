@@ -2,13 +2,14 @@ package ikari;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Date;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.TournamentDAO;
+import dao.MatchDAO;
 
 @WebServlet("/test")
 public class Test extends HttpServlet{
@@ -32,10 +33,10 @@ public class Test extends HttpServlet{
 		out.println("<body>");
 
 		try{
-			TournamentDAO D = new TournamentDAO();
-			int year = D.getTournamentYear(1);
+			MatchDAO D = new MatchDAO();
+		Date eventDate= D.getEventDate(1);
 
-			out.println(year);
+			out.println(eventDate);
 
 		}catch(Exception e){
 			e.printStackTrace(out);
