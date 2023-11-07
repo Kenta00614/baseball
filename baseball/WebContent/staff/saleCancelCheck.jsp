@@ -6,7 +6,7 @@
 <body>
     <div class="header"><%-- saleCancelCompleteとsaleStopCompleteは内容同じ --%>
         <form action="SaleCancelComplete" method="get">
-            <br><a href="saleStop.jsp" class="btn">戻る</a>
+            <br><a href="SaleStop" class="btn">戻る</a>
         	<h1>雨天時などの販売中止</h1>
         	<p>当日券・リセール席の販売を停止します。</p>
         	<p>チケットステータスを払い戻し未対応に変更します。</p><br>
