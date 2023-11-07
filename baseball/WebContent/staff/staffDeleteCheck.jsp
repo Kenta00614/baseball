@@ -5,7 +5,9 @@
 
 <body>
     <div class="header">
+
         <form action="StaffDeleteComplete" method="get">
+        <br><a href="StaffDelete" class="btn">戻る</a>
         	<h1>職員情報の削除</h1>
         	<p>以下の情報を削除しますか？</p>
     　　　　<button type="submit">確認</button>
