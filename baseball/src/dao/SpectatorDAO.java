@@ -63,12 +63,14 @@ public class SpectatorDAO extends DAO {
 		Provisional search=provisional.searchUuid(uuid);
 
 		PreparedStatement st=con.prepareStatement(
-				"INSERT INTO SPECTATOR VALUES(NULL,?,?,?,?,NULL)");
+				"INSERT INTO SPECTATOR VALUES(NULL,?,?,?,0,?)");
 		st.setString(1,search.getName());
 		st.setString(2,search.getPassword());
 		st.setString(3,search.getTel());
 		st.setString(4,search.getMail());
 		line=st.executeUpdate();
+
+		provisional.delUuid(uuid);
 		st.close();
 		con.close();
 
