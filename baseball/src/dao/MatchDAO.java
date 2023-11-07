@@ -22,7 +22,7 @@ public class MatchDAO extends DAO{
 
 		while(rs.next()){
 			Match m=new Match();
-			m.setTournamentId(rs.getInt("tounament_id"));
+			m.setTournamentId(rs.getInt("tournament_id"));
 			m.setEventDate(rs.getDate("event_date"));
 
 			list.add(m);
