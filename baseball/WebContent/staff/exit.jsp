@@ -4,9 +4,17 @@
 <html>
 
 <body>
+  <h1>退場カメラ</h1>
+
+
     <div class="header">
-    <h1>パスワード再設定</h1>
-	<p>パスワードの再設定が完了しました。</p><br>
+
+        <form action="EntryExit" method="get">
+    　　　　<button type="submit">戻る</button>
+　　　　</form>
+
     </div>
- </body>
- </html>
+
+
+</body>
+</html>

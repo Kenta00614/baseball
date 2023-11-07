@@ -10,7 +10,6 @@ import bean.Purchase;
 
 public class PurchaseDAO extends DAO{
 
-	//観戦客IDから購入番号、購入日時を取得
 	public List<Purchase> getPurchaseInfo(int spectator_id)throws Exception{
 
 		List<Purchase> list=new ArrayList<>();
@@ -19,6 +18,7 @@ public class PurchaseDAO extends DAO{
 		st.setInt(1, spectator_id);
 
 		ResultSet rs=st.executeQuery();
+
 
 		while(rs.next()){
 			Purchase p=new Purchase();
