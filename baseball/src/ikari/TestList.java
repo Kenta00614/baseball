@@ -2,16 +2,18 @@ package ikari;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import bean.Tournament;
 import dao.TournamentDAO;
 
-@WebServlet("/test")
-public class Test extends HttpServlet{
+@WebServlet("/testList")
+public class TestList extends HttpServlet{
 
 	public void doGet(
 			HttpServletRequest request, HttpServletResponse response
@@ -33,9 +35,18 @@ public class Test extends HttpServlet{
 
 		try{
 			TournamentDAO D = new TournamentDAO();
-			int year = D.getTournamentYear(1);
 
-			out.println(year);
+			List<Tournament> list=D.getTournamentInfo(1);
+
+			for(Tournament t : list){
+				out.println(t.getYear());
+				out.println("   ");
+				out.println(t.getOrdinalNum());
+				out.println("   ");
+				out.println(t.getName());
+				out.println("   ");
+				out.println(t.getSeason());
+			}
 
 		}catch(Exception e){
 			e.printStackTrace(out);
