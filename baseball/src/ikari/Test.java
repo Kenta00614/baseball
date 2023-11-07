@@ -2,15 +2,13 @@ package ikari;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import bean.Match;
-import dao.MatchDAO;
+import dao.TournamentDAO;
 
 @WebServlet("/test")
 public class Test extends HttpServlet{
@@ -31,13 +29,10 @@ public class Test extends HttpServlet{
 		out.println("<body>");
 
 		try{
-			MatchDAO D = new MatchDAO();
-			List<Match> list=D.getMatchInfo(1);
+			TournamentDAO D = new TournamentDAO();
+			@SuppressWarnings("unused")
+			String name = D.getTournamentName(1);
 
-			for(Match d : list){
-				out.println(d.getTournamentId());
-				out.println(d.getEventDate());
-			}
 		}catch(Exception e){
 			e.printStackTrace(out);
 		}
