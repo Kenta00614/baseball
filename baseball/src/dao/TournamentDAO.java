@@ -76,4 +76,29 @@ public class TournamentDAO extends DAO{
 
 		return list;
 	}
+
+	public List<Tournament> getTournamentDetail()throws Exception{
+
+		Connection con=getConnection();
+		PreparedStatement st=con.prepareStatement("SELECT * FROM TOURNAMENT");
+		ResultSet rs=st.executeQuery();
+
+		List<Tournament> list=new ArrayList<>();
+
+		while(rs.next()){
+			Tournament t=new Tournament();
+			t.setTournamentId(rs.getInt("tournament_id"));
+			t.setYear(rs.getInt("year"));
+			t.setOrdinalNum(rs.getInt("ordinal_num"));
+			t.setName(rs.getString("name"));
+
+			list.add(t);
+		}
+
+		st.close();
+		con.close();
+
+		return list;
+
+	}
 }
