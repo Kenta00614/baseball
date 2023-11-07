@@ -10,7 +10,7 @@ import bean.Spectator;
 
 public class SpectatorDAO extends DAO {
 
-	public Spectator searchSpec(String mail, String password)
+	public Spectator loginSpec(String mail, String password)
 		throws Exception {
 		Spectator spectator=null;
 
@@ -25,12 +25,12 @@ public class SpectatorDAO extends DAO {
 
 		while (rs.next()) {
 			spectator=new Spectator();
-			spectator.setSpectatorId(rs.getInt("spectatorId"));
-			spectator.setName(rs.getString("name"));
-			spectator.setPassword(rs.getString("password"));
-			spectator.setTel(rs.getString("tel"));
-			spectator.setPoint(rs.getInt("point"));
-			spectator.setMail(rs.getString("mail"));
+			spectator.setSpectatorId(rs.getInt("SPECTATOR_ID"));
+			spectator.setName(rs.getString("NAME"));
+			spectator.setPassword(rs.getString("PASSWORD"));
+			spectator.setTel(rs.getString("TEL"));
+			spectator.setPoint(rs.getInt("POINT"));
+			spectator.setMail(rs.getString("MAIL"));
 		}
 
 		st.close();
@@ -64,13 +64,16 @@ public class SpectatorDAO extends DAO {
 
 		PreparedStatement st=con.prepareStatement(
 				"INSERT INTO SPECTATOR VALUES(NULL,?,?,?,0,?)");
-		st.setString(1,search.getName());
-		st.setString(2,search.getPassword());
-		st.setString(3,search.getTel());
-		st.setString(4,search.getMail());
-		line=st.executeUpdate();
+		if(search!=null){
+			st.setString(1,search.getName());
+			st.setString(2,search.getPassword());
+			st.setString(3,search.getTel());
+			st.setString(4,search.getMail());
+			line=st.executeUpdate();
 
-		provisional.delUuid(uuid);
+			provisional.delUuid(uuid);
+		}
+
 		st.close();
 		con.close();
 
