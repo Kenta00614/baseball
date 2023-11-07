@@ -8,6 +8,10 @@
     <h1>パスワード再設定</h1>
         <form action="StaffPassComplete" method="get">
 			<div class="control">
+        	<p><label for="id"> ID</label><br>
+            <input type="text" id="id" name="ID"></p>
+        	</div>
+			<div class="control">
 	            <label for="passcode"> パスワード</label><br>
 	            <input id="passcode" type="password" name="passcode">
         	</div>
