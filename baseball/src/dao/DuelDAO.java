@@ -62,4 +62,26 @@ public class DuelDAO extends DAO{
 		return num;
 
 	}
+
+	//duel_idが一致するduelの情報を更新する
+	public int changeDuel(Duel duel)throws Exception{
+
+		Connection con = getConnection();
+		PreparedStatement st=con.prepareStatement("UPDATE DUEL SET SCHOOL1 = ?,SCHOOL2 = ?,STATUS = ?,ROUND = ? WHERE DUEL_ID = ?");
+
+		st.setInt(1, duel.getSchool1());
+		st.setInt(2, duel.getSchool2());
+		st.setString(3, duel.getStatus());
+		st.setString(4, duel.getRound());
+		st.setInt(5, duel.getDuelId());
+
+		int num=st.executeUpdate();
+
+		st.close();
+		con.close();
+
+		return num;
+
+
+	}
 }
