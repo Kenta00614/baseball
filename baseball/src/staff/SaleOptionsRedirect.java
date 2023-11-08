@@ -18,5 +18,6 @@ public class SaleOptionsRedirect extends HttpServlet {
         } else if ("end".equals(selectedOption)) {
             response.sendRedirect("SaleStopCheck");
         }
+
     }
 }
