@@ -84,4 +84,24 @@ public class DuelDAO extends DAO{
 
 
 	}
+
+	public Duel deleteDuel(int duel_id)throws Exception{
+
+		Connection con=getConnection();
+		PreparedStatement st=con.prepareStatement("DELETE FROM DUEL WHERE DUEL_ID = ?");
+		st.setInt(1, duel_id);
+
+		int num=st.executeUpdate();
+
+		Duel duel = new Duel();
+
+		if(num==0){
+			duel=null;
+		}
+
+		st.close();
+		con.close();
+
+		return duel;
+	}
 }
