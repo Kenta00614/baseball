@@ -7,8 +7,11 @@
     <div class="header">
         <form action="Refund" method="get">
         	<h1>払い戻し完了</h1>
-        	<p>チケット番号: </p>
-            <p>チケット価格:</p>
+      		<div class="confirmation-results">
+	            <p>チケット番号: <%= request.getParameter("ticketnumber") %></p>
+	            <!-- 他の入力フィールドの内容も同様に表示できます。 -->
+        	</div>
+            <p>チケット価格:「」　円</p>
             <p>払い戻し対応を行いました。</p>
 
     　　　　<button type="submit">次へ</button>
