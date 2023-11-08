@@ -2,12 +2,13 @@
     pageEncoding="UTF-8"%>
 <%@include file="header.jsp"%>
 <html>
-試合情報表示　表示
+大会情報変更　確認画面
 <body>
     <div class="header">
-        <form action="" method="get">
-    　　　　<button type="submit"></button>
+        <form action="TournamentUpdateCompletion" method="get">
+    　　　　<button type="submit">確認</button>
 　　　　</form>
     </div>
 </body>
-</html>
+</html>	
+	
