@@ -2,15 +2,14 @@ package ikari;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Date;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import bean.Match;
-import dao.MatchDAO;
+import bean.Tournament;
+import dao.TournamentDAO;
 
 @WebServlet("/test")
 public class Test extends HttpServlet{
@@ -46,10 +45,10 @@ public class Test extends HttpServlet{
 			mm.setDuel4(5);
 		*/
 
-			MatchDAO MD=new MatchDAO();
-			Match m= new Match();
+			TournamentDAO MD=new TournamentDAO();
+			Tournament m= new Tournament();
 
-			m=MD.deleteMatch(Date.valueOf("2023-10-24"));
+//ここからやる、insertTournamentのチェック
 
 			out.println(m);
 
