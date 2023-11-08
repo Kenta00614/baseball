@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import bean.Duel;
 import bean.Match;
 import dao.MatchDAO;
 
@@ -34,18 +35,24 @@ public class Test extends HttpServlet{
 		out.println("<body>");
 
 		try{
-			Match m=new Match();
-			m.setTournamentId(2);
-			m.setEventDate(Date.valueOf("2023-10-24"));
-			m.setSaleStartAt(Date.valueOf("2023-10-25"));
-			m.setDuel1(5);
-			m.setDuel2(6);
-			m.setDuel3(7);
-			m.setDuel4(8);
+			Match mm=new Match();
+			mm.setTournamentId(2);
+			mm.setEventDate(Date.valueOf("2023-10-25"));
+			mm.setSaleStartAt(Date.valueOf("2023-10-26"));
+			mm.setDuel1(9);
+			mm.setDuel2(10);
+			mm.setDuel3(11);
+			mm.setDuel4(12);
+
+			Duel m=new Duel();
+			m.setSchool1(13);
+			m.setSchool2(14);
+			m.setStatus("2");
+			m.setRound("2");
 
 
 			MatchDAO D = new MatchDAO();
-		int num= D.insertMatch(m);
+		int num= D.insertMatch(mm,m);
 
 			out.println(num);
 

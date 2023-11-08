@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import bean.Duel;
 import bean.Match;
 
 public class MatchDAO extends DAO{
@@ -54,6 +55,7 @@ public class MatchDAO extends DAO{
 		return eventDate;
 	}
 
+	//開催日から試合情報を取得
 	public List<Match> searchMatch(Date eventDate)throws Exception{
 
 		Connection con=getConnection();
@@ -85,7 +87,8 @@ public class MatchDAO extends DAO{
 
 	}
 
-	public int insertMatch(Match match)throws Exception{
+	//試合情報の追加
+	public int insertMatch(Match match, Duel duel)throws Exception{
 
 		Connection con=getConnection();
 
@@ -98,7 +101,10 @@ public class MatchDAO extends DAO{
 		st.setInt(6, match.getDuel3());
 		st.setInt(7, match.getDuel4());
 
-		int num=st.executeUpdate();
+		DuelDAO DD=new DuelDAO();
+		st.executeUpdate();
+
+		int num=DD.insertDuel(duel);
 
 		st.close();
 		con.close();

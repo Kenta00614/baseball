@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import bean.Duel;
 import bean.DuelExp;
 import bean.School;
 
@@ -39,6 +40,26 @@ public class DuelDAO extends DAO{
 		}
 
 		return list;
+
+	}
+
+	//duelの情報を取得する
+	public int insertDuel(Duel duel)throws Exception{
+
+		Connection con=getConnection();
+		PreparedStatement st=con.prepareStatement("INSERT INTO DUEL VALUES(null,?,?,?,?)");
+
+		st.setInt(1, duel.getSchool1());
+		st.setInt(2, duel.getSchool2());
+		st.setString(3, duel.getStatus());
+		st.setString(4, duel.getRound());
+
+		int num=st.executeUpdate();
+
+		st.close();
+		con.close();
+
+		return num;
 
 	}
 }
