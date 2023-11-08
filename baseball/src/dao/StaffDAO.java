@@ -5,40 +5,37 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-import bean.Spectator;
+import bean.Staff;
 
 public class StaffDAO extends DAO {
-
-	public Spectator loginStaff(String mail, String password)
+//IDとパスワード一致で職員情報を取得
+	public Staff loginStaff(String id, String password)
 		throws Exception {
-		Spectator spectator=null;
-
+		Staff staff=null;
 		Connection con=getConnection();
 
-		PreparedStatement st;
-		st=con.prepareStatement(
-			"SELECT * FROM SPECTATOR WHERE MAIL=? AND PASSWORD=?");
-		st.setString(1, mail);
+		PreparedStatement st=con.prepareStatement(
+			"SELECT * FROM STAFF WHERE STAFF_ID=? AND PASSWORD=?");
+		st.setString(1, id);
 		st.setString(2, password);
 		ResultSet rs=st.executeQuery();
 
 		while (rs.next()) {
-			spectator=new Spectator();
-			spectator.setSpectatorId(rs.getInt("SPECTATOR_ID"));
-			spectator.setName(rs.getString("NAME"));
-			spectator.setPassword(rs.getString("PASSWORD"));
-			spectator.setTel(rs.getString("TEL"));
-			spectator.setPoint(rs.getInt("POINT"));
-			spectator.setMail(rs.getString("MAIL"));
+			staff=new Staff();
+			staff.setStaffId(rs.getString("STAFF_ID"));
+			staff.setName(rs.getString("NAME"));
+			staff.setBirth(rs.getDate("BIRTH"));
+			staff.setPassword(rs.getString("PASSWORD"));
+			staff.setPosition(rs.getString("POSITION"));
 		}
 
 		st.close();
 		con.close();
-		return spectator;
+		return staff;
 	}
 
 
-
+//	職員ID・名前・生年月日・役職の情報から新規職員登録
 	public int addNewStaff(String id, String name, Date birth, String position) throws Exception{
 		int line=0;
 		String search=null;

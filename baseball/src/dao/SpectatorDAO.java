@@ -9,7 +9,7 @@ import bean.Provisional;
 import bean.Spectator;
 
 public class SpectatorDAO extends DAO {
-
+//メールとパスワード一致で観戦客情報を取得
 	public Spectator loginSpec(String mail, String password)
 		throws Exception {
 		Spectator spectator=null;
@@ -38,6 +38,7 @@ public class SpectatorDAO extends DAO {
 		return spectator;
 	}
 
+//	引数と同じメールアドレスを持つ場合は引数と同じメールアドレスを返す
 	public String searchSameMail(String mail)throws Exception {
 			String search="";
 			Connection con=getConnection();
@@ -55,6 +56,7 @@ public class SpectatorDAO extends DAO {
 			return search;
 		}
 
+//	新規会員登録、登録されると1を返す
 	public int addNewSpec(UUID uuid) throws Exception{
 		Connection con=getConnection();
 		int line=0;
