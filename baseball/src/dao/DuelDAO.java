@@ -85,6 +85,7 @@ public class DuelDAO extends DAO{
 
 	}
 
+	//試合情報を削除
 	public Duel deleteDuel(int duel_id)throws Exception{
 
 		Connection con=getConnection();

@@ -183,4 +183,55 @@ public class MatchDAO extends DAO{
 
 		return list;
 	}
+
+
+	//試合日情報と試合情報の削除
+	public Match deleteMatch(Date event_date)throws Exception{
+
+		Connection con=getConnection();
+		PreparedStatement st=con.prepareStatement("SELECT DUEL1,DUEL2,DUEL3,DUEL4 FROM MATCH WHERE EVENT_DATE = ?");
+		st.setDate(1, event_date);
+
+		ResultSet rs=st.executeQuery();
+
+		PreparedStatement stDel=con.prepareStatement("DELETE FROM MATCH WHERE EVENT_DATE = ?");
+		stDel.setDate(1, event_date);
+
+		stDel.executeUpdate();
+
+		Match match=new Match();
+
+		if(rs.next()){
+			match.setDuel1(rs.getInt("duel1"));
+			match.setDuel2(rs.getInt("duel2"));
+			match.setDuel3(rs.getInt("duel3"));
+			match.setDuel4(rs.getInt("duel4"));
+		}
+
+		Integer Duel1 = match.getDuel1();
+		Integer Duel2 = match.getDuel2();
+		Integer Duel3 = match.getDuel3();
+		Integer Duel4 = match.getDuel4();
+
+		DuelDAO DD=new DuelDAO();
+		DD.deleteDuel(Duel1);
+
+		if(Duel2!=null){
+			DD.deleteDuel(Duel2);
+		}
+
+		if(Duel3!=null){
+			DD.deleteDuel(Duel3);
+		}
+
+		if(Duel4!=null){
+			DD.deleteDuel(Duel4);
+		}
+
+		st.close();
+		con.close();
+
+		return match;
+
+	}
 }

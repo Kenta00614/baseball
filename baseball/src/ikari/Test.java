@@ -2,14 +2,15 @@ package ikari;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Date;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import bean.Duel;
-import dao.DuelDAO;
+import bean.Match;
+import dao.MatchDAO;
 
 @WebServlet("/test")
 public class Test extends HttpServlet{
@@ -45,11 +46,12 @@ public class Test extends HttpServlet{
 			mm.setDuel4(5);
 		*/
 
-			DuelDAO D = new DuelDAO();
+			MatchDAO MD=new MatchDAO();
+			Match m= new Match();
 
-			Duel duel=D.deleteDuel(7);
+			m=MD.deleteMatch(Date.valueOf("2023-10-24"));
 
-			out.println(duel);
+			out.println(m);
 
 		}catch(Exception e){
 			e.printStackTrace(out);
