@@ -6,15 +6,16 @@
 <body>
     <div class="header">
     <h1>ログイン</h1>
-        <form action="" method="get">
+        <form action="<%-- ログイン先のリンク --%>" method="get">
         	<div class="control">
-        		<p><label for="ID">ID(メールアドレス)</label>
-				<input type="text" id="id" name="ID" ></p>
+            <label for="mymail"> メールアドレス</label>
+            <input id="mymail" type="email" name="mymail" required>
 			</div>
 			<div class="control">
-	            <label for="passcode"> パスワード</label>
-	            <input id="passcode" type="password" name="passcode">
-        	</div>
+			    <label for="passcode"> パスワード</label>
+			    <input id="passcode" type="password" name="passcode" pattern="^(?=.*\d)(?=.*[a-zA-Z]).{8,}$" required>
+			    <p class="note">※パスワードは8文字以上で、数字と英字が必要です。</p>
+			</div>
 
     　　　　<button type="submit">ログイン</button>
             <a href="StaffPass" class="btn">パスワード再設定</a>

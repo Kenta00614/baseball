@@ -7,9 +7,11 @@
     <div class="header">
         <form action="RefundHandle" method="get">
         	<h1>払い戻し確認</h1>
-        	<p><label for="ticketnumber"> チケット番号 </label>
-            <input type="number" id="ticketnumber" name="ticketnumber"></p>
-
+			<div class="control">
+			    <label for="ticketnumber"> チケット番号</label>
+			    <input id="ticketnumber" type="text" name="ticketnumber" pattern="[0-9]+" required>
+			    <p>※半角数字で入力してください。</p>
+			</div>
     　　　　<button type="submit">確認</button>
 　　　　</form>
     </div>
