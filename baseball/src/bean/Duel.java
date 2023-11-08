@@ -6,7 +6,8 @@ public class Duel implements Serializable {
 	private int duelId;
 	private int school1;
 	private int school2;
-	private int status;
+	private String status;
+	private String round;
 
 	public int getDuelId() {
 		return duelId;
@@ -26,10 +27,16 @@ public class Duel implements Serializable {
 	public void setSchool2(int school2) {
 		this.school2 = school2;
 	}
-	public int getStatus() {
+	public String getStatus() {
 		return status;
 	}
-	public void setStatus(int status) {
+	public void setStatus(String status) {
 		this.status = status;
+	}
+	public String getRound() {
+		return round;
+	}
+	public void setRound(String round) {
+		this.round = round;
 	}
 }

@@ -1,7 +1,7 @@
 package bean;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Date;
 
 public class Match implements Serializable {
 	private int matchId;

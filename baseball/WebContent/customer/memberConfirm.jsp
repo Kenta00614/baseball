@@ -6,7 +6,7 @@
 <body>
 
     <div class="header">
-        <form action="" method="get">
+        <form action="ChangeComplete" method="get">
     　　　　<button type="submit">変更</button>
 　　　　</form>
     </div>

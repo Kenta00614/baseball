@@ -4,6 +4,12 @@
 
 <html>
 <body>
-完了
+
+    <div class="header">
+        <form action="Main" method="get">
+    　　　　<button type="submit">メイン画面へ</button>
+　　　　</form>
+    </div>
+
 </body>
 </html>

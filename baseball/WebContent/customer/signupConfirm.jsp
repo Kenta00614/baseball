@@ -5,13 +5,13 @@
 <html>
 <body>
     <div class="header">
-        <form action="" method="get">
-    　　　　<button type="submit">席種・枚数選択に戻る</button>
+        <form action="Signup" method="get">
+    　　　　<button type="submit">戻る</button>
 　　　　</form>
     </div>
     <div class="header">
-        <form action="" method="get">
-    　　　　<button type="submit">購入</button>
+        <form action="SignupConfirm" method="get">
+    　　　　<button type="submit">登録</button>
 　　　　</form>
     </div>
 </body>

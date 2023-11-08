@@ -6,7 +6,7 @@
 <body>
 
     <div class="header">
-        <form action="" method="get">
+        <form action="WithdrawComplete" method="get">
     　　　　<button type="submit">会員退会</button>
 　　　　</form>
     </div>
