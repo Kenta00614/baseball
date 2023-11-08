@@ -92,6 +92,8 @@ public class MatchDAO extends DAO{
 
 		Connection con=getConnection();
 
+		try{
+
 		PreparedStatement st=con.prepareStatement("insert into MATCH values(null,?,?,?,?,?,?,?)");
 		st.setInt(1,match.getTournamentId());
 		st.setDate(2, match.getEventDate());
@@ -110,6 +112,14 @@ public class MatchDAO extends DAO{
 		con.close();
 
 		return num;
+
+		}catch(Exception e){
+
+			// 0の時は同じ日付などが理由で登録できていない場合
+
+			int num=0;
+			return num;
+		}
 
 	}
 }
