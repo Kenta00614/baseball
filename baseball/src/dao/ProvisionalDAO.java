@@ -8,6 +8,7 @@ import java.util.UUID;
 import bean.Provisional;
 
 public class ProvisionalDAO extends DAO {
+//	仮会員登録、作成したuuidを返す
 	public UUID insertProv(String mail, String name, String password, String tel) throws Exception{
 		Connection con=getConnection();
 		SpectatorDAO spectator=new SpectatorDAO();
@@ -31,6 +32,7 @@ public class ProvisionalDAO extends DAO {
 		return newUuid;
 	}
 
+//	引数のuuidの仮会員情報を取得
 	public Provisional searchUuid(UUID uuid)throws Exception {
 		Provisional search=null;
 		String id=uuid.toString();
@@ -55,6 +57,7 @@ public class ProvisionalDAO extends DAO {
 		return search;
 	}
 
+//	引数のuuidの仮会員情報を削除
 	public int delUuid(UUID uuid) throws Exception{
 		Connection con=getConnection();
 		int line=0;
