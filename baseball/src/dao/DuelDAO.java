@@ -32,7 +32,7 @@ public class DuelDAO extends DAO{
 			}else{
 				d=new DuelExp();
 				d.setSchoolB1(s);
-				d.setStatus(rs.getInt("status"));
+				d.setStatus(rs.getString("status"));
 				list.add(d);
 			}
 			flg = !flg;

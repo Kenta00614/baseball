@@ -85,4 +85,25 @@ public class MatchDAO extends DAO{
 
 	}
 
+	public int insertMatch(Match match)throws Exception{
+
+		Connection con=getConnection();
+
+		PreparedStatement st=con.prepareStatement("insert into MATCH values(null,?,?,?,?,?,?,?)");
+		st.setInt(1,match.getTournamentId());
+		st.setDate(2, match.getEventDate());
+		st.setDate(3, match.getSaleStartAt());
+		st.setInt(4, match.getDuel1());
+		st.setInt(5, match.getDuel2());
+		st.setInt(6, match.getDuel3());
+		st.setInt(7, match.getDuel4());
+
+		int num=st.executeUpdate();
+
+		st.close();
+		con.close();
+
+		return num;
+
+	}
 }
