@@ -9,8 +9,8 @@ import bean.Provisional;
 import bean.Spectator;
 
 public class SpectatorDAO extends DAO {
-
-	public Spectator searchSpec(String mail, String password)
+//メールとパスワード一致で観戦客情報を取得
+	public Spectator loginSpec(String mail, String password)
 		throws Exception {
 		Spectator spectator=null;
 
@@ -25,12 +25,12 @@ public class SpectatorDAO extends DAO {
 
 		while (rs.next()) {
 			spectator=new Spectator();
-			spectator.setSpectatorId(rs.getInt("spectatorId"));
-			spectator.setName(rs.getString("name"));
-			spectator.setPassword(rs.getString("password"));
-			spectator.setTel(rs.getString("tel"));
-			spectator.setPoint(rs.getInt("point"));
-			spectator.setMail(rs.getString("mail"));
+			spectator.setSpectatorId(rs.getInt("SPECTATOR_ID"));
+			spectator.setName(rs.getString("NAME"));
+			spectator.setPassword(rs.getString("PASSWORD"));
+			spectator.setTel(rs.getString("TEL"));
+			spectator.setPoint(rs.getInt("POINT"));
+			spectator.setMail(rs.getString("MAIL"));
 		}
 
 		st.close();
@@ -38,6 +38,7 @@ public class SpectatorDAO extends DAO {
 		return spectator;
 	}
 
+//	引数と同じメールアドレスを持つ場合は引数と同じメールアドレスを返す
 	public String searchSameMail(String mail)throws Exception {
 			String search="";
 			Connection con=getConnection();
@@ -55,6 +56,7 @@ public class SpectatorDAO extends DAO {
 			return search;
 		}
 
+//	新規会員登録、登録されると1を返す
 	public int addNewSpec(UUID uuid) throws Exception{
 		Connection con=getConnection();
 		int line=0;
@@ -63,12 +65,17 @@ public class SpectatorDAO extends DAO {
 		Provisional search=provisional.searchUuid(uuid);
 
 		PreparedStatement st=con.prepareStatement(
-				"INSERT INTO SPECTATOR VALUES(NULL,?,?,?,?,NULL)");
-		st.setString(1,search.getName());
-		st.setString(2,search.getPassword());
-		st.setString(3,search.getTel());
-		st.setString(4,search.getMail());
-		line=st.executeUpdate();
+				"INSERT INTO SPECTATOR VALUES(NULL,?,?,?,0,?)");
+		if(search!=null){
+			st.setString(1,search.getName());
+			st.setString(2,search.getPassword());
+			st.setString(3,search.getTel());
+			st.setString(4,search.getMail());
+			line=st.executeUpdate();
+
+			provisional.delUuid(uuid);
+		}
+
 		st.close();
 		con.close();
 

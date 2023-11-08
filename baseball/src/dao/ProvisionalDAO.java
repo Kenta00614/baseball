@@ -8,12 +8,13 @@ import java.util.UUID;
 import bean.Provisional;
 
 public class ProvisionalDAO extends DAO {
-	public int insertProv(String mail, String name, String password, String tel) throws Exception{
+//	仮会員登録、作成したuuidを返す
+	public UUID insertProv(String mail, String name, String password, String tel) throws Exception{
 		Connection con=getConnection();
 		SpectatorDAO spectator=new SpectatorDAO();
-		int line=0;
-		String search=spectator.searchSameMail(mail);
+		UUID newUuid=null;
 
+		String search=spectator.searchSameMail(mail);
 		if(!(search.equals(mail))){
 			PreparedStatement st=con.prepareStatement(
 					"INSERT INTO PROVISIONAL VALUES(?,?,?,?,?,NULL)");
@@ -23,13 +24,15 @@ public class ProvisionalDAO extends DAO {
 			st.setString(3,name);
 			st.setString(4,password);
 			st.setString(5,tel);
-			line=st.executeUpdate();
+			st.executeUpdate();
+			newUuid = UUID.fromString(uuid);
 			st.close();
 			con.close();
 		}
-		return line;
+		return newUuid;
 	}
 
+//	引数のuuidの仮会員情報を取得
 	public Provisional searchUuid(UUID uuid)throws Exception {
 		Provisional search=null;
 		String id=uuid.toString();
@@ -52,5 +55,21 @@ public class ProvisionalDAO extends DAO {
 		st.close();
 		con.close();
 		return search;
+	}
+
+//	引数のuuidの仮会員情報を削除
+	public int delUuid(UUID uuid) throws Exception{
+		Connection con=getConnection();
+		int line=0;
+
+		PreparedStatement st=con.prepareStatement(
+				"DELETE PROVISIONAL WHERE UUID=?");
+		st.setString(1, uuid.toString());
+
+		line=st.executeUpdate();
+		st.close();
+		con.close();
+
+		return line;
 	}
 }

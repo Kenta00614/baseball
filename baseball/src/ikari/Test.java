@@ -8,7 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.TournamentDAO;
+import bean.Duel;
+import dao.DuelDAO;
 
 @WebServlet("/test")
 public class Test extends HttpServlet{
@@ -32,10 +33,23 @@ public class Test extends HttpServlet{
 		out.println("<body>");
 
 		try{
-			TournamentDAO D = new TournamentDAO();
-			int year = D.getTournamentYear(1);
 
-			out.println(year);
+		/*	Match mm=new Match();
+			mm.setMatchId(2);
+			mm.setTournamentId(1);
+			mm.setEventDate(Date.valueOf("2023-10-24"));
+			mm.setSaleStartAt(Date.valueOf("2023-10-25"));
+			mm.setDuel1(8);
+			mm.setDuel2(7);
+			mm.setDuel3(6);
+			mm.setDuel4(5);
+		*/
+
+			DuelDAO D = new DuelDAO();
+
+			Duel duel=D.deleteDuel(7);
+
+			out.println(duel);
 
 		}catch(Exception e){
 			e.printStackTrace(out);

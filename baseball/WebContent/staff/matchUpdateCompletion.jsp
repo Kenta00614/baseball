@@ -2,15 +2,16 @@
     pageEncoding="UTF-8"%>
 <%@include file="header.jsp"%>
 <html>
-
+試合情報変更　入力画面
 <body>
     <div class="header">
-    <p>ログアウトします。よろしいですか？</p>
         <form action="" method="get">
-    　　　　<button type="submit">ログアウト</button>
+    　　　　<button type="submit">試合変更</button>
 　　　　</form>
-        <form action="Header" method="get">
-    　　　　<button type="submit">キャンセル</button>
+    </div>
+    <div class="header">
+        <form action="" method="get">
+    　　　　<button type="submit">試合削除</button>
 　　　　</form>
     </div>
 </body>

@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import bean.Tournament;
-import dao.TournamentDAO;
+import bean.Match;
+import dao.MatchDAO;
 
 @WebServlet("/testList")
 public class TestList extends HttpServlet{
@@ -34,18 +34,26 @@ public class TestList extends HttpServlet{
 		out.println("<body>");
 
 		try{
-			TournamentDAO D = new TournamentDAO();
+			MatchDAO D = new MatchDAO();
 
-			List<Tournament> list=D.getTournamentInfo(1);
+			List<Match> list=D.getMatchAll();
 
-			for(Tournament t : list){
-				out.println(t.getYear());
+			for(Match t : list){
+				out.println(t.getMatchId());
 				out.println("   ");
-				out.println(t.getOrdinalNum());
+				out.println(t.getTournamentId());
 				out.println("   ");
-				out.println(t.getName());
+				out.println(t.getEventDate());
 				out.println("   ");
-				out.println(t.getSeason());
+				out.println(t.getSaleStartAt());
+				out.println("   ");
+				out.println(t.getDuel1());
+				out.println("   ");
+				out.println(t.getDuel2());
+				out.println("   ");
+				out.println(t.getDuel3());
+				out.println("   ");
+				out.println(t.getDuel4());
 			}
 
 		}catch(Exception e){
