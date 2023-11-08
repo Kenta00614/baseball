@@ -12,6 +12,7 @@ import bean.Match;
 
 public class MatchDAO extends DAO{
 
+	//大会番号、開催日を取得
 	public  List<Match> getMatchInfo(int match_id)throws Exception{
 
 		List<Match> list=new ArrayList<>();

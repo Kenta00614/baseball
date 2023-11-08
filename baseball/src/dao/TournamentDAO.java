@@ -77,6 +77,7 @@ public class TournamentDAO extends DAO{
 		return list;
 	}
 
+	//大会ID、開催年、第何回、大会名を取得する
 	public List<Tournament> getTournamentDetail()throws Exception{
 
 		Connection con=getConnection();
@@ -99,6 +100,11 @@ public class TournamentDAO extends DAO{
 		con.close();
 
 		return list;
+
+	}
+
+	//大会情報を取得する
+	public void insertTournament()throws Exception{
 
 	}
 }
