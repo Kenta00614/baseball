@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@include file="header.jsp"%>
 <html>
-試合情報表示　表示
+試合情報表示　登録されていなかった場合
 <body>
     <div class="header">
         <form action="" method="get">

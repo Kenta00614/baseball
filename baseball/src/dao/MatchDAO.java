@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import bean.Duel;
 import bean.Match;
 
 public class MatchDAO extends DAO{
@@ -54,6 +55,7 @@ public class MatchDAO extends DAO{
 		return eventDate;
 	}
 
+	//開催日から試合情報を取得
 	public List<Match> searchMatch(Date eventDate)throws Exception{
 
 		Connection con=getConnection();
@@ -85,4 +87,39 @@ public class MatchDAO extends DAO{
 
 	}
 
+	//試合情報の追加
+	public int insertMatch(Match match, Duel duel)throws Exception{
+
+		Connection con=getConnection();
+
+		try{
+
+		PreparedStatement st=con.prepareStatement("insert into MATCH values(null,?,?,?,?,?,?,?)");
+		st.setInt(1,match.getTournamentId());
+		st.setDate(2, match.getEventDate());
+		st.setDate(3, match.getSaleStartAt());
+		st.setInt(4, match.getDuel1());
+		st.setInt(5, match.getDuel2());
+		st.setInt(6, match.getDuel3());
+		st.setInt(7, match.getDuel4());
+
+		DuelDAO DD=new DuelDAO();
+		st.executeUpdate();
+
+		int num=DD.insertDuel(duel);
+
+		st.close();
+		con.close();
+
+		return num;
+
+		}catch(Exception e){
+
+			// 0の時は同じ日付などが理由で登録できていない場合
+
+			int num=0;
+			return num;
+		}
+
+	}
 }
