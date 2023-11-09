@@ -1,12 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@include file="header.jsp"%>
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-</head>
+大会高校情報一覧
 <body>
-
+    <div class="header">
+        <form action="MatchRegistrationCompletion" method="get">
+    　　　　<button type="submit">第〇〇回高校学校野球大会</button>
+　　　　</form>
+    </div>
+    <div class="header">
+        <form action="TournamentUpdateInput" method="get">
+    　　　　<button type="submit">第〇〇回高校学校野球大会</button>
+　　　　</form>
+    </div>
+        <div class="header">
+        <form action="TournamentUpdateInput" method="get">
+    　　　　<button type="submit">第〇〇回高校学校野球大会</button>
+　　　　</form>
+    </div>
 </body>
 </html>

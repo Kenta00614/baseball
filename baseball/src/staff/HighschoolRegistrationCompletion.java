@@ -8,11 +8,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/staff/TournamentUpdateCompletion")
-public class TournamentUpdateCompletion extends HttpServlet {
+@WebServlet("/staff/HighschoolRegistrationCompletion")
+public class HighschoolRegistrationCompletion extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        request.getRequestDispatcher("/staff/ournamentUpdateCompletion.jsp").forward(request, response);
+        request.getRequestDispatcher("/staff/highschoolRegistrationCompletion.jsp").forward(request, response);
     }
 }
