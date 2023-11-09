@@ -2,16 +2,14 @@ package ikari;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Date;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import bean.Duel;
-import bean.Match;
-import dao.MatchDAO;
+import bean.Tournament;
+import dao.TournamentDAO;
 
 @WebServlet("/test")
 public class Test extends HttpServlet{
@@ -35,26 +33,24 @@ public class Test extends HttpServlet{
 		out.println("<body>");
 
 		try{
-			Match mm=new Match();
-			mm.setTournamentId(2);
-			mm.setEventDate(Date.valueOf("2023-10-25"));
-			mm.setSaleStartAt(Date.valueOf("2023-10-26"));
-			mm.setDuel1(9);
-			mm.setDuel2(10);
-			mm.setDuel3(11);
-			mm.setDuel4(12);
 
-			Duel m=new Duel();
-			m.setSchool1(13);
-			m.setSchool2(14);
-			m.setStatus("2");
-			m.setRound("2");
+		/*	Match mm=new Match();
+			mm.setMatchId(2);
+			mm.setTournamentId(1);
+			mm.setEventDate(Date.valueOf("2023-10-24"));
+			mm.setSaleStartAt(Date.valueOf("2023-10-25"));
+			mm.setDuel1(8);
+			mm.setDuel2(7);
+			mm.setDuel3(6);
+			mm.setDuel4(5);
+		*/
 
+			TournamentDAO MD=new TournamentDAO();
+			Tournament m= new Tournament();
 
-			MatchDAO D = new MatchDAO();
-		int num= D.insertMatch(mm,m);
+//ここからやる、insertTournamentのチェック
 
-			out.println(num);
+			out.println(m);
 
 		}catch(Exception e){
 			e.printStackTrace(out);

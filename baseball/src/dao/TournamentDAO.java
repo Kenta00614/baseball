@@ -77,6 +77,7 @@ public class TournamentDAO extends DAO{
 		return list;
 	}
 
+	//大会ID、開催年、第何回、大会名を取得する
 	public List<Tournament> getTournamentDetail()throws Exception{
 
 		Connection con=getConnection();
@@ -99,6 +100,25 @@ public class TournamentDAO extends DAO{
 		con.close();
 
 		return list;
+
+	}
+
+	//大会情報を登録する
+	public int insertTournament(Tournament tournament)throws Exception{
+
+		Connection con=getConnection();
+		PreparedStatement st=con.prepareStatement("INSERT INTO TOURNAMENT VALUES(NULL,?,?,?,?)");
+		st.setInt(1, tournament.getYear());
+		st.setInt(2, tournament.getOrdinalNum());
+		st.setString(3, tournament.getName());
+		st.setString(4, tournament.getSeason());
+
+		int num=st.executeUpdate();
+
+		st.close();
+		con.close();
+
+		return num;
 
 	}
 }

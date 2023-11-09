@@ -2,7 +2,6 @@ package ikari;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Date;
 import java.util.List;
 
 import javax.servlet.annotation.WebServlet;
@@ -37,12 +36,14 @@ public class TestList extends HttpServlet{
 		try{
 			MatchDAO D = new MatchDAO();
 
-			List<Match> list=D.searchMatch(Date.valueOf("2023-10-23"));
+			List<Match> list=D.getMatchAll();
 
 			for(Match t : list){
 				out.println(t.getMatchId());
 				out.println("   ");
 				out.println(t.getTournamentId());
+				out.println("   ");
+				out.println(t.getEventDate());
 				out.println("   ");
 				out.println(t.getSaleStartAt());
 				out.println("   ");
