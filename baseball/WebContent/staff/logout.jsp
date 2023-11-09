@@ -9,7 +9,7 @@
         <form action="" method="get">
     　　　　<button type="submit">ログアウト</button>
 　　　　</form>
-        <form action="" method="get">
+        <form action="Header" method="get">
     　　　　<button type="submit">キャンセル</button>
 　　　　</form>
     </div>

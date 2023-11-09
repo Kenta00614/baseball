@@ -2,16 +2,14 @@ package ikari;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Date;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import bean.Duel;
-import bean.Match;
-import dao.MatchDAO;
+import bean.Tournament;
+import dao.TournamentDAO;
 
 @WebServlet("/test")
 public class Test extends HttpServlet{
@@ -36,7 +34,7 @@ public class Test extends HttpServlet{
 
 		try{
 
-			Match mm=new Match();
+		/*	Match mm=new Match();
 			mm.setMatchId(2);
 			mm.setTournamentId(1);
 			mm.setEventDate(Date.valueOf("2023-10-24"));
@@ -45,17 +43,17 @@ public class Test extends HttpServlet{
 			mm.setDuel2(7);
 			mm.setDuel3(6);
 			mm.setDuel4(5);
+		*/
 
+			TournamentDAO MD=new TournamentDAO();
+			Tournament m= new Tournament();
 
-			Duel m=new Duel();
-			m.setDuelId(1);
-			m.setSchool1(2);
-			m.setSchool2(1);
-			m.setStatus("3");
-			m.setRound("3");
+			m.setName("全国高等学校野球選手権記念大会");
+			m.setOrdinalNum(110);
+			m.setYear(2028);
+			m.setSeason("夏");
 
-			MatchDAO D = new MatchDAO();
-			int num=D.changeMatch(mm, m);
+			int num=MD.insertTournament(m);
 
 			out.println(num);
 

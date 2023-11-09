@@ -2,11 +2,11 @@
     pageEncoding="UTF-8"%>
 <%@include file="header.jsp"%>
 <html>
-試合情報表示　選択画面
+高校登録完了
 <body>
     <div class="header">
-        <form action="MatchDisplay" method="get">
-    　　　　<button type="submit">○○大会</button>
+        <form action="HighschoolUpdate" method="get">
+    　　　　<button type="submit">登録</button>
 　　　　</form>
     </div>
 </body>

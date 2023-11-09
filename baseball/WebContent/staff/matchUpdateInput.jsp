@@ -5,12 +5,12 @@
 試合情報変更　入力画面
 <body>
     <div class="header">
-        <form action="" method="get">
+        <form action="MatchUpdateCompletion" method="get">
     　　　　<button type="submit">試合変更</button>
 　　　　</form>
     </div>
     <div class="header">
-        <form action="" method="get">
+        <form action="MatchUpdateDelete" method="get">
     　　　　<button type="submit">試合削除</button>
 　　　　</form>
     </div>
