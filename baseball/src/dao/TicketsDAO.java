@@ -1,6 +1,7 @@
 package dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -36,6 +37,25 @@ public class TicketsDAO extends DAO{
 		con.close();
 
 		return list;
+	}
+
+	//販売停止の際のチケットステータスを販売停止に変更する処理
+	public int changeStopSales(Date date)throws Exception{
+
+		Connection con=getConnection();
+		PreparedStatement st=con.prepareStatement("UPDATE tickets SET status = '3' WHERE match_id IN (SELECT match_id FROM match WHERE event_date = ?)");
+
+		st.setDate(1, date);
+
+		int num=st.executeUpdate();
+
+		st.close();
+		con.close();
+
+		return num;
+
+
+
 	}
 
 }
