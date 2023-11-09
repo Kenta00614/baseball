@@ -5,7 +5,7 @@
 高校情報変更完了
 <body>
     <div class="header">
-        <form action="MatchRegistrationCompletion" method="get">
+        <form action="HighschoolList" method="get">
     　　　　<button type="submit">変更保存</button>
 　　　　</form>
     </div>
