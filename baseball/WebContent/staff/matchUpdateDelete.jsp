@@ -5,8 +5,8 @@
 試合情報変更　入力画面
 <body>
     <div class="header">
-        <form action="" method="get">
-    　　　　<button type="submit">試合変更</button>
+        <form action="MatchInformation" method="get">
+    　　　　<button type="submit">確認</button>
 　　　　</form>
     </div>
 </body>
