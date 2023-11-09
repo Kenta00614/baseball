@@ -27,6 +27,7 @@ public class TicketsDAO extends DAO{
 			t.setSeatId(rs.getString("seat_id"));
 			t.setStatus(rs.getString("status"));
 			t.setShared(rs.getBoolean("is_shared"));
+			t.setChild(rs.getBoolean("is_child"));
 
 			list.add(t);
 		}
