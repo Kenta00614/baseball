@@ -54,8 +54,6 @@ public class TicketsDAO extends DAO{
 
 		return num;
 
-
-
 	}
 
 }
