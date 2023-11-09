@@ -15,7 +15,7 @@ public class TicketsDAO extends DAO{
 
 		List<Tickets> list=new ArrayList<>();
 		Connection con = getConnection();
-		PreparedStatement st = con.prepareStatement("SELECT * FROM TICKETS WHERE PURCHASE_ID = ?");
+		PreparedStatement st = con.prepareStatement("SELECT * FROM TICKETS WHERE PURCHASE_ID = ? AND (STATUS = 1 OR STATUS = 4)");
 		st.setInt(1, purchase_id);
 
 		ResultSet rs=st.executeQuery();

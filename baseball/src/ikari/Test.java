@@ -48,9 +48,14 @@ public class Test extends HttpServlet{
 			TournamentDAO MD=new TournamentDAO();
 			Tournament m= new Tournament();
 
-//ここからやる、insertTournamentのチェック
+			m.setName("全国高等学校野球選手権記念大会");
+			m.setOrdinalNum(110);
+			m.setYear(2028);
+			m.setSeason("夏");
 
-			out.println(m);
+			int num=MD.insertTournament(m);
+
+			out.println(num);
 
 		}catch(Exception e){
 			e.printStackTrace(out);

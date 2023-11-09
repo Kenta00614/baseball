@@ -103,7 +103,7 @@ public class TournamentDAO extends DAO{
 
 	}
 
-	//大会情報を登録する
+	//大会情報を登録する（大会IDはセットしない）
 	public int insertTournament(Tournament tournament)throws Exception{
 
 		Connection con=getConnection();
