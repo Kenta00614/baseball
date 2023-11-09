@@ -5,7 +5,7 @@
 高校登録
 <body>
     <div class="header">
-        <form action="MatchRegistrationCompletion" method="get">
+        <form action="HighschoolRegistrationCompletion" method="get">
     　　　　<button type="submit">登録する</button>
 　　　　</form>
     </div>
