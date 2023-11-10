@@ -77,6 +77,7 @@ public class TournamentDAO extends DAO{
 		return list;
 	}
 
+	//大会ID、開催年、第何回、大会名を取得する
 	public List<Tournament> getTournamentDetail()throws Exception{
 
 		Connection con=getConnection();
@@ -99,6 +100,78 @@ public class TournamentDAO extends DAO{
 		con.close();
 
 		return list;
+
+	}
+
+	//大会情報を登録する（大会IDはセットしない）
+	public int insertTournament(Tournament tournament)throws Exception{
+
+		Connection con=getConnection();
+		PreparedStatement st=con.prepareStatement("INSERT INTO TOURNAMENT VALUES(NULL,?,?,?,?)");
+		st.setInt(1, tournament.getYear());
+		st.setInt(2, tournament.getOrdinalNum());
+		st.setString(3, tournament.getName());
+		st.setString(4, tournament.getSeason());
+
+		int num=st.executeUpdate();
+
+		st.close();
+		con.close();
+
+		return num;
+
+	}
+
+	//大会情報を変更する
+	public int changeTournament(Tournament tournament)throws Exception{
+
+		Connection con=getConnection();
+		PreparedStatement st=con.prepareStatement("UPDATE TOURNAMENT SET YEAR = ?,ORDINAL_NUM = ?,NAME = ?,SEASON = ? WHERE TOURNAMENT_ID = ?");
+
+		try{
+		st.setInt(1, tournament.getYear());
+		st.setInt(2, tournament.getOrdinalNum());
+		st.setString(3, tournament.getName());
+		st.setString(4, tournament.getSeason());
+		st.setInt(5, tournament.getTournamentId());
+
+		int num =st.executeUpdate();
+
+		return num;
+
+		}catch(Exception e){
+			int num = 0;
+			return num;
+		}
+
+	}
+
+	//開催年と開催季節で大会IDを取得する
+	public int getTournamentId(int year,String season)throws Exception{
+
+		try{
+
+			Connection con=getConnection();
+			PreparedStatement st=con.prepareStatement("SELECT TOURNAMENT_ID FROM TOURNAMENT WHERE YEAR = ? AND SEASON = ?");
+			st.setInt(1, year);
+			st.setString(2, season);
+
+			ResultSet rs=st.executeQuery();
+
+			int tournamentId;
+
+			if(rs.next()){
+				tournamentId=rs.getInt("tournament_id");
+			}else{
+				tournamentId=0;
+			}
+
+			return tournamentId;
+
+		}catch(Exception e){
+			int num = 0;
+			return num;
+		}
 
 	}
 }

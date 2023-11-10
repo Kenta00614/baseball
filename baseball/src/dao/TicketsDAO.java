@@ -1,6 +1,7 @@
 package dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -10,12 +11,12 @@ import bean.Tickets;
 
 public class TicketsDAO extends DAO{
 
-
+	//チケット番号、試合番号、座席番号、チケットステータス、共有ステータスを取得
 	public List<Tickets> getTicketsInfo(int purchase_id) throws Exception{
 
 		List<Tickets> list=new ArrayList<>();
 		Connection con = getConnection();
-		PreparedStatement st = con.prepareStatement("SELECT * FROM TICKETS WHERE PURCHASE_ID = ?");
+		PreparedStatement st = con.prepareStatement("SELECT * FROM TICKETS WHERE PURCHASE_ID = ? AND (STATUS = 1 OR STATUS = 4)");
 		st.setInt(1, purchase_id);
 
 		ResultSet rs=st.executeQuery();
@@ -27,6 +28,7 @@ public class TicketsDAO extends DAO{
 			t.setSeatId(rs.getString("seat_id"));
 			t.setStatus(rs.getString("status"));
 			t.setShared(rs.getBoolean("is_shared"));
+			t.setChild(rs.getBoolean("is_child"));
 
 			list.add(t);
 		}
@@ -37,4 +39,52 @@ public class TicketsDAO extends DAO{
 		return list;
 	}
 
-}
+	//販売停止の際のチケットステータスを販売停止に変更する処理
+	public int changeStopSales(Date date)throws Exception{
+
+		Connection con=getConnection();
+		PreparedStatement st=con.prepareStatement("UPDATE tickets SET status = '3' WHERE match_id IN (SELECT match_id FROM match WHERE event_date = ?)");
+
+		st.setDate(1, date);
+
+		int num=st.executeUpdate();
+
+		st.close();
+		con.close();
+
+		return num;
+
+	}
+
+	//選択された座種の販売中チケット枚数を取得
+	public int getTicketsSurplus(String type)throws Exception{
+
+			Connection con=getConnection();
+
+			PreparedStatement st=con.prepareStatement("select tickets.*,seat.type from tickets left join seat on tickets.seat_id = seat.seat_id where type = ? and status = 3");
+			st.setString(1, type);
+
+			ResultSet rs=st.executeQuery();
+
+			List<Tickets> list=new ArrayList<>();
+
+			while(rs.next()){
+				Tickets t=new Tickets();
+				t.setTicketsId(rs.getString("tickets_id"));
+				list.add(t);
+			}
+
+			int num=list.size();
+
+
+			st.close();
+			con.close();
+
+			return num;
+
+		}
+
+	}
+
+
+

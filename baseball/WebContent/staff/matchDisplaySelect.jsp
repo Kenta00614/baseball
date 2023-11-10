@@ -5,8 +5,8 @@
 試合情報表示　選択画面
 <body>
     <div class="header">
-        <form action="○○" method="get">
-    　　　　<button type="submit">○○</button>
+        <form action="MatchDisplay" method="get">
+    　　　　<button type="submit">○○大会</button>
 　　　　</form>
     </div>
 </body>

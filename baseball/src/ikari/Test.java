@@ -8,8 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import bean.Duel;
-import dao.DuelDAO;
+import dao.TicketsDAO;
 
 @WebServlet("/test")
 public class Test extends HttpServlet{
@@ -45,11 +44,13 @@ public class Test extends HttpServlet{
 			mm.setDuel4(5);
 		*/
 
-			DuelDAO D = new DuelDAO();
+			TicketsDAO MD=new TicketsDAO();
 
-			Duel duel=D.deleteDuel(7);
 
-			out.println(duel);
+
+			int num=MD.getTicketsSurplus("0T");
+
+			out.println(num);
 
 		}catch(Exception e){
 			e.printStackTrace(out);

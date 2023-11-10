@@ -12,6 +12,7 @@ import bean.Match;
 
 public class MatchDAO extends DAO{
 
+	//大会番号、開催日を取得
 	public  List<Match> getMatchInfo(int match_id)throws Exception{
 
 		List<Match> list=new ArrayList<>();
@@ -56,7 +57,7 @@ public class MatchDAO extends DAO{
 	}
 
 	//開催日から試合情報を取得
-	public List<Match> searchMatch(Date eventDate)throws Exception{
+	public List<Match> searchMatchDetail(Date eventDate)throws Exception{
 
 		Connection con=getConnection();
 		PreparedStatement st=con.prepareStatement("SELECT * FROM MATCH WHERE EVENT_DATE = ?");
@@ -183,4 +184,84 @@ public class MatchDAO extends DAO{
 
 		return list;
 	}
+
+
+	//試合日情報と試合情報の削除
+	public Match deleteMatch(Date event_date)throws Exception{
+
+		Connection con=getConnection();
+		PreparedStatement st=con.prepareStatement("SELECT DUEL1,DUEL2,DUEL3,DUEL4 FROM MATCH WHERE EVENT_DATE = ?");
+		st.setDate(1, event_date);
+
+		ResultSet rs=st.executeQuery();
+
+		PreparedStatement stDel=con.prepareStatement("DELETE FROM MATCH WHERE EVENT_DATE = ?");
+		stDel.setDate(1, event_date);
+
+		stDel.executeUpdate();
+
+		Match match=new Match();
+
+		if(rs.next()){
+			match.setDuel1(rs.getInt("duel1"));
+			match.setDuel2(rs.getInt("duel2"));
+			match.setDuel3(rs.getInt("duel3"));
+			match.setDuel4(rs.getInt("duel4"));
+		}
+
+		Integer Duel1 = match.getDuel1();
+		Integer Duel2 = match.getDuel2();
+		Integer Duel3 = match.getDuel3();
+		Integer Duel4 = match.getDuel4();
+
+		DuelDAO DD=new DuelDAO();
+		DD.deleteDuel(Duel1);
+
+		if(Duel2!=null){
+			DD.deleteDuel(Duel2);
+		}
+
+		if(Duel3!=null){
+			DD.deleteDuel(Duel3);
+		}
+
+		if(Duel4!=null){
+			DD.deleteDuel(Duel4);
+		}
+
+		st.close();
+		con.close();
+
+		return match;
+
+	}
+
+	//トーナメントIDから試合日番号、開催日、チケット販売日を取得
+	public List<Match> searchMatchTournament(int tournament_id)throws Exception{
+
+		Connection con=getConnection();
+		PreparedStatement st=con.prepareStatement("SELECT MATCH_ID,EVENT_DATE,SALE_START_AT FROM MATCH WHERE TOURNAMENT_ID = ?");
+
+		st.setInt(1, tournament_id);
+
+		ResultSet rs=st.executeQuery();
+
+		List<Match> list=new ArrayList<>();
+
+		while(rs.next()){
+			Match m=new Match();
+			m.setMatchId(rs.getInt("match_id"));
+			m.setEventDate(rs.getDate("event_date"));
+			m.setSaleStartAt(rs.getDate("sale_start_at"));
+
+			list.add(m);
+		}
+
+		st.close();
+		con.close();
+
+		return list;
+
+	}
+
 }
