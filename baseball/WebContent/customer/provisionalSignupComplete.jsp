@@ -3,11 +3,8 @@
 <%@include file="header.jsp"%>
 
 <html>
-<head>
-    <title>Verification Success</title>
-</head>
 <body>
-    <h2>Account Verified!</h2>
-    <p>Your account has been successfully verified.</p>
+    <h2>Registration Successful!</h2>
+    <p>Please check your email to verify your account.</p>
 </body>
 </html>
