@@ -4,10 +4,6 @@
 <html>
 試合情報表示　登録されていなかった場合
 <body>
-    <div class="header">
-        <form action="" method="get">
-    　　　　<button type="submit"></button>
-　　　　</form>
-    </div>
+
 </body>
 </html>

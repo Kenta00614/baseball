@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import bean.Tournament;
 import dao.TournamentDAO;
 
 @WebServlet("/test")
@@ -46,11 +45,12 @@ public class Test extends HttpServlet{
 		*/
 
 			TournamentDAO MD=new TournamentDAO();
-			Tournament m= new Tournament();
 
-//ここからやる、insertTournamentのチェック
 
-			out.println(m);
+
+			int num=MD.getTournamentId(2030, "夏");
+
+			out.println(num);
 
 		}catch(Exception e){
 			e.printStackTrace(out);
