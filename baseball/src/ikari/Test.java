@@ -2,14 +2,13 @@ package ikari;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Date;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.TicketsDAO;
+import dao.TournamentDAO;
 
 @WebServlet("/test")
 public class Test extends HttpServlet{
@@ -45,11 +44,11 @@ public class Test extends HttpServlet{
 			mm.setDuel4(5);
 		*/
 
-			TicketsDAO MD=new TicketsDAO();
+			TournamentDAO MD=new TournamentDAO();
 
 
 
-			int num=MD.changeStopSales(Date.valueOf("2023-10-23"));
+			int num=MD.getTournamentId(2030, "夏");
 
 			out.println(num);
 

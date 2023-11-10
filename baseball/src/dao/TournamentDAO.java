@@ -145,4 +145,33 @@ public class TournamentDAO extends DAO{
 		}
 
 	}
+
+	//開催年と開催季節で大会IDを取得する
+	public int getTournamentId(int year,String season)throws Exception{
+
+		try{
+
+			Connection con=getConnection();
+			PreparedStatement st=con.prepareStatement("SELECT TOURNAMENT_ID FROM TOURNAMENT WHERE YEAR = ? AND SEASON = ?");
+			st.setInt(1, year);
+			st.setString(2, season);
+
+			ResultSet rs=st.executeQuery();
+
+			int tournamentId;
+
+			if(rs.next()){
+				tournamentId=rs.getInt("tournament_id");
+			}else{
+				tournamentId=0;
+			}
+
+			return tournamentId;
+
+		}catch(Exception e){
+			int num = 0;
+			return num;
+		}
+
+	}
 }
