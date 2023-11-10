@@ -80,20 +80,4 @@ public class SchoolDAO extends DAO {
 			con.close();
 		return line;
 	}
-
-//	トーナメントIDの高校を削除。削除した情報ぶん数字を返す
-	public int delSchool(int id) throws Exception{
-		Connection con=getConnection();
-		int line=0;
-
-		PreparedStatement st=con.prepareStatement(
-				"DELETE SCHOOL WHERE SCHOOL_ID=?");
-		st.setInt(1, id);
-
-		line=st.executeUpdate();
-		st.close();
-		con.close();
-
-		return line;
-	}
 }
