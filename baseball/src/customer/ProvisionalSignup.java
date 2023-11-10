@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import dao.ProvisionalDAO;
 import utils.EmailUtility;
 
-@WebServlet("/ProvisionalSignup")
+@WebServlet("/customer/ProvisionalSignup")
 public class ProvisionalSignup extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
