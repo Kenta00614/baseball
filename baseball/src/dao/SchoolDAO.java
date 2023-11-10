@@ -32,7 +32,7 @@ public class SchoolDAO extends DAO {
 		return list;
 	}
 
-//	高校名を登録された分の数字が返される
+//	高校情報を登録。登録したぶんの数字が返される
 	public int insertSchool(String[] schoolName,int tournamentId) throws Exception{
 		int line=0;
 		Connection con=getConnection();
@@ -52,22 +52,48 @@ public class SchoolDAO extends DAO {
 		return line;
 	}
 
-	public int updateSchool(String[] schoolName,int tournamentId) throws Exception{
+//高校情報を変更。変更した情報ぶんの数字が返ってくる
+	public int updateSchool(String[] schoolName, int tournamentId) throws Exception{
 		int line=0;
+		List<School> list=new ArrayList<>();
 		Connection con=getConnection();
 
-		if(schoolName!=null){
-			PreparedStatement st=con.prepareStatement(
-					"INSERT INTO SCHOOL VALUES(NULL,?,?)");
-			for(int i=0;i<schoolName.length; i++){
-				st.setInt(1, tournamentId);
-				st.setString(2,schoolName[i]);
-				line+=st.executeUpdate();
+		list =searchSchool(tournamentId);
+
+		PreparedStatement st=con.prepareStatement(
+				"UPDATE SCHOOL SET NAME=? WHERE SCHOOL_ID=?");
+
+		for (int i=0;i<schoolName.length; i++){
+			label:for (int j=0;j<schoolName.length; j++){
+				if(i != j && schoolName[i].equals(schoolName[j])){
+					schoolName[i]="";
+					break label;
+				}
 			}
+
+			st.setString(1,schoolName[i]);
+			st.setInt(2,list.get(i).getSchoolId());
+			line+=st.executeUpdate();
+		}
 
 			st.close();
 			con.close();
-		}
+		return line;
+	}
+
+//	トーナメントIDの高校を削除。削除した情報ぶん数字を返す
+	public int delSchool(int id) throws Exception{
+		Connection con=getConnection();
+		int line=0;
+
+		PreparedStatement st=con.prepareStatement(
+				"DELETE SCHOOL WHERE SCHOOL_ID=?");
+		st.setInt(1, id);
+
+		line=st.executeUpdate();
+		st.close();
+		con.close();
+
 		return line;
 	}
 }
