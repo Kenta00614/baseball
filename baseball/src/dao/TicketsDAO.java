@@ -7,9 +7,14 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.naming.InitialContext;
+import javax.sql.DataSource;
+
 import bean.Tickets;
 
 public class TicketsDAO extends DAO{
+
+	private DataSource ds;
 
 	//チケット番号、試合番号、座席番号、チケットステータス、共有ステータスを取得
 	public List<Tickets> getTicketsInfo(int purchase_id) throws Exception{
@@ -83,6 +88,62 @@ public class TicketsDAO extends DAO{
 			return num;
 
 		}
+
+	//中山先生のチケット情報の追加
+	public int insert(List<Tickets> list){
+		//System.out.println(list.size());
+		if (list == null || list.size() == 0) return 0;
+
+		PreparedStatement st = null;
+		Connection con = null;
+		int num = 0;
+		try{
+
+			InitialContext ic=new InitialContext();
+			ds=(DataSource)ic.lookup("java:/comp/env/jdbc/kadai");
+
+			con = ds.getConnection();
+
+			String SQL = "INSERT INTO TICKETS VALUES ";
+			for(int i=0;i<list.size();i++){
+				if(i==0){
+					SQL += "(?,?,?,?,?,?)";
+				}else{
+					SQL += ",(?,?,?,?,?,?)";
+				}
+			}
+			//System.out.println(SQL);
+			st = con.prepareStatement(SQL);
+			for(int i=0;i<list.size();i++){
+				st.setString(1+6*i, list.get(i).getTicketsId());
+				st.setInt(2+6*i, list.get(i).getPurchaseId());
+				st.setInt(3+6*i, list.get(i).getMatchId());
+				st.setString(4+6*i, list.get(i).getSeatId());
+				st.setString(5+6*i, String.valueOf(list.get(i).getStatus()));
+				st.setBoolean(6+6*i, list.get(i).getIsShared());
+			}
+			//boolean bool = st.execute();
+			//System.out.println(bool);
+		}catch(Exception e){
+			e.getStackTrace();
+		}finally{
+
+			try{
+				st.close();
+			}catch(Exception e){
+				e.getStackTrace();
+			}
+
+			try{
+				con.close();
+			}catch(Exception e){
+				e.getStackTrace();
+			}
+		}
+
+		return num;
+	}
+
 
 	}
 

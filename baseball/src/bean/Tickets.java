@@ -51,4 +51,30 @@ public class Tickets implements java.io.Serializable {
 	public void setChild(boolean isChild) {
 		this.isChild = isChild;
 	}
+
+	public void createTicketsId(){
+		String id = "";
+		id += this.seatId;
+		id += "r00";
+		id += "202403181000";
+        this.ticketsId = id;
+	}
+
+	public String toString(){
+		String str = "ID:";
+		str += this.ticketsId;
+		str += "　購入番号：";
+		str += this.purchaseId;
+		str += "　試合日番号：";
+		str += this.matchId;
+		str += "　座席番号：";
+		str += this.seatId;
+		str += "　ステータス：";
+		str += this.status;
+		str += "　共有：";
+		str += this.isShared;
+		str += "\n";
+		return str;
+	}
 }
+
