@@ -26,13 +26,14 @@ public class ProvisionalSignup extends HttpServlet {
 
         try {
             // DAOを使用してデータベースに仮登録
+        	String contextPath = request.getContextPath();
             ProvisionalDAO provisionalDAO = new ProvisionalDAO();
             UUID uuid = provisionalDAO.insertProv(mail, name, password, tel);
 
             // 仮登録が成功した場合にはメールを送信
             if (uuid != null) {
                 // メール認証用のリンクを生成
-                String contextPath = request.getContextPath();
+
                 String verificationLink = "http://" + request.getServerName() + ":" + request.getServerPort() +
                                           contextPath + "/verify?uuid=" + uuid.toString();
 
