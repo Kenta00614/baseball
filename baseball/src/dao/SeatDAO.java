@@ -114,21 +114,8 @@ public class SeatDAO extends DAO{
 		return list;
 	}
 
-	//座種を取得 ここからやる
-	public List<Seat> getTypeAll()throws Exception{
 
-		List<Seat> list=new ArrayList<>();
-		Connection con = getConnection();
-		PreparedStatement st=con.prepareStatement("SELECT TYPE FROM SEAT");
 
-		ResultSet rs=st.executeQuery();
-
-		while(rs.next()){
-
-		}
-		return list;
-
-	}
 
 
 }
