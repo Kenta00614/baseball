@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.TournamentDAO;
+import dao.TicketsDAO;
 
 @WebServlet("/test")
 public class Test extends HttpServlet{
@@ -44,11 +44,11 @@ public class Test extends HttpServlet{
 			mm.setDuel4(5);
 		*/
 
-			TournamentDAO MD=new TournamentDAO();
+			TicketsDAO MD=new TicketsDAO();
 
 
 
-			int num=MD.getTournamentId(2030, "夏");
+			int num=MD.getTicketsSurplus("0T");
 
 			out.println(num);
 
