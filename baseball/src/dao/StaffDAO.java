@@ -8,9 +8,8 @@ import java.sql.ResultSet;
 import bean.Staff;
 
 public class StaffDAO extends DAO {
-//IDとパスワード一致で職員情報を取得
-	public Staff loginStaff(String id, String password)
-		throws Exception {
+//IDとパスワード一致で職員情報を取得。生年月日とパスワードが同じならnull
+	public Staff loginStaff(String id, String password)throws Exception {
 		Staff staff=null;
 		Connection con=getConnection();
 
@@ -73,6 +72,23 @@ public class StaffDAO extends DAO {
 		st.close();
 		con.close();
 
+		return line;
+	}
+
+//	パスワードの変更。成功すると1を返す
+	public int updateStaff(String id, String password) throws Exception{
+		int line=0;
+		Connection con=getConnection();
+
+		PreparedStatement st=con.prepareStatement(
+				"UPDATE STAFF SET PASSWORD=? WHERE STAFF_ID=?");
+
+			st.setString(1,password);
+			st.setString(2,id);
+			line=st.executeUpdate();
+
+			st.close();
+			con.close();
 		return line;
 	}
 }

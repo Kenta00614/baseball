@@ -70,7 +70,7 @@
             <a href="TicketHistory">購入履歴表示</a>
         </div>
     </li>
-    <li><a href="Logout">ログアウト</a></li>
+    <li><a href="ProvisionalSignupDisplay">新規会員登録</a></li>
 </ul>
 
 </body>

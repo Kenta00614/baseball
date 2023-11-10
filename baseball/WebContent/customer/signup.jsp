@@ -63,12 +63,12 @@
 <body>
 <div class="container">
   <h1>新規会員登録</h1>
-  <form id="registrationForm" action="signupConfirm" method="get">
+  <form id="registrationForm" action="ProvisionalSignup" method="post">
     <label for="name">氏名</label>
     <input type="text" id="name" name="name" required>
 
-    <label for="email">メールアドレス</label>
-    <input type="email" id="email" name="email" placeholder="xxxxxx@stu.o-hara.ac.jp" required>
+    <label for="mail">メールアドレス</label>
+    <input type="mail" id="mail" name="mail" placeholder="xxxxxx@stu.o-hara.ac.jp" required>
 
     <label for="tel">電話番号</label>
     <input type="tel" id="tel" name="tel" pattern="\d{10}|\d{11}" placeholder="0332378711" required>
