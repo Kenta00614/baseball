@@ -15,8 +15,8 @@
 			<img src="${pageContext.request.contextPath}/customer/image/logo.png" alt="ロゴ" class="logo-image"/>
 			<!-- コンテキストパスを利用して、ロゴ画像をクリックするとMain.javaにマッピングされたURLに遷移 -->
 		</a>
-		   
-	
+
+
 			<ul>
 			    <li><a href="TicketPurchase">チケット購入</a></li>
 			    <li><a href="TicketDisplay">チケット表示</a></li>
@@ -27,7 +27,7 @@
 			            <a href="TicketHistory">購入履歴表示</a>
 			        </div>
 			    </li>
-			    <li><a href="Logout">ログアウト</a></li>
+			    <li><a href="ProvisionalSignupDisplay">新規会員登録</a></li>
 			</ul>
 		</nav>
 =======
