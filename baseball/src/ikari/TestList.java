@@ -36,24 +36,15 @@ public class TestList extends HttpServlet{
 		try{
 			MatchDAO D = new MatchDAO();
 
-			List<Match> list=D.getMatchAll();
+			List<Match> list=D.searchMatchTournament(1);
 
 			for(Match t : list){
 				out.println(t.getMatchId());
 				out.println("   ");
-				out.println(t.getTournamentId());
-				out.println("   ");
 				out.println(t.getEventDate());
 				out.println("   ");
 				out.println(t.getSaleStartAt());
-				out.println("   ");
-				out.println(t.getDuel1());
-				out.println("   ");
-				out.println(t.getDuel2());
-				out.println("   ");
-				out.println(t.getDuel3());
-				out.println("   ");
-				out.println(t.getDuel4());
+
 			}
 
 		}catch(Exception e){

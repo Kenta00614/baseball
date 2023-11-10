@@ -7,6 +7,7 @@ public class Tickets implements java.io.Serializable {
 	private String seatId;
 	private String status;
 	private boolean isShared;
+	private boolean isChild;
 
 	public String getTicketsId() {
 		return ticketsId;
@@ -43,5 +44,11 @@ public class Tickets implements java.io.Serializable {
 	}
 	public void setShared(boolean isShared) {
 		this.isShared = isShared;
+	}
+	public boolean isChild() {
+		return isChild;
+	}
+	public void setChild(boolean isChild) {
+		this.isChild = isChild;
 	}
 }

@@ -57,7 +57,7 @@ public class MatchDAO extends DAO{
 	}
 
 	//開催日から試合情報を取得
-	public List<Match> searchMatch(Date eventDate)throws Exception{
+	public List<Match> searchMatchDetail(Date eventDate)throws Exception{
 
 		Connection con=getConnection();
 		PreparedStatement st=con.prepareStatement("SELECT * FROM MATCH WHERE EVENT_DATE = ?");
@@ -235,4 +235,33 @@ public class MatchDAO extends DAO{
 		return match;
 
 	}
+
+	//トーナメントIDから試合日番号、開催日、チケット販売日を取得
+	public List<Match> searchMatchTournament(int tournament_id)throws Exception{
+
+		Connection con=getConnection();
+		PreparedStatement st=con.prepareStatement("SELECT MATCH_ID,EVENT_DATE,SALE_START_AT FROM MATCH WHERE TOURNAMENT_ID = ?");
+
+		st.setInt(1, tournament_id);
+
+		ResultSet rs=st.executeQuery();
+
+		List<Match> list=new ArrayList<>();
+
+		while(rs.next()){
+			Match m=new Match();
+			m.setMatchId(rs.getInt("match_id"));
+			m.setEventDate(rs.getDate("event_date"));
+			m.setSaleStartAt(rs.getDate("sale_start_at"));
+
+			list.add(m);
+		}
+
+		st.close();
+		con.close();
+
+		return list;
+
+	}
+
 }
