@@ -14,7 +14,7 @@ public class SaleOptionsRedirect extends HttpServlet {
         String selectedOption = request.getParameter("sale");
 
         if ("cancel".equals(selectedOption)) {
-            response.sendRedirect("saleCancelCheck.jsp");
+            response.sendRedirect("SaleCancelCheck");
         } else if ("end".equals(selectedOption)) {
             response.sendRedirect("SaleStopCheck");
         }

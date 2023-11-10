@@ -2,10 +2,6 @@
 /* ========================================================================== */
 
 
-
-
-
-
 /* ドロップダウンメニューのスタイル */
 .nav-menu li .dropdown {
     display: none;
@@ -43,7 +39,6 @@ a{
 }
 
 li {
-
 	margin: 0 15px 0 0; /* 右側のmarginを30pxに設定 */
 	font-size: 14px;
 }
@@ -57,19 +52,21 @@ ul{
 
 	/* 項目を横並びに */
 	display: flex;
-
-	float: right;
-
+	 float: right;
 }
-
 
 *{
 	box-sizing: border-box;
 }
 
 .cust-header {
-  position: relative;
-  background-color: #def7ff; }
+  position: fixed; /*← fixedで固定 */
+  width: 100%;
+  height: 35px;
+  background-color: #def7ff;
+  top: 0;
+  left: 0;
+ }
 
 .logo {
   margin: 3px;
@@ -114,18 +111,4 @@ ul{
 .nav__toggle{
 	display: none;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
