@@ -48,7 +48,7 @@ public class Test extends HttpServlet{
 
 
 
-			int num=MD.getTicketsSurplus("0T");
+			int num=MD.getTypeSurplus("0T");
 
 			out.println(num);
 

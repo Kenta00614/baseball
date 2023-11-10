@@ -62,7 +62,7 @@ public class TicketsDAO extends DAO{
 	}
 
 	//選択された座種の販売中チケット枚数を取得
-	public int getTicketsSurplus(String type)throws Exception{
+	public int getTypeSurplus(String type)throws Exception{
 
 			Connection con=getConnection();
 
@@ -144,8 +144,31 @@ public class TicketsDAO extends DAO{
 		return num;
 	}
 
+//選択されたブロックの販売中チケット枚数を取得
+	public int getBlockSurplus(String block)throws Exception{
+
+		Connection con=getConnection();
+
+		PreparedStatement st=con.prepareStatement("select tickets.*,seat.block from tickets left join seat on tickets.seat_id = seat.seat_id where block = ? and status = 3");
+		st.setString(1, block);
+
+		ResultSet rs=st.executeQuery();
+
+		List<Tickets> list=new ArrayList<>();
+
+		while(rs.next()){
+			Tickets t=new Tickets();
+			t.setTicketsId(rs.getString("tickets_id"));
+			list.add(t);
+		}
+
+		int num=list.size();
+
+
+		st.close();
+		con.close();
+
+		return num;
 
 	}
-
-
-
+}

@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import dao.ProvisionalDAO;
 import dao.SpectatorDAO;
 
-@WebServlet("/Signup")
+@WebServlet("/customer/Signup")
 public class Signup extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // メールからのUUIDパラメータを取得
