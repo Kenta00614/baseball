@@ -14,7 +14,7 @@
     <header class="cust-header">
     	<div class="cust__wrapper">
 			<div class="logo">
-			    <a href="${pageContext.request.contextPath}/Main">
+			    <a href="${pageContext.request.contextPath}/customer/Main">
 			        <img src="${pageContext.request.contextPath}/customer/image/logo.png" alt="ロゴ" class="logo-image"/>
 			        <!-- コンテキストパスを利用して、ロゴ画像をクリックするとMain.javaにマッピングされたURLに遷移 -->
 			    </a>
