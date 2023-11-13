@@ -2,6 +2,7 @@ package bean;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.Calendar;
 
 public class Match implements Serializable {
 	private int matchId;
@@ -12,6 +13,8 @@ public class Match implements Serializable {
 	private int duel2;
 	private int duel3;
 	private int duel4;
+	private String eventDayOfWeek;
+	private String saleDayOfWeek;
 
 	public int getMatchId() {
 		return matchId;
@@ -60,5 +63,53 @@ public class Match implements Serializable {
 	}
 	public void setDuel4(int duel4) {
 		this.duel4 = duel4;
+	}
+	public String getEventDayOfWeek() {
+		return eventDayOfWeek;
+	}
+//	販売開始日の曜日セット
+	public void setEventDayOfWeek() {
+		Calendar searchCalendar = Calendar.getInstance();
+		searchCalendar.setTime(this.eventDate);
+	    int dayNumber = searchCalendar.get(Calendar.DAY_OF_WEEK);
+	    if(dayNumber==0){
+	    	this.eventDayOfWeek = "土";
+	    }else if(dayNumber==1){
+	    	this.eventDayOfWeek = "日";
+	    }else if(dayNumber==2){
+	    	this.eventDayOfWeek = "月";
+	    }else if(dayNumber==3){
+	    	this.eventDayOfWeek = "火";
+	    }else if(dayNumber==4){
+	    	this.eventDayOfWeek = "水";
+	    }else if(dayNumber==5){
+	    	this.eventDayOfWeek = "木";
+	    }else if(dayNumber==6){
+	    	this.eventDayOfWeek = "金";
+	    }
+	}
+	public String getSaleDayOfWeek() {
+		return saleDayOfWeek;
+	}
+//	開催日の曜日セット
+	public void setSaleDayOfWeek() {
+		Calendar searchCalendar = Calendar.getInstance();
+		searchCalendar.setTime(this.saleStartAt);
+	    int dayNumber = searchCalendar.get(Calendar.DAY_OF_WEEK);
+	    if(dayNumber==0){
+	    	this.saleDayOfWeek = "土";
+	    }else if(dayNumber==1){
+	    	this.saleDayOfWeek = "日";
+	    }else if(dayNumber==2){
+	    	this.saleDayOfWeek = "月";
+	    }else if(dayNumber==3){
+	    	this.saleDayOfWeek = "火";
+	    }else if(dayNumber==4){
+	    	this.saleDayOfWeek = "水";
+	    }else if(dayNumber==5){
+	    	this.saleDayOfWeek = "木";
+	    }else if(dayNumber==6){
+	    	this.saleDayOfWeek = "金";
+	    }
 	}
 }
