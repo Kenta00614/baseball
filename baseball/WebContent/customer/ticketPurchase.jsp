@@ -3,7 +3,9 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@include file="header.jsp"%>
 <html>
-
+<head>
+	<link rel="stylesheet" type="text/css"  href ="/baseball/css/Customer.css">
+</head>
 <body>
 	<hr>
 	<hr>

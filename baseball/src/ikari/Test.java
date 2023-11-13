@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.PurchaseDAO;
 import dao.TicketsDAO;
 
 @WebServlet("/test")
@@ -45,10 +46,11 @@ public class Test extends HttpServlet{
 		*/
 
 			TicketsDAO MD=new TicketsDAO();
+			PurchaseDAO PD = new PurchaseDAO();
 
 
 
-			int num=MD.getTypeSurplus("0T");
+			int num=MD.purchaseTickets("0B0A003r00202403181000", PD.insertPurchase(3));
 
 			out.println(num);
 
