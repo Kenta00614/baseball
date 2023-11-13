@@ -8,12 +8,33 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import bean.Match;
+import bean.Tournament;
+import dao.MatchDAO;
+import dao.TournamentDAO;
+
 @WebServlet("/customer/TicketApplication")
 public class TicketApplication extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	int matchId = (int) request.getAttribute("matchId");
-    	System.out.println(matchId);
+//		値取得
+		int matchId = Integer.parseInt(request.getParameter("matchId"));
+		Match match=null;
+		Tournament tour=null;
 
-        request.getRequestDispatcher("/customer/ticketApplication.jsp").forward(request, response);
+//		開催日取得
+		 MatchDAO matchDAO=new MatchDAO();
+		 TournamentDAO tourDAO=new TournamentDAO();
+		 try {
+			match=matchDAO.getMatchInfo(matchId);
+			tour=tourDAO.getTournamentInfo(match.getTournamentId());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		 String[] seat={"0B","0F","0T","0R","0L","FA","TA"};
+		 request.setAttribute("seat", seat);
+		 request.setAttribute("tour", tour);
+		 request.setAttribute("match", match);
+		 request.getRequestDispatcher("/customer/ticketApplication.jsp").forward(request, response);
     }
 }

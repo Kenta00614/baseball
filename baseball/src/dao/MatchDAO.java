@@ -13,9 +13,9 @@ import bean.Match;
 public class MatchDAO extends DAO{
 
 	//大会番号、開催日を取得
-	public  List<Match> getMatchInfo(int match_id)throws Exception{
+	public  Match getMatchInfo(int match_id)throws Exception{
 
-		List<Match> list=new ArrayList<>();
+		Match m=null;
 		Connection con=getConnection();
 		PreparedStatement st=con.prepareStatement("SELECT * FROM MATCH WHERE MATCH_ID = ?");
 		st.setInt(1,match_id);
@@ -23,17 +23,16 @@ public class MatchDAO extends DAO{
 		ResultSet rs=st.executeQuery();
 
 		while(rs.next()){
-			Match m=new Match();
+			m=new Match();
 			m.setTournamentId(rs.getInt("tournament_id"));
 			m.setEventDate(rs.getDate("event_date"));
-
-			list.add(m);
+			m.setEventDayOfWeek();
 		}
 
 		st.close();
 		con.close();
 
-		return list;
+		return m;
 	}
 
 	//match_idから開催日を取得
