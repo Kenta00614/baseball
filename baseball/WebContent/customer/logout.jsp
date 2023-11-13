@@ -8,8 +8,11 @@
 </head>
 <body>
     <div class="header">
+    	<span class="square_btn"></span>
         <form action="" method="get">
-    　　　　<button type="submit">戻る</button>
+        <p>ログアウトします。よろしいですか？</p>
+
+    　　　　<button type="submit">ログアウト</button>
 　　　　</form>
     </div>
 
