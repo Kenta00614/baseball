@@ -7,15 +7,15 @@
 	<link rel="stylesheet" type="text/css"  href ="/baseball/css/Customer.css">
 </head>
 <body>
-	<hr>
-	<hr>
 	<div class="header">
     <h2>第${lastTour.ordinalNum }回${lastTour.name }</h2>
     <c:forEach var="mat" items="${match}">
-    	<p>${mat.saleStartAt}～</p>
-    	<p>${mat.eventDate}</p>
-   		<form action="TicketApplication" method="get">
-    		<button type="submit" value="${mat.matchId }">申し込む</button>
+    	<p>販売期間${mat.saleStartAt}(${mat.saleDayOfWeek})～${mat.eventDate }(${mat.eventDayOfWeek})</p>
+    	<p>${mat.eventDate}(${mat.eventDayOfWeek})</p>
+    	<c:if test="">受付前</c:if>
+   		<form action="TicketApplication" method="post">
+   			<input type="hidden" name="matchId" value="${mat.matchId }">
+    		<button type="submit">申し込む</button>
 		</form>
     	<hr>
     </c:forEach>
