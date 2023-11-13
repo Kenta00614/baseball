@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.PurchaseDAO;
-import dao.TicketsDAO;
+import bean.Point;
+import dao.PointDAO;
 
 @WebServlet("/test")
 public class Test extends HttpServlet{
@@ -34,23 +34,20 @@ public class Test extends HttpServlet{
 
 		try{
 
-		/*	Match mm=new Match();
-			mm.setMatchId(2);
-			mm.setTournamentId(1);
-			mm.setEventDate(Date.valueOf("2023-10-24"));
-			mm.setSaleStartAt(Date.valueOf("2023-10-25"));
-			mm.setDuel1(8);
-			mm.setDuel2(7);
-			mm.setDuel3(6);
-			mm.setDuel4(5);
-		*/
-
-			TicketsDAO MD=new TicketsDAO();
-			PurchaseDAO PD = new PurchaseDAO();
+			Point mm=new Point();
+			mm.setSpectatorId(2);
+			mm.setPurchaseId(2);
+			mm.setFluctuation(-500);
+			mm.setTicketsId("0B0B001r00202403181000");
 
 
 
-			int num=MD.purchaseTickets("0B0A003r00202403181000", PD.insertPurchase(3));
+			PointDAO MD=new PointDAO();
+
+
+
+
+			int num=MD.insertPoint(mm);
 
 			out.println(num);
 
