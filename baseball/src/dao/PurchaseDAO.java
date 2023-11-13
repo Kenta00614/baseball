@@ -36,7 +36,7 @@ public class PurchaseDAO extends DAO{
 	}
 
 
-	//観戦客IDと購入日時を取得
+	//購入日時を取得、観戦客IDと購入日時を登録する
 	public int insertPurchase(int spectatorId)throws Exception{
 
 		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
@@ -47,12 +47,25 @@ public class PurchaseDAO extends DAO{
 		st.setInt(1,spectatorId);
 		st.setTimestamp(2, timestamp);
 
-		int num=st.executeUpdate();
+		st.executeUpdate();
+
+		PreparedStatement stPurchaseId=con.prepareStatement("SELECT PURCHASE_ID FROM PURCHASE WHERE PURCHASE_AT = ?");
+
+		stPurchaseId.setTimestamp(1, timestamp);
+		ResultSet rs=stPurchaseId.executeQuery();
+
+		int purchaseId;
+
+		if(rs.next()){
+			purchaseId=rs.getInt("purchase_id");
+		}else{
+			purchaseId=0;
+		}
 
 		st.close();
 		con.close();
 
-		return num;
+		return purchaseId;
 
 	}
 

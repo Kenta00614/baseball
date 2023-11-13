@@ -48,7 +48,7 @@ public class Test extends HttpServlet{
 
 
 
-			int num=MD.insertPurchase(1);
+			int num=MD.insertPurchase(2);
 
 			out.println(num);
 
