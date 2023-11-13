@@ -173,4 +173,20 @@ public class TicketsDAO extends DAO{
 		return num;
 
 	}
+
+	//チケットステータスを購入済みに変更、購入番号を登録する
+	public int purchaseTickets(String ticketsId,int purchaseId)throws Exception{
+
+		Connection con=getConnection();
+		PreparedStatement st=con.prepareStatement("UPDATE TICKETS SET PURCHASE_ID = ?,STATUS = 1 WHERE TICKETS_ID = ?");
+		st.setInt(1, purchaseId);
+		st.setString(2, ticketsId);
+
+		int num=st.executeUpdate();
+
+		st.close();
+		con.close();
+
+		return num;
+	}
 }

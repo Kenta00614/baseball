@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.PurchaseDAO;
+import dao.TicketsDAO;
 
 @WebServlet("/test")
 public class Test extends HttpServlet{
@@ -44,11 +45,12 @@ public class Test extends HttpServlet{
 			mm.setDuel4(5);
 		*/
 
-			PurchaseDAO MD=new PurchaseDAO();
+			TicketsDAO MD=new TicketsDAO();
+			PurchaseDAO PD = new PurchaseDAO();
 
 
 
-			int num=MD.insertPurchase(2);
+			int num=MD.purchaseTickets("0B0A003r00202403181000", PD.insertPurchase(3));
 
 			out.println(num);
 
