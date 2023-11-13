@@ -24,7 +24,7 @@ public class SeatDAO extends DAO{
 		try{
 
 			InitialContext ic=new InitialContext();
-			ds=(DataSource)ic.lookup("java:/comp/env/jdbc/kadai");
+			ds=(DataSource)ic.lookup("java:/comp/env/jdbc/baseball");
 
 			con = ds.getConnection();
 
@@ -47,7 +47,7 @@ public class SeatDAO extends DAO{
 				st.setString(6+7*i, list.get(i).getPassage()); //通路
 				st.setString(7+7*i, list.get(i).getBlock()); //ブロック
 			}
-			//boolean bool = st.execute();
+			boolean bool = st.execute();
 			//System.out.println(bool);
 		}catch(Exception e){
 			e.getStackTrace();
@@ -78,7 +78,7 @@ public class SeatDAO extends DAO{
 		try{
 
 			InitialContext ic=new InitialContext();
-			ds=(DataSource)ic.lookup("java:/comp/env/jdbc/kadai");
+			ds=(DataSource)ic.lookup("java:/comp/env/jdbc/baseball");
 
 			con = ds.getConnection();
 

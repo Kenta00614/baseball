@@ -100,30 +100,32 @@ public class TicketsDAO extends DAO{
 		try{
 
 			InitialContext ic=new InitialContext();
-			ds=(DataSource)ic.lookup("java:/comp/env/jdbc/kadai");
+			ds=(DataSource)ic.lookup("java:/comp/env/jdbc/baseball");
 
 			con = ds.getConnection();
 
 			String SQL = "INSERT INTO TICKETS VALUES ";
 			for(int i=0;i<list.size();i++){
 				if(i==0){
-					SQL += "(?,?,?,?,?,?)";
+					SQL += "(?,?,?,?,?,?,?)";
 				}else{
-					SQL += ",(?,?,?,?,?,?)";
+					SQL += ",(?,?,?,?,?,?,?)";
 				}
 			}
 			//System.out.println(SQL);
 			st = con.prepareStatement(SQL);
 			for(int i=0;i<list.size();i++){
-				st.setString(1+6*i, list.get(i).getTicketsId());
-				st.setInt(2+6*i, list.get(i).getPurchaseId());
-				st.setInt(3+6*i, list.get(i).getMatchId());
-				st.setString(4+6*i, list.get(i).getSeatId());
-				st.setString(5+6*i, String.valueOf(list.get(i).getStatus()));
-				st.setBoolean(6+6*i, list.get(i).getIsShared());
+				st.setString(1+7*i, list.get(i).getTicketsId());
+				st.setInt(2+7*i, list.get(i).getPurchaseId());
+				st.setInt(3+7*i, list.get(i).getMatchId());
+				st.setString(4+7*i, list.get(i).getSeatId());
+				st.setString(5+7*i, String.valueOf(list.get(i).getStatus()));
+				st.setBoolean(6+7*i, list.get(i).getIsShared());
+				st.setBoolean(7+7*i, false);
 			}
-			//boolean bool = st.execute();
-			//System.out.println(bool);
+
+			boolean bool = st.execute();
+			System.out.println(bool);
 		}catch(Exception e){
 			e.getStackTrace();
 		}finally{

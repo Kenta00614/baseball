@@ -1,1 +1,55 @@
 @CHARSET "UTF-8";
+/* ========================================================================== */
+
+
+/* ドロップダウンメニューのスタイル */
+.nav-menu li .dropdown {
+    display: none;
+    position: absolute;
+ 	background-color: #f9f9f9;
+   	min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.nav-menu li .dropdown a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.nav-menu li .dropdown a:hover {
+    background-color: #f1f1f1;
+}
+
+/* マウスオーバー時にドロップダウンメニューを表示 */
+.nav-menu li:hover .dropdown {
+    display: block;
+}
+
+
+/* ========================================================================== */
+
+/* aタグ(URL)の下線を削除 */
+a{
+	text-decoration: none;
+	color: #4b4b4b;
+}
+
+li {
+	text-align: right;
+	margin: 0 30px 0 0; /* 右側のmarginを30pxに設定 */
+	font-size: 14px;
+}
+
+ul{
+	/* ulタグの文頭の「・」を削除 */
+	list-style: none;
+	margin: 20;
+
+	/* 項目を横並びに */
+	display: flex;
+}
+
