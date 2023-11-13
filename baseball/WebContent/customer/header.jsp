@@ -22,6 +22,10 @@
 			</div>
 
 			<ul class="nav-menu">
+			<%
+                if (session.getAttribute("user") != null) {
+                    // ログインしている時のメニュー
+            %>
 			    <li class="nav__item"><a href="TicketPurchase">チケット購入</a></li>
 			    <li class="nav__item"><a href="TicketDisplay">チケット表示</a></li>
 			    <li class="nav__item">
@@ -31,7 +35,17 @@
 			            <a href="PurchaseHistory">購入履歴表示</a>
 				    </div>
 				</li>
-			    <li class="nav__item"><a href="ProvisionalSignupDisplay">新規会員登録</a></li>
+			    <li class="nav__item"><a href="Logout">ログアウト</a></li>
+			<%
+                } else {
+                    // ログインしていない時のメニュー
+            %>
+                <li class="nav__item"><a href="TicketPurchase">チケット購入</a></li>
+                <li class="nav__item"><a href="LoginDisplay">ログイン</a></li>
+                <li class="nav__item"><a href="ProvisionalSignupDisplay">新規会員登録</a></li>
+            <%
+                }
+            %>
 			</ul>
 
 		</div>

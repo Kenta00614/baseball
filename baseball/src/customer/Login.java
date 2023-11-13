@@ -32,7 +32,7 @@ public class Login extends HttpServlet {
                 // ログイン失敗
                 HttpSession session = request.getSession();
                 session.setAttribute("loginError", "無効なメールアドレスまたはパスワードです。");
-                response.sendRedirect("/customer/loginError.jsp"); // ログインページへリダイレクト
+                response.sendRedirect("/baseball/customer/loginError.jsp"); // ログインページへリダイレクト
             }
         } catch (Exception e) {
             throw new ServletException(e);

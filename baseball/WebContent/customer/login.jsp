@@ -18,9 +18,10 @@
             <label for="password">Password</label>
             <input type="password" id="password" placeholder="Password" required>
         </div>
-        <p><input type="submit" value="Log in"></p>
+        <p><input type="submit" value="Login"></p>
         	<br><p>初めてご利用の方はこちら<br><a href="ProvisionalSignupDisplay" class="btn">→新規会員登録へ</a></p>
 　　　　</form>
+
 
 
 	</div>
