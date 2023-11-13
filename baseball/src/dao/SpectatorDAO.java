@@ -100,7 +100,19 @@ public class SpectatorDAO extends DAO {
 			return num;
 		}
 
-		int pointNew = pointPrev + point;
+		int pointNew;
+
+		if(point<0){
+			if(pointPrev+point >= 0){
+				pointNew = pointPrev + point;
+			}else{
+				int num=-1;
+				return num;
+			}
+		}else{
+			pointNew = pointPrev + point;
+		}
+
 
 		PreparedStatement stUpdate = con.prepareStatement("update spectator set point = ?");
 		stUpdate.setInt(1, pointNew);
