@@ -6,6 +6,7 @@
 </head>
 <body>
     <div class="login-box">
+    　　<form action="Login" method="post">
         <div class="input">
             <label for="user-id">ID(メールアドレス)</label>
             <input type="mail" id="user-id" placeholder="メールアドレスを入力">
@@ -14,7 +15,6 @@
             <label for="password">パスワード</label>
             <input type="password" id="password" placeholder="パスワードを入力">
         </div>
-        <form action="" method="get">
         <button type="submit">ログイン</button>
 　　　　</form>
 
