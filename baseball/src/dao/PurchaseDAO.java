@@ -3,6 +3,7 @@ package dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,6 +33,40 @@ public class PurchaseDAO extends DAO{
 		con.close();
 
 		return list;
+	}
+
+
+	//購入日時を取得、観戦客IDと購入日時を登録する
+	public int insertPurchase(int spectatorId)throws Exception{
+
+		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+
+		Connection con=getConnection();
+		PreparedStatement st=con.prepareStatement("INSERT INTO PURCHASE VALUES(NULL,?,?)");
+
+		st.setInt(1,spectatorId);
+		st.setTimestamp(2, timestamp);
+
+		st.executeUpdate();
+
+		PreparedStatement stPurchaseId=con.prepareStatement("SELECT PURCHASE_ID FROM PURCHASE WHERE PURCHASE_AT = ?");
+
+		stPurchaseId.setTimestamp(1, timestamp);
+		ResultSet rs=stPurchaseId.executeQuery();
+
+		int purchaseId;
+
+		if(rs.next()){
+			purchaseId=rs.getInt("purchase_id");
+		}else{
+			purchaseId=0;
+		}
+
+		st.close();
+		con.close();
+
+		return purchaseId;
+
 	}
 
 }

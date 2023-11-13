@@ -3,6 +3,9 @@
 <%@include file="header.jsp"%>
 
 <html>
+<head>
+	<link rel="stylesheet" type="text/css"  href ="/baseball/css/Customer.css">
+</head>
 <body>
     <div class="header">
         <form action="TicketSelectBlock" method="get">

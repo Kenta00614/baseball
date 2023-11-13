@@ -59,6 +59,7 @@
     document.getElementById('confirmPassword').onkeyup = validatePassword;
   }
 </script>
+	<link rel="stylesheet" type="text/css"  href ="/baseball/css/Customer.css">
 </head>
 <body>
 <div class="container">

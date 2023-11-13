@@ -5,6 +5,8 @@
 <html>
 <head>
     <title>Verification Success</title>
+
+	<link rel="stylesheet" type="text/css"  href ="/baseball/css/Customer.css">
 </head>
 <body>
     <h2>Account Verified!</h2>

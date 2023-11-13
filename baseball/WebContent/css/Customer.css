@@ -5,8 +5,11 @@
 }
 
 body{
-	margin: 0;
-	padding: 0;
-	font-family: "Hiragino Kaku Gothic Pro","ヒラギノ角ゴ Pro W3",メイリオ,Meiryo,"MS Pゴシック","Helvetica Neue",Helvetica,Arial,sans-serif;
-	background-color: ;
+	background-color: #f0f8ff;
+	width: 960px;
+    margin: auto;
+    margin-top: 60px;
+   	padding: 0;
+
 }
+
