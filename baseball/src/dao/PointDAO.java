@@ -7,7 +7,7 @@ import bean.Point;
 
 public class PointDAO extends DAO{
 
-	//使われたポイントを記帳する
+	//たまったポイント、使われたポイントを記帳する
 	public int insertPoint(Point point)throws Exception{
 
 		Connection con=getConnection();
