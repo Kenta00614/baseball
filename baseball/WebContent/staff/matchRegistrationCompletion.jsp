@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@include file="header.jsp"%>
 <html>
-試合情報登録　完了
+<p>試合情報登録　完了</p>
 <body>
     <div class="header">
         <form action="MatchRegistrationInput" method="get">
@@ -15,5 +15,4 @@
 　　　　</form>
     </div>
 </body>
-</html>	
-	
+</html>

@@ -2,8 +2,9 @@
     pageEncoding="UTF-8"%>
 <%@include file="header.jsp"%>
 <html>
-大会高校情報一覧
+
 <body>
+	<h1>大会情報一覧</h1>
     <div class="header">
         <form action="HighschoolRegistration" method="get">
     　　　　<button type="submit">第〇〇回高校学校野球大会</button>

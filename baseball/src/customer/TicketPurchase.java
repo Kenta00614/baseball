@@ -1,6 +1,8 @@
 package customer;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,11 +10,37 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import bean.Match;
+import bean.Tournament;
+import dao.MatchDAO;
+import dao.TournamentDAO;
+
 @WebServlet("/customer/TicketPurchase")
 public class TicketPurchase extends HttpServlet {
 
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    	List<Tournament> list=new ArrayList<>();
+		List<Match> match=new ArrayList<>();
+		Tournament lastTour=null;
 
+		try {
+//			大会情報取得
+			TournamentDAO tourDao=new TournamentDAO();
+			list=tourDao.getTournamentDetail();
+//			最後の大会情報
+			for(Tournament tour: list){
+				lastTour=tour;
+			}
+
+//			同じ大会の試合日情報を取得
+			MatchDAO matDao=new MatchDAO();
+			match=matDao.searchMatchTournament(lastTour.getTournamentId());
+
+			request.setAttribute("lastTour",lastTour);
+			request.setAttribute("match",match);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
         request.getRequestDispatcher("/customer/ticketPurchase.jsp").forward(request, response);
     }
 }
