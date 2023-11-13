@@ -82,4 +82,46 @@ public class SpectatorDAO extends DAO {
 		return line;
 	}
 
+	//ポイントの更新、-1が戻り値の場合エラー
+	public int updatePoint(int spectatorId,int point)throws Exception{
+
+		Connection con=getConnection();
+		PreparedStatement st=con.prepareStatement("SELECT POINT FROM SPECTATOR WHERE SPECTATOR_ID = ?");
+		st.setInt(1, spectatorId);
+
+		ResultSet rs=st.executeQuery();
+
+		int pointPrev;
+
+		if(rs.next()){
+			pointPrev = rs.getInt("point");
+		}else{
+			int num=-1;
+			return num;
+		}
+
+		int pointNew;
+
+		if(point<0){
+			if(pointPrev+point >= 0){
+				pointNew = pointPrev + point;
+			}else{
+				int num=-1;
+				return num;
+			}
+		}else{
+			pointNew = pointPrev + point;
+		}
+
+
+		PreparedStatement stUpdate = con.prepareStatement("update spectator set point = ?");
+		stUpdate.setInt(1, pointNew);
+
+		int num = stUpdate.executeUpdate();
+
+		return num;
+
+
+	}
+
 }
