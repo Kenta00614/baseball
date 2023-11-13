@@ -255,6 +255,8 @@ public class MatchDAO extends DAO{
 			m.setSaleStartAt(rs.getDate("sale_start_at"));
 			m.setEventDayOfWeek();
 			m.setSaleDayOfWeek();
+			m.setDispFlg();
+			m.setSaleFlg();
 			list.add(m);
 		}
 

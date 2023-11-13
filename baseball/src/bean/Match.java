@@ -15,6 +15,8 @@ public class Match implements Serializable {
 	private int duel4;
 	private String eventDayOfWeek;
 	private String saleDayOfWeek;
+	private boolean dispFlg=false;
+	private boolean saleFlg=false;
 
 	public int getMatchId() {
 		return matchId;
@@ -111,5 +113,31 @@ public class Match implements Serializable {
 	    }else if(dayNumber==6){
 	    	this.saleDayOfWeek = "金";
 	    }
+	}
+	public boolean isDispFlg() {
+		return dispFlg;
+	}
+//	販売日の7日前だとtrue
+	public void setDispFlg() {
+		java.util.Date nowDate = new java.util.Date();
+        Calendar cl = Calendar.getInstance();
+        cl.setTime(this.saleStartAt);
+        cl.add(Calendar.DAY_OF_MONTH, -7);
+        if(cl.getTime().equals(nowDate)||cl.getTime().before(nowDate)){
+        	this.dispFlg = true;
+        }
+	}
+	public boolean isSaleFlg() {
+		return saleFlg;
+	}
+//	販売日の10時になったらtrue
+	public void setSaleFlg() {
+		java.util.Date nowDate = new java.util.Date();
+        Calendar cl = Calendar.getInstance();
+        cl.setTime(this.saleStartAt);
+        cl.add(Calendar.HOUR_OF_DAY, 10);
+        if(cl.getTime().equals(nowDate)||cl.getTime().before(nowDate)){
+        	this.saleFlg = true;
+        }
 	}
 }
