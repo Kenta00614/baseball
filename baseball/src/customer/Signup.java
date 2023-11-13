@@ -14,7 +14,8 @@ import dao.SpectatorDAO;
 
 @WebServlet("/customer/Signup")
 public class Signup extends HttpServlet {
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    @SuppressWarnings("unused")
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // メールからのUUIDパラメータを取得
         String uuidString = request.getParameter("uuid");
         if (uuidString == null) {
