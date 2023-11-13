@@ -5,20 +5,24 @@
 	<link rel="stylesheet" type="text/css"  href ="/baseball/css/Customer.css">
 </head>
 <body>
+
+	<h2>ログイン</h2>
     <div class="login-box">
     　　<form action="Login" method="post">
+
         <div class="input">
-            <label for="user-id">ID(メールアドレス)</label>
-            <input type="mail" id="user-id" placeholder="メールアドレスを入力" required>
+            <label for="user-id">ID(email)</label>
+            <input type="mail" id="user-id" placeholder="✉mail" required>
         </div>
         <div class="input">
-            <label for="password">パスワード</label>
-            <input type="password" id="password" placeholder="パスワードを入力" required>
+            <label for="password">Password</label>
+            <input type="password" id="password" placeholder="Password" required>
         </div>
-        <button type="submit">ログイン</button>
+        <p><input type="submit" value="Log in"></p>
+        	<br><p>初めてご利用の方はこちら<br><a href="ProvisionalSignupDisplay" class="btn">→新規会員登録へ</a></p>
 　　　　</form>
 
 
-    </div>
+	</div>
 </body>
 </html>

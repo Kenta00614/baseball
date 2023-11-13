@@ -1,9 +1,6 @@
 package customer;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,34 +10,29 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import bean.Spectator;
-import dao.DAO;
-@WebServlet("/customer/Login ")
+import dao.SpectatorDAO;
+@WebServlet("/customer/Login")
 public class Login extends HttpServlet {
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String mail = request.getParameter("email");
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    throws ServletException, IOException {
+        String mail = request.getParameter("mail");
         String password = request.getParameter("password");
 
-        DAO dao = new DAO();
-        try (Connection conn = dao.getConnection()) {
-            PreparedStatement ps = conn.prepareStatement("SELECT * FROM Spectator WHERE mail = ? AND password = ?");
-            ps.setString(1, mail);
-            ps.setString(2, password);
+        SpectatorDAO spectatorDAO = new SpectatorDAO();
 
-            ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
-                Spectator spectator = new Spectator();
-                spectator.setSpectatorId(rs.getInt("spectatorId"));
-                spectator.setName(rs.getString("name"));
-                spectator.setPassword(rs.getString("password"));
-                spectator.setTel(rs.getString("tel"));
-                spectator.setPoint(rs.getInt("point"));
-                spectator.setMail(rs.getString("mail"));
-
+        try {
+            Spectator spectator = spectatorDAO.loginSpec(mail, password);
+            if (spectator != null) {
+                // ログイン成功
                 HttpSession session = request.getSession();
                 session.setAttribute("spectator", spectator);
-                response.sendRedirect("/customer/loginWelcome.jsp");
+                response.sendRedirect("/customer/loginWelcome.jsp"); // ログイン成功ページへリダイレクト
             } else {
-                response.sendRedirect("/customer/loginWelcome.jsp?error=true");
+                // ログイン失敗
+                HttpSession session = request.getSession();
+                session.setAttribute("loginError", "無効なメールアドレスまたはパスワードです。");
+                response.sendRedirect("/customer/loginError.jsp"); // ログインページへリダイレクト
             }
         } catch (Exception e) {
             throw new ServletException(e);

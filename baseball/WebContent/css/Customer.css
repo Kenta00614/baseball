@@ -5,11 +5,69 @@
 }
 
 body{
-	background-color: #f0f8ff;
+	background-color: #ffffff;
 	width: 960px;
-    margin: auto;
+    margin: 15px;
     margin-top: 60px;
    	padding: 0;
+}
+
+/*ーーーーーーーーーー  main.jsp  ーーーーーーーーーーー*/
+.btn{
+	text-decoration:underline;
+}
+
+.title {
+    text-align: center;
+    font-size: 30px;
+    margin: 20px 0;
+}
+
+.schedule {
+  	display: flex;
+    justify-content: center;  /* 中央寄せに変更 */
+    margin-bottom: 10px;
+    flex-wrap: wrap;  /* 必要に応じて折り返し */
+}
+
+.schedule > div {
+   	margin: 0 10px;  /* 各項目の左右のマージンを設定 */
+}
+
+.date-center {
+    text-align: center;
+    font-size: 18px;
+    margin: 20px 0;
+}
+/*ーーーーーーーーーー  main.jsp  ーーーーーーーーーーー*/
+
+/*ーーーーーーーーーー  ☓ボタンの設定  ーーーーーーーーーーー*/
+.square_btn {
+  display: block;
+  position: relative;
+  width: 30px;
+  height: 30px;
+  border: 2px solid #333; /* 枠の調整 */
+  background: #fff; /* ボタンの背景色 */
+  float: right;
 
 }
 
+.square_btn::before, .square_btn::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 3px; /* 棒の幅（太さ） */
+  height: 27px; /* 棒の高さ */
+  background: #333; /* バツ印の色 */
+}
+
+.square_btn::before {
+  transform: translate(-50%,-50%) rotate(45deg);
+}
+
+.square_btn::after {
+  transform: translate(-50%,-50%) rotate(-45deg);
+}
+/*ーーーーーーーーーー  ☓ボタンの設定  ーーーーーーーーーーー*/
