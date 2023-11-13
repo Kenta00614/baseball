@@ -9,11 +9,11 @@
     　　<form action="Login" method="post">
         <div class="input">
             <label for="user-id">ID(メールアドレス)</label>
-            <input type="mail" id="user-id" placeholder="メールアドレスを入力">
+            <input type="mail" id="user-id" placeholder="メールアドレスを入力" required>
         </div>
         <div class="input">
             <label for="password">パスワード</label>
-            <input type="password" id="password" placeholder="パスワードを入力">
+            <input type="password" id="password" placeholder="パスワードを入力" required>
         </div>
         <button type="submit">ログイン</button>
 　　　　</form>

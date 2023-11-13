@@ -35,16 +35,15 @@ public class Test extends HttpServlet{
 		try{
 
 			Point mm=new Point();
-			mm.setSpectatorId(2);
-			mm.setPurchaseId(2);
-			mm.setFluctuation(-500);
+			mm.setSpectatorId(3);
+			mm.setPurchaseId(3);
+			mm.setFluctuation(-1);
 			mm.setTicketsId("0B0B001r00202403181000");
 
 
 
+
 			PointDAO MD=new PointDAO();
-
-
 
 
 			int num=MD.insertPoint(mm);
