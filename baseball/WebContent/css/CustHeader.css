@@ -36,6 +36,8 @@
 a{
 	text-decoration: none;
 	color: #4b4b4b;
+
+
 }
 
 li {
@@ -62,8 +64,11 @@ ul{
 .cust-header {
   position: fixed; /*← fixedで固定 */
   width: 100%;
-  height: 35px;
-  background-color: #def7ff;
+  height: 40px;
+  background-color: #98fd98;
+  border-bottom:solid;
+	border-color:#006400;
+	border-width:2px;	/*5ピクセルの太さにする*/
   top: 0;
   left: 0;
  }

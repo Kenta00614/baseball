@@ -1,11 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@include file="header.jsp"%>
+<head>
+	<link rel="stylesheet" type="text/css"  href ="/baseball/css/Customer.css">
+</head>
 <body>
     <div class="login-box">
         <div class="input">
             <label for="user-id">ID(メールアドレス)</label>
-            <input type="email" id="user-id" placeholder="メールアドレスを入力">
+            <input type="mail" id="user-id" placeholder="メールアドレスを入力">
         </div>
         <div class="input">
             <label for="password">パスワード</label>
