@@ -4,10 +4,17 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.UUID;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 import bean.Provisional;
 
 public class ProvisionalDAO extends DAO {
+
+    private ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
+
+
 //	仮会員登録、作成したuuidを返す
 	public UUID insertProv(String mail, String name, String password, String tel) throws Exception{
 		Connection con=getConnection();
@@ -28,9 +35,31 @@ public class ProvisionalDAO extends DAO {
 			newUuid = UUID.fromString(uuid);
 			st.close();
 			con.close();
+
+            scheduleUuidDeletion(newUuid);
+
 		}
 		return newUuid;
 	}
+
+	 private void scheduleUuidDeletion(UUID uuid) {
+	        scheduler.schedule(() -> {
+	            try {
+	                deleteProvisionalUser(uuid);
+	            } catch (Exception e) {
+	                e.printStackTrace();
+	            }
+	        }, 30, TimeUnit.MINUTES);
+	    }
+
+	    private void deleteProvisionalUser(UUID uuid) throws Exception {
+	        Connection con = getConnection();
+	        PreparedStatement st = con.prepareStatement("DELETE FROM PROVISIONAL WHERE UUID = ?");
+	        st.setString(1, uuid.toString());
+	        st.executeUpdate();
+	        st.close();
+	        con.close();
+	    }
 
 //	引数のuuidの仮会員情報を取得
 	public Provisional searchUuid(UUID uuid)throws Exception {
