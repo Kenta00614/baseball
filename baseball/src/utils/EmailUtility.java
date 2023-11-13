@@ -25,7 +25,7 @@ public class EmailUtility{
         props.put("mail.smtp.host", host);
         props.put("mail.smtp.port", port);
 
-        // セッションを生成します。
+        // セッションを生成
         Session session = Session.getInstance(props, new javax.mail.Authenticator() {
             protected javax.mail.PasswordAuthentication getPasswordAuthentication() {
                 return new javax.mail.PasswordAuthentication(username, password);
@@ -33,14 +33,14 @@ public class EmailUtility{
         });
 
         try {
-            // メールの内容を設定します。
+            // メールの内容を設定
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress(username));
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
             message.setSubject(subject);
             message.setText(content);
 
-            // メールを送信します。
+            // メールを送信
             Transport.send(message);
         } catch (Exception e) {
             e.printStackTrace();
