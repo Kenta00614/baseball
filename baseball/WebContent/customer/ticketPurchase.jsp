@@ -29,6 +29,7 @@
     		<%-- POSTでmatchIdを渡す --%>
 	    		<form action="TicketApplication" method="post">
 		   			<input type="hidden" name="matchId" value="${mat.matchId }">
+		   			<input type="hidden" name="remaining" value=-1>
 		    		<button type="submit">申し込む</button>
 				</form>
     		</c:otherwise>

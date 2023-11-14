@@ -19,6 +19,7 @@ public class TicketApplication extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //		値取得
 		int matchId = Integer.parseInt(request.getParameter("matchId"));
+
 		Match match=null;
 		Tournament tour=null;
 
@@ -32,6 +33,7 @@ public class TicketApplication extends HttpServlet {
 			e.printStackTrace();
 		}
 
+		 request.setAttribute("remaining", -1);
 		 request.setAttribute("seatType",Constants.SEAT_TYPE );
 		 request.setAttribute("tour", tour);
 		 request.setAttribute("match", match);
