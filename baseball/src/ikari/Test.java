@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import bean.Point;
-import dao.PointDAO;
+import bean.Spectator;
+import dao.SpectatorDAO;
 
 @WebServlet("/test")
 public class Test extends HttpServlet{
@@ -34,19 +34,18 @@ public class Test extends HttpServlet{
 
 		try{
 
-			Point mm=new Point();
-			mm.setSpectatorId(3);
-			mm.setPurchaseId(3);
-			mm.setFluctuation(-1);
-			mm.setTicketsId("0B0B001r00202403181000");
+			Spectator mm=new Spectator();
+			mm.setSpectatorId(1);
+			mm.setName("大原太郎");
+			mm.setTel("08087654321");
 
 
 
 
-			PointDAO MD=new PointDAO();
+			SpectatorDAO MD=new SpectatorDAO();
 
 
-			int num=MD.insertPoint(mm);
+			int num=MD.changeSpectatorInfo(mm);
 
 			out.println(num);
 
