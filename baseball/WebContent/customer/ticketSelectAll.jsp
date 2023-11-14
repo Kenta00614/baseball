@@ -8,12 +8,12 @@
 </head>
 <body>
     <div class="header">
-        <form action="TicketApplication" method="get">
+        <form action="TicketApplication" method="post">
     　　　　<button type="submit">戻る</button>
 　　　　</form>
     </div>
     <div class="header">
-        <form action="TicketSelectBlock" method="get">
+        <form action="TicketSelectBlock" method="post">
     　　　　<button type="submit">次へ</button>
 　　　　</form>
     </div>
