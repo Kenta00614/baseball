@@ -19,6 +19,7 @@ public class Login extends HttpServlet {
         String mail = request.getParameter("mail");
         String password = request.getParameter("password");
 
+
         SpectatorDAO spectatorDAO = new SpectatorDAO();
 
         try {
@@ -27,7 +28,7 @@ public class Login extends HttpServlet {
                 // ログイン成功
                 HttpSession session = request.getSession();
                 session.setAttribute("spectator", spectator);
-                response.sendRedirect("/customer/loginWelcome.jsp"); // ログイン成功ページへリダイレクト
+                response.sendRedirect("/baseball/customer/loginWelcome.jsp"); // ログイン成功ページへリダイレクト
             } else {
                 // ログイン失敗
                 HttpSession session = request.getSession();
