@@ -3,15 +3,11 @@
 <%@include file="header.jsp"%>
 
 <html>
-<head>
-	<link rel="stylesheet" type="text/css"  href ="/baseball/css/Customer.css">
-</head>
+
 <body>
 
     <div class="header">
-        <form action="Main" method="get">
-        	<h2>ログインが完了しました。</h2>
-        	<p> <%= request.getParameter("user-id") %>さん、ようこそ。</p>
+        <form action="Header" method="get">
     　　　　<button type="submit">メイン画面へ</button>
 　　　　</form>
     </div>

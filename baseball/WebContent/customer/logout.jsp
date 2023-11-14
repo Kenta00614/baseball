@@ -8,7 +8,7 @@
 </head>
 <body>
     <div class="header">
-    	<span class="square_btn"></span>
+    	<span class="square_btn"></span><!-- ☒ボタン -->
         <form action="" method="get">
         <p>ログアウトします。よろしいですか？</p>
 

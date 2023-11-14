@@ -1,22 +1,27 @@
 @CHARSET "UTF-8";
 
-*{
-	box-sizing: border-box;
+* {
+    box-sizing: border-box;
 }
 
-body{
-	background-color: #ffffff;
-	width: 960px;
+body {
+    background-color: #ffffff;
+    width: 960px;
     margin: 15px;
     margin-top: 60px;
-   	padding: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
 }
 
-/*ーーーーーーーーーー  main.jsp  ーーーーーーーーーーー*/
-.btn{
-	text-decoration:underline;
+h1 {
+    text-align: center;
 }
 
+.btn {
+    text-decoration: underline;
+}
+
+/* 以下はmain.jspのスタイル */
 .title {
     text-align: center;
     font-size: 30px;
@@ -24,14 +29,14 @@ body{
 }
 
 .schedule {
-  	display: flex;
-    justify-content: center;  /* 中央寄せに変更 */
+    display: flex;
+    justify-content: center;
     margin-bottom: 10px;
-    flex-wrap: wrap;  /* 必要に応じて折り返し */
+    flex-wrap: wrap;
 }
 
 .schedule > div {
-   	margin: 0 10px;  /* 各項目の左右のマージンを設定 */
+    margin: 0 10px;
 }
 
 .date-center {
@@ -39,35 +44,68 @@ body{
     font-size: 18px;
     margin: 20px 0;
 }
-/*ーーーーーーーーーー  main.jsp  ーーーーーーーーーーー*/
 
-/*ーーーーーーーーーー  ☓ボタンの設定  ーーーーーーーーーーー*/
-.square_btn {
-  display: block;
-  position: relative;
-  width: 30px;
-  height: 30px;
-  border: 2px solid #333; /* 枠の調整 */
-  background: #fff; /* ボタンの背景色 */
-  float: right;
-
+/* 以下はsignup.jspのスタイル */
+.container {
+    width: 600px;
+    margin: 30px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0px 0px 10px #ccc;
 }
 
-.square_btn::before, .square_btn::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 3px; /* 棒の幅（太さ） */
-  height: 27px; /* 棒の高さ */
-  background: #333; /* バツ印の色 */
+.container>form {
+    display: flex;
+    flex-direction: column;
+}
+
+.signup-container .signup-label,
+.signup-label {
+    margin-top: 10px;
+}
+
+.signup-container .custom-input,
+.custom-input {
+    padding: 10px;
+    margin-top: 5px;
+}
+
+.signup-container .submit-button,
+.submit-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #000;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+/* ☒ボタンのスタイル */
+.square_btn {
+    display: block;
+    position: relative;
+    width: 30px;
+    height: 30px;
+    border: 2px solid #333;
+    background: #fff;
+    float: right;
+}
+
+.square_btn::before,
+.square_btn::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 3px;
+    height: 27px;
+    background: #333;
 }
 
 .square_btn::before {
-  transform: translate(-50%,-50%) rotate(45deg);
+    transform: translate(-50%, -50%) rotate(45deg);
 }
 
 .square_btn::after {
-  transform: translate(-50%,-50%) rotate(-45deg);
+    transform: translate(-50%, -50%) rotate(-45deg);
 }
-/*ーーーーーーーーーー  ☓ボタンの設定  ーーーーーーーーーーー*/

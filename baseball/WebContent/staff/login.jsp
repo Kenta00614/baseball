@@ -1,26 +1,27 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@include file="header.jsp"%>
-<html>
 
 <body>
-    <div class="header">
-    <h1>ログイン</h1>
-        <form action="<%-- ログイン先のリンク --%>" method="get">
-        	<div class="control">
-            <label for="mymail"> メールアドレス</label>
-            <input id="mymail" type="email" name="mymail" required>
-			</div>
-			<div class="control">
-			    <label for="passcode"> パスワード</label>
-			    <input id="passcode" type="password" name="passcode" pattern="^(?=.*\d)(?=.*[a-zA-Z]).{8,}$" required>
-			    <p class="note">※パスワードは8文字以上で、数字と英字が必要です。</p>
-			</div>
 
-    　　　　<button type="submit">ログイン</button>
-            <a href="StaffPass" class="btn">パスワード再設定</a>
+	<h2>ログイン</h2>
+    <div class="login-box">
+    　　<form action="Login" method="post">
+
+        <div class="input">
+            <label for="user-id">ID(email)</label>
+            <input name="id" type="text" id="user-id" required>
+        </div>
+        <div class="input">
+            <label for="password">Password</label>
+            <input name="password" type="password" id="password" placeholder="Password" required>
+        </div>
+        <p><input type="submit" value="Login"></p>
+        	<br><p>初めてご利用の方はこちら<br><a href="ProvisionalSignupDisplay" class="btn">→新規会員登録へ</a></p>
 　　　　</form>
-    </div>
 
+
+
+	</div>
 </body>
 </html>
