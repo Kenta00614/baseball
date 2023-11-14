@@ -69,4 +69,24 @@ public class PurchaseDAO extends DAO{
 
 	}
 
+	//*購入履歴の取得
+	/*public List<PurchaseExp> getPurchaseHistory(int spectatorId)throws Exception{
+
+		Connection con = getConnection();
+		PreparedStatement st=con.prepareStatement("select purchase_id from purchase where spectator_id = ?");
+		st.setInt(1, spectatorId);
+
+		ResultSet rs = st.executeQuery();
+
+		List<Integer> purchaseIdList = new ArrayList<>();
+
+
+		///PreparedStatement st=con.prepareStatement("select purchase.*,tickets.match_id,tickets.seat_id,tickets.status,tickets.is_child from purchase join tickets on purchase.purchase_id = tickets.purchase_id");
+		 *
+		 *
+		 * sql   select purchase.* ,tickets.status,tickets.is_child,match.event_date,match.sale_start_at,seat.type,tournament.ordinal_num,tournament.name from purchase join tickets on purchase.purchase_id = tickets.purchase_id join match on tickets.match_id = match.match_id join seat on tickets.seat_id = seat.seat_id join tournament on match.tournament_id = tournament.tournament_id where purchase.spectator_id = 1 and tickets.status = 3;
+
+	}
+	*/
+
 }
