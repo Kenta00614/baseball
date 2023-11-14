@@ -12,31 +12,31 @@
 </head>
 <body>
 
-<h1 class="title">第102回全国高等学校野球選手権大会</h1>
+	<h1 class="title">第102回全国高等学校野球選手権大会</h1>
 
-<p class="date-center">8月1日 (木曜日)</p>
+	<p class="date-center">8月1日 (木曜日)</p>
 
 
-<div class="schedule">
-    <div>第一試合 (第1回戦)</div>
-    <div>未定</div>
-    <div>8:00 </div>
-    <div>未定</div>
-</div>
+	<div class="schedule">
+	    <div>第一試合 (第1回戦)</div>
+	    <div>未定</div>
+	    <div>8:00 </div>
+	    <div>未定</div>
+	</div>
 
-<div class="schedule">
-    <div>第二試合 (第1回戦)</div>
-    <div>未定</div>
-    <div>11:00</div>
-    <div>未定</div>
-</div>
+	<div class="schedule">
+	    <div>第二試合 (第1回戦)</div>
+	    <div>未定</div>
+	    <div>11:00</div>
+	    <div>未定</div>
+	</div>
 
-<div class="schedule">
-    <div>第三試合 (第1回戦)</div>
-    <div>未定</div>
-    <div>14:00 </div>
-    <div>未定</div>
-</div>
+	<div class="schedule">
+	    <div>第三試合 (第1回戦)</div>
+	    <div>未定</div>
+	    <div>14:00 </div>
+	    <div>未定</div>
+	</div>
 
 </body>
 </html>
