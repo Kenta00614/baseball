@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@include file="header.jsp"%>
 <html>
 <head>
@@ -28,6 +28,11 @@
 
 <%-- 座席選択 --%>
        <form action="TicketSelectAll" method="post">
+<%-- 残数があれば表示 --%>
+       <c:if test="${remaining != -1}">
+       	<p>残数：${remaining }枚</p>
+       </c:if>
+
 	<p>座種：
 		<select name="seat">
 		<c:forEach items="${seatType }" var="seat">
@@ -43,6 +48,7 @@
 		</select>
 	</p>
 	   	<button type="submit">座席選択へ進む</button>
+	   	<input type="hidden" value="${match.matchId }" name="matchId">
 	</form>
 </body>
 </html>

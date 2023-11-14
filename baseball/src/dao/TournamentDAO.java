@@ -50,7 +50,7 @@ public class TournamentDAO extends DAO{
 		return tournamentYear;
 	}
 
-	//大会IDから開催年、第何回、大会名、開催季節を取得
+	//開催年、第何回、大会名、開催季節を取得
 	public Tournament getTournamentInfo(int tournament_id)throws Exception{
 
 		Tournament t=null;

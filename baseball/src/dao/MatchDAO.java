@@ -24,6 +24,7 @@ public class MatchDAO extends DAO{
 
 		while(rs.next()){
 			m=new Match();
+			m.setMatchId(match_id);
 			m.setTournamentId(rs.getInt("tournament_id"));
 			m.setEventDate(rs.getDate("event_date"));
 			m.setEventDayOfWeek();
