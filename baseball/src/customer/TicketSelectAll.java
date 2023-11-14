@@ -45,6 +45,9 @@ public class TicketSelectAll extends HttpServlet {
 				request.getRequestDispatcher("/customer/ticketApplication.jsp").forward(request, response);
 			}else{
 
+				request.setAttribute("matchId", matchId);
+				request.setAttribute("seat", seat);
+				request.setAttribute("count", count);
 				request.getRequestDispatcher("/customer/ticketSelectAll.jsp").forward(request, response);
 			}
 		} catch (Exception e) {
