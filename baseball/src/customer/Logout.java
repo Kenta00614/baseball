@@ -23,6 +23,6 @@ public class Logout extends HttpServlet {
         }
 
         // ログアウト後にユーザーをリダイレクトするページ（例えばログインページなど）
-        response.sendRedirect("/customer/login.jsp");
+        response.sendRedirect("/baseball/customer/login.jsp");
     }
 }

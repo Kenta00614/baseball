@@ -11,7 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/customer/TicketSelectAll")
 public class TicketSelectAll extends HttpServlet {
 
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    	int count = Integer.parseInt(request.getParameter("count"));
+    	String seat = request.getParameter("seat");
+
 
         request.getRequestDispatcher("/customer/ticketSelectAll.jsp").forward(request, response);
     }

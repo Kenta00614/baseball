@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import bean.Match;
 import bean.Tournament;
+import common.Constants;
 import dao.MatchDAO;
 import dao.TournamentDAO;
 
@@ -31,8 +32,7 @@ public class TicketApplication extends HttpServlet {
 			e.printStackTrace();
 		}
 
-		 String[] seat={"0B","0F","0T","0R","0L","FA","TA"};
-		 request.setAttribute("seat", seat);
+		 request.setAttribute("seatType",Constants.SEAT_TYPE );
 		 request.setAttribute("tour", tour);
 		 request.setAttribute("match", match);
 		 request.getRequestDispatcher("/customer/ticketApplication.jsp").forward(request, response);
