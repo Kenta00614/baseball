@@ -12,11 +12,11 @@
 
         <div class="input">
             <label for="user-id">ID(email)</label>
-            <input type="mail" id="user-id" placeholder="✉mail" required>
+            <input name="mail" type="text" id="user-id" placeholder="✉mail" required>
         </div>
         <div class="input">
             <label for="password">Password</label>
-            <input type="password" id="password" placeholder="Password" required>
+            <input name="password" type="password" id="password" placeholder="Password" required>
         </div>
         <p><input type="submit" value="Login"></p>
         	<br><p>初めてご利用の方はこちら<br><a href="ProvisionalSignupDisplay" class="btn">→新規会員登録へ</a></p>
