@@ -32,7 +32,7 @@ public class TicketSelectAll extends HttpServlet {
    	 	TournamentDAO tourDAO=new TournamentDAO();
     	try {
 //    		チケット残数
-			remaining=ticketDAO.getTypeSurplus(seat);
+			remaining=ticketDAO.getTypeSurplus(seat,matchId).size();
 			match=matchDAO.getMatchInfo(matchId);
 			tour=tourDAO.getTournamentInfo(match.getTournamentId());
 
