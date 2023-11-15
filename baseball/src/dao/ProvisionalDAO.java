@@ -123,4 +123,26 @@ public class ProvisionalDAO extends DAO {
 
 		}
 
+		//会員IDとメールアドレスとuuidを登録する
+		public UUID insertIdAndMail(int id,String mail)throws Exception{
+
+			String uuid=UUID.randomUUID().toString();
+
+			Connection con=getConnection();
+			PreparedStatement st=con.prepareStatement("insert into provisional values(?,?,null,null,null,?)");
+
+			st.setString(1, uuid.toString());
+			st.setString(2, mail);
+			st.setInt(3, id);
+
+			st.executeUpdate();
+
+			UUID newUuid = UUID.fromString(uuid);
+
+			scheduleUuidDeletion(newUuid);
+
+			return newUuid;
+
+		}
+
 }
