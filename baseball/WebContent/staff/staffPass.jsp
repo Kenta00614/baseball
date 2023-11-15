@@ -6,29 +6,23 @@
 <body>
     <div class="header">
     <h1>パスワード再設定</h1>
-        <form action="StaffPassComplete" method="get" onsubmit="return validatePassword()">
+        <form action="StaffPass" method="post">
         	<div class="control">
-	            <label for="mymail"> ID(メールアドレス)</label>
-	            <input id="mymail" type="email" name="mymail" required>
+	            <label for="id"> ID</label>
+	            <input id="id" type="id" name="id" required>
 			</div>
 			<div class="control">
-	            <label for="passcode"> パスワード</label>
-	            <input id="passcode" type="password" name="passcode"pattern="^(?=.*\d)(?=.*[a-zA-Z]).{8,}$"required>
+	            <label for="password"> パスワード</label>
+	            <input id="password" type="password" name="password"required>
         	</div>
-			<div class="control">
-	            <label for="passcode2"> パスワード(確認用)</label>
-	            <input id="passcode2" type="password" name="passcode2"required>
-	            <p class="note">※パスワードは8文字以上で、数字と英字が必要です。</p>
-        	</div>
-        	<div id="passwordError" style="color: red;"></div><br>
-    　　　　<button type="submit">再設定</button>
+    　　　　<p><input type="submit" value="Reset"></p>
 　　　　</form>
     </div>
 
     <script>
         function validatePassword() {
-            var password1 = document.getElementById("passcode").value;
-            var password2 = document.getElementById("passcode2").value;
+            var password1 = document.getElementById("password").value;
+            var password2 = document.getElementById("password2").value;
             var passwordError = document.getElementById("passwordError");
 
             if (password1 !== password2) {

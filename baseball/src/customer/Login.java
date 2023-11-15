@@ -1,6 +1,8 @@
 package customer;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -27,8 +29,19 @@ public class Login extends HttpServlet {
             if (spectator != null) {
                 // ログイン成功
                 HttpSession session = request.getSession();
-                session.setAttribute("spectator", spectator);
+
+                List<Spectator> spectatorIds = (List<Spectator>) session.getAttribute("spectatorIds");
+                if (spectatorIds == null) {
+                    spectatorIds = new ArrayList<>();
+                }
+
+                // SPECTATOR_IDをリストに追加
+                spectatorIds.add(spectator);
+
+                // 更新されたリストをセッションに保存
+                session.setAttribute("spectatorIds", spectatorIds);
                 response.sendRedirect("/baseball/customer/loginWelcome.jsp"); // ログイン成功ページへリダイレクト
+
             } else {
                 // ログイン失敗
                 HttpSession session = request.getSession();

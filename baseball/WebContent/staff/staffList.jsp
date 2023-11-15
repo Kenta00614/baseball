@@ -16,7 +16,7 @@
 　　　　</form>
     </div>
         <div class="header">
-        <form action="StaffPass" method="get">
+        <form action="StaffPassDisplay" method="get">
     　　　　<button type="submit">パスワード再設定</button>
 　　　　</form>
     </div>
