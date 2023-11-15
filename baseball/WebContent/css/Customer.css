@@ -21,8 +21,9 @@ h1 {
     text-decoration: underline;
 }
 
-/* 以下はmain.jspのスタイル */
-.title {
+
+/*--- main.jspのスタイル ---*/
+.tournament {
     text-align: center;
     font-size: 30px;
     margin: 20px 0;
@@ -44,8 +45,75 @@ h1 {
     font-size: 18px;
     margin: 20px 0;
 }
+/*--- login.jspのスタイル ---*/
 
-/* 以下はsignup.jspのスタイル */
+
+.login-box {
+    width: 400px;
+    margin: 30px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0px 0px 10px #ccc;
+}
+
+.login-title {
+    text-align: center;
+}
+
+.login-box>form {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-input {
+    margin-top: 10px;
+}
+
+.login-box>label {
+    margin-bottom: 5px;
+}
+
+.login-email,
+.login-pass {
+    padding: 10px;
+    margin-top: 5px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.login-btn {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.login-btn input {
+    padding: 10px 20px;
+    background-color: #000;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.login-btn input:active {
+    top: 3px;
+    box-shadow: none;
+}
+
+.registration {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.registration a {
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+}
+
+.registration a:hover {
+    text-decoration: underline;
+}
+/*--- signup.jspのスタイル ---*/
 .container {
     width: 600px;
     margin: 30px auto;
@@ -80,7 +148,7 @@ h1 {
     cursor: pointer;
 }
 
-/* ☒ボタンのスタイル */
+/*--- ☒ボタンのスタイル ---*/
 .square_btn {
     display: block;
     position: relative;
