@@ -13,7 +13,8 @@ import dao.SchoolDAO;
 @WebServlet("/staff/HighschoolRegistration")
 
 public class HighschoolRegistration extends HttpServlet {
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    @SuppressWarnings("unused")
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             SchoolDAO schoolDAO = new SchoolDAO();
             String[] schoolNames = new String[49];

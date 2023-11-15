@@ -3,6 +3,7 @@ package common;
 import java.util.HashMap;
 
 public class Constants {
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public static HashMap<Character,String> TIC_STA = new HashMap(){
 	      {
 	          put('1', "購入済み");
@@ -15,7 +16,8 @@ public class Constants {
 	        }
 	      };
 
-	 public static HashMap<String,String> SEAT_TYPE = new HashMap(){
+	 @SuppressWarnings({ "unchecked", "rawtypes" })
+	public static HashMap<String,String> SEAT_TYPE = new HashMap(){
 		      {
 		          put("0B", "バックネット裏");
 		          put("0F", "内野一塁側");

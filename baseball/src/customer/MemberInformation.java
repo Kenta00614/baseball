@@ -15,7 +15,8 @@ import bean.Spectator;
 @WebServlet("/customer/MemberInformation")
 public class MemberInformation extends HttpServlet {
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    @SuppressWarnings("unchecked")
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
 
         HttpSession session = request.getSession();

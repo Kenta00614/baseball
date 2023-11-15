@@ -16,7 +16,8 @@ import dao.SpectatorDAO;
 @WebServlet("/customer/Login")
 public class Login extends HttpServlet {
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    @SuppressWarnings("unchecked")
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         String mail = request.getParameter("mail");
         String password = request.getParameter("password");
