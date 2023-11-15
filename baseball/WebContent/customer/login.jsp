@@ -6,23 +6,21 @@
 </head>
 <body>
 
-	<h2>ログイン</h2>
+
     <div class="login-box">
+    <h1 class="login-title">ログイン</h1>
     　　<form action="Login" method="post">
-
-        <div class="input">
-            <label for="user-id">ID(email)</label>
-            <input name="mail" type="email" id="user-id" placeholder="✉Mail" required>
-        </div>
-        <div class="input">
-            <label for="password">Password</label>
-            <input name="password" type="password" id="password" placeholder="🔒Password" required>
-        </div>
-        <p><input type="submit" value="Login"></p>
-        	<br><p>初めてご利用の方はこちら<br><a href="ProvisionalSignupDisplay" class="btn">→新規会員登録へ</a></p>
+	        <div class="login-input">
+	            <label for="user-id">ID(email)</label>
+	            <input name="mail" type="email" id="user-id" placeholder="✉Mail" class="login-email" required>
+	        </div>
+	        <div class="login-input">
+	            <label for="password">Password</label>
+	            <input name="password" type="password" id="password" placeholder="🔒Password" class="login-pass" required>
+	        </div>
+	        <p class="login-btn"><input type="submit" value="Login"></p>
+	        <br><p class="registration">初めてご利用の方はこちら<br><a href="ProvisionalSignupDisplay" >→新規会員登録へ</a></p>
 　　　　</form>
-
-
 
 	</div>
 </body>
