@@ -9,7 +9,7 @@
     　　<form action="Login" method="post">
 
         <div class="input">
-            <label for="user-id">ID(email)</label>
+            <label for="user-id">ID</label>
             <input name="id" type="text" id="user-id" required>
         </div>
         <div class="input">
