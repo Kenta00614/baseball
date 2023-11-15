@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.ProvisionalDAO;
+import dao.SpectatorDAO;
 
 @WebServlet("/test")
 public class Test extends HttpServlet{
@@ -35,11 +36,12 @@ public class Test extends HttpServlet{
 		try{
 
 			ProvisionalDAO MD=new ProvisionalDAO();
+			SpectatorDAO SD=new SpectatorDAO();
 
 
-			UUID uuid=MD.insertIdAndUuid("bbbbb@i.softbank.ne.jp");
+			UUID uuid=MD.insertIdAndUuid("bbbbb@i.softbank.jp");
 
-			out.println(uuid);
+			int num=SD.updatePassword(uuid, "testsimasita");
 
 		}catch(Exception e){
 			e.printStackTrace(out);
