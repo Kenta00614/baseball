@@ -9,6 +9,8 @@ public class PurchaseExp extends Purchase{
 	private Date eventDate;
 	private Date saleAt;
 	private boolean isChild;
+	private int ordinalNum;
+
 	public String getTournamentName() {
 		return tournamentName;
 	}
@@ -38,6 +40,12 @@ public class PurchaseExp extends Purchase{
 	}
 	public void setChild(boolean isChild) {
 		this.isChild = isChild;
+	}
+	public int getOrdinalNum() {
+		return ordinalNum;
+	}
+	public void setOrdinalNum(int ordinalNum) {
+		this.ordinalNum = ordinalNum;
 	}
 
 }
