@@ -14,6 +14,16 @@ public class ProvisionalDAO extends DAO {
 
     private ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
 
+	private void scheduleUuidDeletion(UUID uuid) {
+	        scheduler.schedule(() -> {
+	            try {
+	                deleteProvisionalUser(uuid);
+	            } catch (Exception e) {
+	                e.printStackTrace();
+	            }
+	        }, 30, TimeUnit.MINUTES);
+	    }
+
 
 //	仮会員登録、作成したuuidを返す
 	public UUID insertProv(String mail, String name, String password, String tel) throws Exception{
@@ -41,16 +51,6 @@ public class ProvisionalDAO extends DAO {
 		}
 		return newUuid;
 	}
-
-	 private void scheduleUuidDeletion(UUID uuid) {
-	        scheduler.schedule(() -> {
-	            try {
-	                deleteProvisionalUser(uuid);
-	            } catch (Exception e) {
-	                e.printStackTrace();
-	            }
-	        }, 30, TimeUnit.MINUTES);
-	    }
 
 	    private void deleteProvisionalUser(UUID uuid) throws Exception {
 	        Connection con = getConnection();
@@ -101,4 +101,26 @@ public class ProvisionalDAO extends DAO {
 
 		return line;
 	}
+
+	//ID（メールアドレス）とuuidを登録する
+	public UUID insertIdAndUuid(String mail)throws Exception{
+
+		String uuid = UUID.randomUUID().toString();
+
+		Connection con=getConnection();
+		PreparedStatement st=con.prepareStatement("INSERT INTO PROVISIONAL VALUES (?,?,null,null,null,null)");
+
+		st.setString(1,uuid.toString());
+		st.setString(2, mail);
+
+		st.executeUpdate();
+
+		UUID newUuid = UUID.fromString(uuid);
+
+		scheduleUuidDeletion(newUuid);
+
+		return newUuid;
+
+	}
+
 }

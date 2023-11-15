@@ -99,7 +99,6 @@ public class PurchaseDAO extends DAO{
 		return list;
 	}
 
-		 //sql   select purchase.* ,tickets.status,tickets.is_child,match.event_date,match.sale_start_at,seat.type,tournament.ordinal_num,tournament.name from purchase join tickets on purchase.purchase_id = tickets.purchase_id join match on tickets.match_id = match.match_id join seat on tickets.seat_id = seat.seat_id join tournament on match.tournament_id = tournament.tournament_id where purchase.spectator_id = 1 and tickets.status = 3;
 
 	}
 
