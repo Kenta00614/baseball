@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import bean.Purchase;
+import bean.PurchaseExp;
 
 public class PurchaseDAO extends DAO{
 
@@ -69,4 +70,37 @@ public class PurchaseDAO extends DAO{
 
 	}
 
-}
+	//購入履歴の取得
+	public List<PurchaseExp> getPurchaseHistory(int spectatorId)throws Exception{
+
+		Connection con=getConnection();
+		PreparedStatement st=con.prepareStatement(" select purchase.* ,tickets.status,tickets.is_child,match.event_date,seat.type,tournament.ordinal_num,tournament.name from purchase join tickets on purchase.purchase_id = tickets.purchase_id join match on tickets.match_id = match.match_id join seat on tickets.seat_id = seat.seat_id join tournament on match.tournament_id = tournament.tournament_id where purchase.spectator_id = ? and tickets.status != 2");
+		st.setInt(1, spectatorId);
+
+		ResultSet rs=st.executeQuery();
+
+		List<PurchaseExp> list=new ArrayList<>();
+
+		while(rs.next()){
+			PurchaseExp p=new PurchaseExp();
+			p.setPurchaseId(rs.getInt("purchase_id"));
+			p.setOrdinalNum(rs.getInt("ordinal_num"));
+			p.setTournamentName(rs.getString("name"));
+			p.setEventDate(rs.getDate("event_date"));
+			p.setPurchaseAt(rs.getTimestamp("purchase_at"));
+			p.setSeatType(rs.getString("type"));
+			p.setChild(rs.getBoolean("is_child"));
+			list.add(p);
+		}
+
+		st.close();
+		con.close();
+
+		return list;
+	}
+
+
+	}
+
+
+

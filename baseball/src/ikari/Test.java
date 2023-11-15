@@ -2,13 +2,14 @@ package ikari;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.UUID;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import bean.Spectator;
+import dao.ProvisionalDAO;
 import dao.SpectatorDAO;
 
 @WebServlet("/test")
@@ -34,20 +35,13 @@ public class Test extends HttpServlet{
 
 		try{
 
-			Spectator mm=new Spectator();
-			mm.setSpectatorId(1);
-			mm.setName("大原太郎");
-			mm.setTel("08087654321");
+			ProvisionalDAO MD=new ProvisionalDAO();
+			SpectatorDAO SD=new SpectatorDAO();
 
 
+			UUID uuid=MD.insertIdAndUuid("bbbbb@i.softbank.jp");
 
-
-			SpectatorDAO MD=new SpectatorDAO();
-
-
-			int num=MD.changeSpectatorInfo(mm);
-
-			out.println(num);
+			int num=SD.updatePassword(uuid, "testsimasita");
 
 		}catch(Exception e){
 			e.printStackTrace(out);
