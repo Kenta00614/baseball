@@ -22,11 +22,7 @@ public class HighschoolRegistration extends HttpServlet {
                 schoolNames[i] = request.getParameter("schoolName" + (i + 1));
             }
 
-            if (sch > 0) {
-                // 登録成功時の処理
-            } else {
-                // 登録失敗時の処理
-            }
+
         } catch (Exception e) {
             throw new ServletException(e);
         }
