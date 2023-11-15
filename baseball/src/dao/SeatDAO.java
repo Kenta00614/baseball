@@ -114,4 +114,32 @@ public class SeatDAO extends DAO{
 
 		return list;
 	}
+
+//	座種でブロック名を取得
+	public ArrayList<String> getBlock(String seatType)throws Exception{
+		Connection con=getConnection();
+
+		PreparedStatement st=con.prepareStatement("select block from seat where type = ?");
+		st.setString(1, seatType);
+
+		ResultSet rs=st.executeQuery();
+
+		ArrayList<String> list= new ArrayList<>();
+
+		while(rs.next()){
+			try{
+				if(!(list.get(list.size()-1).equals(rs.getString("block")))){
+					list.add(rs.getString("block"));
+				}
+			}catch(Exception ArrayIndexOutOfBoundsException){
+				list.add(rs.getString("block"));
+			}
+		}
+
+		st.close();
+		con.close();
+
+		return list;
+
+	}
 }

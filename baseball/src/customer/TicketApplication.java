@@ -17,7 +17,11 @@ import dao.TournamentDAO;
 @WebServlet("/customer/TicketApplication")
 public class TicketApplication extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		値取得
+//ログインじゃなかったときの処理はログイン実装後に記述
+
+
+
+		//		値取得
 		int matchId = Integer.parseInt(request.getParameter("matchId"));
 
 		Match match=null;

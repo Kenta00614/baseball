@@ -27,11 +27,16 @@
 	</form>
 
 <%-- 座席選択 --%>
-       <form action="TicketSelectAll" method="post">
+    <form action="TicketSelectAll" method="post">
 <%-- 残数があれば表示 --%>
-       <c:if test="${remaining != -1}">
-       	<p>残数：${remaining }枚</p>
-       </c:if>
+	<c:choose>
+		<c:when test="${remaining == 0}">
+			<p>完売しています。</p>
+		</c:when>
+		<c:when test="${remaining > 0}">
+      		<p>残数：${remaining }枚</p>
+      	</c:when>
+	</c:choose>
 
 	<p>座種：
 		<select name="seat">

@@ -77,6 +77,7 @@ public class TicketsDAO extends DAO{
 			while(rs.next()){
 				Tickets t=new Tickets();
 				t.setTicketsId(rs.getString("tickets_id"));
+				t.setSeatId(rs.getString("seat_id"));
 				list.add(t);
 			}
 
