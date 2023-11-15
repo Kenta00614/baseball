@@ -23,7 +23,7 @@
 
 			<ul class="nav-menu">
 			<%
-                if (session.getAttribute("spectator") != null) {
+                if (session.getAttribute("spectatorIds") != null) {
                     // ログインしている時のメニュー
             %>
 			    <li class="nav__item"><a href="TicketPurchase">チケット購入</a></li>
