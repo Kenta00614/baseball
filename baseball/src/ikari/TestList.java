@@ -36,23 +36,23 @@ public class TestList extends HttpServlet{
 		try{
 			PurchaseDAO D = new PurchaseDAO();
 
-			//List<PurchaseExp> list=D.getPurchaseHistory(1);
+			List<PurchaseExp> list=D.getPurchaseHistory(1);
 
-		/*	for(PurchaseExp t : list){
+			for(PurchaseExp t : list){
 				out.println(t.getPurchaseId());
 				out.println("   ");
 				out.println(t.getSeatType());
+				out.println("   ");
+				out.println(t.getOrdinalNum());
 				out.println("   ");
 				out.println(t.getTournamentName());
 				out.println("   ");
 				out.println(t.getEventDate());
 				out.println("   ");
 				out.println(t.getPurchaseAt());
-				out.println("   ");
-				out.println(t.getSaleAt());
 
 			}
-			*/
+
 
 		}catch(Exception e){
 			e.printStackTrace(out);
