@@ -15,6 +15,7 @@ public class SeatDAO extends DAO{
 
 	private DataSource ds;
 
+	@SuppressWarnings("unused")
 	public int insert(List<Seat> list){
 		if (list == null || list.size() == 0) return 0;
 
@@ -113,9 +114,4 @@ public class SeatDAO extends DAO{
 
 		return list;
 	}
-
-
-
-
-
 }

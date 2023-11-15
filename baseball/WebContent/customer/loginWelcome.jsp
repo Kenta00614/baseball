@@ -10,6 +10,8 @@
 
     <div class="header">
         <form action="Main" method="get">
+        	<h2>ログインが完了しました。</h2>
+        	<p> <%= request.getParameter("user-id") %>さん、ようこそ。</p>
     　　　　<button type="submit">メイン画面へ</button>
 　　　　</form>
     </div>

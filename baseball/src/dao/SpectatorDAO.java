@@ -9,6 +9,7 @@ import bean.Provisional;
 import bean.Spectator;
 
 public class SpectatorDAO extends DAO {
+
 //メールとパスワード一致で観戦客情報を取得
 	public Spectator loginSpec(String mail, String password)
 		throws Exception {
@@ -121,6 +122,24 @@ public class SpectatorDAO extends DAO {
 
 		return num;
 
+	}
+
+	//観戦客情報を変更する
+	public int changeSpectatorInfo(Spectator spectator)throws Exception{
+
+		Connection con=getConnection();
+		PreparedStatement st=con.prepareStatement("UPDATE SPECTATOR SET NAME = ?,TEL = ? WHERE SPECTATOR_ID = ?");
+
+		st.setString(1, spectator.getName());
+		st.setString(2,spectator.getTel());
+		st.setInt(3, spectator.getSpectatorId());
+
+		int num = st.executeUpdate();
+
+		st.close();
+		con.close();
+
+		return num;
 
 	}
 
