@@ -12,7 +12,7 @@
 </head>
 <body>
 
-	<h1 class="title">第102回全国高等学校野球選手権大会</h1>
+	<h1 class="tournament">第102回全国高等学校野球選手権大会</h1>
 
 	<p class="date-center">8月1日 (木曜日)</p>
 

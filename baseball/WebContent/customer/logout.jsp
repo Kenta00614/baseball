@@ -4,17 +4,20 @@
 
 <html>
 <head>
+	<meta charset="UTF-8">
+	<title>logout</title>
 	<link rel="stylesheet" type="text/css"  href ="/baseball/css/Customer.css">
 </head>
 <body>
     <div class="header">
-    	<span class="square_btn"></span><!-- ☒ボタン -->
-        <form action="" method="get">
-        <p>ログアウトします。よろしいですか？</p>
+	    <div class="logout-popup">
+	    	<span class="square_btn"></span><!-- ☒ボタン -->
+	        <form action="" method="get">
+	        <p>ログアウトします。よろしいですか？</p>
 
-    　　　　<button type="submit">ログアウト</button>
-　　　　</form>
-    </div>
-
+	    　　　　<button type="submit">ログアウト</button>
+	　　　　</form>
+	    </div>
+	</div>
 </body>
 </html>

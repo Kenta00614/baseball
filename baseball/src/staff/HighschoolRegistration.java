@@ -8,11 +8,23 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.SchoolDAO;
+
 @WebServlet("/staff/HighschoolRegistration")
+
 public class HighschoolRegistration extends HttpServlet {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        try {
+            SchoolDAO schoolDAO = new SchoolDAO();
+            String[] schoolNames = new String[49];
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+            for (int i = 0; i < 49; i++) {
+                schoolNames[i] = request.getParameter("schoolName" + (i + 1));
+            }
 
-        request.getRequestDispatcher("/staff/highschoolRegistration.jsp").forward(request, response);
+
+        } catch (Exception e) {
+            throw new ServletException(e);
+        }
     }
 }
