@@ -120,4 +120,20 @@ public class StaffDAO extends DAO {
 
 		return list;
 	}
+
+	//職員情報の削除
+	public int deleteStaff(String staffId)throws Exception{
+
+		Connection con=getConnection();
+		PreparedStatement st=con.prepareStatement("delete from staff where staff_id = ?");
+		st.setString(1, staffId);
+
+		int num = st.executeUpdate();
+
+		st.close();
+		con.close();
+
+		return num;
+
+	}
 }

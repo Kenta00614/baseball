@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.TicketsDAO;
+import dao.StaffDAO;
 
 @WebServlet("/test")
 public class Test extends HttpServlet{
@@ -33,10 +33,10 @@ public class Test extends HttpServlet{
 
 		try{
 
-			TicketsDAO D = new TicketsDAO();
-			String ticketsId="0B0A031r00202403181000";
+			StaffDAO D = new StaffDAO();
+			String staffId="test";
 
-			int num=D.changePaid(ticketsId);
+			int num=D.deleteStaff(staffId);
 			out.println(num);
 
 
