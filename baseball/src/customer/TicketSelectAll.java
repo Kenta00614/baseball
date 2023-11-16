@@ -33,15 +33,13 @@ public class TicketSelectAll extends HttpServlet {
 		Tournament tour=null;
 		List<Tickets> tickets=new ArrayList<>();
 		List<String> block=new ArrayList<>();
-		List<Integer> blockRemain=new ArrayList<>();
-
 
     	TicketsDAO ticketDAO=new TicketsDAO();
    	 	MatchDAO matchDAO=new MatchDAO();
    	 	TournamentDAO tourDAO=new TournamentDAO();
    	 	SeatDAO seatDAO=new SeatDAO();
     	try {
-//    		チケット残数
+//    		座種のチケット残数
     		tickets = ticketDAO.getTypeSurplus(seat,matchId);
 			remaining=tickets.size();
 			match=matchDAO.getMatchInfo(matchId);
@@ -56,15 +54,8 @@ public class TicketSelectAll extends HttpServlet {
 				request.getRequestDispatcher("/customer/ticketApplication.jsp").forward(request, response);
 			}else{
 				block = seatDAO.getBlock(seat);
-				for(int i=0; i<block.size(); i++){
-					int a=ticketDAO.getBlockSurplus(block.get(i), matchId).size();
-					blockRemain.add(a);
-				}
 			}
-
-
 			request.setAttribute("block", block);
-			request.setAttribute("blockRemain", blockRemain);
 			request.setAttribute("matchId", matchId);
 			request.setAttribute("seat", seat);
 			request.setAttribute("tour",tour);
