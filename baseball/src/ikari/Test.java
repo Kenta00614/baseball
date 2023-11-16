@@ -2,7 +2,6 @@ package ikari;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Date;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -35,12 +34,10 @@ public class Test extends HttpServlet{
 		try{
 
 			TicketsDAO D = new TicketsDAO();
-			String date= "2023-12-02";
-			Date newDate = Date.valueOf(date);
+			String ticketsId="0B0A002r00202403181000";
 
-			int num=D.changePostpone(newDate);
-
-			out.println(num);
+			String status=D.getStatus(ticketsId);
+			out.println(status);
 
 
 		}catch(Exception e){
