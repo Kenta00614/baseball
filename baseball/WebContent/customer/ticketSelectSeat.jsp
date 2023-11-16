@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@include file="header.jsp"%>
 
 <html>
@@ -30,9 +32,14 @@
 	</form>
 <%-- 席選択 --%>
 	<form action="TicketConfirm" method="get">
-		<input type="hidden" id="row" value="${row }">
-		<input type="hidden" id="col" value="${col }">
-		<div id="seats"></div>
+	<%--
+		<c:forEach begin="0" end="${fn:length(step)-1 }" step="1" var="i">
+			<c:forEach var="num" items="${num}">
+				<div id="seats"></div>
+			</c:forEach>
+			<br>
+		</c:forEach>
+	 --%>
 		<button id="submit" type="submit">次へ</button>
 	</form>
 
@@ -45,6 +52,7 @@
         var row = document.getElementById('row');
         var col = document.getElementById('col');
         var seatArray = [];
+        <%--
         for (var i = 0; i < col; i++) {
             for (var j = 0; j < row; j++) {
                 var seat = document.createElement('div');
@@ -58,6 +66,7 @@
             }
             seats.appendChild(document.createElement('br'));
         }
+        --%>
 
         document.getElementById('submit').addEventListener('click', function() {
             var selectedSeats = seatArray.filter(function(seat) {
