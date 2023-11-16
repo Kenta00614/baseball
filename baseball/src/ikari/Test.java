@@ -2,11 +2,14 @@ package ikari;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Date;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import dao.TicketsDAO;
 
 @WebServlet("/test")
 public class Test extends HttpServlet{
@@ -31,6 +34,13 @@ public class Test extends HttpServlet{
 
 		try{
 
+			TicketsDAO D = new TicketsDAO();
+			String date= "2023-12-02";
+			Date newDate = Date.valueOf(date);
+
+			int num=D.changePostpone(newDate);
+
+			out.println(num);
 
 
 		}catch(Exception e){
