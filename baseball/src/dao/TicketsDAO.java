@@ -235,4 +235,20 @@ public class TicketsDAO extends DAO{
 		return num;
 	}
 
+	//共有ステータスを共有済みに変更する
+	public int ticketsShare(String ticketsId)throws Exception{
+
+		Connection con=getConnection();
+		PreparedStatement st=con.prepareStatement("update tickets set is_shared = true where tickets_id = ?");
+		st.setString(1, ticketsId);
+
+		int num = st.executeUpdate();
+
+		st.close();
+		con.close();
+
+		return num;
+
+	}
+
 }
