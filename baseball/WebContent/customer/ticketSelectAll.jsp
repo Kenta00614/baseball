@@ -42,6 +42,10 @@
 </c:choose>
     <hr>
 
+    <c:if test="${remain != -1}">
+    	購入枚数分用意できません
+    </c:if>
+
 <%-- 戻るボタン --%>
 	<form action="TicketApplication" method="post">
 		<input type="hidden" name="matchId" value="${matchId }">
@@ -59,7 +63,6 @@
 		<input type="hidden" name="matchId" value="${matchId }">
 		<input type="hidden" name="count" value="${count }">
 		<input type="hidden" name="seat" value="${seat }">
-		<input type="hidden" name="tour" value="${tour }">
 		<button type="submit">次へ</button>
 	</form>
 </body>
