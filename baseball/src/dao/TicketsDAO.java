@@ -186,4 +186,22 @@ public class TicketsDAO extends DAO{
 
 		return num;
 	}
+
+	//試合中止の際のチケットステータスを払い戻し可に変更する
+	public int changePostpone(Date date)throws Exception{
+
+		Connection con=getConnection();
+		PreparedStatement st=con.prepareStatement("UPDATE tickets SET status = '6' WHERE match_id IN (SELECT match_id FROM match WHERE match.event_date = ?)");
+		st.setDate(1, date);
+
+		int num=st.executeUpdate();
+
+		st.close();
+		con.close();
+
+		return num;
+
+	}
+
+
 }

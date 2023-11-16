@@ -119,6 +119,9 @@ public class ProvisionalDAO extends DAO {
 
 			scheduleUuidDeletion(newUuid);
 
+			st.close();
+			con.close();
+
 			return newUuid;
 
 		}
@@ -141,6 +144,9 @@ public class ProvisionalDAO extends DAO {
 
 			scheduleUuidDeletion(newUuid);
 
+			st.close();
+			con.close();
+
 			return newUuid;
 
 		}
@@ -161,6 +167,9 @@ public class ProvisionalDAO extends DAO {
 				p.setSpectatorId(rs.getInt("spectator_id"));
 				p.setMail(rs.getString("mail"));
 			}
+
+			st.close();
+			con.close();
 
 			return p;
 		}
