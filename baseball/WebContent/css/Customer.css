@@ -186,8 +186,48 @@ h1 {
 	border: 1px solid #a9a9a9;
     box-shadow: 0px 0px 15px #a9a9a9;
 	margin: 20px;
+	margin-left:75px;
     border-left: solid 15px #696969;
     padding: 10px;
-    width: 900px;
+    width: 800px;
     background: #fffafa;
+    font-weight: bold;
  }
+
+ .before-reception{
+ 	color: #808080;
+ 	font-weight: bold;
+ 	margin-right: 500px; /* テキストとボタンの間隔を調整 */
+ 	margin-left: 20px;
+ 	border: 2px solid #99ccff;
+ 	padding: 5px;
+ }
+
+ .now-reception{
+ 	color: #dc143c;
+ 	background-color: #ffcccc;
+ 	font-weight: bold;
+ 	margin-right: 500px; /* テキストとボタンの間隔を調整 */
+ 	margin-left: 20px;
+ 	border: 2px solid #ffb6c1;
+ 	padding: 5px;
+
+ }
+
+.apply{
+    display: flex;
+    align-items: center;
+
+}
+
+.apply-btn{
+    margin-right: 0; /* ボタンを右端に配置 */
+    margin-bottom: 10px;
+    background-color: #808080;
+    color: white;
+    padding: 15px 25px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+
+}
