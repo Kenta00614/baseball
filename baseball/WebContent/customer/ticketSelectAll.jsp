@@ -49,15 +49,17 @@
 	</form>
 
 <%-- ブロック選択 --%>
-	<form action="TicketSelectBlock" method="get">
+	<form action="TicketSelectSeat" method="post">
+<%-- ドロップダウン --%>
 		<select name="block">
 			<c:forEach begin="0" end="${fn:length(block)-1 }" step="1" var="i">
-			<p>${block[i] }</p>
-				<c:if test="${blockRemain[i] > 0} ">
-					<option value="${block[i] }">${block[i] }</option>
-				</c:if>
+				<option value="${block[i] }">${ fn:substring(block[i], 2, fn:length(block[i]))} </option>
 			</c:forEach>
 		</select>
+		<input type="hidden" name="matchId" value="${matchId }">
+		<input type="hidden" name="count" value="${count }">
+		<input type="hidden" name="seat" value="${seat }">
+		<input type="hidden" name="tour" value="${tour }">
 		<button type="submit">次へ</button>
 	</form>
 </body>

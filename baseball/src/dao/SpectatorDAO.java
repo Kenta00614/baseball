@@ -164,4 +164,20 @@ public class SpectatorDAO extends DAO {
 
 	}
 
+	//メールアドレスを再設定する
+	public int updateMail(int spectatorId,String mail,UUID uuid)throws Exception{
+
+		Connection con=getConnection();
+		PreparedStatement st=con.prepareStatement("update spectator set mail = ? where spectator_id = ?");
+		st.setString(1, mail);
+		st.setInt(2, spectatorId);
+
+		int num = st.executeUpdate();
+
+		ProvisionalDAO PD = new ProvisionalDAO();
+		PD.delUuid(uuid);
+
+		return num;
+
+	}
 }
