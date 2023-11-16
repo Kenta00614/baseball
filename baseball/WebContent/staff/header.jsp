@@ -22,7 +22,7 @@
 			        <div class="dropdown">
 						<a href="">試合情報登録</a>
 						<a href="">試合情報表示</a>
-						<a href="TournamentRegistrationInput">大会情報登録</a>
+						<a href="TournamentRegistrationInputDisplay">大会情報登録</a>
 				    </div>
 				</li>
 			    <li class="nav__item"><a href="HighschoolList">高校情報</a></li>
@@ -40,7 +40,7 @@
 			        <div class="dropdown">
 						<a href="">試合情報登録</a>
 						<a href="">試合情報表示</a>
-						<a href="TournamentRegistrationInput">大会情報登録</a>
+						<a href="TournamentRegistrationInputDisplay">大会情報登録</a>
 				    </div>
 				</li>
 			    <li class="nav__item"><a href="HighschoolList">高校情報</a></li>
