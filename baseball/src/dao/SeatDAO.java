@@ -154,9 +154,12 @@ public class SeatDAO extends DAO{
 
 		ArrayList<Seat> list= new ArrayList<>();
 
-//		while(rs.next()){
-//			list.add(rs.getString("block"));
-//		}
+		while(rs.next()){
+			Seat s=new Seat();
+			s.setStep(rs.getString("step"));
+			s.setNumber(rs.getInt("number"));
+			list.add(s);
+		}
 
 		st.close();
 		con.close();
