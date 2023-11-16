@@ -60,6 +60,7 @@ public class TicketSelectAll extends HttpServlet {
 			request.setAttribute("seat", seat);
 			request.setAttribute("tour",tour);
 			request.setAttribute("count", count);
+			request.setAttribute("remain", -1);
 			request.getRequestDispatcher("/customer/ticketSelectAll.jsp").forward(request, response);
 		} catch (Exception e) {
 			e.printStackTrace();
