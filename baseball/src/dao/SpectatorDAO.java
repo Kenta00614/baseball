@@ -160,6 +160,9 @@ public class SpectatorDAO extends DAO {
 
 		PD.delUuid(uuid);
 
+		st.close();
+		con.close();
+
 		return num;
 
 	}
@@ -176,6 +179,9 @@ public class SpectatorDAO extends DAO {
 
 		ProvisionalDAO PD = new ProvisionalDAO();
 		PD.delUuid(uuid);
+
+		st.close();
+		con.close();
 
 		return num;
 

@@ -2,6 +2,7 @@ package ikari;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.annotation.WebServlet;
@@ -9,8 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import bean.PurchaseExp;
-import dao.PurchaseDAO;
+import bean.TicketsExp;
+import dao.TicketsDAO;
 
 @WebServlet("/testList")
 public class TestList extends HttpServlet{
@@ -34,23 +35,44 @@ public class TestList extends HttpServlet{
 		out.println("<body>");
 
 		try{
-			PurchaseDAO D = new PurchaseDAO();
+			TicketsDAO D = new TicketsDAO();
 
-			List<PurchaseExp> list=D.getPurchaseHistory(1);
+			Date today= new Date();
 
-			for(PurchaseExp t : list){
-				out.println(t.getPurchaseId());
+			java.sql.Date date = new java.sql.Date(today.getTime());
+
+			List<TicketsExp> list=D.viewTickets(0, date);
+
+			for(TicketsExp t : list){
+				out.println(t.getTicketsId());
 				out.println("   ");
-				out.println(t.getSeatType());
+				out.println(t.getStatus());
+				out.println("   ");
+				out.println(t.getIsShared());
+				out.println("   ");
+				out.println(t.isChild());
+				out.println("   ");
+				out.println(t.getEventDate());
+				out.println("   ");
+				out.println(t.getSpectatorId());
+				out.println("   ");
+				out.println(t.getSeatId());
+				out.println("   ");
+				out.println(t.getType());
+				out.println("   ");
+				out.println(t.getStep());
+				out.println("   ");
+				out.println(t.getNumber());
+				out.println("   ");
+				out.println(t.getGate());
+				out.println("   ");
+				out.println(t.getPassage());
+				out.println("   ");
+				out.println(t.getBlock());
 				out.println("   ");
 				out.println(t.getOrdinalNum());
 				out.println("   ");
 				out.println(t.getTournamentName());
-				out.println("   ");
-				out.println(t.getEventDate());
-				out.println("   ");
-				out.println(t.getPurchaseAt());
-
 			}
 
 

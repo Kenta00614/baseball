@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.TicketsDAO;
+
 @WebServlet("/test")
 public class Test extends HttpServlet{
 
@@ -31,6 +33,10 @@ public class Test extends HttpServlet{
 
 		try{
 
+			TicketsDAO D = new TicketsDAO();
+
+			int num=D.ticketsShare("0B0A032r00202403181000");
+			out.println(num);
 
 
 		}catch(Exception e){

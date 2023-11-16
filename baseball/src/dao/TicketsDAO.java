@@ -11,6 +11,7 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 import bean.Tickets;
+import bean.TicketsExp;
 
 public class TicketsDAO extends DAO{
 
@@ -186,4 +187,110 @@ public class TicketsDAO extends DAO{
 
 		return num;
 	}
+
+	//試合中止の際のチケットステータスを払い戻し可に変更する
+	public int changePostpone(Date date)throws Exception{
+
+		Connection con=getConnection();
+		PreparedStatement st=con.prepareStatement("UPDATE tickets SET status = '6' WHERE match_id IN (SELECT match_id FROM match WHERE match.event_date = ?)");
+		st.setDate(1, date);
+
+		int num=st.executeUpdate();
+
+		st.close();
+		con.close();
+
+		return num;
+
+	}
+
+	//チケットステータスを取得する
+	public String getStatus(String ticketsId)throws Exception{
+
+		Connection con=getConnection();
+		PreparedStatement st=con.prepareStatement("select tickets.status from tickets where tickets_id = ?");
+		st.setString(1, ticketsId);
+
+		ResultSet rs = st.executeQuery();
+
+		while(rs.next()){
+			String status=rs.getString("status");
+			return status;
+		}
+
+		return null;
+
+	}
+
+	//チケットステータスを払い戻し済みに変更する
+	public int changePaid(String ticketsId)throws Exception{
+
+		Connection con=getConnection();
+		PreparedStatement st=con.prepareStatement("update tickets set status = 5 where tickets_id = ?");
+		st.setString(1,ticketsId);
+
+		int num = st.executeUpdate();
+
+		st.close();
+		con.close();
+		return num;
+	}
+
+	//共有ステータスを共有済みに変更する
+	public int ticketsShare(String ticketsId)throws Exception{
+
+		Connection con=getConnection();
+		PreparedStatement st=con.prepareStatement("update tickets set is_shared = true where tickets_id = ?");
+		st.setString(1, ticketsId);
+
+		int num = st.executeUpdate();
+
+		st.close();
+		con.close();
+
+		return num;
+
+	}
+
+	//チケット表示（購入者）: 購入者のチケットを表示する
+	public List<TicketsExp> viewTickets(int spectatorId,Date today)throws Exception{
+
+		Connection con=getConnection();
+		PreparedStatement st=con.prepareStatement("SELECT tickets_id,status,is_shared,is_child,event_date, purchase.spectator_id, seat.*,tournament.ordinal_num,tournament.name FROM TICKETS join match on tickets.match_id = match.match_id join purchase on tickets.purchase_id = purchase.purchase_id join seat on tickets.seat_id = seat.seat_id join tournament on match.tournament_id = tournament.tournament_id where purchase.spectator_id = ? and event_date <= ?");
+		st.setInt(1, spectatorId);
+		st.setDate(2, today);
+
+		ResultSet rs=st.executeQuery();
+
+		List<TicketsExp> list=new ArrayList<>();
+
+		while(rs.next()){
+			TicketsExp t=new TicketsExp();
+			t.setTicketsId(rs.getString("tickets_id"));
+			t.setStatus(rs.getString("status"));
+			t.setShared(rs.getBoolean("is_shared"));
+			t.setChild(rs.getBoolean("is_child"));
+			t.setEventDate(rs.getDate("event_date"));
+			t.setSpectatorId(rs.getInt("spectator_id"));
+			t.setSeatId(rs.getString("seat_id"));
+			t.setType(rs.getString("type"));
+			t.setStep(rs.getString("step"));
+			t.setNumber(rs.getInt("number"));
+			t.setGate(rs.getInt("gate"));
+			t.setPassage(rs.getString("passage"));
+			t.setBlock(rs.getString("block"));
+			t.setOrdinalNum(rs.getInt("ordinal_num"));
+			t.setTournamentName(rs.getString("name"));
+
+			list.add(t);
+		}
+
+		st.close();
+		con.close();
+
+		return list;
+
+	}
+
+
 }
