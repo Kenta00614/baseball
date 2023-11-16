@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import bean.Provisional;
 import dao.ProvisionalDAO;
 
 @WebServlet("/test")
@@ -34,11 +35,19 @@ public class Test extends HttpServlet{
 
 		try{
 
+			Provisional p=new Provisional();
 			ProvisionalDAO MD=new ProvisionalDAO();
 
-			UUID uuid=MD.insertIdAndMail(5, "ddddd@yahoo.ne.jp");
+			String uuid = "22ca95f0-d0ba-4e33-bd1d-46913e903c5c";
+			UUID newUuid=UUID.fromString(uuid);
 
-			System.out.print(uuid);
+			p=MD.getIdAndNewMail(newUuid);
+
+			int Id=p.getSpectatorId();
+			String mail=p.getMail();
+
+			System.out.println(Id);
+			System.out.println(mail);
 
 		}catch(Exception e){
 			e.printStackTrace(out);

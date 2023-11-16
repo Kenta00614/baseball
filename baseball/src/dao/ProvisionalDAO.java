@@ -145,4 +145,24 @@ public class ProvisionalDAO extends DAO {
 
 		}
 
+		//uuidで会員IDとメールアドレスを取得する
+		public Provisional getIdAndNewMail(UUID uuid)throws Exception{
+
+			Connection con=getConnection();
+			PreparedStatement st=con.prepareStatement("select * from provisional where uuid=?");
+
+			st.setString(1, uuid.toString());
+
+			ResultSet rs=st.executeQuery();
+
+			Provisional p=new Provisional();
+
+			while(rs.next()){
+				p.setSpectatorId(rs.getInt("spectator_id"));
+				p.setMail(rs.getString("mail"));
+			}
+
+			return p;
+		}
+
 }
