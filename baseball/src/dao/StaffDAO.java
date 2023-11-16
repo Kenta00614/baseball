@@ -4,10 +4,13 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import bean.Staff;
 
 public class StaffDAO extends DAO {
+
 //IDとパスワード一致で職員情報を取得。生年月日とパスワードが同じならnull
 	public Staff loginStaff(String id, String password)throws Exception {
 		Staff staff=null;
@@ -90,5 +93,31 @@ public class StaffDAO extends DAO {
 			st.close();
 			con.close();
 		return line;
+	}
+
+	//職員情報を取得する
+	public List<Staff> selectStaffAll()throws Exception{
+
+		Connection con=getConnection();
+		PreparedStatement st=con.prepareStatement("select * from staff");
+
+		ResultSet rs=st.executeQuery();
+
+		List<Staff> list=new ArrayList<>();
+
+		while(rs.next()){
+			Staff s=new Staff();
+			s.setStaffId(rs.getString("staff_id"));
+			s.setName(rs.getString("name"));
+			s.setBirth(rs.getDate("birth"));
+			s.setPosition(rs.getString("position"));
+
+			list.add(s);
+		}
+
+		st.close();
+		con.close();
+
+		return list;
 	}
 }

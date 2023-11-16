@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import bean.PurchaseExp;
-import dao.PurchaseDAO;
+import bean.Staff;
+import dao.StaffDAO;
 
 @WebServlet("/testList")
 public class TestList extends HttpServlet{
@@ -34,22 +34,19 @@ public class TestList extends HttpServlet{
 		out.println("<body>");
 
 		try{
-			PurchaseDAO D = new PurchaseDAO();
+			StaffDAO D = new StaffDAO();
 
-			List<PurchaseExp> list=D.getPurchaseHistory(1);
+			List<Staff> list=D.selectStaffAll();
 
-			for(PurchaseExp t : list){
-				out.println(t.getPurchaseId());
+			for(Staff t : list){
+				out.println(t.getStaffId());
 				out.println("   ");
-				out.println(t.getSeatType());
+				out.println(t.getName());
 				out.println("   ");
-				out.println(t.getOrdinalNum());
+				out.println(t.getBirth());
 				out.println("   ");
-				out.println(t.getTournamentName());
-				out.println("   ");
-				out.println(t.getEventDate());
-				out.println("   ");
-				out.println(t.getPurchaseAt());
+				out.println(t.getPosition());
+
 
 			}
 
