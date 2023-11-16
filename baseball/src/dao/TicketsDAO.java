@@ -222,6 +222,17 @@ public class TicketsDAO extends DAO{
 	}
 
 	//チケットステータスを払い戻し済みに変更する
+	public int changePaid(String ticketsId)throws Exception{
 
+		Connection con=getConnection();
+		PreparedStatement st=con.prepareStatement("update tickets set status = 5 where tickets_id = ?");
+		st.setString(1,ticketsId);
+
+		int num = st.executeUpdate();
+
+		st.close();
+		con.close();
+		return num;
+	}
 
 }

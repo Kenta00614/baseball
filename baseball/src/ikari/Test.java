@@ -34,10 +34,10 @@ public class Test extends HttpServlet{
 		try{
 
 			TicketsDAO D = new TicketsDAO();
-			String ticketsId="0B0A002r00202403181000";
+			String ticketsId="0B0A031r00202403181000";
 
-			String status=D.getStatus(ticketsId);
-			out.println(status);
+			int num=D.changePaid(ticketsId);
+			out.println(num);
 
 
 		}catch(Exception e){
