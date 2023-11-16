@@ -8,7 +8,7 @@
 </head>
 <body>
 <%-- 大会名 --%>
-    <h3>第${tour.ordinalNum }回　${tour.name }</h3>
+    <h1>第${tour.ordinalNum }回　${tour.name }</h1>
 <%-- 日付 --%>
     <p>${match.eventDate }(${match.eventDayOfWeek })</p>
     <p>会場：甲子園球場</p>

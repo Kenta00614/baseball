@@ -203,5 +203,52 @@ public class TicketsDAO extends DAO{
 
 	}
 
+	//チケットステータスを取得する
+	public String getStatus(String ticketsId)throws Exception{
+
+		Connection con=getConnection();
+		PreparedStatement st=con.prepareStatement("select tickets.status from tickets where tickets_id = ?");
+		st.setString(1, ticketsId);
+
+		ResultSet rs = st.executeQuery();
+
+		while(rs.next()){
+			String status=rs.getString("status");
+			return status;
+		}
+
+		return null;
+
+	}
+
+	//チケットステータスを払い戻し済みに変更する
+	public int changePaid(String ticketsId)throws Exception{
+
+		Connection con=getConnection();
+		PreparedStatement st=con.prepareStatement("update tickets set status = 5 where tickets_id = ?");
+		st.setString(1,ticketsId);
+
+		int num = st.executeUpdate();
+
+		st.close();
+		con.close();
+		return num;
+	}
+
+	//共有ステータスを共有済みに変更する
+	public int ticketsShare(String ticketsId)throws Exception{
+
+		Connection con=getConnection();
+		PreparedStatement st=con.prepareStatement("update tickets set is_shared = true where tickets_id = ?");
+		st.setString(1, ticketsId);
+
+		int num = st.executeUpdate();
+
+		st.close();
+		con.close();
+
+		return num;
+
+	}
 
 }
