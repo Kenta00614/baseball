@@ -292,5 +292,44 @@ public class TicketsDAO extends DAO{
 
 	}
 
+	//払い戻し可のチケットを表示する
+	public List<TicketsExp> viewTicketsRefund(int spectatorId)throws Exception{
+
+		Connection con=getConnection();
+		PreparedStatement st=con.prepareStatement("SELECT tickets_id,status,is_shared,is_child,event_date, purchase.spectator_id, seat.*,tournament.ordinal_num,tournament.name FROM TICKETS join match on tickets.match_id = match.match_id join purchase on tickets.purchase_id = purchase.purchase_id join seat on tickets.seat_id = seat.seat_id join tournament on match.tournament_id = tournament.tournament_id where purchase.spectator_id = ? and tickets.status = 6;");
+		st.setInt(1, spectatorId);
+
+		ResultSet rs=st.executeQuery();
+
+		List<TicketsExp> list=new ArrayList<>();
+
+		while(rs.next()){
+			TicketsExp t=new TicketsExp();
+			t.setTicketsId(rs.getString("tickets_id"));
+			t.setStatus(rs.getString("status"));
+			t.setShared(rs.getBoolean("is_shared"));
+			t.setChild(rs.getBoolean("is_child"));
+			t.setEventDate(rs.getDate("event_date"));
+			t.setSpectatorId(rs.getInt("spectator_id"));
+			t.setSeatId(rs.getString("seat_id"));
+			t.setType(rs.getString("type"));
+			t.setStep(rs.getString("step"));
+			t.setNumber(rs.getInt("number"));
+			t.setGate(rs.getInt("gate"));
+			t.setPassage(rs.getString("passage"));
+			t.setBlock(rs.getString("block"));
+			t.setOrdinalNum(rs.getInt("ordinal_num"));
+			t.setTournamentName(rs.getString("name"));
+
+			list.add(t);
+		}
+
+		st.close();
+		con.close();
+
+		return list;
+	}
+
+
 
 }

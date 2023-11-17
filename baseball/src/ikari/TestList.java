@@ -2,7 +2,6 @@ package ikari;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Date;
 import java.util.List;
 
 import javax.servlet.annotation.WebServlet;
@@ -37,11 +36,7 @@ public class TestList extends HttpServlet{
 		try{
 			TicketsDAO D = new TicketsDAO();
 
-			Date today= new Date();
-
-			java.sql.Date date = new java.sql.Date(today.getTime());
-
-			List<TicketsExp> list=D.viewTickets(0, date);
+			List<TicketsExp> list=D.viewTicketsRefund(1);
 
 			for(TicketsExp t : list){
 				out.println(t.getTicketsId());
