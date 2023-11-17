@@ -21,6 +21,16 @@ h1 {
     text-decoration: underline;
 }
 
+.return-btn{				/*戻るボタンのスタイル*/
+    margin-bottom: 10px;
+    background-color: #808080;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 20px;
+}
+
 
 /*--- main.jspのスタイル ---*/
 .tournament {
@@ -250,8 +260,27 @@ h1 {
 .tiket-soldout{
 	color: #dc143c;
 	font-size: 20px;
-
 }
+
+
+.choice-button {
+	margin: 10px;
+    border: 3px solid transparent;
+    color: #ffffff;
+    background: #808080;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 20px;
+    /* other styles */
+}
+
+.choice-button:hover {
+    background: transparent;
+    color: #222;
+    border-color: #696969;
+    background: #c0c0c0;
+}
+
 
 
 /*テーブル設定*/

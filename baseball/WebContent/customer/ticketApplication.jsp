@@ -7,6 +7,9 @@
 	<link rel="stylesheet" type="text/css"  href ="/baseball/css/Customer.css">
 </head>
 <body>
+
+<%-- 前へ戻るボタン --%>
+	<br><a href="TicketPurchase" type="submit" class="return-btn">戻る</a>
 <%-- 大会名 --%>
     <h1>第${tour.ordinalNum }回　${tour.name }</h1>
 
@@ -27,10 +30,6 @@
 	    <tr><th>受け取り方法</th><td>QRチケット</td></tr>
 	</table></div><br>
 
-	<%-- 前へ戻るボタン --%>
-		<form action="TicketPurchase" method="get">
-	   		<button type="submit">前へ戻る</button>
-		</form>
 
 	<div class="seat-selection">
 		<h2 class="content-selection">申し込み内容選択</h2>
@@ -60,7 +59,7 @@
 				</c:forEach>
 			</select>
 		</p>
-		   	<button type="submit">座席選択へ進む</button>
+		   	<button type="submit" class="choice-button">座席選択へ進む</button>
 		   	<input type="hidden" value="${match.matchId }" name="matchId">
 		</form>
 	</div>
