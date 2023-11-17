@@ -186,4 +186,40 @@ public class SpectatorDAO extends DAO {
 		return num;
 
 	}
+
+	//ポイントの付与
+	public int addPoint(int spectatorId,int price)throws Exception{
+
+		int point = (int) (price * 0.2);
+
+		Connection con = getConnection();
+		PreparedStatement st=con.prepareStatement("select * from spectator where spectator_id = ?");
+		st.setInt(1, spectatorId);
+
+		ResultSet rs=st.executeQuery();
+		int pointPrev = 0;
+		int newPoint = 0;
+
+		while(rs.next()){
+			pointPrev = rs.getInt("point");
+			newPoint = pointPrev + point;
+		}
+
+		if(newPoint == 0){
+			return 0;
+		}
+
+		PreparedStatement stPoint = con.prepareStatement("update spectator set point = ? where spectator_id = ?");
+		stPoint.setInt(1, newPoint);
+		stPoint.setInt(2, spectatorId);
+
+		stPoint.executeUpdate();
+
+		st.close();
+		stPoint.close();
+		con.close();
+
+		return point;
+	}
+
 }
