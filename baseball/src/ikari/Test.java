@@ -34,9 +34,11 @@ public class Test extends HttpServlet{
 		try{
 
 			TicketsDAO D=new TicketsDAO();
-			int num = D.statusAdmission("0B0A034r00202403181000");
+			String spectatorId = D.statusLeave("0B0A001r00202403181000");
 
-			out.println(num);
+
+
+			out.println(spectatorId);
 
 
 
