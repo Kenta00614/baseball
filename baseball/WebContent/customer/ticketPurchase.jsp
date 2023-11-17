@@ -12,38 +12,38 @@
 	<%-- 第何回　～大会のヘッダー --%>
     <h1>第${lastTour.ordinalNum }回${lastTour.name }</h1>
     <c:forEach var="mat" items="${match}">
-    <div class="pre-order">
 	    <c:choose>
 
-
 	    <%-- 販売日の7日以前は表示しない --%>
-	    	<c:when test="${!mat.dispFlg }">
-	    	</c:when>
-	    	<c:otherwise>
-	    		<p>受付期間${mat.saleStartAt}(${mat.saleDayOfWeek})～${mat.eventDate }(${mat.eventDayOfWeek})</p>
-	    	<p>開催日:${mat.eventDate}(${mat.eventDayOfWeek})</p>
+	    <c:when test="${!mat.dispFlg }">
+	    </c:when>
 
-	    	<%-- 10時になったら受付中にしてボタン表示する --%>
-	    	<div class="apply">
+	    <c:otherwise>
+	    	<div class="pre-order">
+	    		<p>受付期間${mat.saleStartAt}(${mat.saleDayOfWeek})～${mat.eventDate }(${mat.eventDayOfWeek})</p>
+		    	<p>開催日:${mat.eventDate}(${mat.eventDayOfWeek})</p>
+
+		    	<%-- 10時になったら受付中にしてボタン表示する --%>
+		    	<div class="apply">
 		    	<c:choose>
 		    		<c:when test="${!mat.saleFlg }"><p class="before-reception" >受付前</p></c:when>
 		    		<c:otherwise><p class="now-reception">受付中</p>
 
 		    		<%-- POSTでmatchIdを渡す --%>
-			    		<form action="TicketApplication" method="post">
-				   			<input type="hidden" name="matchId" value="${mat.matchId }">
-				   			<input type="hidden" name="remaining" value=-1>
-				    		<button type="submit" class="apply-btn">申し込む</button>
-						</form>
+			    	<form action="TicketApplication" method="post">
+				   		<input type="hidden" name="matchId" value="${mat.matchId }">
+				   		<input type="hidden" name="remaining" value=-1>
+				   		<button type="submit" class="apply-btn">申し込む</button>
+					</form>
 		    		</c:otherwise>
 		    	</c:choose>
 	    	</div>
 
 	    	<%-- 一区切りの線 --%>
 	    	<hr>
-	    	</c:otherwise>
+	    	</div>
+	    </c:otherwise>
 	    </c:choose>
-    </div>
     </c:forEach>
    </div>
 </body>

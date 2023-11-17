@@ -11,6 +11,7 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 import bean.Tickets;
+import bean.TicketsExp;
 
 public class TicketsDAO extends DAO{
 
@@ -243,6 +244,179 @@ public class TicketsDAO extends DAO{
 		st.setString(1, ticketsId);
 
 		int num = st.executeUpdate();
+
+		st.close();
+		con.close();
+
+		return num;
+
+	}
+
+	//チケット表示（購入者）: 購入者のチケットを表示する
+	public List<TicketsExp> viewTickets(int spectatorId,Date today)throws Exception{
+
+		Connection con=getConnection();
+		PreparedStatement st=con.prepareStatement("SELECT tickets_id,status,is_shared,is_child,event_date, purchase.spectator_id, seat.*,tournament.ordinal_num,tournament.name FROM TICKETS join match on tickets.match_id = match.match_id join purchase on tickets.purchase_id = purchase.purchase_id join seat on tickets.seat_id = seat.seat_id join tournament on match.tournament_id = tournament.tournament_id where purchase.spectator_id = ? and event_date <= ?");
+		st.setInt(1, spectatorId);
+		st.setDate(2, today);
+
+		ResultSet rs=st.executeQuery();
+
+		List<TicketsExp> list=new ArrayList<>();
+
+		while(rs.next()){
+			TicketsExp t=new TicketsExp();
+			t.setTicketsId(rs.getString("tickets_id"));
+			t.setStatus(rs.getString("status"));
+			t.setShared(rs.getBoolean("is_shared"));
+			t.setChild(rs.getBoolean("is_child"));
+			t.setEventDate(rs.getDate("event_date"));
+			t.setSpectatorId(rs.getInt("spectator_id"));
+			t.setSeatId(rs.getString("seat_id"));
+			t.setType(rs.getString("type"));
+			t.setStep(rs.getString("step"));
+			t.setNumber(rs.getInt("number"));
+			t.setGate(rs.getInt("gate"));
+			t.setPassage(rs.getString("passage"));
+			t.setBlock(rs.getString("block"));
+			t.setOrdinalNum(rs.getInt("ordinal_num"));
+			t.setTournamentName(rs.getString("name"));
+
+			list.add(t);
+		}
+
+		st.close();
+		con.close();
+
+		return list;
+
+	}
+
+	//払い戻し可のチケットを表示する
+	public List<TicketsExp> viewTicketsRefund(int spectatorId)throws Exception{
+
+		Connection con=getConnection();
+		PreparedStatement st=con.prepareStatement("SELECT tickets_id,status,is_shared,is_child,event_date, purchase.spectator_id, seat.*,tournament.ordinal_num,tournament.name FROM TICKETS join match on tickets.match_id = match.match_id join purchase on tickets.purchase_id = purchase.purchase_id join seat on tickets.seat_id = seat.seat_id join tournament on match.tournament_id = tournament.tournament_id where purchase.spectator_id = ? and tickets.status = 6;");
+		st.setInt(1, spectatorId);
+
+		ResultSet rs=st.executeQuery();
+
+		List<TicketsExp> list=new ArrayList<>();
+
+		while(rs.next()){
+			TicketsExp t=new TicketsExp();
+			t.setTicketsId(rs.getString("tickets_id"));
+			t.setStatus(rs.getString("status"));
+			t.setShared(rs.getBoolean("is_shared"));
+			t.setChild(rs.getBoolean("is_child"));
+			t.setEventDate(rs.getDate("event_date"));
+			t.setSpectatorId(rs.getInt("spectator_id"));
+			t.setSeatId(rs.getString("seat_id"));
+			t.setType(rs.getString("type"));
+			t.setStep(rs.getString("step"));
+			t.setNumber(rs.getInt("number"));
+			t.setGate(rs.getInt("gate"));
+			t.setPassage(rs.getString("passage"));
+			t.setBlock(rs.getString("block"));
+			t.setOrdinalNum(rs.getInt("ordinal_num"));
+			t.setTournamentName(rs.getString("name"));
+
+			list.add(t);
+		}
+
+		st.close();
+		con.close();
+
+		return list;
+	}
+
+	//共有されたチケットの情報取得
+	public List<TicketsExp> viewSharedTickets(String ticketsId)throws Exception{
+
+		Connection con=getConnection();
+		PreparedStatement st=con.prepareStatement("SELECT tickets_id,status,is_shared,is_child,event_date, purchase.spectator_id, seat.*,tournament.ordinal_num,tournament.name FROM TICKETS join match on tickets.match_id = match.match_id join purchase on tickets.purchase_id = purchase.purchase_id join seat on tickets.seat_id = seat.seat_id join tournament on match.tournament_id = tournament.tournament_id where tickets.tickets_id = ?");
+		st.setString(1, ticketsId);
+
+		ResultSet rs=st.executeQuery();
+
+		List<TicketsExp> list=new ArrayList<>();
+
+		while(rs.next()){
+			TicketsExp t=new TicketsExp();
+			t.setTicketsId(rs.getString("tickets_id"));
+			t.setStatus(rs.getString("status"));
+			t.setShared(rs.getBoolean("is_shared"));
+			t.setChild(rs.getBoolean("is_child"));
+			t.setEventDate(rs.getDate("event_date"));
+			t.setSpectatorId(rs.getInt("spectator_id"));
+			t.setSeatId(rs.getString("seat_id"));
+			t.setType(rs.getString("type"));
+			t.setStep(rs.getString("step"));
+			t.setNumber(rs.getInt("number"));
+			t.setGate(rs.getInt("gate"));
+			t.setPassage(rs.getString("passage"));
+			t.setBlock(rs.getString("block"));
+			t.setOrdinalNum(rs.getInt("ordinal_num"));
+			t.setTournamentName(rs.getString("name"));
+
+			list.add(t);
+		}
+
+		st.close();
+		con.close();
+
+		return list;
+
+	}
+
+	//チケットのステータスを取得する
+	public String checkTickets(String ticketsId,Date today)throws Exception{
+
+		Connection con=getConnection();
+		PreparedStatement st=con.prepareStatement("select * from tickets join match on tickets.match_id = match.match_id where event_date = ? and tickets_id = ?;");
+		st.setDate(1, today);
+		st.setString(2,ticketsId);
+
+		ResultSet rs=st.executeQuery();
+
+		String status=null;
+
+		while(rs.next()){
+			Tickets t = new Tickets();
+			status = t.getStatus();
+		}
+
+		st.close();
+		con.close();
+
+		return status;
+
+	}
+
+	//チケットのステータスを入場中に変更する
+	public int statusAdmission(String ticketsId)throws Exception{
+
+		Connection con = getConnection();
+		PreparedStatement st=con.prepareStatement("update tickets set status = 4 where tickets_id = ?");
+		st.setString(1, ticketsId);
+
+		int num=st.executeUpdate();
+
+		st.close();
+		con.close();
+
+		return num;
+
+	}
+
+	//チケットのステータスを退場済みに変更する
+	public int statusLeave(String ticketsId)throws Exception {
+
+		Connection con=getConnection();
+		PreparedStatement st=con.prepareStatement("update tickets set status = 7 where tickets_id = ?");
+		st.setString(1, ticketsId);
+
+		int num=st.executeUpdate();
 
 		st.close();
 		con.close();

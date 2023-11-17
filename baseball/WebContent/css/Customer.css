@@ -194,22 +194,23 @@ h1 {
     font-weight: bold;
  }
 
- .before-reception{
- 	color: #808080;
+ .now-reception{
+ 	color: #008080;
+ 	background-color: #ccffcc;
  	font-weight: bold;
  	margin-right: 500px; /* テキストとボタンの間隔を調整 */
  	margin-left: 20px;
- 	border: 2px solid #99ccff;
+ 	border: 2px solid #66cdaa;
  	padding: 5px;
  }
 
- .now-reception{
- 	color: #dc143c;
+ .before-reception{
+ 	color: #696969;
  	background-color: #ffcccc;
  	font-weight: bold;
  	margin-right: 500px; /* テキストとボタンの間隔を調整 */
  	margin-left: 20px;
- 	border: 2px solid #ffb6c1;
+ 	border: 2px solid #ffcccc;
  	padding: 5px;
 
  }

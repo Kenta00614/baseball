@@ -18,6 +18,8 @@ public class TournamentRegistrationInput extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
 
+    	request.setCharacterEncoding("UTF-8");
+
         // リクエストパラメータの取得
         int year = Integer.parseInt(request.getParameter("year"));
         int ordinalNum = Integer.parseInt(request.getParameter("ordinalNum"));
@@ -37,10 +39,10 @@ public class TournamentRegistrationInput extends HttpServlet {
             int result = dao.insertTournament(tournament);
             if (result > 0) {
                 // 登録成功
-                response.sendRedirect("/staff/tournamentRegistrationComplete.jsp"); // 成功画面へリダイレクト
+                response.sendRedirect("/baseball/staff/tournamentRegistrationCompletion.jsp"); // 成功画面へリダイレクト
             } else {
                 // 登録失敗
-                response.sendRedirect("/staff/error.jsp"); // エラー画面へリダイレクト
+                response.sendRedirect("/baseball/staff/error.jsp"); // エラー画面へリダイレクト
             }
         } catch (Exception e) {
             throw new ServletException(e);
