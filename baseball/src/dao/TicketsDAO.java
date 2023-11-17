@@ -409,4 +409,20 @@ public class TicketsDAO extends DAO{
 
 	}
 
+	//チケットのステータスを退場済みに変更する
+	public int statusLeave(String ticketsId)throws Exception {
+
+		Connection con=getConnection();
+		PreparedStatement st=con.prepareStatement("update tickets set status = 7 where tickets_id = ?");
+		st.setString(1, ticketsId);
+
+		int num=st.executeUpdate();
+
+		st.close();
+		con.close();
+
+		return num;
+
+	}
+
 }
