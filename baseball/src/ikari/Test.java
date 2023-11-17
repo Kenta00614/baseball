@@ -33,10 +33,13 @@ public class Test extends HttpServlet{
 
 		try{
 
-			TicketsDAO D = new TicketsDAO();
+			TicketsDAO D=new TicketsDAO();
+			int num = D.statusAdmission("0B0A034r00202403181000");
 
-			int num=D.ticketsShare("0B0A032r00202403181000");
 			out.println(num);
+
+
+
 
 
 		}catch(Exception e){

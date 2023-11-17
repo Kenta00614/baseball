@@ -42,7 +42,7 @@
 </c:choose>
     <hr>
 
-    <c:if test="${remain != -1}">
+    <c:if test="${remain <= count && remain != -1}">
     	購入枚数分用意できません
     </c:if>
 
