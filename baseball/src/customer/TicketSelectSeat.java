@@ -21,6 +21,10 @@ import dao.TournamentDAO;
 
 @WebServlet("/customer/TicketSelectSeat")
 public class TicketSelectSeat extends HttpServlet {
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doPost(request, response);
+	}
+
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //		値取得
     	int count = Integer.parseInt(request.getParameter("count"));
@@ -59,6 +63,7 @@ public class TicketSelectSeat extends HttpServlet {
 				request.setAttribute("block", blockList);
 				request.setAttribute("remain", blockRemain.size());
 				request.getRequestDispatcher("/customer/ticketSelectAll.jsp").forward(request, response);
+				return;
 			}
 
 			List<Seat> stepNum=new ArrayList<>();
@@ -66,7 +71,7 @@ public class TicketSelectSeat extends HttpServlet {
 			List<Integer> num=new ArrayList<>();
 			int numLast=0;
 
-//			ブロックの
+//			ブロックの段と番号を詰める
 			stepNum=seatDAO.getStepNum(block);
 			for(Seat s: stepNum){
 				try{
@@ -81,9 +86,6 @@ public class TicketSelectSeat extends HttpServlet {
 			}
 			num.add(numLast);
 
-			System.out.println(num.get(1));
-			System.out.println(step.get(1));
-
 //			販売中のチケット送信
 			request.setAttribute("step", step);
 			request.setAttribute("num", num);
@@ -94,8 +96,5 @@ public class TicketSelectSeat extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
-
-
     }
 }

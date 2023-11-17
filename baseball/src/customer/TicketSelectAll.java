@@ -52,9 +52,10 @@ public class TicketSelectAll extends HttpServlet {
 				request.setAttribute("match", match);
 				request.setAttribute("tour",tour);
 				request.getRequestDispatcher("/customer/ticketApplication.jsp").forward(request, response);
-			}else{
-				block = seatDAO.getBlock(seat);
 			}
+
+//			通常の時送る値
+			block = seatDAO.getBlock(seat);
 			request.setAttribute("block", block);
 			request.setAttribute("matchId", matchId);
 			request.setAttribute("seat", seat);
