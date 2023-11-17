@@ -24,15 +24,9 @@ public class HighschoolRegistrationDisplay extends HttpServlet {
 
             try {
                 List<School> schools = dao.searchSchool(tournamentId);
-                if (schools != null && !schools.isEmpty()) {
-                    // 高校名が登録されている場合
-                    request.setAttribute("schools", schools);
-                    request.getRequestDispatcher("/staff/highschoolDisplay.jsp").forward(request, response);
-                } else {
-                    // 登録されていない場合
-                    request.setAttribute("tournamentId", tournamentId);
-                    request.getRequestDispatcher("/staff/highschoolRegistration.jsp").forward(request, response);
-                }
+                request.setAttribute("schools", schools);
+                request.setAttribute("tournamentId", tournamentId);
+                request.getRequestDispatcher("/staff/highschoolDisplay.jsp").forward(request, response);
             } catch (Exception e) {
                 throw new ServletException(e);
             }
