@@ -212,13 +212,11 @@ h1 {
  	margin-left: 20px;
  	border: 2px solid #ffcccc;
  	padding: 5px;
-
  }
 
 .apply{
     display: flex;
     align-items: center;
-
 }
 
 .apply-btn{
@@ -230,5 +228,57 @@ h1 {
     border: none;
     cursor: pointer;
     border-radius: 5px;
+}
+
+
+/*--- ticketApplication.jsp ---*/
+.seat-selection{
+	background-color: #fff5ee;
+}
+
+.content-selection{				/* h2のスタイル */
+	background-color: #ffe4c4;
+	color: #808080;
+	padding: 5px;
+	font-size: 25px;
+}
+
+.ticket-element{
+	margin: 18px;
+}
+
+.tiket-soldout{
+	color: #dc143c;
+	font-size: 20px;
+
+}
+
+
+/*テーブル設定*/
+.ticket-summary{
+	border: 3px solid #a9a9a9;
+	width: 800px;
+	margin: 20px;
+	margin-left:75px;
+}
+
+.ticket-summary> table th{
+	background-color: #ffe4e1;
+	width: 250px;
+	color: #f08080;
+}
+
+.ticket-summary> table td{
+	background-color: #fffafa;
+	width: 550px;
+}
+
+.ticket-summary> table th,td{
+    border-bottom: 2px solid #a9a9a9;
+    padding: 10px;  /* 枠線指定 */
+}
+
+.ticket-summary> table tr:last-child *{
+  border-bottom: none;
 
 }
