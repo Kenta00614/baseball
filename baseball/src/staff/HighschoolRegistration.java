@@ -11,19 +11,29 @@ import javax.servlet.http.HttpServletResponse;
 import dao.SchoolDAO;
 
 @WebServlet("/staff/HighschoolRegistration")
-
 public class HighschoolRegistration extends HttpServlet {
-    @SuppressWarnings("unused")
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException {
+
+    	request.setCharacterEncoding("UTF-8");
+        SchoolDAO dao = new SchoolDAO();
+        int tournamentId = Integer.parseInt(request.getParameter("tournamentId")); // 大会IDを取得
+
         try {
-            SchoolDAO schoolDAO = new SchoolDAO();
-            String[] schoolNames = new String[49];
-
-            for (int i = 0; i < 49; i++) {
-                schoolNames[i] = request.getParameter("schoolName" + (i + 1));
+            String[] schoolName = new String[49];
+            for (int i = 1; i <= 49; i++) {
+                schoolName[i - 1] = request.getParameter("schoolName" + i);
             }
-
-
+            // 高校名をデータベースに登録
+            int result = dao.insertSchool(schoolName, tournamentId);
+            if (result > 0) {
+                // 登録成功
+                response.sendRedirect("tournamentRegistrationCompletion.jsp");
+            } else {
+                // 登録失敗
+                response.sendRedirect("error.jsp");
+            }
         } catch (Exception e) {
             throw new ServletException(e);
         }

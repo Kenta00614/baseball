@@ -25,7 +25,7 @@
 						<a href="TournamentRegistrationInputDisplay">大会情報登録</a>
 				    </div>
 				</li>
-			    <li class="nav__item"><a href="HighschoolList">高校情報</a></li>
+			    <li class="nav__item"><a href="TournamentList">高校情報</a></li>
 			    <li class="nav__item"><a href="SaleStop">販売停止</a></li>
 			    <li class="nav__item"><a href="Refund">払い戻し</a></li>
 				<li class="nav__item"><a href="StaffList">職員情報</a></li>
@@ -43,7 +43,7 @@
 						<a href="TournamentRegistrationInputDisplay">大会情報登録</a>
 				    </div>
 				</li>
-			    <li class="nav__item"><a href="HighschoolList">高校情報</a></li>
+			    <li class="nav__item"><a href="TournamentList">高校情報</a></li>
 			    <li class="nav__item"><a href="SaleStop">販売停止</a></li>
 			    <li class="nav__item"><a href="Refund">払い戻し</a></li>
 				<li class="nav__item"><a href="StaffList">職員情報</a></li>

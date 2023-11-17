@@ -1,13 +1,15 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@include file="header.jsp"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ include file="header.jsp" %>
 <html>
 <head>
     <title>高校登録</title>
+    <meta charset="UTF-8">
 </head>
 <body>
     <h2>高校情報登録</h2>
-    <form action="RegisterSchool" method="post">
+    <form action="HighschoolRegistration" method="post">
+        <!-- 大会IDの隠しフィールド -->
+        <input type="hidden" name="tournamentId" value="${tournamentId}">
         <% for (int i = 1; i <= 49; i++) { %>
             <div>
                 <label for="schoolName<%=i%>">高校名<%=i%>:</label>
@@ -20,4 +22,3 @@
     </form>
 </body>
 </html>
-
