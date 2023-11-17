@@ -36,7 +36,7 @@ public class TestList extends HttpServlet{
 		try{
 			TicketsDAO D = new TicketsDAO();
 
-			List<TicketsExp> list=D.viewTicketsRefund(1);
+			List<TicketsExp> list=D.viewSharedTickets("0B0B001r00202403181000");
 
 			for(TicketsExp t : list){
 				out.println(t.getTicketsId());
