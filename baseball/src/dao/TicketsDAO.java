@@ -410,18 +410,35 @@ public class TicketsDAO extends DAO{
 	}
 
 	//チケットのステータスを退場済みに変更する
-	public int statusLeave(String ticketsId)throws Exception {
+	public String statusLeave(String ticketsId)throws Exception {
 
 		Connection con=getConnection();
+		PreparedStatement stSpec = con.prepareStatement("select * from tickets join purchase on tickets.purchase_id = purchase.purchase_id where tickets_id = ?;");
+		stSpec.setString(1, ticketsId);
+
+		ResultSet rs = stSpec.executeQuery();
+		String spectatorId = null;
+
+		while(rs.next()){
+			spectatorId = rs.getString("spectator_id");
+		}
+
+		if(spectatorId == null){
+
+			return spectatorId;
+		}
+
 		PreparedStatement st=con.prepareStatement("update tickets set status = 7 where tickets_id = ?");
 		st.setString(1, ticketsId);
 
-		int num=st.executeUpdate();
+		st.executeUpdate();
+
 
 		st.close();
+		stSpec.close();
 		con.close();
 
-		return num;
+		return spectatorId;
 
 	}
 

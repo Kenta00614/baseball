@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.TicketsDAO;
+import dao.SpectatorDAO;
 
 @WebServlet("/test")
 public class Test extends HttpServlet{
@@ -32,14 +32,12 @@ public class Test extends HttpServlet{
 		out.println("<body>");
 
 		try{
+			int spectatorId = 1;
 
-			TicketsDAO D=new TicketsDAO();
-			int num = D.statusAdmission("0B0A034r00202403181000");
+			SpectatorDAO D = new SpectatorDAO();
+			int point = D.addPoint(spectatorId, 4200);
 
-			out.println(num);
-
-
-
+			out.println(point);
 
 
 		}catch(Exception e){

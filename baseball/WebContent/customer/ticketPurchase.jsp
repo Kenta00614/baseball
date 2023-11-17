@@ -37,7 +37,7 @@
 					</form>
 		    		</c:otherwise>
 		    	</c:choose>
-	    	</div>
+	    		</div>
 
 	    	<%-- 一区切りの線 --%>
 	    	<hr>
