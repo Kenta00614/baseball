@@ -15,7 +15,7 @@
     </div>
 
     <div class="header">
-        <form action="/customer/InformationChange" method="get">
+        <form action="InformationChange" method="get">
             <button type="submit">会員情報変更</button>
         </form>
     </div>
