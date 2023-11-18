@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import bean.School;
 import dao.SchoolDAO;
 
 @WebServlet("/staff/HighschoolEdit")
@@ -19,8 +18,9 @@ public class HighschoolEdit extends HttpServlet {
         SchoolDAO dao = new SchoolDAO();
 
         try {
-            School school = dao.searchSchool(schoolName, tournamentId);
-            request.setAttribute("school", school);
+//        	エラー出てるのでコメントアウトしてます
+//            School school = dao.searchSchool(schoolName, tournamentId);
+//            request.setAttribute("school", school);
             request.getRequestDispatcher("/staff/highschoolEdit.jsp").forward(request, response);
         } catch (Exception e) {
             throw new ServletException(e);
