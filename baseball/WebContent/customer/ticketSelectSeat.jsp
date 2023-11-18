@@ -14,10 +14,14 @@
                list-style:none;
            }
 		.selected{
-               background-color:blue;
+               background-color:red;
                display: inline;
            }
-           .notSelect{
+   		.notSelect{
+               display: inline;
+           }
+           .notSele{
+           	background-color:black;
                display: inline;
            }
 		.v-enter-active,.v-leave-active{
@@ -43,7 +47,7 @@
 				<%--
 					<input type="checkbox" value="index" v-model="ticket.check" v-on:click="changeClass(index)">
 				 --%>
-				 	<img alt="選択可能座席" src="${pageContext.request.contextPath}/customer/image/seat_1.jpg" value="index" v-model="ticket.check" v-on:click="changeClass(index)">
+				 	<img alt="座席" :src="'${pageContext.request.contextPath}/customer/image/' + ticket.imgsrc + '.jpg'" value="index" v-model="ticket.check" v-on:click="changeClass(index)">
 					<p v-bind:class="ticket.class">&nbsp;&nbsp;</p>
 				</label>
 			</li>
@@ -75,9 +79,15 @@
 		new Vue({
 			el: '#app',
 			data: {
-				ticketsList: [{ticketsId:"0R01001r00202403181000",seatId:"0R01001",status:3,seatType:"ライト指定席",step:1,number:1,class:"notSelect",check:false},
+				<%--ticketsList: [{ticketsId:"0R01001r00202403181000",seatId:"0R01001",status:3,seatType:"ライト指定席",step:1,number:1,class:"notSelect",check:false},
 	                              {ticketsId:"0R01002r00202403181000",seatId:"0R01002",status:3,seatType:"ライト指定席",step:1,number:2,class:"notSelect",check:false},
 	                              {ticketsId:"0R01003r00202403181000",seatId:"0R01003",status:3,seatType:"ライト指定席",step:1,number:3,class:"notSelect",check:false},],
+			    --%>
+				ticketsList: [
+					<c:forEach var="ticket" items="${tickets }">
+						{ticketsId:"${ticket.ticket.ticketsId}", seatId:"${ticket.ticket.seatId}",status:${ticket.ticket.status},seatType:"${ticket.seat.type}",step:"${ticket.seat.step}",number:${ticket.seat.number},imgsrc:"seat_1",class:"notSelect",check:false},
+					</c:forEach>
+						],
 			    selectedTickets:[],
 			},
 			methods:{
@@ -94,12 +104,18 @@
 					this.selectedTickets.push(this.ticketsList[index]);
 				},
 				changeClass:function(index){
-					if(!this.ticketsList[index].check){
-						this.ticketsList[index].class="selected";
-	                          this.add(index);
-					}else{
-						this.ticketsList[index].class="notSelect";
-	                          this.remove(index);
+					if(this.ticketsList[index].status==3){
+						if(!this.ticketsList[index].check){
+							this.ticketsList[index].class="selected";
+							this.ticketsList[index].imgsrc="seat_3";
+							this.ticketsList[index].check=true;
+		                          this.add(index);
+						}else{
+							this.ticketsList[index].class="notSelect";
+							this.ticketsList[index].imgsrc="seat_1";
+							this.ticketsList[index].check=false;
+		                          this.remove(index);
+						}
 					}
 				},
 				submitFunc:function(){

@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import bean.Match;
-import bean.Seat;
 import bean.Tickets;
+import bean.TicketsAndSeat;
 import bean.Tournament;
 import dao.MatchDAO;
 import dao.SeatDAO;
@@ -66,30 +66,12 @@ public class TicketSelectSeat extends HttpServlet {
 				return;
 			}
 
-			List<Seat> stepNum=new ArrayList<>();
-			List<String> step=new ArrayList<>();
-			List<Integer> num=new ArrayList<>();
-			int numLast=0;
-
-//			ブロックの段と番号を詰める
-			stepNum=seatDAO.getStepNum(block);
-			for(Seat s: stepNum){
-				try{
-					if(!step.get(step.size()-1).equals(s.getStep())){
-						step.add(s.getStep());
-						num.add(numLast);
-					}
-				}catch(Exception ArrayIndexOutOfBoundsException){
-					step.add(s.getStep());
-				}
-				numLast=s.getNumber();
-			}
-			num.add(numLast);
+			List<TicketsAndSeat> ticketAndSeat=new ArrayList<>();
+//			チケット表示に必要な情報取得
+			ticketAndSeat=ticketDAO.selectTickets(match.getEventDate(), block);
 
 //			販売中のチケット送信
-			request.setAttribute("step", step);
-			request.setAttribute("num", num);
-			request.setAttribute("stepNum", stepNum);
+			request.setAttribute("tickets", ticketAndSeat);
 			request.setAttribute("block", block);
 			request.setAttribute("blockRemain", blockRemain);
 	        request.getRequestDispatcher("/customer/ticketSelectSeat.jsp").forward(request, response);
