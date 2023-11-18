@@ -444,11 +444,11 @@ public class TicketsDAO extends DAO{
 
 	}
 
-//	チケット選択の際表示する情報
+//	日付とブロックで絞り込んだ販売中のチケット・座席情報
 	public List<TicketsAndSeat> selectTickets(Date eventDate, String block)throws Exception{
 
 		Connection con=getConnection();
-		PreparedStatement st=con.prepareStatement("select tickets.*,match.event_date,seat.* from tickets join match on tickets.match_id = match.match_id join seat on tickets.seat_id = seat.seat_id where match.event_date = ? and seat.block = ?");
+		PreparedStatement st=con.prepareStatement("select tickets.*,match.event_date,seat.* from tickets join match on tickets.match_id = match.match_id join seat on tickets.seat_id = seat.seat_id where match.event_date = ? and seat.block = ? and tickets.status = 3");
 		st.setDate(1, eventDate);
 		st.setString(2, block);
 
@@ -476,6 +476,7 @@ public class TicketsDAO extends DAO{
 			s.setGate(rs.getInt("gate"));
 			s.setPassage(rs.getString("passage"));
 			s.setBlock(rs.getString("block"));
+			s.setTypeStr();
 
 			ts.setSeat(s);
 			ts.setTicket(t);

@@ -10,9 +10,13 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/customer/TicketConfirm")
 public class TicketConfirm extends HttpServlet {
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String[] tickets = request.getParameterValues("tickets");
 
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        request.getRequestDispatcher("/customer/ticketConfirm.jsp").forward(request, response);
-    }
+		for(String s: tickets){
+			System.out.println(s);
+		}
+		request.getRequestDispatcher("/customer/ticketConfirm.jsp").forward(request, response);
+	}
 }

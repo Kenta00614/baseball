@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import bean.Match;
+import bean.Seat;
 import bean.Tickets;
 import bean.TicketsAndSeat;
 import bean.Tournament;
@@ -69,10 +70,15 @@ public class TicketSelectSeat extends HttpServlet {
 			List<TicketsAndSeat> ticketAndSeat=new ArrayList<>();
 //			チケット表示に必要な情報取得
 			ticketAndSeat=ticketDAO.selectTickets(match.getEventDate(), block);
+			List<Seat> seats=seatDAO.getSeat(block);
 
-//			販売中のチケット送信
+//			ブロックの席情報
+			request.setAttribute("seats", seats);
+//			ブロックの販売中チケット情報
 			request.setAttribute("tickets", ticketAndSeat);
+//			選択されたブロック
 			request.setAttribute("block", block);
+//			チケット残数
 			request.setAttribute("blockRemain", blockRemain);
 	        request.getRequestDispatcher("/customer/ticketSelectSeat.jsp").forward(request, response);
 		} catch (Exception e) {

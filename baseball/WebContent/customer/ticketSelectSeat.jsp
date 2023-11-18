@@ -8,7 +8,7 @@
 	<link rel="stylesheet" type="text/css"  href ="/baseball/css/Customer.css">
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
 
-    <%-- css --%>
+    <%-- ↓css後で修正してください↓ --%>
 	<style>
            li{
                list-style:none;
@@ -41,27 +41,24 @@
 
 <%-- 席選択 --%>
 	<div id="app">
+	<%-- 座席の画像--%>
 		<transition-group>
-			<li v-for="(ticket,index) in ticketsList" v-bind:key="ticket.ticketsId">
+			<li v-for="(seat,index) in seatsList" v-bind:key="seat.seatId">
 				<label>
-				<%--
-					<input type="checkbox" value="index" v-model="ticket.check" v-on:click="changeClass(index)">
-				 --%>
-				 	<img alt="座席" :src="'${pageContext.request.contextPath}/customer/image/' + ticket.imgsrc + '.jpg'" value="index" v-model="ticket.check" v-on:click="changeClass(index)">
-					<p v-bind:class="ticket.class">&nbsp;&nbsp;</p>
+				 	<img alt="座席" :src="'${pageContext.request.contextPath}/customer/image/' + seat.imgsrc + '.jpg'" value="index" v-model="seat.check" v-on:click="changeClass(index)">
 				</label>
 			</li>
 		</transition-group>
 		<hr>
 
-		<%-- 選択したら出てくる --%>
+		<%-- 選択したら出てくる情報 --%>
            <transition-group>
 			<li v-for="(ticket,index) in selectedTickets" v-bind:key="ticket.ticketsId">
 				<p>{{ticket.seatType}}　{{ticket.step}}段　{{ticket.number}}番</p>
 			</li>
 		</transition-group>
 
-		<form name="myForm" action="/TicketConfirm" method="GET">
+		<form name="myForm" action="TicketConfirm" method="post">
 			<button type="button" v-on:click="submitFunc">次へ</button><!-- 送信ボタン -->
 			<input type="hidden" id="tickets" name="tickets" value="" ><!-- 隠しパラメータ ticketのIDリスト-->
 		</form>
@@ -79,45 +76,86 @@
 		new Vue({
 			el: '#app',
 			data: {
-				<%--ticketsList: [{ticketsId:"0R01001r00202403181000",seatId:"0R01001",status:3,seatType:"ライト指定席",step:1,number:1,class:"notSelect",check:false},
-	                              {ticketsId:"0R01002r00202403181000",seatId:"0R01002",status:3,seatType:"ライト指定席",step:1,number:2,class:"notSelect",check:false},
-	                              {ticketsId:"0R01003r00202403181000",seatId:"0R01003",status:3,seatType:"ライト指定席",step:1,number:3,class:"notSelect",check:false},],
-			    --%>
+				<%-- 購入できるチケットの情報 --%>
 				ticketsList: [
 					<c:forEach var="ticket" items="${tickets }">
-						{ticketsId:"${ticket.ticket.ticketsId}", seatId:"${ticket.ticket.seatId}",status:${ticket.ticket.status},seatType:"${ticket.seat.type}",step:"${ticket.seat.step}",number:${ticket.seat.number},imgsrc:"seat_1",class:"notSelect",check:false},
+						{ticketsId:"${ticket.ticket.ticketsId}", seatId:"${ticket.ticket.seatId}",status:${ticket.ticket.status},seatType:"${ticket.seat.type}",step:"${ticket.seat.step}",number:${ticket.seat.number},},
 					</c:forEach>
 						],
+				<%-- 座席ID --%>
+				seatsList: [
+					<c:forEach var="seat" items="${seats}">
+						{seatId:"${seat.seatId}",seatStep:"${seat.step}",imgsrc:"seat_0",class:"notSelect",check:false},
+					</c:forEach>
+				],
+				<%-- 選択されたチケット --%>
 			    selectedTickets:[],
 			},
+			<%-- 起動したときに動く処理 --%>
+			created: function() {
+		        this.initializeSeats();
+		    },
 			methods:{
+				<%-- 購入可能な座席はseat_1.jgp(白)にする --%>
+				initializeSeats: function() {
+				    for (var i = 0; i < this.ticketsList.length; i++) {
+				        for (var j = 0; j < this.seatsList.length; j++) {
+				            if (this.seatsList[j].seatId === this.ticketsList[i].seatId) {
+				                this.seatsList[j].imgsrc = "seat_1";
+				                break;
+				            }
+				        }
+				    }
+				},
+				<%-- 座席の解除選択したときにselectTicketsから値を削除 --%>
 				remove:function(index){
-	                      var id = this.ticketsList[index].ticketsId;
-					for(var i=0;i<this.selectedTickets.length;i++){
-						if(this.selectedTickets[i].ticketsId == id){
-							this.selectedTickets.splice(i,1);
-							i--;
-						}
-					}
+					var selectedSeatId = this.seatsList[index].seatId;
+				    for (var i = 0; i < this.selectedTickets.length; i++) {
+				        if (selectedSeatId === this.selectedTickets[i].seatId) {
+				            this.selectedTickets.splice(i, 1);
+				            break;
+				        }
+				    }
 				},
+				<%-- 座席選択されたときにticketsListに値を追加 --%>
 				add:function(index){
-					this.selectedTickets.push(this.ticketsList[index]);
+					var selectedSeatId = this.seatsList[index].seatId;
+					for (var i = 0; i < this.ticketsList.length; i++) {
+				        if (selectedSeatId === this.ticketsList[i].seatId) {
+				            if (this.ticketsList[i].status === 3) {
+				                this.selectedTickets.push(this.ticketsList[i]);
+				            }
+				            break;
+				        }
+				    }
 				},
+				<%-- 選択・解除されたときのクラス・画像・checkフラグの変更、selectedTicketsに追加・削除 --%>
 				changeClass:function(index){
-					if(this.ticketsList[index].status==3){
-						if(!this.ticketsList[index].check){
-							this.ticketsList[index].class="selected";
-							this.ticketsList[index].imgsrc="seat_3";
-							this.ticketsList[index].check=true;
-		                          this.add(index);
+					<%-- 選択された座席idのチケット情報statusを探す --%>
+					var selectedSeatId = this.seatsList[index].seatId;
+					var selectStatus = 0;
+				    for (var i = 0; i < this.ticketsList.length; i++) {
+				        if (selectedSeatId === this.ticketsList[i].seatId) {
+				            selectStatus=this.ticketsList[i].status;
+				            break;
+				        }
+				    }
+				    <%-- status==3の時は実行しない --%>
+				    if(selectStatus == 3){
+						if(!this.seatsList[index].check){
+							this.seatsList[index].class="selected";
+							this.seatsList[index].imgsrc="seat_3";
+							this.seatsList[index].check=true;
+		                    this.add(index);
 						}else{
-							this.ticketsList[index].class="notSelect";
-							this.ticketsList[index].imgsrc="seat_1";
-							this.ticketsList[index].check=false;
-		                          this.remove(index);
+							this.seatsList[index].class="notSelect";
+							this.seatsList[index].imgsrc="seat_1";
+							this.seatsList[index].check=false;
+		                    this.remove(index);
 						}
-					}
+				    }
 				},
+				<%-- 次へボタンを押されたら送る値をticketsIdのみにする --%>
 				submitFunc:function(){
 					var str = "";
 					this.selectedTickets.forEach(obj => {
