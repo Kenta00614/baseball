@@ -59,14 +59,13 @@
 		</transition-group>
 
 		<form name="myForm" action="TicketConfirm" method="post">
-			<button type="button" v-on:click="submitFunc">次へ</button><!-- 送信ボタン -->
+			<button type="button" v-on:click="submitFunc" :disabled="${count } != selectedTickets.length">次へ</button><!-- 送信ボタン -->
 			<input type="hidden" id="tickets" name="tickets" value="" ><!-- 隠しパラメータ ticketのIDリスト-->
 		</form>
 	</div>
 
 	<%-- 戻るボタン --%>
 	<form action="TicketSelectAll" method="post">
-		<input type="hidden" name="matchId" value="${matchId }">
 		<input type="hidden" name="count" value="${count }">
 		<input type="hidden" name="seat" value="${seat }">
 		<button type="submit">戻る</button>
@@ -94,6 +93,7 @@
 			<%-- 起動したときに動く処理 --%>
 			created: function() {
 		        this.initializeSeats();
+		        this.arrangeSeats();
 		    },
 			methods:{
 				<%-- 購入可能な座席はseat_1.jgp(白)にする --%>
@@ -107,6 +107,7 @@
 				        }
 				    }
 				},
+
 				<%-- 座席の解除選択したときにselectTicketsから値を削除 --%>
 				remove:function(index){
 					var selectedSeatId = this.seatsList[index].seatId;

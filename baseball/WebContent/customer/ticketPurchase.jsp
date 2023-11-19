@@ -10,7 +10,7 @@
 	<div class="header">
 
 	<%-- 第何回　～大会のヘッダー --%>
-    <h1>第${lastTour.ordinalNum }回${lastTour.name }</h1>
+    <h1>第${tour.ordinalNum }回${tour.name }</h1>
     <c:forEach var="mat" items="${match}">
 	    <c:choose>
 

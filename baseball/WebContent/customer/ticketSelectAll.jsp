@@ -48,7 +48,6 @@
 
 <%-- 戻るボタン --%>
 	<form action="TicketApplication" method="post">
-		<input type="hidden" name="matchId" value="${matchId }">
     	<button type="submit">戻る</button>
 	</form>
 
@@ -56,13 +55,10 @@
 	<form action="TicketSelectSeat" method="post">
 <%-- ドロップダウン --%>
 		<select name="block">
-			<c:forEach begin="0" end="${fn:length(block)-1 }" step="1" var="i">
-				<option value="${block[i] }">${ fn:substring(block[i], 2, fn:length(block[i]))} </option>
+			<c:forEach begin="0" end="${fn:length(blocks)-1 }" step="1" var="i">
+				<option value="${blocks[i] }">${ fn:substring(blocks[i], 2, fn:length(blocks[i]))} </option>
 			</c:forEach>
 		</select>
-		<input type="hidden" name="matchId" value="${matchId }">
-		<input type="hidden" name="count" value="${count }">
-		<input type="hidden" name="seat" value="${seat }">
 		<button type="submit">次へ</button>
 	</form>
 </body>

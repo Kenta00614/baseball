@@ -492,4 +492,58 @@ public class TicketsDAO extends DAO{
 
 	}
 
+//	チケットのチケット・座席情報
+	public List<TicketsAndSeat> getSelectTickets(String[] ticketsId)throws Exception{
+
+		Connection con=getConnection();
+
+		String SQL = "select tickets.*,match.event_date,seat.* from tickets join match on tickets.match_id = match.match_id join seat on tickets.seat_id = seat.seat_id where ";
+		for(int i=0;i<ticketsId.length;i++){
+			if(i==0){
+				SQL += "tickets.tickets_id=?";
+			}else{
+				SQL += " or tickets.tickets_id=?";
+			}
+		}
+
+		PreparedStatement st = con.prepareStatement(SQL);
+
+		for(int i=0;i<ticketsId.length;i++){
+			st.setString(i+1, ticketsId[i]);
+		}
+
+
+		ResultSet rs=st.executeQuery();
+
+		List<TicketsAndSeat> list=new ArrayList<>();
+
+		while(rs.next()){
+			TicketsAndSeat ts=new TicketsAndSeat();
+			Tickets t=new Tickets();
+			Seat s=new Seat();
+
+			t.setTicketsId(rs.getString("tickets_id"));
+			t.setChild(rs.getBoolean("is_child"));
+
+			s.setType(rs.getString("type"));
+			s.setStep(rs.getString("step"));
+			s.setNumber(rs.getInt("number"));
+			s.setGate(rs.getInt("gate"));
+			s.setPassage(rs.getString("passage"));
+			s.setTypeStr();
+
+			ts.setSeat(s);
+			ts.setTicket(t);
+			ts.setEventDate(rs.getDate("event_date"));
+
+			list.add(ts);
+		}
+
+		st.close();
+		con.close();
+
+		return list;
+
+	}
+
 }

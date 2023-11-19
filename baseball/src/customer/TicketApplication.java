@@ -7,40 +7,39 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import bean.Match;
-import bean.Tournament;
 import common.Constants;
 import dao.MatchDAO;
-import dao.TournamentDAO;
 
 @WebServlet("/customer/TicketApplication")
 public class TicketApplication extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//ログインじゃなかったときの処理はログイン実装後に記述
+		HttpSession session=request.getSession();
+		//ログインじゃなかったときの処理はログイン実装後に記述
 
 
 
-		//		値取得
-		int matchId = Integer.parseInt(request.getParameter("matchId"));
+		Match match = (Match) session.getAttribute("match");
+        if (match == null) {
+            match = new Match();
 
-		Match match=null;
-		Tournament tour=null;
+//            値取得
+    		int matchId = Integer.parseInt(request.getParameter("matchId"));
 
-//		開催日取得
-		 MatchDAO matchDAO=new MatchDAO();
-		 TournamentDAO tourDAO=new TournamentDAO();
-		 try {
-			match=matchDAO.getMatchInfo(matchId);
-			tour=tourDAO.getTournamentInfo(match.getTournamentId());
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+//    			開催日取得
+    		 MatchDAO matchDAO=new MatchDAO();
+    		 try {
+    			match=matchDAO.getMatchInfo(matchId);
+    		} catch (Exception e) {
+    			e.printStackTrace();
+    		}
+        }
 
 		 request.setAttribute("remaining", -1);
 		 request.setAttribute("seatType",Constants.SEAT_TYPE );
-		 request.setAttribute("tour", tour);
-		 request.setAttribute("match", match);
+		 session.setAttribute("match", match);
 		 request.getRequestDispatcher("/customer/ticketApplication.jsp").forward(request, response);
     }
 }
