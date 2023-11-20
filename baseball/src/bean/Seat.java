@@ -2,6 +2,8 @@ package bean;
 
 import java.io.Serializable;
 
+import common.Constants;
+
 public class Seat implements Serializable {
 	private String seatId;
 	private String type;
@@ -10,6 +12,7 @@ public class Seat implements Serializable {
 	private int gate;
 	private String passage;
 	private String block;
+	private String typeStr;
 
 	public String getSeatId() {
 		return seatId;
@@ -94,5 +97,11 @@ public class Seat implements Serializable {
 		str += "\n";
 		return str;
 
+	}
+	public String getTypeStr() {
+		return typeStr;
+	}
+	public void setTypeStr() {
+		this.typeStr = Constants.SEAT_TYPE.get(this.type);;
 	}
 }

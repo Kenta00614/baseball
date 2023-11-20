@@ -241,17 +241,26 @@ h1 {
 }
 
 
-/*--- ticketApplication.jsp ---*/
-.seat-selection{
-	background-color: #fff5ee;
-}
+/*--- ticketApplication.jspのスタイル ---*/
 
 .content-selection{				/* h2のスタイル */
 	background-color: #ffe4c4;
 	color: #808080;
 	padding: 5px;
 	font-size: 25px;
+	margin-top: 0;
+	border-radius: 30px;
+
 }
+
+.seat-selection{
+	background-color: #fff5ee;
+	width: 800px;
+	margin-left:75px;
+	border: 3px solid #a9a9a9;
+	border-radius: 20px;
+}
+
 
 .ticket-element{
 	margin: 18px;

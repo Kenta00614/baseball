@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import bean.Match;
 import bean.Tournament;
@@ -21,11 +22,15 @@ import dao.TournamentDAO;
 public class TicketPurchase extends HttpServlet {
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	List<Tournament> list=new ArrayList<>();
+		HttpSession session=request.getSession();
+		List<Tournament> list=new ArrayList<>();
 		List<Match> pullMatch=new ArrayList<>();
 		List<Match> match=new ArrayList<>();
 		Tournament lastTour=null;
 
+		if(session.getAttribute("match") !=null){
+			session.removeAttribute("match");
+		}
 		try {
 //			大会情報取得
 			TournamentDAO tourDao=new TournamentDAO();
@@ -54,7 +59,7 @@ public class TicketPurchase extends HttpServlet {
 				}
 			}
 
-			request.setAttribute("lastTour",lastTour);
+			session.setAttribute("tour", lastTour);
 			request.setAttribute("match",match);
 		} catch (Exception e) {
 			e.printStackTrace();

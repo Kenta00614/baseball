@@ -143,11 +143,11 @@ public class SeatDAO extends DAO{
 
 	}
 
-//	ブロック名でstep,number取得
-	public ArrayList<Seat> getStepNum(String block)throws Exception{
+//	ブロックで座席idとstep取得
+	public ArrayList<Seat> getSeat(String block)throws Exception{
 		Connection con=getConnection();
 
-		PreparedStatement st=con.prepareStatement("select step,number from seat where block = ?");
+		PreparedStatement st=con.prepareStatement("select seat_id,step from seat where block = ?");
 		st.setString(1, block);
 
 		ResultSet rs=st.executeQuery();
@@ -155,9 +155,9 @@ public class SeatDAO extends DAO{
 		ArrayList<Seat> list= new ArrayList<>();
 
 		while(rs.next()){
-			Seat s=new Seat();
+			Seat s = new Seat();
+			s.setSeatId(rs.getString("seat_id"));
 			s.setStep(rs.getString("step"));
-			s.setNumber(rs.getInt("number"));
 			list.add(s);
 		}
 

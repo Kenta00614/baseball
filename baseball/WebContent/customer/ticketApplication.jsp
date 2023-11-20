@@ -60,7 +60,6 @@
 			</select>
 		</p>
 		   	<button type="submit" class="choice-button">座席選択へ進む</button>
-		   	<input type="hidden" value="${match.matchId }" name="matchId">
 		</form>
 	</div>
 </body>

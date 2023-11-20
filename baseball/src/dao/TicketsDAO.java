@@ -10,7 +10,9 @@ import java.util.List;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import bean.Seat;
 import bean.Tickets;
+import bean.TicketsAndSeat;
 import bean.TicketsExp;
 
 public class TicketsDAO extends DAO{
@@ -439,6 +441,108 @@ public class TicketsDAO extends DAO{
 		con.close();
 
 		return spectatorId;
+
+	}
+
+//	日付とブロックで絞り込んだ販売中のチケット・座席情報
+	public List<TicketsAndSeat> selectTickets(Date eventDate, String block)throws Exception{
+
+		Connection con=getConnection();
+		PreparedStatement st=con.prepareStatement("select tickets.*,match.event_date,seat.* from tickets join match on tickets.match_id = match.match_id join seat on tickets.seat_id = seat.seat_id where match.event_date = ? and seat.block = ? and tickets.status = 3");
+		st.setDate(1, eventDate);
+		st.setString(2, block);
+
+		ResultSet rs=st.executeQuery();
+
+		List<TicketsAndSeat> list=new ArrayList<>();
+
+		while(rs.next()){
+			TicketsAndSeat ts=new TicketsAndSeat();
+			Tickets t=new Tickets();
+			Seat s=new Seat();
+
+			t.setTicketsId(rs.getString("tickets_id"));
+			t.setPurchaseId(rs.getInt("purchase_id"));
+			t.setMatchId(rs.getInt("match_id"));
+			t.setSeatId(rs.getString("seat_id"));
+			t.setStatus(rs.getString("status"));
+			t.setShared(rs.getBoolean("is_shared"));
+			t.setChild(rs.getBoolean("is_child"));
+
+			s.setSeatId(rs.getString("seat_id"));
+			s.setType(rs.getString("type"));
+			s.setStep(rs.getString("step"));
+			s.setNumber(rs.getInt("number"));
+			s.setGate(rs.getInt("gate"));
+			s.setPassage(rs.getString("passage"));
+			s.setBlock(rs.getString("block"));
+			s.setTypeStr();
+
+			ts.setSeat(s);
+			ts.setTicket(t);
+			ts.setEventDate(rs.getDate("event_date"));
+
+			list.add(ts);
+		}
+
+		st.close();
+		con.close();
+
+		return list;
+
+	}
+
+//	チケットのチケット・座席情報
+	public List<TicketsAndSeat> getSelectTickets(String[] ticketsId)throws Exception{
+
+		Connection con=getConnection();
+
+		String SQL = "select tickets.*,match.event_date,seat.* from tickets join match on tickets.match_id = match.match_id join seat on tickets.seat_id = seat.seat_id where ";
+		for(int i=0;i<ticketsId.length;i++){
+			if(i==0){
+				SQL += "tickets.tickets_id=?";
+			}else{
+				SQL += " or tickets.tickets_id=?";
+			}
+		}
+
+		PreparedStatement st = con.prepareStatement(SQL);
+
+		for(int i=0;i<ticketsId.length;i++){
+			st.setString(i+1, ticketsId[i]);
+		}
+
+
+		ResultSet rs=st.executeQuery();
+
+		List<TicketsAndSeat> list=new ArrayList<>();
+
+		while(rs.next()){
+			TicketsAndSeat ts=new TicketsAndSeat();
+			Tickets t=new Tickets();
+			Seat s=new Seat();
+
+			t.setTicketsId(rs.getString("tickets_id"));
+			t.setChild(rs.getBoolean("is_child"));
+
+			s.setType(rs.getString("type"));
+			s.setStep(rs.getString("step"));
+			s.setNumber(rs.getInt("number"));
+			s.setGate(rs.getInt("gate"));
+			s.setPassage(rs.getString("passage"));
+			s.setTypeStr();
+
+			ts.setSeat(s);
+			ts.setTicket(t);
+			ts.setEventDate(rs.getDate("event_date"));
+
+			list.add(ts);
+		}
+
+		st.close();
+		con.close();
+
+		return list;
 
 	}
 
