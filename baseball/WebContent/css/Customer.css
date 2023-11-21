@@ -7,10 +7,13 @@
 body {
     background-color: #ffffff;
     width: 960px;
-    margin: 15px;
+    margin: 15px auto; /* 左右のマージンをautoにして中央寄せに修正 */
     margin-top: 60px;
     padding: 0;
     font-family: 'Arial', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 h1 {
@@ -21,7 +24,8 @@ h1 {
     text-decoration: underline;
 }
 
-.return-btn{				/*戻るボタンのスタイル*/
+.return-btn {
+    /* 戻るボタンのスタイル */
     margin-bottom: 10px;
     background-color: #808080;
     color: white;
@@ -31,16 +35,18 @@ h1 {
     border-radius: 20px;
 }
 
-
 /*--- main.jspのスタイル ---*/
 .tournament {
     text-align: center;
     font-size: 30px;
     margin: 20px 0;
+    display: flex;
+    justify-content: center;
 }
 
 .schedule {
     display: flex;
+    align-items: center;
     justify-content: center;
     margin-bottom: 10px;
     flex-wrap: wrap;
@@ -55,9 +61,15 @@ h1 {
     font-size: 18px;
     margin: 20px 0;
 }
+
+.main_display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 /*--- login.jspのスタイル ---*/
-
-
 .login-box {
     width: 400px;
     margin: 30px auto;
@@ -124,7 +136,6 @@ h1 {
     text-decoration: underline;
 }
 
-
 /*--- signup.jspのスタイル ---*/
 .container {
     width: 600px;
@@ -190,46 +201,45 @@ h1 {
     transform: translate(-50%, -50%) rotate(-45deg);
 }
 
-
 /*--- tiketPurchase.jspのスタイル ---*/
 .pre-order {
-	border: 1px solid #a9a9a9;
+    border: 1px solid #a9a9a9;
     box-shadow: 0px 0px 15px #a9a9a9;
-	margin: 20px;
-	margin-left:75px;
+    margin: 20px;
+    margin-left: 75px;
     border-left: solid 15px #696969;
     padding: 10px;
     width: 800px;
     background: #fffafa;
     font-weight: bold;
- }
+}
 
- .now-reception{
- 	color: #008080;
- 	background-color: #ccffcc;
- 	font-weight: bold;
- 	margin-right: 500px; /* テキストとボタンの間隔を調整 */
- 	margin-left: 20px;
- 	border: 2px solid #66cdaa;
- 	padding: 5px;
- }
+.now-reception {
+    color: #008080;
+    background-color: #ccffcc;
+    font-weight: bold;
+    margin-right: 500px; /* テキストとボタンの間隔を調整 */
+    margin-left: 20px;
+    border: 2px solid #66cdaa;
+    padding: 5px;
+}
 
- .before-reception{
- 	color: #696969;
- 	background-color: #ffcccc;
- 	font-weight: bold;
- 	margin-right: 500px; /* テキストとボタンの間隔を調整 */
- 	margin-left: 20px;
- 	border: 2px solid #ffcccc;
- 	padding: 5px;
- }
+.before-reception {
+    color: #696969;
+    background-color: #ffcccc;
+    font-weight: bold;
+    margin-right: 500px; /* テキストとボタンの間隔を調整 */
+    margin-left: 20px;
+    border: 2px solid #ffcccc;
+    padding: 5px;
+}
 
-.apply{
+.apply {
     display: flex;
     align-items: center;
 }
 
-.apply-btn{
+.apply-btn {
     margin-right: 0; /* ボタンを右端に配置 */
     margin-bottom: 10px;
     background-color: #808080;
@@ -240,40 +250,36 @@ h1 {
     border-radius: 5px;
 }
 
-
 /*--- ticketApplication.jspのスタイル ---*/
-
-.content-selection{				/* h2のスタイル */
-	background-color: #ffe4c4;
-	color: #808080;
-	padding: 5px;
-	font-size: 25px;
-	margin-top: 0;
-	border-radius: 30px;
-
+.content-selection {
+    /* h2のスタイル */
+    background-color: #ffe4c4;
+    color: #808080;
+    padding: 5px;
+    font-size: 25px;
+    margin-top: 0;
+    border-radius: 30px;
 }
 
-.seat-selection{
-	background-color: #fff5ee;
-	width: 800px;
-	margin-left:75px;
-	border: 3px solid #a9a9a9;
-	border-radius: 20px;
+.seat-selection {
+    background-color: #fff5ee;
+    width: 800px;
+    margin-left: 75px;
+    border: 3px solid #a9a9a9;
+    border-radius: 20px;
 }
 
-
-.ticket-element{
-	margin: 18px;
+.ticket-element {
+    margin: 18px;
 }
 
-.tiket-soldout{
-	color: #dc143c;
-	font-size: 20px;
+.tiket-soldout {
+    color: #dc143c;
+    font-size: 20px;
 }
-
 
 .choice-button {
-	margin: 10px;
+    margin: 10px;
     border: 3px solid transparent;
     color: #ffffff;
     background: #808080;
@@ -290,33 +296,31 @@ h1 {
     background: #c0c0c0;
 }
 
-
-
 /*テーブル設定*/
-.ticket-summary{
-	border: 3px solid #a9a9a9;
-	width: 800px;
-	margin: 20px;
-	margin-left:75px;
+.ticket-summary {
+    border: 3px solid #a9a9a9;
+    width: 800px;
+    margin: 20px;
+    margin-left: 75px;
 }
 
-.ticket-summary> table th{
-	background-color: #ffe4e1;
-	width: 250px;
-	color: #f08080;
+.ticket-summary> table th {
+    background-color: #ffe4e1;
+    width: 250px;
+    color: #f08080;
 }
 
-.ticket-summary> table td{
-	background-color: #fffafa;
-	width: 550px;
+.ticket-summary> table td {
+    background-color: #fffafa;
+    width: 550px;
 }
 
-.ticket-summary> table th,td{
+.ticket-summary> table th,
+.ticket-summary> table td {
     border-bottom: 2px solid #a9a9a9;
-    padding: 10px;  /* 枠線指定 */
+    padding: 10px; /* 枠線指定 */
 }
 
-.ticket-summary> table tr:last-child *{
-  border-bottom: none;
-
+.ticket-summary> table tr:last-child * {
+    border-bottom: none;
 }
