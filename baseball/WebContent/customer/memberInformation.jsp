@@ -5,8 +5,27 @@
 <html>
 <head>
 	<link rel="stylesheet" type="text/css"  href="/baseball/css/Customer.css">
+	<title>会員情報</title>
 </head>
 <body>
+	<h1>会員情報</h1>
+    <div class="member-info">
+		<table>
+        <c:choose>
+            <c:when test="${not empty spectator}">
+                <tr><th>ID</th><td> ${spectator.spectatorId}</td></tr>
+                <tr><th>名前</th><td> ${spectator.name}</td></tr>
+                <tr><th>メールアドレス</th><td>${spectator.mail}</td></tr>
+                <tr><th>電話番号</th><td>${spectator.tel}</td></tr>
+                <tr><th>ポイント</th><td>${spectator.point}</td></tr>
+            </c:when>
+            <c:otherwise>
+                <p>会員情報が利用できません。ログインしてください。</p>
+            </c:otherwise>
+        </c:choose>
+        </table>
+    </div>
+
 
     <div class="header">
         <form action="MemberWithdraw" method="get">
@@ -15,25 +34,9 @@
     </div>
 
     <div class="header">
-        <form action="/customer/InformationChange" method="get">
+        <form action="InformationChange" method="get">
             <button type="submit">会員情報変更</button>
         </form>
-    </div>
-
-    <div class="member-info">
-        <h1>会員情報</h1>
-        <c:choose>
-            <c:when test="${not empty spectator}">
-                <p>ID: ${spectator.spectatorId}</p>
-                <p>名前: ${spectator.name}</p>
-                <p>メールアドレス: ${spectator.mail}</p>
-                <p>電話番号: ${spectator.tel}</p>
-                <p>ポイント: ${spectator.point}</p>
-            </c:when>
-            <c:otherwise>
-                <p>会員情報が利用できません。ログインしてください。</p>
-            </c:otherwise>
-        </c:choose>
     </div>
 
 </body>
