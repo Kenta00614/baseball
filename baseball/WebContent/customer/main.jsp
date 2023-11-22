@@ -11,7 +11,7 @@
      <link rel="stylesheet" type="text/css"  href ="/baseball/css/Customer.css">
 </head>
 <body>
-
+<div class=main_display>
 	<h1 class="tournament">第102回全国高等学校野球選手権大会</h1>
 
 	<p class="date-center">8月1日 (木曜日)</p>
@@ -37,7 +37,7 @@
 	    <div>14:00 </div>
 	    <div>未定</div>
 	</div>
-
+</div>
 </body>
 </html>
 
