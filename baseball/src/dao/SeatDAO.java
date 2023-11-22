@@ -147,7 +147,7 @@ public class SeatDAO extends DAO{
 	public ArrayList<Seat> getSeat(String block)throws Exception{
 		Connection con=getConnection();
 
-		PreparedStatement st=con.prepareStatement("select seat_id,step from seat where block = ?");
+		PreparedStatement st=con.prepareStatement("select seat_id,step from seat where block = ? order by step desc");
 		st.setString(1, block);
 
 		ResultSet rs=st.executeQuery();

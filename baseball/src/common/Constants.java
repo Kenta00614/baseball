@@ -28,5 +28,14 @@ public class Constants {
 //		          put("TA", "三塁側アルプス");
 		        }
 		      };
-
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	public static HashMap<String,Integer> SEAT_PRICE = new HashMap(){
+      {
+          put("0B", 4200);
+	      put("0F", 3700);
+	      put("0T", 3700);
+	      put("0R", 700);
+	      put("0L", 700);
+    }
+  };
 }

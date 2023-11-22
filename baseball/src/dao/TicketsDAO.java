@@ -497,7 +497,7 @@ public class TicketsDAO extends DAO{
 
 		Connection con=getConnection();
 
-		String SQL = "select tickets.*,match.event_date,seat.* from tickets join match on tickets.match_id = match.match_id join seat on tickets.seat_id = seat.seat_id where ";
+		String SQL = "select match.event_date,tickets.tickets_id,tickets.is_child,seat.* from tickets join match on tickets.match_id = match.match_id join seat on tickets.seat_id = seat.seat_id where ";
 		for(int i=0;i<ticketsId.length;i++){
 			if(i==0){
 				SQL += "tickets.tickets_id=?";
@@ -511,7 +511,6 @@ public class TicketsDAO extends DAO{
 		for(int i=0;i<ticketsId.length;i++){
 			st.setString(i+1, ticketsId[i]);
 		}
-
 
 		ResultSet rs=st.executeQuery();
 
