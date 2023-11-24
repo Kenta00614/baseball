@@ -14,8 +14,8 @@ public class EmailUtility{
     public static void sendEmail(String to, String subject, String content) throws Exception {
         // メール送信に必要な設定値。ここではGmailのSMTPサーバーを例にしています。
         String host = "smtp.gmail.com";
-        String username = "your-email@gmail.com"; // Gmailのメールアドレス
-        String password = "your-password"; // Gmailのパスワード
+        String username = "jantaroukanta@gmail.com"; // Gmailのメールアドレス
+        String password = "vwob boyf axve fpkm"; // Gmailのパスワード
         int port = 587;
 
         // SMTPサーバーの設定を行います。
@@ -48,3 +48,4 @@ public class EmailUtility{
         }
     }
 }
+

@@ -9,41 +9,43 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import bean.Provisional;
 import dao.ProvisionalDAO;
 import dao.SpectatorDAO;
 
 @WebServlet("/customer/Signup")
 public class Signup extends HttpServlet {
-    @SuppressWarnings("unused")
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // メールからのUUIDパラメータを取得
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String uuidString = request.getParameter("uuid");
-        if (uuidString == null) {
-            // エラーメッセージを表示したり、ログを記録したりする
-            response.sendRedirect("signupError.jsp"); // 適切なエラーページにリダイレクト
-            return;
-        }
-
         try {
-            // UUIDをチェックし、有効であれば仮会員情報を本会員テーブルに移行
-            UUID uuid = UUID.fromString(uuidString);
-            ProvisionalDAO provisionalDAO = new ProvisionalDAO();
-            SpectatorDAO spectatorDAO = new SpectatorDAO();
+            if (uuidString != null) {
+                UUID uuid = UUID.fromString(uuidString);
 
-            // 仮会員情報を取得し、本会員テーブルに情報を追加
-            int result = spectatorDAO.addNewSpec(uuid);
+                // ProvisionalDAO を使用して仮登録されたユーザーの情報を検索
+                ProvisionalDAO provisionalDAO = new ProvisionalDAO();
+                Provisional provisionalUser = provisionalDAO.searchUuid(uuid);
 
-            if (result > 0) {
-                // 本会員登録が成功した場合、成功ページにリダイレクト
-                response.sendRedirect("signupComplete.jsp"); // 登録完了ページへのリダイレクト
+                if (provisionalUser != null) {
+                    // SpectatorDAO を使用して正規のユーザーとして登録
+                    SpectatorDAO spectatorDAO = new SpectatorDAO();
+                    int result = spectatorDAO.addNewSpec(uuid);
+
+                    // 登録後、Provisional テーブルからユーザー情報を削除
+                    provisionalDAO.delUuid(uuid);
+
+                    // 登録完了ページへリダイレクト
+                    response.sendRedirect("/baseball/customer/signupComplete.jsp");
+                } else {
+                    // 該当するユーザーが見つからない場合のエラーハンドリング
+                    response.sendRedirect("/a/error.jsp");
+                }
             } else {
-                // 本会員登録が失敗した場合、エラーページにリダイレクト
-                response.sendRedirect("signupError.jsp"); // エラーページにリダイレクト
+                // UUID が無効な場合のエラーハンドリング
+                response.sendRedirect("/b/error.jsp");
             }
         } catch (Exception e) {
-            // エラーハンドリング
             e.printStackTrace();
-            response.sendRedirect("signupError.jsp"); // エラーページにリダイレクト
+            response.sendRedirect("/c/error.jsp");
         }
     }
 }
