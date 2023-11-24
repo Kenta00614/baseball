@@ -1,10 +1,11 @@
 package customer;
 
-// 必要なインポート
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,38 +16,49 @@ import javax.servlet.http.HttpSession;
 
 import bean.Spectator;
 import dao.SpectatorDAO;
-
 @WebServlet("/customer/Login")
 public class Login extends HttpServlet {
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    @SuppressWarnings("unchecked")
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         String mail = request.getParameter("mail");
         String password = request.getParameter("password");
 
-        try {
-            String hashedPassword = hashPassword(password);
 
-            SpectatorDAO spectatorDAO = new SpectatorDAO();
+        SpectatorDAO spectatorDAO = new SpectatorDAO();
+
+        try {
+
+        	String hashedPassword = hashPassword(password);
             Spectator spectator = spectatorDAO.loginSpec(mail, hashedPassword);
 
             if (spectator != null) {
-                // ログイン成功の処理
+                // ログイン成功
                 HttpSession session = request.getSession();
-                session.setAttribute("spectator", spectator);
+
+                List<Spectator> spectatorIds = (List<Spectator>) session.getAttribute("spectatorIds");
+                if (spectatorIds == null) {
+                    spectatorIds = new ArrayList<>();
+                }
+
+                // SPECTATOR_IDをリストに追加
+                spectatorIds.add(spectator);
+
+                // 更新されたリストをセッションに保存
+                session.setAttribute("spectatorIds", spectatorIds);
                 response.sendRedirect("/baseball/customer/loginWelcome.jsp"); // ログイン成功ページへリダイレクト
+
             } else {
-                // ログイン失敗の処理
+                // ログイン失敗
                 HttpSession session = request.getSession();
                 session.setAttribute("loginError", "無効なメールアドレスまたはパスワードです。");
-                response.sendRedirect("/baseball/customer/loginError.jsp"); // エラーページへリダイレクト
+                response.sendRedirect("/baseball/customer/loginError.jsp"); // ログインページへリダイレクト
             }
         } catch (Exception e) {
-            // 例外が発生した場合の処理
             throw new ServletException(e);
         }
     }
-
     private String hashPassword(String password) throws NoSuchAlgorithmException {
         MessageDigest digest = MessageDigest.getInstance("SHA-256");
         byte[] encodedhash = digest.digest(password.getBytes(StandardCharsets.UTF_8));
