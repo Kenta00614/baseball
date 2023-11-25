@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@include file="header.jsp"%>
 
 <html>
@@ -14,8 +15,8 @@
 	<p>申込内容</p>
 	<p>開催日:${match.eventDate }(${match.eventDayOfWeek })</p>
 	<p>座種:${selTicketsData[0].seat.typeStr }</p>
-	<c:forEach var="ticket" items="${selTicketsData }">
-		<p>${ticket.seat.step }段　${ticket.seat.number }番　${ticket.seat.gate }番ゲート　${ticket.seat.passage }通路　値段:&yen;${price }</p>
+	<c:forEach begin="0" end="${fn:length(selTicketsData)-1 }" step="1" var="i">
+		<p>${selTicketsData[i].seat.step }段　${selTicketsData[i].seat.number }番　${selTicketsData[i].seat.gate }番ゲート　${selTicketsData[i].seat.passage }通路　${selChils[i] }　値段:&yen;${price[i] }</p>
 	</c:forEach>
 	<p>	支払い方法/受け取り方法　QRコード/Paypal</p>
 	<c:if test="${spectatorIds[0].point }>0">

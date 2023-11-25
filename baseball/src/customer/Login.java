@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import bean.Spectator;
+import dao.SeatDAO;
 import dao.SpectatorDAO;
 @WebServlet("/customer/Login")
 public class Login extends HttpServlet {
@@ -41,6 +42,20 @@ public class Login extends HttpServlet {
 
                 // 更新されたリストをセッションに保存
                 session.setAttribute("spectatorIds", spectatorIds);
+
+//              チケット購入の途中でログイン画面遷移されたらチケット購入の画面に戻す
+                String seat = (String)session.getAttribute("seat");
+                if(seat != null){
+                	List<String> blocks=new ArrayList<>();
+        	   	 	SeatDAO seatDAO=new SeatDAO();
+
+                	blocks = seatDAO.getBlock(seat);
+    				request.setAttribute("blocks", blocks);
+    				request.setAttribute("remain", -1);
+    				request.getRequestDispatcher("/customer/ticketSelectAll.jsp").forward(request, response);
+    				return;
+                }
+
                 response.sendRedirect("/baseball/customer/loginWelcome.jsp"); // ログイン成功ページへリダイレクト
 
             } else {

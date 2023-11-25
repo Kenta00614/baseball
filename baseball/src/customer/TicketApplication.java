@@ -17,11 +17,8 @@ import dao.MatchDAO;
 public class TicketApplication extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session=request.getSession();
-		//ログインじゃなかったときの処理はログイン実装後に記述
-
-
-
 		Match match = (Match) session.getAttribute("match");
+
         if (match == null) {
             match = new Match();
 
@@ -35,11 +32,11 @@ public class TicketApplication extends HttpServlet {
     		} catch (Exception e) {
     			e.printStackTrace();
     		}
-        }
 
-		 request.setAttribute("remaining", -1);
-		 request.setAttribute("seatType",Constants.SEAT_TYPE );
-		 session.setAttribute("match", match);
-		 request.getRequestDispatcher("/customer/ticketApplication.jsp").forward(request, response);
+			 request.setAttribute("remaining", -1);
+			 request.setAttribute("seatType",Constants.SEAT_TYPE );
+			 session.setAttribute("match", match);
+			 request.getRequestDispatcher("/customer/ticketApplication.jsp").forward(request, response);
+        }
     }
 }
