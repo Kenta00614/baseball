@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@include file="header.jsp"%>
 <html>
 <head>
@@ -11,6 +12,8 @@
 
 	<%-- 第何回　～大会のヘッダー --%>
     <h1>第${tour.ordinalNum }回${tour.name }</h1>
+    <%-- 試合日情報がないとき --%>
+    <c:if test="${fn:length(match) < 1}">販売中のチケットはありません</c:if>
     <c:forEach var="mat" items="${match}">
 	    <c:choose>
 
