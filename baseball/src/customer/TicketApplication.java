@@ -32,11 +32,10 @@ public class TicketApplication extends HttpServlet {
     		} catch (Exception e) {
     			e.printStackTrace();
     		}
-
-			 request.setAttribute("remaining", -1);
-			 request.setAttribute("seatType",Constants.SEAT_TYPE );
-			 session.setAttribute("match", match);
-			 request.getRequestDispatcher("/customer/ticketApplication.jsp").forward(request, response);
+			session.setAttribute("match", match);
         }
+        request.setAttribute("remaining", -1);
+        request.setAttribute("seatType",Constants.SEAT_TYPE );
+		request.getRequestDispatcher("/customer/ticketApplication.jsp").forward(request, response);
     }
 }

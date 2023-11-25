@@ -32,43 +32,42 @@ public class TicketSelectAll extends HttpServlet {
     	// セッションからspectatoridを取得
     	List<Spectator> spectatorIds =  (List<Spectator>)session.getAttribute("spectatorIds");
 
-//    	ログインしていないときログイン画面へ
-    	if (spectatorIds == null) {
-    		session.setAttribute("seat", seat);
-			session.setAttribute("count", count);
-            response.sendRedirect("login.jsp");
-            return;
-        } else {
-	    	int remaining=0;
-			List<Tickets> tickets=new ArrayList<>();
-			List<String> blocks=new ArrayList<>();
+    	int remaining=0;
+		List<Tickets> tickets=new ArrayList<>();
+		List<String> blocks=new ArrayList<>();
 
-	    	TicketsDAO ticketDAO=new TicketsDAO();
-	   	 	SeatDAO seatDAO=new SeatDAO();
-	    	try {
-	//    		座種のチケット残数
-	    		tickets = ticketDAO.getTypeSurplus(seat,match.getMatchId());
-				remaining=tickets.size();
+    	TicketsDAO ticketDAO=new TicketsDAO();
+   	 	SeatDAO seatDAO=new SeatDAO();
+    	try {
+//    		座種のチケット残数
+    		tickets = ticketDAO.getTypeSurplus(seat,match.getMatchId());
+			remaining=tickets.size();
 
-	//			希望枚数よりチケットが少ない場合前の画面に戻る
-				if(remaining<count){
-					request.setAttribute("seatType",Constants.SEAT_TYPE );
-					request.setAttribute("remaining", remaining);
-					request.getRequestDispatcher("/customer/ticketApplication.jsp").forward(request, response);
-					return;
-				}
-
-	//			通常の時送る値
-				blocks = seatDAO.getBlock(seat);
-				request.setAttribute("blocks", blocks);
-				request.setAttribute("remain", -1);
-				session.setAttribute("seat", seat);
-				session.setAttribute("count", count);
-				request.getRequestDispatcher("/customer/ticketSelectAll.jsp").forward(request, response);
-
-			} catch (Exception e) {
-				e.printStackTrace();
+//			希望枚数よりチケットが少ない場合前の画面に戻る
+			if(remaining<count){
+				request.setAttribute("seatType",Constants.SEAT_TYPE );
+				request.setAttribute("remaining", remaining);
+				request.getRequestDispatcher("/customer/ticketApplication.jsp").forward(request, response);
+				return;
 			}
-        }
+//	    	ログインしていないときログイン画面へ
+	    	if (spectatorIds == null) {
+	    		session.setAttribute("seat", seat);
+				session.setAttribute("count", count);
+	            response.sendRedirect("login.jsp");
+	            return;
+	    	}
+
+//			通常の時送る値
+			blocks = seatDAO.getBlock(seat);
+			request.setAttribute("blocks", blocks);
+			request.setAttribute("remain", -1);
+			session.setAttribute("seat", seat);
+			session.setAttribute("count", count);
+			request.getRequestDispatcher("/customer/ticketSelectAll.jsp").forward(request, response);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
     }
 }

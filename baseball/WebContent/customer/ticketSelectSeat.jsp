@@ -11,6 +11,7 @@
  --%>
     <%-- ↓css後で修正してください↓ --%>
 	<style>
+		<%--↓アニメーション↓--%>
 		.v-enter-active,.v-leave-active{
 			transition: 0.5s;
 		}
@@ -18,6 +19,8 @@
 			opacity: 0;
 			transform: translateX(20px);
 		}
+		<%--↑アニメーション↑--%>
+
 		li{
             list-style:none;
         }

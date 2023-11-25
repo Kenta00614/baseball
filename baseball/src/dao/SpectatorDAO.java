@@ -222,4 +222,23 @@ public class SpectatorDAO extends DAO {
 		return point;
 	}
 
+//	ポイント取得
+	public int getSpecPoint(int specId) throws Exception {
+			Connection con=getConnection();
+			int point=0;
+
+			PreparedStatement st;
+			st=con.prepareStatement(
+				"SELECT POINT FROM SPECTATOR WHERE SPECTATOR_ID=?");
+			st.setInt(1, specId);
+			ResultSet rs=st.executeQuery();
+
+			while (rs.next()) {
+				point=rs.getInt("point");
+			}
+
+			st.close();
+			con.close();
+			return point;
+		}
 }
