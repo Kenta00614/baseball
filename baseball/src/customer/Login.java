@@ -1,6 +1,9 @@
 package customer;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,7 +30,10 @@ public class Login extends HttpServlet {
         SpectatorDAO spectatorDAO = new SpectatorDAO();
 
         try {
-            Spectator spectator = spectatorDAO.loginSpec(mail, password);
+
+        	String hashedPassword = hashPassword(password);
+            Spectator spectator = spectatorDAO.loginSpec(mail, hashedPassword);
+
             if (spectator != null) {
                 // ログイン成功
                 HttpSession session = request.getSession();
@@ -67,5 +73,19 @@ public class Login extends HttpServlet {
         } catch (Exception e) {
             throw new ServletException(e);
         }
+    }
+    private String hashPassword(String password) throws NoSuchAlgorithmException {
+        MessageDigest digest = MessageDigest.getInstance("SHA-256");
+        byte[] encodedhash = digest.digest(password.getBytes(StandardCharsets.UTF_8));
+
+        StringBuilder hexString = new StringBuilder(2 * encodedhash.length);
+        for (int i = 0; i < encodedhash.length; i++) {
+            String hex = Integer.toHexString(0xff & encodedhash[i]);
+            if (hex.length() == 1) {
+                hexString.append('0');
+            }
+            hexString.append(hex);
+        }
+        return hexString.toString();
     }
 }

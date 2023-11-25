@@ -11,7 +11,7 @@ import bean.Spectator;
 public class SpectatorDAO extends DAO {
 
 //メールとパスワード一致で観戦客情報を取得
-	public Spectator loginSpec(String mail, String password)
+	public Spectator loginSpec(String mail, String hashedPassword)
 		throws Exception {
 		Spectator spectator=null;
 
@@ -21,7 +21,7 @@ public class SpectatorDAO extends DAO {
 		st=con.prepareStatement(
 			"SELECT * FROM SPECTATOR WHERE MAIL=? AND PASSWORD=?");
 		st.setString(1, mail);
-		st.setString(2, password);
+		st.setString(2, hashedPassword);
 		ResultSet rs=st.executeQuery();
 
 		while (rs.next()) {
