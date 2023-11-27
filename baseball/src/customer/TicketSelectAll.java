@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import bean.Match;
+import bean.Spectator;
 import bean.Tickets;
 import common.Constants;
 import dao.SeatDAO;
@@ -20,12 +21,16 @@ import dao.TicketsDAO;
 @WebServlet("/customer/TicketSelectAll")
 public class TicketSelectAll extends HttpServlet {
 
-    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    @SuppressWarnings("unchecked")
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //    	値の取得
     	HttpSession session=request.getSession();
     	int count = Integer.parseInt(request.getParameter("count"));
     	String seat = request.getParameter("seat");
     	Match match=(Match)session.getAttribute("match");
+
+    	// セッションからspectatoridを取得
+    	List<Spectator> spectatorIds =  (List<Spectator>)session.getAttribute("spectatorIds");
 
     	int remaining=0;
 		List<Tickets> tickets=new ArrayList<>();
@@ -45,6 +50,13 @@ public class TicketSelectAll extends HttpServlet {
 				request.getRequestDispatcher("/customer/ticketApplication.jsp").forward(request, response);
 				return;
 			}
+//	    	ログインしていないときログイン画面へ
+	    	if (spectatorIds == null) {
+	    		session.setAttribute("seat", seat);
+				session.setAttribute("count", count);
+	            response.sendRedirect("login.jsp");
+	            return;
+	    	}
 
 //			通常の時送る値
 			blocks = seatDAO.getBlock(seat);
@@ -53,6 +65,7 @@ public class TicketSelectAll extends HttpServlet {
 			session.setAttribute("seat", seat);
 			session.setAttribute("count", count);
 			request.getRequestDispatcher("/customer/ticketSelectAll.jsp").forward(request, response);
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

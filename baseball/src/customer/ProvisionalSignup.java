@@ -40,8 +40,8 @@ public class ProvisionalSignup extends HttpServlet {
             // 仮登録が成功した場合にはメールを送信
             if (uuid != null) {
                 // メール認証用のリンクを生成
-                String verificationLink = "http://" + request.getServerName() + ":" + request.getServerPort() +
-                                          contextPath + "/verify?uuid=" + uuid.toString();
+            	String verificationLink = "http://" + request.getServerName() + ":" + request.getServerPort() +
+                        contextPath + "/customer/Signup?uuid=" + uuid.toString();
 
                 // メール内容
                 String subject = "会員登録の確認";
@@ -51,14 +51,14 @@ public class ProvisionalSignup extends HttpServlet {
                 EmailUtility.sendEmail(mail, subject, content);
 
                 // 仮登録完了ページへリダイレクト
-                response.sendRedirect(contextPath + "customer/provisionalSignupComplete.jsp");
+                response.sendRedirect(contextPath + "/customer/provisionalSignupComplete.jsp");
             } else {
                 // 仮登録失敗ページへリダイレクト
-                response.sendRedirect(contextPath + "customer/signupError.jsp");
+                response.sendRedirect(contextPath + "/baseball/customer/signupError.jsp");
             }
         } catch (Exception e) {
             e.printStackTrace(); // 本番環境では、適切なロギングに置き換えてください。
-            response.sendRedirect("/customer/sigupError.jsp"); // エラーページへリダイレクト
+            response.sendRedirect("/baseball/customer/sigupError.jsp"); // エラーページへリダイレクト
         }
     }
 
@@ -78,3 +78,5 @@ public class ProvisionalSignup extends HttpServlet {
         return hexString.toString();
     }
 }
+
+
