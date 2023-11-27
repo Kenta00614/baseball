@@ -9,6 +9,7 @@
 </head>
 <body>
 	<h1>会員情報</h1>
+
     <div class="member-info">
 		<table>
         <c:choose>
@@ -20,24 +21,22 @@
                 <tr><th>ポイント</th><td>${spectator.point}</td></tr>
             </c:when>
             <c:otherwise>
-                <p>会員情報が利用できません。ログインしてください。</p>
+                <p class="memberinfo-else">会員情報が利用できません。 ログインしてください。</p>
             </c:otherwise>
         </c:choose>
         </table>
     </div>
 
-
-    <div class="header">
+	<div class="member-selection">
         <form action="MemberWithdraw" method="get">
             <button type="submit">会員退会</button>
         </form>
-    </div>
 
-    <div class="header">
         <form action="InformationChange" method="get">
             <button type="submit">会員情報変更</button>
         </form>
     </div>
+
 
 </body>
 </html>
