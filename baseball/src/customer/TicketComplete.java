@@ -2,9 +2,7 @@ package customer;
 
 import java.io.IOException;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Timestamp;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,9 +13,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import bean.Point;
 import bean.Spectator;
 import bean.TicketsAndSeat;
 import dao.DAO;
+import dao.PointDAO;
+import dao.PurchaseDAO;
 import dao.TicketsDAO;
 
 @WebServlet("/customer/TicketComplete")
@@ -41,6 +42,7 @@ public class TicketComplete extends HttpServlet {
 			usePoint = Integer.parseInt("-"+point);
 		}
 
+//		jspに渡す情報
 		List<TicketsAndSeat> selTicketsData=new ArrayList<>();
 		int  purchaseId;
 		int updateNum=0;
@@ -49,31 +51,18 @@ public class TicketComplete extends HttpServlet {
 
 //		DAO
 		TicketsDAO ticketDAO=new TicketsDAO();
+		PurchaseDAO purchaseDAO = new PurchaseDAO();
+		PointDAO pointDAO = new PointDAO();
 
+		Connection con = null;
 		try {
+//			トランザクション
 			DAO d = new DAO();
-			Connection con=d.getConnection();
+			con=d.getConnection();
+			con.setAutoCommit(false);
 
 //			購入情報登録
-			Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-
-			PreparedStatement st=con.prepareStatement("INSERT INTO PURCHASE VALUES(NULL,?,?)");
-
-			st.setInt(1,spectator.get(0).getSpectatorId());
-			st.setTimestamp(2, timestamp);
-
-			st.executeUpdate();
-
-			st=con.prepareStatement("SELECT PURCHASE_ID FROM PURCHASE WHERE PURCHASE_AT = ?");
-
-			st.setTimestamp(1, timestamp);
-			ResultSet rs=st.executeQuery();
-
-			if(rs.next()){
-				purchaseId=rs.getInt("purchase_id");
-			}else{
-				purchaseId=0;
-			}
+			purchaseId = purchaseDAO.insertPurchase(spectator.get(0).getSpectatorId(),con);
 
 			if(purchaseId != 0){
 	//			チケットのステータス変更
@@ -82,63 +71,28 @@ public class TicketComplete extends HttpServlet {
 					if(selChils[i].equals("子供")){
 						chilFlg=true;
 					}
-					st=con.prepareStatement("UPDATE TICKETS SET PURCHASE_ID = ?,STATUS = 1,IS_CHILD = ? WHERE TICKETS_ID = ?");
-					st.setInt(1, purchaseId);
-					st.setBoolean(2, chilFlg);
-					st.setString(3, selTickets[i]);
-
-					updateNum +=st.executeUpdate();
+					updateNum += ticketDAO.purchaseTickets(selTickets[i],purchaseId,chilFlg,con);
 					chilFlg=false;
 				}
-	//			ポイント情報登録
-//				観戦客のポイント変更
+//				ポイント情報登録
 				if(updateNum == selTickets.length){
-					st=con.prepareStatement("SELECT POINT FROM SPECTATOR WHERE SPECTATOR_ID = ?");
-					st.setInt(1, spectator.get(0).getSpectatorId());
-
-					rs=st.executeQuery();
-
-					int pointPrev = 0;
-
-					if(rs.next()){
-						pointPrev = rs.getInt("point");
-					}
-
-					int pointNew = 0;
-
-					if(usePoint<0){
-						if(pointPrev+usePoint>= 0){
-							pointNew = pointPrev + usePoint;
-						}
-					}else{
-						pointNew = pointPrev + usePoint;
-					}
-
-					PreparedStatement stUpdate = con.prepareStatement("update spectator set point = ?");
-					stUpdate.setInt(1, pointNew);
-
-					int num = stUpdate.executeUpdate();
-
-//					ポイントテーブルに情報追加
-					if(num>0){
-						st=con.prepareStatement("insert into point values(null,?,?,?,null)");
-
-						st.setInt(1,spectator.get(0).getSpectatorId());
-						st.setInt(2, usePoint);
-						st.setInt(3, purchaseId);
-
-						pointNum=st.executeUpdate();
-					}
+					Point p = new Point();
+					p.setSpectatorId(spectator.get(0).getSpectatorId());
+					p.setFluctuation(usePoint);
+					p.setPurchaseId(purchaseId);
+					pointNum = pointDAO.insertUsePoint(p, con);
 				}
 			}
+//			ポイント情報まで正常に動くならコミット
 			if(pointNum > 0){
 				con.commit();
 			}else{
 				con.rollback();
 			}
+//			トランザクション解除
 			con.setAutoCommit(true);
-			st.close();
 			con.close();
+
 			if(pointNum > 0){
 //				購入するチケットの情報取得
 				selTicketsData = ticketDAO.getSelectTickets(selTickets);
@@ -152,6 +106,14 @@ public class TicketComplete extends HttpServlet {
 			session.removeAttribute("count");
 			session.removeAttribute("match");
 		} catch (Exception e) {
+			if(con != null){
+				try {
+					con.rollback();
+					con.close();
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+			}
 			e.printStackTrace();
 		}
 

@@ -175,9 +175,8 @@ public class TicketsDAO extends DAO{
 	}
 
 	//チケットステータスを購入済みに変更、購入番号を登録する
-	public int purchaseTickets(String ticketsId,int purchaseId,boolean chilFlg)throws Exception{
+	public int purchaseTickets(String ticketsId,int purchaseId,boolean chilFlg,Connection con)throws Exception{
 
-		Connection con=getConnection();
 		PreparedStatement st=con.prepareStatement("UPDATE TICKETS SET PURCHASE_ID = ?,STATUS = 1,IS_CHILD = ? WHERE TICKETS_ID = ?");
 		st.setInt(1, purchaseId);
 		st.setBoolean(2, chilFlg);
@@ -186,7 +185,6 @@ public class TicketsDAO extends DAO{
 		int num=st.executeUpdate();
 
 		st.close();
-		con.close();
 
 		return num;
 	}
