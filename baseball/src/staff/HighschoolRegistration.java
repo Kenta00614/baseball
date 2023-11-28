@@ -15,8 +15,8 @@ public class HighschoolRegistration extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
-
     	request.setCharacterEncoding("UTF-8");
+
         SchoolDAO dao = new SchoolDAO();
         int tournamentId = Integer.parseInt(request.getParameter("tournamentId")); // 大会IDを取得
 
