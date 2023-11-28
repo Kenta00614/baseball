@@ -23,23 +23,24 @@ public class TicketDisplay extends HttpServlet {
     @SuppressWarnings("unchecked")
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	HttpSession session=request.getSession();
-//		ログイン情報
-		List<Spectator> spectator = (List<Spectator>)session.getAttribute("spectatorIds");
-
+    	List<Spectator> spectator = (List<Spectator>)session.getAttribute("spectatorIds");
     	List<TicketsExp> tickets = new ArrayList<>();
 
-    	TicketsDAO ticketsDAO = new TicketsDAO();
+//    	観戦客IDがある
+    	if(spectator != null){
+//    		ログイン情報
 
+        	TicketsDAO ticketsDAO = new TicketsDAO();
 
-    	Date date = new Date();
-    	SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-    	java.sql.Date today = java.sql.Date.valueOf(df.format(date));
-    	try {
-			tickets = ticketsDAO.viewTickets(spectator.get(0).getSpectatorId(),today);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
+        	Date date = new Date();
+        	SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        	java.sql.Date today = java.sql.Date.valueOf(df.format(date));
+        	try {
+        		tickets = ticketsDAO.viewTickets(spectator.get(0).getSpectatorId(),today);
+    		} catch (Exception e) {
+    			e.printStackTrace();
+    		}
+    	}
     	request.setAttribute("tickets", tickets);
         request.getRequestDispatcher("/customer/ticketDisplay.jsp").forward(request, response);
     }
