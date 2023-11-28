@@ -283,6 +283,9 @@ public class TicketsDAO extends DAO{
 			t.setBlock(rs.getString("block"));
 			t.setOrdinalNum(rs.getInt("ordinal_num"));
 			t.setTournamentName(rs.getString("name"));
+			t.setTypeStr();
+			t.setPrice();
+			t.setDateStr();
 
 			list.add(t);
 		}

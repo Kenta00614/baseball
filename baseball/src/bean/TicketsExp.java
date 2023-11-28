@@ -3,6 +3,8 @@ package bean;
 import java.sql.Date;
 import java.util.Calendar;
 
+import common.Constants;
+
 public class TicketsExp extends Tickets{
 
 	private Date eventDate;
@@ -16,7 +18,32 @@ public class TicketsExp extends Tickets{
 	private int ordinalNum;
 	private String tournamentName;
 	private String eventDayOfWeek;
+	private String typeStr;
+	private int price;
+	private boolean child;
+//	日付oo月oo日表示にしないなら消す
+	private String dateStr;
 
+	public boolean isChild() {
+		return child;
+	}
+	public void setChild(boolean child) {
+		this.child = child;
+	}
+	public int getPrice() {
+		return price;
+	}
+	public void setPrice() {
+		if (this.child && (this.type.equals("0F") || this.type.equals("0T") || this.type.equals("0R") || this.type.equals("0L"))) {
+	        if (this.type.equals("0F") || this.type.equals("0T")) {
+	            this.price = 1200;
+	        } else {
+	        	this.price = 200;
+	        }
+	    } else {
+            this.price = Constants.SEAT_PRICE.get(this.type);
+	    }
+	}
 	public Date getEventDate() {
 		return eventDate;
 	}
@@ -100,5 +127,24 @@ public class TicketsExp extends Tickets{
 	    }else if(dayNumber==6){
 	    	this.eventDayOfWeek = "金";
 	    }
+	}
+	public String getTypeStr() {
+		return typeStr;
+	}
+	public void setTypeStr() {
+		this.typeStr = Constants.SEAT_TYPE.get(this.type);;
+	}
+	public String getDateStr() {
+		return dateStr;
+	}
+	public void setDateStr() {
+		String dateStr = this.eventDate.toString();
+        int dateIndex = dateStr.lastIndexOf('-');
+        String date = dateStr.substring(dateIndex + 1);
+        String yyyymm = dateStr.substring(0,dateIndex);
+        int monthIndex = yyyymm.lastIndexOf('-');
+        String month = yyyymm.substring(monthIndex + 1);
+
+		this.dateStr = month+"月"+date+"日";
 	}
 }
