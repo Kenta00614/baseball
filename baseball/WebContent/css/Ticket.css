@@ -1,0 +1,58 @@
+@CHARSET "UTF-8";
+
+.return-btn {
+    /* 戻るボタンのスタイル */
+    position: absolute; /* 絶対位置に配置 */
+    top: 15px; /* 上から15pxの位置に配置 */
+    left: 15px; /* 左から15pxの位置に配置 */
+    margin-bottom: 10px;
+    background-color: #808080;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 20px;
+}
+
+
+body {
+    background-color: #E5FFE5;
+    width: 960px;
+    margin: 15px auto;
+    margin-top: 60px;
+    margin-right: 60px;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    align-items: center;
+    position: relative;
+    flex-direction: column;
+}
+
+/*--- アニメーション---*/
+.v-enter-active,.v-leave-active{
+	transition: 0.5s;
+}
+
+.v-enter,.v-leave-to{
+	opacity: 0;
+	transform: translateX(20px);
+}
+
+li{
+	list-style:none;
+}
+
+/*--- 座席横に並べるクラス ---*/
+.seat-img {
+	float: left;
+}
+
+/*--- floatを解除するクラス ---*/
+.clear {
+	clear: both;
+}
+
+
+h1 {
+    text-align: center;
+}
