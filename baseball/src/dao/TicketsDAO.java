@@ -272,6 +272,7 @@ public class TicketsDAO extends DAO{
 			t.setShared(rs.getBoolean("is_shared"));
 			t.setChild(rs.getBoolean("is_child"));
 			t.setEventDate(rs.getDate("event_date"));
+			t.setEventDayOfWeek();
 			t.setSpectatorId(rs.getInt("spectator_id"));
 			t.setSeatId(rs.getString("seat_id"));
 			t.setType(rs.getString("type"));
