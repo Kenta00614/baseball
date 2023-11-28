@@ -6,39 +6,18 @@
 <head>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
 
-<%-- これ読み込ませると縦に並んじゃうのでコメントにしてます
-<link rel="stylesheet" type="text/css"  href ="/baseball/css/Customer.css">
- --%>
-    <%-- ↓css後で修正してください↓ --%>
-	<style>
-		<%--↓アニメーション↓--%>
-		.v-enter-active,.v-leave-active{
-			transition: 0.5s;
-		}
-		.v-enter,.v-leave-to{
-			opacity: 0;
-			transform: translateX(20px);
-		}
-		<%--↑アニメーション↑--%>
 
-		li{
-            list-style:none;
-        }
-        <%-- 座席横に並べるクラス --%>
-		.seat-img {
-		  float: left;
-		}
-		<%-- floatを解除するクラス --%>
-		.clear {
-		  clear: both;
-		}
-	</style>
-    <%-- ↑css後で修正してください↑ --%>
-
+ <link rel="stylesheet" type="text/css" href="/baseball/css/Ticket.css">
 </head>
 <body>
+	<%-- 戻るボタン --%>
+	<form action="TicketSelectAll" method="post">
+		<input type="hidden" name="count" value="${count }">
+		<input type="hidden" name="seat" value="${seat }">
+		<button type="submit" class="return-btn">戻る</button>
+	</form>
 <%-- 大会名 --%>
-    <h3>第${tour.ordinalNum }回　${tour.name }</h3>
+    <h1>第${tour.ordinalNum }回　${tour.name }</h1>
 
 <%-- 席選択 --%>
 	<div id="app">
@@ -71,12 +50,7 @@
 		</form>
 	</div>
 
-	<%-- 戻るボタン --%>
-	<form action="TicketSelectAll" method="post">
-		<input type="hidden" name="count" value="${count }">
-		<input type="hidden" name="seat" value="${seat }">
-		<button type="submit">戻る</button>
-	</form>
+
 
 
 	<script>

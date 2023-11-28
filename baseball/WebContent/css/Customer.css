@@ -56,8 +56,6 @@ table tr:last-child * {
 }
 
 
-
-
 .return-btn {
     /* 戻るボタンのスタイル */
     position: absolute; /* 絶対位置に配置 */
@@ -71,6 +69,7 @@ table tr:last-child * {
     cursor: pointer;
     border-radius: 20px;
 }
+
 
 .square_btn {
 	/* ☒ボタンのスタイル */
@@ -369,4 +368,10 @@ table tr:last-child * {
     border-radius: 5px;
 }
 
+
+/*--- ticketSelectAll.jspのスタイル ---*/
+.seat-type-img{
+	width:80%;
+	height:10%;
+}
 
