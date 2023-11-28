@@ -38,11 +38,10 @@ public class PurchaseDAO extends DAO{
 
 
 	//購入日時を取得、観戦客IDと購入日時を登録する
-	public int insertPurchase(int spectatorId)throws Exception{
+	public int insertPurchase(int spectatorId,Connection con)throws Exception{
 
 		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 
-		Connection con=getConnection();
 		PreparedStatement st=con.prepareStatement("INSERT INTO PURCHASE VALUES(NULL,?,?)");
 
 		st.setInt(1,spectatorId);
@@ -64,7 +63,6 @@ public class PurchaseDAO extends DAO{
 		}
 
 		st.close();
-		con.close();
 
 		return purchaseId;
 
