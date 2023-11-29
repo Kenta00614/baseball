@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@include file="header.jsp"%>
 
 <body>
 
@@ -17,7 +16,6 @@
             <input name="password" type="password" id="password" placeholder="Password" required>
         </div>
         <p><input type="submit" value="Login"></p>
-        	<br><p>初めてご利用の方はこちら<br><a href="ProvisionalSignupDisplay" class="btn">→新規会員登録へ</a></p>
 　　　　</form>
 
 
