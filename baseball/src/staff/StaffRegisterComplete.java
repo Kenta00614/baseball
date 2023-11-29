@@ -21,6 +21,12 @@ public class StaffRegisterComplete extends HttpServlet {
     	String birth=request.getParameter("BIRTH");
     	String position=request.getParameter("position");
 
+    	String year = birth.substring(0,4);
+    	String month = birth.substring(4,6);
+    	String day = birth.substring(6,8);
+
+    	birth = year + "-" + month + "-" + day;
+
     	Date Birth = Date.valueOf(birth);
 
     	StaffDAO DAO = new StaffDAO();
@@ -30,6 +36,8 @@ public class StaffRegisterComplete extends HttpServlet {
 
 			if(RegNum == 1){
 				request.getRequestDispatcher("/staff/staffRegisterComplete.jsp").forward(request, response);
+			}else{
+				request.getRequestDispatcher("/staff/staffRegister.jsp").forward(request, response);
 			}
 		} catch (Exception e) {
 			request.getRequestDispatcher("/staff/staffRegister.jsp").forward(request, response);

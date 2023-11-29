@@ -54,18 +54,24 @@ public class StaffDAO extends DAO {
 
 		PreparedStatement st=con.prepareStatement(
 				"INSERT INTO STAFF VALUES(?,?,?,?,?)");
-
 		if(search==null){
 			st.setString(1,id);
 			st.setString(2,name);
 			st.setDate(3,birth);
+
 			String password = birth.toString();
-			st.setString(4,password);
+	        int dateIndex = password.lastIndexOf('-');
+	        String date = password.substring(dateIndex + 1);
+	        String yyyymm = password.substring(0,dateIndex);
+	        int monthIndex = yyyymm.lastIndexOf('-');
+	        String month = yyyymm.substring(monthIndex + 1);
+	        String year = yyyymm.substring(0,monthIndex);
+
+			st.setString(4,year+month+date);
 			st.setString(5,position);
 			line=st.executeUpdate();
 		}
 
-		stSearch.close();
 		st.close();
 		con.close();
 
