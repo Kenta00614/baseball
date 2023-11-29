@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@include file="header.jsp"%>
+
 <head>
 	<link rel="stylesheet" type="text/css"  href ="/baseball/css/Customer.css">
 </head>
@@ -18,6 +20,7 @@
 	            <input name="password" type="password" id="password" placeholder="🔒Password" class="login-pass" required>
 	        </div>
 	        <p class="login-btn"><input type="submit" value="Login"></p>
+	        <br><p>初めてご利用の方はこちら<br><a href="ProvisionalSignupDisplay" class="btn">→新規会員登録へ</a></p>
 　　　　</form>
 
 	</div>
