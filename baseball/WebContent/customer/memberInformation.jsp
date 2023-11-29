@@ -28,6 +28,10 @@
     </div>
 
 	<div class="member-selection">
+	    <form action="EmailChangeDisplay" method="get">
+            <button type="submit">メールアドレス変更</button>
+        </form>
+
         <form action="MemberWithdraw" method="get">
             <button type="submit">会員退会</button>
         </form>
