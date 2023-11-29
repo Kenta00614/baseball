@@ -31,7 +31,14 @@
 			    <li class="nav__item"><a href="TournamentList">高校情報</a></li>
 			    <li class="nav__item"><a href="SaleStop">販売停止</a></li>
 			    <li class="nav__item"><a href="Refund">払い戻し</a></li>
-				<li class="nav__item"><a href="StaffList">職員情報</a></li>
+				<li class="nav__item">
+					<a href="#">職員情報 &#9662;</a>
+					<div class="dropdown">
+						<a href="StaffRegister">新規職員登録</a>
+						<a href="StaffDelete">職員情報削除</a>
+						<a href="StaffPassDisplay">パスワード再設定</a>
+					</div>
+				</li>
 				<li class="nav__item"><a href="EntryExit">入退場</a></li>
 				<li class="nav__item"><a href="Logout">ログアウト</a></li>
             <%
