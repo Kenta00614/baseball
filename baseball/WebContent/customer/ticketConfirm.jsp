@@ -38,16 +38,18 @@
 	</table>
 	</div>
 
-<%-- 戻るボタン --%>
-    <form action="TicketApplication" method="post">
-		<button type="submit">席種・枚数選択に戻る</button>
-	</form>
+	<div class="button-container">
+	    <%-- 戻るボタン --%>
+	    <form action="TicketApplication" method="post">
+	        <button type="submit" class="ticket-selectmenu">席種・枚数選択に戻る</button>
+	    </form>
 
-   <%-- 購入ボタン --%>
-    <form action="TicketComplete" method="post">
-    	<input type="hidden" value="" id="usePointNum" name="usePointNum">
-		<button type="submit">購入</button>
-	</form>
+	    <%-- 購入ボタン --%>
+	    <form action="TicketComplete" method="post">
+	        <input type="hidden" value="" id="usePointNum" name="usePointNum">
+	        <button type="submit" class="ticket-selectmenu">購入</button>
+	    </form>
+	</div>
 
     <script>
 		new Vue({

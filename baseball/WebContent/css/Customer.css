@@ -276,18 +276,19 @@ table tr:last-child * {
     /* h2のスタイル */
     background-color: #ffe4c4;
     color: #808080;
-    padding: 5px;
+    padding: 7px;
     font-size: 25px;
     margin-top: 0;
-    border-radius: 30px;
+    border-radius: 15px;
 }
 
 .seat-selection {
     background-color: #fff5ee;
-    width: 800px;
+    width: 700px;
     margin-left: 75px;
     border: 3px solid #a9a9a9;
     border-radius: 20px;
+     margin: 15px auto; /* 左右のマージンをautoにして中央寄せに修正 */
 }
 
 .ticket-element {
@@ -317,6 +318,31 @@ table tr:last-child * {
     background: #c0c0c0;
 }
 
+
+/*---ticketConfirm.jspのスタイル ---*/
+.ticket-selectmenu  {
+    /* ボタンのスタイル */
+    padding: 10px 15px;
+    background-color: #808080;
+	width: 170px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 50px;
+    flex: 1; /* ボタンを同じサイズにするための追加 */
+    margin: 20 5px; /* ボタンの間に余白を設定 */
+}
+
+.ticket-selectmenu:hover {
+    background-color: #555;
+}
+
+/* ボタンを横並びにするためのスタイル */
+.button-container {
+    display: flex;
+    justify-content: space-between;
+}
 
 /*--- tiketPurchase.jspのスタイル ---*/
 .pre-order {
