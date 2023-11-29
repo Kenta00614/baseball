@@ -9,7 +9,7 @@
         <form action="StaffRegisterComplete" method="get">
         	<div class="control">
 	            <label for="mymail"> ID</label>
-	            <input id="mymail" type="email" name="mymail" required>
+	            <input id="id" type="text" name="id" required>
 			</div>
 
         	<div class="control">
@@ -21,7 +21,7 @@
 			    <input type="text" id="birth" name="BIRTH" pattern="[12][0-9]{3}[01][0-9][0-3][0-9]" required></p>
 			</div>
 			<p>職員ステータス:
-			<select class="control">
+			<select name="position" class="control">
         		<option value="1">スタッフ</option>
 				<option value="2">役職</option>
 			</select></p>
