@@ -559,7 +559,7 @@ public class TicketsDAO extends DAO{
 
 	}
 
-//	UUIDの一致するチケット情報を取得
+//	UUIDの一致するチケットIDを取得
 	public String getTicketsIdByUuid(UUID uuid)throws Exception{
 
 		Connection con=getConnection();
