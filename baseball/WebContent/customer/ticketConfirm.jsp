@@ -11,39 +11,45 @@
 </head>
 <body>
 <%-- 大会名 --%>
-	<h3>第${tour.ordinalNum }回　${tour.name }</h3>
+	<h1>第${tour.ordinalNum }回　${tour.name }</h1>
 	<hr>
-	<p>申込内容</p>
-	<%-- 日付と曜日 --%>
-	<p>開催日:${match.eventDate }(${match.eventDayOfWeek })</p>
-	<%-- 座種 --%>
-	<p>座種:${selTicketsData[0].seat.typeStr }</p>
-	<%-- ↓選択された座席分の情報↓ --%>
-	<c:forEach begin="0" end="${fn:length(selTicketsData)-1 }" step="1" var="i">
-		<p>${selTicketsData[i].seat.step }段　${selTicketsData[i].seat.number }番　${selTicketsData[i].seat.gate }番ゲート　${selTicketsData[i].seat.passage }通路　${selChils[i] }　値段:&yen;${price[i] }</p>
-	</c:forEach>
-	<%-- ↑選択された座席分の情報↑ --%>
-	<p>	支払い方法/受け取り方法　QRコード/Paypal</p>
+	<div>
+	<table>
+		<tr><th colspan="2" style="background-color:#6BEF9E;color:cadetblue;">申込内容</th></tr>
+		<%-- 日付と曜日 --%>
+		<tr><th>開催日</th><td>${match.eventDate }(${match.eventDayOfWeek })</td></tr>
+		<%-- 座種 --%>
+		<tr><th>座種</th><td>${selTicketsData[0].seat.typeStr }</td></tr>
+		<%-- ↓選択された座席分の情報↓ --%>
+		<c:forEach begin="0" end="${fn:length(selTicketsData)-1 }" step="1" var="i">
+			<tr><th>座席内容</th><td>${selTicketsData[i].seat.step }段　${selTicketsData[i].seat.number }番　${selTicketsData[i].seat.gate }番ゲート　${selTicketsData[i].seat.passage }通路　${selChils[i] }　値段:&yen;${price[i] }</td></tr>
+		</c:forEach>
+		<%-- ↑選択された座席分の情報↑ --%>
+		<tr><th>支払い方法/受け取り方法</th><td>QRコード/Paypal</td></tr>
 
-	<div id="app">
-		<c:if test="${point > 0}">
-			<p>ポイント:${point }(&yen;${point }相当)利用可能</p>
-			<input type="number" v-model="inputValue">
-			<button type="button" v-on:click="addPoint" :disabled="!isButtonEnabled">適用</button>
-		</c:if>
-		<p>ご請求:&yen; {{disPrice}}<c:if test="${point > 0}">(内ポイント利用&yen;{{usePoint}})</c:if></p>
+		<tr id="app">
+			<c:if test="${point > 0}">
+				<th>ポイント</th><td>${point }(&yen;${point }相当)利用可能</td>
+				<input type="number" v-model="inputValue">
+				<button type="button" v-on:click="addPoint" :disabled="!isButtonEnabled">適用</button>
+			</c:if>
+			<th>ご請求</th><td>&yen; {{disPrice}}<c:if test="${point > 0}">(内ポイント利用&yen;{{usePoint}})</c:if></td>
+		</tr>
+	</table>
 	</div>
 
-<%-- 戻るボタン --%>
-    <form action="TicketApplication" method="post">
-		<button type="submit">席種・枚数選択に戻る</button>
-	</form>
+	<div class="button-container">
+	    <%-- 戻るボタン --%>
+	    <form action="TicketApplication" method="post">
+	        <button type="submit" class="ticket-selectmenu">席種・枚数選択に戻る</button>
+	    </form>
 
-   <%-- 購入ボタン --%>
-    <form action="TicketComplete" method="post">
-    	<input type="hidden" value="" id="usePointNum" name="usePointNum">
-		<button type="submit">購入</button>
-	</form>
+	    <%-- 購入ボタン --%>
+	    <form action="TicketComplete" method="post">
+	        <input type="hidden" value="" id="usePointNum" name="usePointNum">
+	        <button type="submit" class="ticket-selectmenu">購入</button>
+	    </form>
+	</div>
 
     <script>
 		new Vue({

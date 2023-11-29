@@ -5,7 +5,7 @@
 }
 
 body {
-    background-color: #ffffff;
+    background-color: #E5FFE5;
     width: 960px;
     margin: 15px auto; /* 左右のマージンをautoにして中央寄せに修正 */
     margin-top: 60px;
@@ -25,6 +25,37 @@ h1 {
     text-decoration: underline;
 }
 
+
+/*テーブル設定*/
+
+table{
+	border: 3px solid #a9a9a9;
+    width: 700px;
+    margin: 20px;
+}
+
+table th {
+    background-color: #99FFCC;
+    width: 250px;
+    color: cadetblue;
+}
+
+table td {
+    background-color: #f0fff0;
+    width: 550px;
+}
+
+table th,
+table td {
+    border-bottom: 2px solid #a9a9a9;
+    padding: 10px; /* 枠線指定 */
+}
+
+table tr:last-child * {
+    border-bottom: none;
+}
+
+
 .return-btn {
     /* 戻るボタンのスタイル */
     position: absolute; /* 絶対位置に配置 */
@@ -38,40 +69,41 @@ h1 {
     cursor: pointer;
     border-radius: 20px;
 }
-
-/*--- main.jspのスタイル ---*/
-.tournament {
-    text-align: center;
-    font-size: 30px;
-    margin: 20px 0;
-    display: flex;
-    justify-content: center;
+.return-btn:hover{
+	background-color:#555;
 }
 
-.schedule {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 10px;
-    flex-wrap: wrap;
+.square_btn {
+	/* ☒ボタンのスタイル */
+    display: block;
+    position: relative;
+    width: 30px;
+    height: 30px;
+    border: 2px solid #333;
+    background: #fff;
+    float: right;
 }
 
-.schedule > div {
-    margin: 0 10px;
+.square_btn::before,
+.square_btn::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 3px;
+    height: 27px;
+    background: #333;
 }
 
-.date-center {
-    text-align: center;
-    font-size: 18px;
-    margin: 20px 0;
+.square_btn::before {
+    transform: translate(-50%, -50%) rotate(45deg);
 }
 
-.main_display {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+.square_btn::after {
+    transform: translate(-50%, -50%) rotate(-45deg);
 }
+
+
 
 
 /*--- login.jspのスタイル ---*/
@@ -81,10 +113,6 @@ h1 {
     padding: 20px;
     border: 1px solid #ccc;
     box-shadow: 0px 0px 10px #ccc;
-}
-
-.login-title {
-    text-align: center;
 }
 
 .login-box>form {
@@ -142,6 +170,41 @@ h1 {
 }
 
 
+/*--- main.jspのスタイル ---*/
+.tournament {
+    text-align: center;
+    font-size: 30px;
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.schedule {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+}
+
+.schedule > div {
+    margin: 0 10px;
+}
+
+.date-center {
+    text-align: center;
+    font-size: 18px;
+    margin: 20px 0;
+}
+
+.main_display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
 /*--- signup.jspのスタイル ---*/
 .container {
     width: 600px;
@@ -178,47 +241,118 @@ h1 {
 }
 
 
-/*--- ☒ボタンのスタイル ---*/
-.square_btn {
-    display: block;
-    position: relative;
-    width: 30px;
-    height: 30px;
-    border: 2px solid #333;
-    background: #fff;
-    float: right;
+/*--- memberInformation.jspのスタイル ---*/
+
+.member-selection {
+    display: flex;
+    gap: 10px; /* ボタン間の隙間を設定 */
 }
 
-.square_btn::before,
-.square_btn::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 3px;
-    height: 27px;
-    background: #333;
+.member-selection form {
+    margin: 0; /* フォームの余白をリセット */
 }
 
-.square_btn::before {
-    transform: translate(-50%, -50%) rotate(45deg);
+.memberinfo-else {/*ログイン前*/
+    font-size: 20px;
 }
 
-.square_btn::after {
-    transform: translate(-50%, -50%) rotate(-45deg);
+.member-selection button {
+    /* ボタンのスタイル */
+    padding: 10px 15px;
+    background-color: #808080;
+	width: 120px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 50px;
 }
 
+.member-selection button:hover {
+    background-color: #555;
+}
+
+
+/*--- ticketApplication.jspのスタイル ---*/
+.content-selection {
+    /* h2のスタイル */
+    background-color: #ffe4c4;
+    color: #808080;
+    padding: 7px;
+    font-size: 25px;
+    margin-top: 0;
+    border-radius: 15px;
+}
+
+.seat-selection {
+    background-color: #fff5ee;
+    width: 700px;
+    margin-left: 75px;
+    border: 3px solid #a9a9a9;
+    border-radius: 20px;
+     margin: 15px auto; /* 左右のマージンをautoにして中央寄せに修正 */
+}
+
+.ticket-element {
+    margin: 18px;
+}
+
+.tiket-soldout {
+    color: #dc143c;
+    font-size: 20px;
+}
+
+.choice-button {
+    margin: 10px;
+    border: 3px solid transparent;
+    color: #ffffff;
+    background: #808080;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 20px;
+    /* other styles */
+}
+
+.choice-button:hover {
+    background-color: #555;
+}
+
+
+/*---ticketConfirm.jspのスタイル ---*/
+.ticket-selectmenu  {
+    /* ボタンのスタイル */
+    padding: 10px 15px;
+    background-color: #808080;
+	width: 170px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 50px;
+    flex: 1; /* ボタンを同じサイズにするための追加 */
+    margin: 20 5px; /* ボタンの間に余白を設定 */
+}
+
+.ticket-selectmenu:hover {
+    background-color: #555;
+}
+
+/* ボタンを横並びにするためのスタイル */
+.button-container {
+    display: flex;
+    justify-content: space-between;
+}
 
 /*--- tiketPurchase.jspのスタイル ---*/
 .pre-order {
-    border: 1px solid #a9a9a9;
+    border: 3px solid #a9a9a9;
     box-shadow: 0px 0px 15px #a9a9a9;
     margin: 20px;
     margin-left: 75px;
     border-left: solid 15px #696969;
     padding: 10px;
     width: 800px;
-    background: #fffafa;
+    background: #f0f8ff;
     font-weight: bold;
 }
 
@@ -258,78 +392,14 @@ h1 {
     cursor: pointer;
     border-radius: 5px;
 }
-
-
-/*--- ticketApplication.jspのスタイル ---*/
-.content-selection {
-    /* h2のスタイル */
-    background-color: #ffe4c4;
-    color: #808080;
-    padding: 5px;
-    font-size: 25px;
-    margin-top: 0;
-    border-radius: 30px;
+.apply-btn:hover{
+	background-color:#555;
 }
 
-.seat-selection {
-    background-color: #fff5ee;
-    width: 800px;
-    margin-left: 75px;
-    border: 3px solid #a9a9a9;
-    border-radius: 20px;
+
+/*--- ticketSelectAll.jspのスタイル ---*/
+.seat-type-img{
+	width:80%;
+	height:10%;
 }
 
-.ticket-element {
-    margin: 18px;
-}
-
-.tiket-soldout {
-    color: #dc143c;
-    font-size: 20px;
-}
-
-.choice-button {
-    margin: 10px;
-    border: 3px solid transparent;
-    color: #ffffff;
-    background: #808080;
-    padding: 10px 15px;
-    cursor: pointer;
-    border-radius: 20px;
-    /* other styles */
-}
-
-.choice-button:hover {
-    background: transparent;
-    color: #222;
-    border-color: #696969;
-    background: #c0c0c0;
-}
-/*テーブル設定*/
-.ticket-summary {
-    border: 3px solid #a9a9a9;
-    width: 800px;
-    margin: 20px;
-    margin-left: 75px;
-}
-
-.ticket-summary> table th {
-    background-color: #ffe4e1;
-    width: 250px;
-    color: #f08080;
-}
-
-.ticket-summary> table td {
-    background-color: #fffafa;
-    width: 550px;
-}
-
-.ticket-summary> table th,
-.ticket-summary> table td {
-    border-bottom: 2px solid #a9a9a9;
-    padding: 10px; /* 枠線指定 */
-}
-
-.ticket-summary> table tr:last-child * {
-    border-bottom: none;
-}

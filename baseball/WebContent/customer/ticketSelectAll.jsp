@@ -7,20 +7,14 @@
 <html>
 <head>
 	<link rel="stylesheet" type="text/css"  href ="/baseball/css/Customer.css">
-
-<%-- ↓後で消してください↓ --%>
-	<style type="text/css">
-		.seat-type-img{
-			width:80%;
-			height:10%;
-		}
-	</style>
-<%-- ↑後で消してください↑ --%>
-
 </head>
 <body>
+<%-- 戻るボタン --%>
+	<form action="TicketApplication" method="post">
+    	<button type="submit" class="return-btn">戻る</button>
+	</form>
 <%-- 大会名 --%>
-    <h3>第${tour.ordinalNum }回　${tour.name }</h3>
+    <h1>第${tour.ordinalNum }回　${tour.name }</h1>
 
 <%-- 指定された座種の画像。クソデカなのでclass="seat-type-img"で指定してます --%>
 <c:choose>
@@ -46,10 +40,7 @@
     	購入枚数分用意できません
     </c:if>
 
-<%-- 戻るボタン --%>
-	<form action="TicketApplication" method="post">
-    	<button type="submit">戻る</button>
-	</form>
+
 
 <%-- ブロック選択 --%>
 	<form action="TicketSelectSeat" method="post">
