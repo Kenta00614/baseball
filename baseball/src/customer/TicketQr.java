@@ -35,30 +35,25 @@ public class TicketQr extends HttpServlet {
     	String dateStr = request.getParameter("dateStr");
 //    	曜日
     	String eventDayOfWeek = request.getParameter("eventDayOfWeek");
-
-
+//    	QRコードに埋め込む情報
         String text = ticketsId;
 
+        BitMatrix bitMatrix = null;
+        BufferedImage image;
+
+        if(true){
         // エンコーディング設定
         HashMap<EncodeHintType, String> hints = new HashMap<>();
         hints.put(EncodeHintType.CHARACTER_SET, "UTF-8");
-
-        BitMatrix bitMatrix = null;
-
 		try {
 			 // QRコード生成
             bitMatrix = new MultiFormatWriter().encode(text, BarcodeFormat.QR_CODE, 200, 200, hints);
 		} catch (WriterException e) {
 				e.printStackTrace();
 		}
-
 		// BitMatrixからBufferedImageに変換
-		BufferedImage image = MatrixToImageWriter.toBufferedImage(bitMatrix);
-
-//		response.setContentType("image/png"); // レスポンスのContent-Typeをimage/pngに設定
-//
-//		// レスポンスとしてQRコードのPNG画像を送信
-//		ImageIO.write(image, "PNG", response.getOutputStream());
+		image = MatrixToImageWriter.toBufferedImage(bitMatrix);
+        }
 
 		request.setAttribute("bImage", image);
     	request.setAttribute("ticketsId", ticketsId);

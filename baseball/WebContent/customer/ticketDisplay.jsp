@@ -23,6 +23,7 @@
 			<input type="hidden" value="${ticket.tournamentName }" name="tournamentName">
 			<input type="hidden" value="${ticket.dateStr }" name="dateStr">
 			<input type="hidden" value="${ticket.eventDayOfWeek }" name="eventDayOfWeek">
+			<input type="hidden" value="${ticket.eventDate }" name="eventDate">
 			<button type="submit">QRコード</button>
 		</form>
 	</c:forEach>
