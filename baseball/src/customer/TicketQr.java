@@ -3,6 +3,7 @@ package customer;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.UUID;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,6 +18,9 @@ import com.google.zxing.WriterException;
 import com.google.zxing.client.j2se.MatrixToImageWriter;
 import com.google.zxing.common.BitMatrix;
 
+import bean.TicketsExp;
+import dao.TicketsDAO;
+
 @WebServlet("/customer/TicketQr")
 public class TicketQr extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -27,21 +31,51 @@ public class TicketQr extends HttpServlet {
     	request.setCharacterEncoding("UTF-8");
 //    	チケットID
     	String ticketsId = request.getParameter("ticketsId");
+//		UUID
+    	String uuidStr = request.getParameter("id");
+
 //    	第何回
-    	int ordinalNum = Integer.parseInt(request.getParameter("ordinalNum"));
+    	String ordinalStr = request.getParameter("ordinalNum");
+    	int ordinalNum = 0;
+    	if(ordinalStr != null){
+    		ordinalNum = Integer.parseInt(ordinalStr);
+    	}
 //    	大会名
     	String tournamentName = request.getParameter("tournamentName");
 //    	日にち
     	String dateStr = request.getParameter("dateStr");
 //    	曜日
     	String eventDayOfWeek = request.getParameter("eventDayOfWeek");
-//    	QRコードに埋め込む情報
-        String text = ticketsId;
+
+    	TicketsDAO ticketsDAO = new TicketsDAO();
+    	String text = null;
+    	TicketsExp ticketData = null;
+
+//    	QRコードボタンを押したとき
+    	try{
+	    	if(ticketsId != null){
+//  	  		QRコードに埋め込む情報
+	    		text = ticketsId;
+	    	}else{
+//	    		共有されたとき
+//	    		UUIDに変換
+	    	    UUID uuid = UUID.fromString(uuidStr);
+//	    	    UUIDのticketsIdを取得
+				text = ticketsDAO.getTicketsIdByUuid(uuid);
+//				画面に表示する情報を取得
+				ticketData = ticketsDAO.viewSharedTickets(text);
+				ordinalNum = ticketData.getOrdinalNum();
+		    	tournamentName = ticketData.getTournamentName();
+		    	dateStr = ticketData.getDateStr();
+		    	eventDayOfWeek = ticketData.getEventDayOfWeek();
+	    	}
+    	} catch (Exception e) {
+			e.printStackTrace();
+		}
 
         BitMatrix bitMatrix = null;
         BufferedImage image;
 
-        if(true){
         // エンコーディング設定
         HashMap<EncodeHintType, String> hints = new HashMap<>();
         hints.put(EncodeHintType.CHARACTER_SET, "UTF-8");
@@ -53,9 +87,10 @@ public class TicketQr extends HttpServlet {
 		}
 		// BitMatrixからBufferedImageに変換
 		image = MatrixToImageWriter.toBufferedImage(bitMatrix);
-        }
+
 
 		request.setAttribute("bImage", image);
+		request.setAttribute("ticketData", ticketData);
     	request.setAttribute("ticketsId", ticketsId);
     	request.setAttribute("ordinalNum", ordinalNum);
     	request.setAttribute("tournamentName", tournamentName);

@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
@@ -237,27 +238,37 @@ public class TicketsDAO extends DAO{
 		return num;
 	}
 
-	//共有ステータスを共有済みに変更する
-	public int ticketsShare(String ticketsId)throws Exception{
-
+	//共有ステータスを共有済みに変更とUUIDを作成・取得
+	public UUID ticketsShare(String ticketsId)throws Exception{
 		Connection con=getConnection();
-		PreparedStatement st=con.prepareStatement("update tickets set is_shared = true where tickets_id = ?");
-		st.setString(1, ticketsId);
+		UUID newUuid = null;
 
-		int num = st.executeUpdate();
+		PreparedStatement st=con.prepareStatement("SELECT UUID FROM TICKETS WHERE TICKETS_ID=?");
+		st.setString(1, ticketsId);
+		ResultSet rs = st.executeQuery();
+
+		while(rs.next()){
+			newUuid=(UUID)rs.getObject("UUID");
+		}
+		if(newUuid == null){
+			st=con.prepareStatement("UPDATE TICKETS SET UUID=?,IS_SHARED=TRUE WHERE TICKETS_ID=?");
+			newUuid = UUID.randomUUID();
+			st.setObject(1, newUuid);
+			st.setString(2, ticketsId);
+			st.executeUpdate();
+		}
 
 		st.close();
 		con.close();
 
-		return num;
-
+		return newUuid;
 	}
 
 	//チケット表示（購入者）: 購入者のチケットを表示する
 	public List<TicketsExp> viewTickets(int spectatorId,Date today)throws Exception{
 
 		Connection con=getConnection();
-		PreparedStatement st=con.prepareStatement("SELECT tickets_id,status,is_shared,is_child,event_date, purchase.spectator_id, seat.*,tournament.ordinal_num,tournament.name FROM TICKETS join match on tickets.match_id = match.match_id join purchase on tickets.purchase_id = purchase.purchase_id join seat on tickets.seat_id = seat.seat_id join tournament on match.tournament_id = tournament.tournament_id where purchase.spectator_id = ? and event_date >= ?");
+		PreparedStatement st=con.prepareStatement("SELECT tickets_id,status,is_shared,is_child,event_date, purchase.spectator_id, seat.*,tournament.ordinal_num,tournament.name FROM TICKETS join match on tickets.match_id = match.match_id join purchase on tickets.purchase_id = purchase.purchase_id join seat on tickets.seat_id = seat.seat_id join tournament on match.tournament_id = tournament.tournament_id where purchase.spectator_id = ? and event_date >= ? order by event_date,tickets_id");
 		st.setInt(1, spectatorId);
 		st.setDate(2, today);
 
@@ -336,7 +347,7 @@ public class TicketsDAO extends DAO{
 	}
 
 	//共有されたチケットの情報取得
-	public List<TicketsExp> viewSharedTickets(String ticketsId)throws Exception{
+	public TicketsExp viewSharedTickets(String ticketsId)throws Exception{
 
 		Connection con=getConnection();
 		PreparedStatement st=con.prepareStatement("SELECT tickets_id,status,is_shared,is_child,event_date, purchase.spectator_id, seat.*,tournament.ordinal_num,tournament.name FROM TICKETS join match on tickets.match_id = match.match_id join purchase on tickets.purchase_id = purchase.purchase_id join seat on tickets.seat_id = seat.seat_id join tournament on match.tournament_id = tournament.tournament_id where tickets.tickets_id = ?");
@@ -344,33 +355,33 @@ public class TicketsDAO extends DAO{
 
 		ResultSet rs=st.executeQuery();
 
-		List<TicketsExp> list=new ArrayList<>();
+		TicketsExp ticketData=new TicketsExp();
 
 		while(rs.next()){
-			TicketsExp t=new TicketsExp();
-			t.setTicketsId(rs.getString("tickets_id"));
-			t.setStatus(rs.getString("status"));
-			t.setShared(rs.getBoolean("is_shared"));
-			t.setChild(rs.getBoolean("is_child"));
-			t.setEventDate(rs.getDate("event_date"));
-			t.setSpectatorId(rs.getInt("spectator_id"));
-			t.setSeatId(rs.getString("seat_id"));
-			t.setType(rs.getString("type"));
-			t.setStep(rs.getString("step"));
-			t.setNumber(rs.getInt("number"));
-			t.setGate(rs.getInt("gate"));
-			t.setPassage(rs.getString("passage"));
-			t.setBlock(rs.getString("block"));
-			t.setOrdinalNum(rs.getInt("ordinal_num"));
-			t.setTournamentName(rs.getString("name"));
-
-			list.add(t);
+			ticketData.setTicketsId(rs.getString("tickets_id"));
+			ticketData.setStatus(rs.getString("status"));
+			ticketData.setShared(rs.getBoolean("is_shared"));
+			ticketData.setChild(rs.getBoolean("is_child"));
+			ticketData.setEventDate(rs.getDate("event_date"));
+			ticketData.setSpectatorId(rs.getInt("spectator_id"));
+			ticketData.setSeatId(rs.getString("seat_id"));
+			ticketData.setType(rs.getString("type"));
+			ticketData.setStep(rs.getString("step"));
+			ticketData.setNumber(rs.getInt("number"));
+			ticketData.setGate(rs.getInt("gate"));
+			ticketData.setPassage(rs.getString("passage"));
+			ticketData.setBlock(rs.getString("block"));
+			ticketData.setOrdinalNum(rs.getInt("ordinal_num"));
+			ticketData.setTournamentName(rs.getString("name"));
+			ticketData.setEventDayOfWeek();
+			ticketData.setTypeStr();
+			ticketData.setDateStr();
 		}
 
 		st.close();
 		con.close();
 
-		return list;
+		return ticketData;
 
 	}
 
@@ -548,4 +559,23 @@ public class TicketsDAO extends DAO{
 
 	}
 
+//	UUIDの一致するチケット情報を取得
+	public String getTicketsIdByUuid(UUID uuid)throws Exception{
+
+		Connection con=getConnection();
+		PreparedStatement st=con.prepareStatement("SELECT TICKETS_ID FROM TICKETS WHERE UUID=?");
+		st.setObject(1, uuid);
+
+		ResultSet rs=st.executeQuery();
+
+		String ticketsId = null;
+		while(rs.next()){
+			ticketsId = rs.getString("tickets_id");
+		}
+
+		st.close();
+		con.close();
+
+		return ticketsId;
+	}
 }
