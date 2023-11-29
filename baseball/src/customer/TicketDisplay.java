@@ -35,6 +35,7 @@ public class TicketDisplay extends HttpServlet {
         	Date date = new Date();
         	SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         	java.sql.Date today = java.sql.Date.valueOf(df.format(date));
+
         	try {
         		tickets = ticketsDAO.viewTickets(spectator.get(0).getSpectatorId(),today);
     		} catch (Exception e) {
