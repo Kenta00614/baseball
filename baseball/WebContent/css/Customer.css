@@ -69,7 +69,9 @@ table tr:last-child * {
     cursor: pointer;
     border-radius: 20px;
 }
-
+.return-btn:hover{
+	background-color:#555;
+}
 
 .square_btn {
 	/* ☒ボタンのスタイル */
@@ -312,10 +314,7 @@ table tr:last-child * {
 }
 
 .choice-button:hover {
-    background: transparent;
-    color: #222;
-    border-color: #696969;
-    background: #c0c0c0;
+    background-color: #555;
 }
 
 
@@ -392,6 +391,9 @@ table tr:last-child * {
     border: none;
     cursor: pointer;
     border-radius: 5px;
+}
+.apply-btn:hover{
+	background-color:#555;
 }
 
 

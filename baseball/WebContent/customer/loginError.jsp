@@ -10,6 +10,6 @@
 
 <h2>ログインできませんでした。</h2>
 <p>ID(メールアドレス)、パスワードを再確認してください。</p>
-  <button onclick="location.href='LoginDisplay'">ログイン画面に戻る</button>
+  <button onclick="location.href='LoginDisplay'" class="">ログイン画面に戻る</button>
 </body>
 </html>
