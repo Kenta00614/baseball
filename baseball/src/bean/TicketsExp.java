@@ -21,7 +21,7 @@ public class TicketsExp extends Tickets{
 	private String typeStr;
 	private int price;
 	private boolean child;
-//	日付oo月oo日表示にしないなら消す
+//	日付oo月oo日表示
 	private String dateStr;
 	private boolean shared;
 
