@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.ProvisionalDAO;
 import dao.SpectatorDAO;
 
 
@@ -26,9 +27,14 @@ public class PasswordChange extends HttpServlet {
         try {
             UUID uuid = UUID.fromString(uuidString);
             SpectatorDAO spectatorDAO = new SpectatorDAO();
+            ProvisionalDAO provisionalDAO = new ProvisionalDAO();
             String hashedPassword = hashPassword(newPassword);
 
             int result = spectatorDAO.updatePassword(uuid, hashedPassword);
+            provisionalDAO.delUuid(uuid);
+
+
+
             if (result > 0) {
                 // パスワード更新成功ページへリダイレクト
                 response.sendRedirect(request.getContextPath() + "/customer/passwordResetSuccess.jsp");
