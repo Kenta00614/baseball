@@ -20,7 +20,7 @@ public class StaffDeleteCheck extends HttpServlet {
 
     	try{
 	    	for(int i =0;i < list.length;i++){
-
+	    		DAO.deleteStaff(list[i]);
 	    	}
     	}catch(Exception e){
 

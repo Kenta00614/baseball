@@ -24,7 +24,7 @@
                     <a href="#">試合情報 &#9662;</a> <!-- ドロップダウンメニューのトリガー -->
                     <div class="dropdown">
                         <a href="">試合情報登録</a>
-                        <a href="">試合情報表示</a>
+                        <a href="MatchInformation">試合情報表示</a>
                         <a href="TournamentRegistrationInputDisplay">大会情報登録</a>
                     </div>
                 </li>
