@@ -6,45 +6,91 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
+        /* Your existing styles here */
 
+        /* Add new styles for the custom button */
+        .custom-btn {
+            background: #000;
+            color: #fff;
+            line-height: 42px;
+            padding: 0;
+            border: none;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
 
-	    body {
-	        font-family: Arial, sans-serif;
-	        background-color: #f4f4f4;
-	        margin: 0;
-	        padding: 0;
-	    }
+        .custom-btn span {
+            position: relative;
+            display: block;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
 
-	    h1 {
-	        text-align: center;
-	        color: #333;
-	        margin-bottom: 20px;
-	        margin-top: 80px; /* Add margin to the top */
-	    }
+        .custom-btn:before,
+        .custom-btn:after {
+            position: absolute;
+            content: "";
+            height: 0%;
+            width: 2px;
+            background: #000;
+            transition: all 500ms ease;
+        }
 
-	    .header {
-	        display: flex;
-	        justify-content: space-around;
-	        width: 60%;
-	        margin: 20px auto; /* Reduce margin from 50px to 20px */
-	        text-align: center;
-	    }
+        .custom-btn:before {
+            right: 0;
+            top: 0;
+        }
 
-	    button {
-	        background-color: #28a745;
-	        color: #fff;
-	        padding: 15px 30px;
-	        border: none;
-	        border-radius: 4px;
-	        cursor: pointer;
-	        font-size: 18px;
-	        transition: background-color 0.3s;
-	    }
+        .custom-btn:after {
+            left: 0;
+            bottom: 0;
+        }
 
-	    button:hover {
-	        background-color: #218838;
-	    }
-</style>
+        .custom-btn:hover {
+            color: #000;
+            background: transparent;
+        }
+
+        .custom-btn:hover:before {
+            height: 100%;
+        }
+
+        .custom-btn:hover:after {
+            height: 100%;
+        }
+
+        .custom-btn span:before,
+        .custom-btn span:after {
+            position: absolute;
+            content: "";
+            background: #000;
+            transition: all 500ms ease;
+        }
+
+        .custom-btn span:before {
+            left: 0;
+            top: 0;
+            width: 0%;
+            height: 2px;
+        }
+
+        .custom-btn span:after {
+            right: 0;
+            bottom: 0;
+            width: 0%;
+            height: 2px;
+        }
+
+        .custom-btn span:hover:before {
+            width: 100%;
+        }
+
+        .custom-btn span:hover:after {
+            width: 100%;
+        }
+    </style>
     <title>入退場画面</title>
 </head>
 
@@ -52,10 +98,10 @@
     <h1>入場・退場</h1>
     <div class="header">
         <form action="Entry" method="get">
-            <button type="submit">入場</button>
+            <button class="custom-btn btn-6" type="submit"><span>入場</span></button>
         </form>
         <form action="Exit" method="get">
-            <button type="submit">退場</button>
+            <button class="custom-btn btn-6" type="submit"><span>退場</span></button>
         </form>
     </div>
 </body>
