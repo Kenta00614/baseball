@@ -398,8 +398,7 @@ public class TicketsDAO extends DAO{
 		String status=null;
 
 		while(rs.next()){
-			Tickets t = new Tickets();
-			status = t.getStatus();
+			status = rs.getString("status");
 		}
 
 		st.close();
