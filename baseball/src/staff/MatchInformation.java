@@ -10,9 +10,10 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/staff/MatchInformation")
 public class MatchInformation extends HttpServlet {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doPost(request, response);
+	}
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        request.getRequestDispatcher("/staff/matchInformation.jsp").forward(request, response);
     }
 }
