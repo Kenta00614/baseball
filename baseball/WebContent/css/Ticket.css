@@ -1,5 +1,6 @@
 @CHARSET "UTF-8";
 
+
 .return-btn {
     /* 戻るボタンのスタイル */
     position: absolute; /* 絶対位置に配置 */
@@ -12,6 +13,9 @@
     border: none;
     cursor: pointer;
     border-radius: 20px;
+}
+.return-btn:hover{
+	background-color:#555;
 }
 
 

@@ -136,4 +136,32 @@ public class StaffDAO extends DAO {
 		return num;
 
 	}
+
+	//IDから職員情報を取得
+	public List<Staff> selectStaff(String staffId)throws Exception{
+
+		Connection con=getConnection();
+		PreparedStatement st=con.prepareStatement("select * from staff where staff_id = ?");
+		st.setString(1,staffId);
+
+		ResultSet rs = st.executeQuery();
+
+		List<Staff> list=new ArrayList<>();
+
+		while(rs.next()){
+			Staff s = new Staff();
+			s.setStaffId(rs.getString("staff_id"));
+			s.setName(rs.getString("name"));
+			s.setBirth(rs.getDate("birth"));
+			s.setPassword(rs.getString("password"));
+			s.setPosition(rs.getString("position"));
+
+			list.add(s);
+		}
+
+		st.close();
+		con.close();
+
+		return list;
+	}
 }
