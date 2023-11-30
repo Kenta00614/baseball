@@ -13,6 +13,7 @@ public class StaffRegister extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+
         request.getRequestDispatcher("/staff/staffRegister.jsp").forward(request, response);
     }
 }

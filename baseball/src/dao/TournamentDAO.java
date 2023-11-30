@@ -79,7 +79,7 @@ public class TournamentDAO extends DAO{
 	public List<Tournament> getTournamentDetail()throws Exception{
 
 		Connection con=getConnection();
-		PreparedStatement st=con.prepareStatement("SELECT * FROM TOURNAMENT");
+		PreparedStatement st=con.prepareStatement("SELECT * FROM TOURNAMENT order by tournament_id");
 		ResultSet rs=st.executeQuery();
 
 		List<Tournament> list=new ArrayList<>();

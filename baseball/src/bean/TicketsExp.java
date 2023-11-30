@@ -23,7 +23,14 @@ public class TicketsExp extends Tickets{
 	private boolean child;
 //	日付oo月oo日表示にしないなら消す
 	private String dateStr;
+	private boolean shared;
 
+	public boolean isShared() {
+		return shared;
+	}
+	public void setShared(boolean shared) {
+		this.shared = shared;
+	}
 	public boolean isChild() {
 		return child;
 	}

@@ -7,7 +7,7 @@ import bean.Point;
 
 public class PointDAO extends DAO{
 
-	//たまったポイント、使われたポイントを記帳する
+	//使われたポイントを記帳する
 	public int insertUsePoint(Point point, Connection con)throws Exception{
 
 		SpectatorDAO s=new SpectatorDAO();
@@ -29,7 +29,7 @@ public class PointDAO extends DAO{
 		return num;
 
 	}
-
+//	たまったポイントを記帳する
 	public int insertSavePoint(Point point)throws Exception{
 
 		SpectatorDAO s=new SpectatorDAO();
