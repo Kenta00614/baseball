@@ -19,7 +19,7 @@
                 </tr>
                 <% for(Staff s : list){ %>
                     <tr>
-                        <th><label><input type="checkbox" value=<%=s.getStaffId() %> v-model="selectedIDs"></label></th>
+                        <th><label><input type="checkbox" name="selectedIDs" value=<%=s.getStaffId() %> v-model="selectedIDs"></label></th>
                         <th><%=s.getStaffId() %></th>
                         <th><%=s.getName() %></th>
                         <% String state = s.getPosition();
@@ -28,10 +28,7 @@
                     </tr>
                 <% } %>
             </table>
-            <div>
-               <p> {{ selectedIDs }}</p>
-            </div>
-            <button type="submit">削除</button>
+ 			<button type="submit">削除</button>
             <script>
                 new Vue({
                     el: 'form', // form要素内のすべての要素をバインド
@@ -40,6 +37,7 @@
                     }
                 })
             </script>
+
         </form>
     </div>
 </body>

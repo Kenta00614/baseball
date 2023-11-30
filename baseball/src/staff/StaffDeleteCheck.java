@@ -13,8 +13,9 @@ public class StaffDeleteCheck extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-    	String list = request.getParameter("ID");
-    	System.out.println(list);
+    	String[] list = request.getParameterValues("selectedIDs");
+
+
 
         request.getRequestDispatcher("/staff/staffDeleteCheck.jsp").forward(request, response);
     }
