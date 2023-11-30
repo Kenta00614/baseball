@@ -49,7 +49,6 @@
 			    <li class="nav__item"><a href="Refund">払い戻し</a></li>
 				<li class="nav__item"><a href="EntryExit">入退場</a></li>
 				<li class="nav__item"><a href="Logout">ログアウト</a></li>
-
             <%
                 }
             %>
