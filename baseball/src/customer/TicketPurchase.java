@@ -1,9 +1,7 @@
 package customer;
 
 import java.io.IOException;
-import java.sql.Date;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -24,7 +22,6 @@ public class TicketPurchase extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session=request.getSession();
 		List<Tournament> list=new ArrayList<>();
-		List<Match> pullMatch=new ArrayList<>();
 		List<Match> match=new ArrayList<>();
 		Tournament lastTour=null;
 
@@ -42,22 +39,7 @@ public class TicketPurchase extends HttpServlet {
 
 //			同じ大会の試合日情報を取得
 			MatchDAO matDao=new MatchDAO();
-			pullMatch=matDao.searchMatchTournament(lastTour.getTournamentId());
-			List<Date> sortDate=new ArrayList<>();
-//			日付のソート
-			for(Match m: pullMatch){
-				sortDate.add(m.getEventDate());
-			}
-//			日付ソート完了
-			Collections.sort(sortDate);
-//			matchのソート
-			for(int i=0; i<sortDate.size(); i++){
-				for(Match p: pullMatch){
-					if(sortDate.get(i).compareTo(p.getEventDate())==0){
-						match.add(p);
-					}
-				}
-			}
+			match=matDao.searchMatchTournament(lastTour.getTournamentId());
 
 			session.setAttribute("tour", lastTour);
 			request.setAttribute("match",match);

@@ -1,6 +1,8 @@
 package customer;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,6 +16,7 @@ import javax.servlet.http.HttpSession;
 import bean.Point;
 import bean.Spectator;
 import bean.TicketsAndSeat;
+import dao.DAO;
 import dao.PointDAO;
 import dao.PurchaseDAO;
 import dao.TicketsDAO;
@@ -21,7 +24,7 @@ import dao.TicketsDAO;
 @WebServlet("/customer/TicketComplete")
 public class TicketComplete extends HttpServlet {
 
-    @SuppressWarnings({ "unchecked", "unused" })
+    @SuppressWarnings("unchecked")
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	request.setCharacterEncoding("UTF-8");
     	HttpSession session=request.getSession();
@@ -39,34 +42,57 @@ public class TicketComplete extends HttpServlet {
 			usePoint = Integer.parseInt("-"+point);
 		}
 
+//		jspに渡す情報
 		List<TicketsAndSeat> selTicketsData=new ArrayList<>();
 		int  purchaseId;
 		int updateNum=0;
 		int pointNum = 0;
+		boolean chilFlg = false;
 
 //		DAO
 		TicketsDAO ticketDAO=new TicketsDAO();
-		PurchaseDAO purchaseDAO=new PurchaseDAO();
-		PointDAO pointDAO=new PointDAO();
+		PurchaseDAO purchaseDAO = new PurchaseDAO();
+		PointDAO pointDAO = new PointDAO();
 
-
-
+		Connection con = null;
 		try {
+//			トランザクション
+			DAO d = new DAO();
+			con=d.getConnection();
+			con.setAutoCommit(false);
+
 //			購入情報登録
-			purchaseId = purchaseDAO.insertPurchase(spectator.get(0).getSpectatorId());
-//			チケットのステータス変更
-//			(子供、大人のステータスも変更したい)
-			for(String s: selTickets){
-				updateNum += ticketDAO.purchaseTickets(s,purchaseId);
+			purchaseId = purchaseDAO.insertPurchase(spectator.get(0).getSpectatorId(),con);
+
+			if(purchaseId != 0){
+	//			チケットのステータス変更
+				for(int i=0; i<selTickets.length ; i++){
+//					子供の時はステータスを変える
+					if(selChils[i].equals("子供")){
+						chilFlg=true;
+					}
+					updateNum += ticketDAO.purchaseTickets(selTickets[i],purchaseId,chilFlg,con);
+					chilFlg=false;
+				}
+//				ポイント情報登録
+				if(updateNum == selTickets.length){
+					Point p = new Point();
+					p.setSpectatorId(spectator.get(0).getSpectatorId());
+					p.setFluctuation(usePoint);
+					p.setPurchaseId(purchaseId);
+					pointNum = pointDAO.insertUsePoint(p, con);
+				}
 			}
-//			ポイント情報登録
-			if(updateNum == selTickets.length){
-				Point pointData=new Point();
-				pointData.setPurchaseId(purchaseId);
-				pointData.setFluctuation(usePoint);
-				pointData.setSpectatorId(spectator.get(0).getSpectatorId());
-				pointNum = pointDAO.insertUsePoint(pointData);
+//			ポイント情報まで正常に動くならコミット
+			if(pointNum > 0){
+				con.commit();
+			}else{
+				con.rollback();
 			}
+//			トランザクション解除
+			con.setAutoCommit(true);
+			con.close();
+
 			if(pointNum > 0){
 //				購入するチケットの情報取得
 				selTicketsData = ticketDAO.getSelectTickets(selTickets);
@@ -80,6 +106,14 @@ public class TicketComplete extends HttpServlet {
 			session.removeAttribute("count");
 			session.removeAttribute("match");
 		} catch (Exception e) {
+			if(con != null){
+				try {
+					con.rollback();
+					con.close();
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+			}
 			e.printStackTrace();
 		}
 

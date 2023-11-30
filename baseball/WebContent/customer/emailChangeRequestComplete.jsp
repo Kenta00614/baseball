@@ -8,8 +8,8 @@
 </head>
 <body>
 
-<h2>ログインできませんでした。</h2>
-<p>ID(メールアドレス)、パスワードを再確認してください。</p>
-  <button onclick="location.href='LoginDisplay'" class="">ログイン画面に戻る</button>
+<h2>送信が完了しました。</h2>
+
+  <button onclick="location.href='LoginDisplay'"></button>
 </body>
 </html>

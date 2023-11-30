@@ -1,5 +1,7 @@
 package bean;
 
+import java.util.UUID;
+
 public class Tickets implements java.io.Serializable {
 	private String ticketsId;
 	private int purchaseId;
@@ -8,6 +10,7 @@ public class Tickets implements java.io.Serializable {
 	private String status;
 	private boolean isShared;
 	private boolean isChild;
+	private UUID uuid;
 
 	public String getTicketsId() {
 		return ticketsId;
@@ -75,6 +78,12 @@ public class Tickets implements java.io.Serializable {
 		str += this.isShared;
 		str += "\n";
 		return str;
+	}
+	public UUID getUuid() {
+		return uuid;
+	}
+	public void setUuid(UUID uuid) {
+		this.uuid = uuid;
 	}
 }
 

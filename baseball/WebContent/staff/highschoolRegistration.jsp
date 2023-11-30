@@ -3,7 +3,6 @@
 <html>
 <head>
     <title>高校登録</title>
-    <meta charset="UTF-8">
 </head>
 <body>
     <h2>高校情報登録</h2>

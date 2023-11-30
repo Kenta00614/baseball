@@ -1,24 +1,31 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="java.util.List" %>
+<%@ page import="bean.School" %>
 <%@ include file="header.jsp" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
-    <title>高校情報表示</title>
-    <meta charset="UTF-8">
+    <title>高校情報一覧</title>
 </head>
 <body>
-    <h2>登録済み高校情報</h2>
-    <form action="HighschoolEdit" method="get">
-        <c:if test="${not empty schools}">
-            <ul>
-                <c:forEach var="school" items="${schools}">
-                    <li>
-                        <input type="radio" name="schoolId" value="${school.schoolId}" /> ${school.name}
-                    </li>
-                </c:forEach>
-            </ul>
-        </c:if>
-        <input type="submit" value="変更" />
+    <h2>高校情報一覧</h2>
+    <form action="HighschoolUpdate" method="post">
+        <table border="1">
+            <tr>
+                <th>高校名</th>
+            </tr>
+            <%
+            List<School> schools = (List<School>)request.getAttribute("schools");
+            for (School school : schools) {
+            %>
+                <tr>
+                    <td>
+                        <input type="text" name="schoolName<%= school.getSchoolId() %>" value="<%= school.getName() %>">
+                    </td>
+                </tr>
+            <% } %>
+        </table>
+        <input type="submit" value="変更">
+        <input type="hidden" name="tournamentId" value="<%= request.getAttribute("tournamentId") %>">
     </form>
 </body>
 </html>

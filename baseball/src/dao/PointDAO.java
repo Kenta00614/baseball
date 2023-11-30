@@ -7,17 +7,16 @@ import bean.Point;
 
 public class PointDAO extends DAO{
 
-	//たまったポイント、使われたポイントを記帳する
-	public int insertUsePoint(Point point)throws Exception{
+	//使われたポイントを記帳する
+	public int insertUsePoint(Point point, Connection con)throws Exception{
 
 		SpectatorDAO s=new SpectatorDAO();
-		int check = s.updatePoint(point.getSpectatorId(),point.getFluctuation());
+		int check = s.updatePoint(point.getSpectatorId(),point.getFluctuation(),con);
 
 		if(check < 0){
 			return -1;
 		}
 
-		Connection con=getConnection();
 		PreparedStatement st=con.prepareStatement("insert into point values(null,?,?,?,null)");
 
 		st.setInt(1,point.getSpectatorId());
@@ -26,16 +25,15 @@ public class PointDAO extends DAO{
 
 		int num=st.executeUpdate();
 		st.close();
-		con.close();
 
 		return num;
 
 	}
-
+//	たまったポイントを記帳する
 	public int insertSavePoint(Point point)throws Exception{
 
 		SpectatorDAO s=new SpectatorDAO();
-		int check = s.updatePoint(point.getSpectatorId(),point.getFluctuation());
+		int check = s.updatePoint(point.getSpectatorId(),point.getFluctuation(),null);
 
 		if(check < 0){
 			return -1;
