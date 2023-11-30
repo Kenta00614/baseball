@@ -72,7 +72,7 @@ public class PurchaseDAO extends DAO{
 	public List<PurchaseExp> getPurchaseHistory(int spectatorId)throws Exception{
 
 		Connection con=getConnection();
-		PreparedStatement st=con.prepareStatement(" select purchase.* ,tickets.status,tickets.is_child,match.event_date,seat.type,tournament.ordinal_num,tournament.name from purchase join tickets on purchase.purchase_id = tickets.purchase_id join match on tickets.match_id = match.match_id join seat on tickets.seat_id = seat.seat_id join tournament on match.tournament_id = tournament.tournament_id where purchase.spectator_id = ? and tickets.status != 2");
+		PreparedStatement st=con.prepareStatement(" select purchase.* ,tickets.status,tickets.is_child,match.event_date,seat.type,tournament.ordinal_num,tournament.name from purchase join tickets on purchase.purchase_id = tickets.purchase_id join match on tickets.match_id = match.match_id join seat on tickets.seat_id = seat.seat_id join tournament on match.tournament_id = tournament.tournament_id where purchase.spectator_id = ? and tickets.status != 2 order by event_date,purchase_at");
 		st.setInt(1, spectatorId);
 
 		ResultSet rs=st.executeQuery();
@@ -88,6 +88,8 @@ public class PurchaseDAO extends DAO{
 			p.setPurchaseAt(rs.getTimestamp("purchase_at"));
 			p.setSeatType(rs.getString("type"));
 			p.setChild(rs.getBoolean("is_child"));
+			p.setDateStr();
+			p.setPurchaseStr();
 			list.add(p);
 		}
 
