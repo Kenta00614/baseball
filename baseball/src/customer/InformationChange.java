@@ -16,7 +16,6 @@ import dao.SpectatorDAO;
 @WebServlet("/customer/InformationChange")
 public class InformationChange extends HttpServlet {
 
-    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
 
