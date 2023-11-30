@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+===<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@include file="header.jsp"%>
 <html lang="ja">
@@ -64,15 +64,12 @@
 <body>
 <div class="container">
   <h1>会員情報変更</h1>
-  <form id="registrationForm" action="memberConfirm" method="get">
+  <form id="registrationForm" action="MemberConfirm" method="get">
     <label for="name">氏名</label>
     <input type="text" id="name" name="name" required>
 
-    <label for="email">メールアドレス</label>
-    <input type="email" id="email" name="email" placeholder="xxxxxx@stu.o-hara.ac.jp" required>
-
     <label for="tel">電話番号</label>
-    <input type="tel" id="tel" name="tel" pattern="\d{10}|\d{11}" placeholder="0332378711" required>
+    <input type="tel" id="tel" name="tel" pattern="\d{10}|\d{11}" placeholder="" required>
 
     <label for="password">パスワード</label>
     <input type="password" id="password" name="password" required>
