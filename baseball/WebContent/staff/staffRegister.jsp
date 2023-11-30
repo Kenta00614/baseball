@@ -23,7 +23,7 @@
 			<p>職員ステータス:
 			<select name="position" class="control">
         		<option value="1">スタッフ</option>
-				<option value="2">役職</option>
+				<option value="2">管理者</option>
 			</select></p>
 
     　　　　<button type="submit">登録</button>

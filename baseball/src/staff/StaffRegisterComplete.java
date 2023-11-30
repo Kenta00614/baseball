@@ -2,6 +2,7 @@ package staff;
 
 import java.io.IOException;
 import java.sql.Date;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import bean.Staff;
 import dao.StaffDAO;
 
 @WebServlet("/staff/StaffRegisterComplete")
@@ -35,12 +37,16 @@ public class StaffRegisterComplete extends HttpServlet {
 			int RegNum = DAO.addNewStaff(id, name, Birth, position);
 
 			if(RegNum == 1){
+				List<Staff> list =  DAO.selectStaff(id);
+
+				request.setAttribute("list", list);
 				request.getRequestDispatcher("/staff/staffRegisterComplete.jsp").forward(request, response);
 			}else{
 				request.getRequestDispatcher("/staff/staffRegister.jsp").forward(request, response);
 			}
 		} catch (Exception e) {
-			request.getRequestDispatcher("/staff/staffRegister.jsp").forward(request, response);
+			e.printStackTrace();
 		}
+
     }
 }

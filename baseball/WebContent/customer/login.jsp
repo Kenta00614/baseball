@@ -21,6 +21,7 @@
 	        </div>
 	        <p class="login-btn"><input type="submit" value="Login"></p>
 	        <br><p>初めてご利用の方はこちら<br><a href="ProvisionalSignupDisplay" class="btn">→新規会員登録へ</a></p>
+	        <br><p>パスワードを忘れた方はこちら<br><a href="PasswordChangeFormDisplay" class="btn">→パスワード再設定へ</a></p>
 　　　　</form>
 
 	</div>

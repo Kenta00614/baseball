@@ -3,7 +3,7 @@
 
 <body>
 
-	<h2>ログイン</h2>
+    <h2>ログイン</h2>
     <div class="login-box">
     　　<form action="Login" method="post">
 
@@ -20,6 +20,6 @@
 
 
 
-	</div>
+    </div>
 </body>
 </html>
