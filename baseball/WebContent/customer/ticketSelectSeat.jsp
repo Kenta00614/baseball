@@ -43,10 +43,10 @@
 			</li>
 		</transition-group>
 
-		<form name="myForm" action="TicketConfirm" method="post">
+		<form name="myForm" action="TicketConfirm" method="post" >
 			<input type="hidden" id="tickets" name="tickets" value="" ><!-- 隠しパラメータ ticketのIDリスト-->
 			<input type="hidden" id="child" name="child" value="">
-			<button type="button" v-on:click="submitFunc" :disabled="${count } != selectedTickets.length">次へ</button><!-- 送信ボタン -->
+			<button type="button" v-on:click="submitFunc" :disabled="${count } != selectedTickets.length" >次へ</button><!-- 送信ボタン -->
 		</form>
 	</div>
 
