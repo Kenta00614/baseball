@@ -1,6 +1,8 @@
 package staff;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,6 +22,10 @@ public class RefundComplete extends HttpServlet {
     	String ticketId = (String) session.getAttribute("ticketId");
 
     	TicketsDAO DAO=new TicketsDAO();
+		List<Integer> price=new ArrayList<>();
+
+
+
 
     	try{
     		int num=DAO.changePaid(ticketId);

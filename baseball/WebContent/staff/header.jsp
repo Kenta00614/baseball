@@ -63,6 +63,5 @@
         </div>
         <hr> <!-- ここに移動させました -->
     </header>
-    <!-- Header End -->
 </body>
 </html>
