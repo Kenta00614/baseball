@@ -42,7 +42,7 @@ public class MatchRegistrationCompletion extends HttpServlet {
 
     	try {
     		duelDAO.insertDuel(duel1);
-			matchDAO.insertMatch(match,duel1);
+//			matchDAO.insertMatch(match,duel1);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
