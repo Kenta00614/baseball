@@ -26,6 +26,11 @@ public class SchoolDAO extends DAO {
 			school.setName(rs.getString("NAME"));
 			list.add(school);
 		}
+//		なしの値
+		School school=new School();
+		school.setSchoolId(0);
+		school.setName("なし");
+		list.add(school);
 
 		st.close();
 		con.close();
