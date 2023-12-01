@@ -30,7 +30,7 @@
 		</c:when>
 	</c:choose>
 	<form action="Main" method="get">
-		<button type="submit" class="">メインメニューに戻る</button>
+		<button type="submit" class="home-btn">メインメニューに戻る</button>
 	</form>
 </body>
 </html>

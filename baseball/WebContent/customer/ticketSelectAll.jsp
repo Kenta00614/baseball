@@ -44,13 +44,15 @@
 
 <%-- ブロック選択 --%>
 	<form action="TicketSelectSeat" method="post">
+	<p>ブロック選択：
 <%-- ドロップダウン --%>
 		<select name="block">
 			<c:forEach begin="0" end="${fn:length(blocks)-1 }" step="1" var="i">
 				<option value="${blocks[i] }">${ fn:substring(blocks[i], 2, fn:length(blocks[i]))} </option>
 			</c:forEach>
 		</select>
-		<button type="submit">次へ</button>
+	</p>
+		<button type="submit" class="home-btn">次へ</button>
 	</form>
 </body>
 </html>

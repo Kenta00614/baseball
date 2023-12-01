@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.ProvisionalDAO;
 import dao.SpectatorDAO;
 import utils.EmailUtility;
 
@@ -24,26 +25,33 @@ public class PasswordChangeMail extends HttpServlet {
             SpectatorDAO spectatorDAO = new SpectatorDAO();
             String spectatorMail = spectatorDAO.searchSameMail(mail);
 
-            if (spectatorMail != null) {
-                UUID uuid = UUID.randomUUID();
+            if (spectatorMail != null && spectatorMail.equals(mail)) {
+                ProvisionalDAO provisionalDAO = new ProvisionalDAO();
+                UUID uuid = provisionalDAO.insertIdAndUuid(mail);
 
-                String passwordResetLink = "http://" + request.getServerName() + ":" + request.getServerPort() +
-                        contextPath + "/customer/PasswordChangeDisplay?uuid=" + uuid.toString();
+                if (uuid != null) {
 
-                String subject = "パスワードリセットリンク";
-                String content = "以下のリンクからパスワードのリセットを行ってください。\n" + passwordResetLink;
+                    String verificationLink = "http://" + request.getServerName() + ":" + request.getServerPort() +
+                            contextPath + "/customer/PasswordChangeDisplay?uuid=" + uuid.toString();
 
-                EmailUtility.sendEmail(mail, subject, content);
+                    String subject = "パスワードリセットリンク";
+                    String content = "以下のリンクからパスワードのリセットを行ってください。\n" + verificationLink;
 
-                // 成功ページへリダイレクト
-                response.sendRedirect(contextPath + "/customer/passwordChangeEmailSent.jsp");
+                    EmailUtility.sendEmail(mail, subject, content);
+
+                    // 成功ページへリダイレクト
+                    response.sendRedirect(contextPath + "/customer/passwordResetEmailSent.jsp");
+                } else {
+                    // UUIDの生成または登録に失敗した場合
+                    response.sendRedirect(contextPath + "/customer/error1.jsp");
+                }
             } else {
-                // メールが見つからない場合の処理
+                // メールアドレスが見つからない場合の処理
                 response.sendRedirect(contextPath + "/customer/emailNotFound.jsp");
             }
         } catch (Exception e) {
             e.printStackTrace();
-            response.sendRedirect("/baseball/customer/error.jsp");
+            response.sendRedirect("/baseball/customer/error2.jsp");
         }
     }
 }

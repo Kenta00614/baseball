@@ -13,6 +13,8 @@ public class PasswordChangeDisplay extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+    	String uuidString = request.getParameter("uuid");
+    	request.setAttribute("uuid", uuidString);
         request.getRequestDispatcher("/customer/passwordChange.jsp").forward(request, response);
     }
 }
