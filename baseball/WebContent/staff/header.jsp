@@ -9,16 +9,18 @@
 
     <!-- 追加したスタイル -->
     <style>
-        .staff-header {
-            background-color: black; /* ヘッダーの背景色を黒に設定 */
-            color: white; /* ヘッダーテキストの色を白に設定 */
-            font-size: 20px; /* ヘッダーテキストのフォントサイズを20pxに設定 */
-        }
+    .staff-header {
+        background-origin: content-box;
+		background-repeat: no-repeat;
+        color: #333; /* テキストの色を黒に変更 */
+        font-size: 20px;
+        padding: 1px 0;
+    }
 
-        .nav-menu a {
-            color: white; /* ナビゲーションメニューテキストの色を白に設定 */
-        }
-    </style>
+    .nav-menu a {
+        color: #333; /* メニュー項目のテキスト色を黒に変更 */
+    }
+	</style>
 </head>
 <body>
     <!-- Header Start -->
@@ -60,7 +62,7 @@
                 <% } %>
             </ul>
         </div>
-        <hr>
+        <hr> <!-- ここに移動させました -->
     </header>
     <!-- Header End -->
 </body>

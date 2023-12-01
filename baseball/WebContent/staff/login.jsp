@@ -46,15 +46,14 @@
         }
 
         input[type="submit"] {
-            background-color: #4caf50;
-            color: #fff;
-            cursor: pointer;
-        }
+		    background-color: #000;
+		    color: #fff;
+		    cursor: pointer;
+		}
 
-        input[type="submit"]:hover {
-            background-color: #45a049;
-        }
-
+		input[type="submit"]:hover {
+		    background-color: #333;
+		}
         a.btn {
             display: block;
             text-align: center;
