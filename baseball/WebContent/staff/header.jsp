@@ -1,15 +1,29 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="bean.Staff" %>
+<%@ page import = "bean.Staff" %>
+<!DOCTYPE html>
+<html>
 <head>
     <meta charset="UTF-8">
     <title>メニュー</title>
+    <link rel="stylesheet" type="text/css" href="/baseball/css/Staff.css">
 
-    <link rel="stylesheet" type="text/css"  href ="/baseball/css/Staff.css">
+    <!-- 追加したスタイル -->
+    <style>
+    .staff-header {
+       background-color: black;
+       color: white;
+       font-size: 20px;
+       padding: 1px 0;
+    }
+
+    .nav-menu a {
+        color: white;
+    }
+</style>
 </head>
-
 <body>
-<!-- Header Start -->
+    <!-- Header Start -->
     <header class="staff-header">
         <div class="staff__wrapper">
             <ul class="nav-menu">
@@ -52,12 +66,11 @@
             <%
                 }
             %>
+
             </ul>
-
-
         </div>
-        <hr>
+        <hr> <!-- ここに移動させました -->
     </header>
-<!-- Header End -->
-
+    <!-- Header End -->
 </body>
+</html>
