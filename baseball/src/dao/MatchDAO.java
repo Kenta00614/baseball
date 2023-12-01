@@ -89,7 +89,7 @@ public class MatchDAO extends DAO{
 	}
 
 	//試合情報の追加
-	public int insertMatch(Match match, Duel duel)throws Exception{
+	public int insertMatch(Match match)throws Exception{
 
 		try{
 			Connection con=getConnection();
@@ -103,10 +103,7 @@ public class MatchDAO extends DAO{
 			st.setInt(6, match.getDuel3());
 			st.setInt(7, match.getDuel4());
 
-			DuelDAO DD=new DuelDAO();
-			st.executeUpdate();
-
-			int num=DD.insertDuel(duel);
+			 int num = st.executeUpdate();
 
 			st.close();
 			con.close();
