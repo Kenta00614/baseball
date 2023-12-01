@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import bean.Tickets;
 import dao.TicketsDAO;
 
 @WebServlet("/staff/RefundComplete")
@@ -21,14 +22,11 @@ public class RefundComplete extends HttpServlet {
     	HttpSession session=request.getSession();
     	String ticketId = (String) session.getAttribute("ticketId");
 
+    	List<Tickets> list=new ArrayList<>();
     	TicketsDAO DAO=new TicketsDAO();
-		List<Integer> price=new ArrayList<>();
-
-
-
 
     	try{
-    		int num=DAO.changePaid(ticketId);
+    		list = DAO.getTicketsInfo(ticketId);
 
     		request.setAttribute(ticketId, "ticketId");
             request.getRequestDispatcher("/staff/refundComplete.jsp").forward(request, response);
