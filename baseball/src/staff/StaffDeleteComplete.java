@@ -28,7 +28,7 @@ public class StaffDeleteComplete extends HttpServlet {
 				//	既に消されている場合はそのまま処理を続ける
 			}
     	}
-
+    	session.removeAttribute("list");
         request.getRequestDispatcher("/staff/staffDeleteComplete.jsp").forward(request, response);
     }
 }
