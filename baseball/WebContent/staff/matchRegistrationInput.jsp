@@ -15,7 +15,7 @@
 		<%-- 大会情報があるとき --%>
 		<c:when test="${tournament != null }">
 		<h2>第${tournament.ordinalNum }回　${tournament.name }</h2>
-	        <form action="MatchRegistrationCompletion" method="get">
+	        <form action="MatchRegistrationCompletion" method="post">
 	        	<p>開催日<input type="text" maxlength="2" name="eventDateMonth" pattern="[0-9]|1[0-2]" required>月<input type="text" maxlength="2" name="eventDateDate" pattern="[0-9]|1[0-2]" required>日</p>
 	        	<p>チケット販売開始日<input type="text" maxlength="2" name="saleAtMonth" pattern="[0-9]|1[0-2]" required>月<input type="text" maxlength="2" name="saleAtDate" pattern="[0-9]|1[0-2]" required>日</p>
 	        	<table>
@@ -105,6 +105,7 @@
 	        			</select></td>
 	        		</tr>
 	        	</table>
+	        	<c:if test="${insertNum == 0 }"><p>同じ日付が登録されています</p></c:if>
 	        	<input type="hidden" name="tournamentId" value="${tournament.tournamentId }">
 	        	<button type="submit">試合情報登録</button>
 	        </form>

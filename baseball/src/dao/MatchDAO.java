@@ -94,16 +94,35 @@ public class MatchDAO extends DAO{
 		try{
 			Connection con=getConnection();
 
-			PreparedStatement st=con.prepareStatement("insert into MATCH values(null,?,?,?,?,?,?,?)");
+			String SQL = "insert into MATCH values(null,?,?,?,?,";
+				if(match.getDuel4() > 0){
+					SQL += "?,?,?)";
+				}else if(match.getDuel3() > 0){
+					SQL += "?,?,null)";
+				}else if(match.getDuel2() > 0){
+					SQL += "?,null,null)";
+				}else{
+					SQL += "null,null,null)";
+				}
+
+
+			PreparedStatement st=con.prepareStatement(SQL);
 			st.setInt(1,match.getTournamentId());
 			st.setDate(2, match.getEventDate());
 			st.setDate(3, match.getSaleStartAt());
 			st.setInt(4, match.getDuel1());
-			st.setInt(5, match.getDuel2());
-			st.setInt(6, match.getDuel3());
-			st.setInt(7, match.getDuel4());
 
-			 int num = st.executeUpdate();
+			if(match.getDuel2() > 0){
+				st.setInt(5, match.getDuel2());
+			}
+			if(match.getDuel3() > 0){
+				st.setInt(6, match.getDuel3());
+			}
+			if(match.getDuel4() > 0){
+				st.setInt(7, match.getDuel4());
+			}
+
+			int num = st.executeUpdate();
 
 			st.close();
 			con.close();
