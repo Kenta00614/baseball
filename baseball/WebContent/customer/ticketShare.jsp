@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@include file="header.jsp"%>
 
 <html>
@@ -15,7 +16,7 @@
 	<h1>第${ordinalNum }回${tournamentName }</h1>
 		<table>
 			<tr><th>チケット内容</th></tr>
-			<tr><td style="text-align:center;">${dateStr }(${eventDayOfWeek })　${typeStr }　<c:choose><c:when test="${child == 'true'}">こども券</c:when><c:when test="${child == 'false'}">おとな券</c:when></c:choose>　${price }円　${step }段　${number }番</td></tr>
+			<tr><td style="text-align:center;">${dateStr }(${eventDayOfWeek })　${typeStr }　<c:choose><c:when test="${child == 'true'}">こども券</c:when><c:when test="${child == 'false'}">おとな券</c:when></c:choose>　<fmt:formatNumber value="${price }" type="CURRENCY" currencySymbol="¥" maxFractionDigits="0" groupingUsed="true" />円　${step }段　${number }番</td></tr>
 			<tr><td><input type="text" value="${url }" id="copyUrl" readonly class="shared-link"><button onclick="copyUrl()">リンクをコピー</button></td></tr>
 		</table>
 
