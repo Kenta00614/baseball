@@ -90,6 +90,7 @@ public class TournamentDAO extends DAO{
 			t.setYear(rs.getInt("year"));
 			t.setOrdinalNum(rs.getInt("ordinal_num"));
 			t.setName(rs.getString("name"));
+			t.setSeason(rs.getString("season"));
 
 			list.add(t);
 		}

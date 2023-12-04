@@ -8,7 +8,8 @@
 	<form action="MatchRegistrationInput" method="get">
 		<button type="submit">続けて登録</button>
 	</form>
-	<form action="MatchInformation" method="get">
+	<form action="MatchInformation" method="post">
+		<input type="hidden" value="${touenamentId }" name="tournamentId">
 		<button type="submit">OK</button>
 	</form>
 </body>

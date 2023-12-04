@@ -116,4 +116,23 @@ public class DuelDAO extends DAO{
 
 		return duel;
 	}
+
+	public DuelExp getDuel(int duel_id)throws Exception{
+
+		DuelExp duel=new DuelExp();
+		Connection con = getConnection();
+		PreparedStatement st=con.prepareStatement("select * FROM duel JOIN school ON duel.school1 = school.school_id where duel_id = ? order by duel_id");
+		st.setInt(1,duel_id);
+
+		ResultSet rs=st.executeQuery();
+
+		while(rs.next()){
+			DuelExp d;
+			School s=new School();
+			d=new DuelExp();
+		}
+
+		return duel;
+
+	}
 }

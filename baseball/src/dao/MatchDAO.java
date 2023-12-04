@@ -176,7 +176,7 @@ public class MatchDAO extends DAO{
 	public List<Match> getMatchAll()throws Exception{
 
 		Connection con = getConnection();
-		PreparedStatement st=con.prepareStatement("SELECT * FROM MATCH");
+		PreparedStatement st=con.prepareStatement("SELECT * FROM MATCH order by match_id");
 		ResultSet rs=st.executeQuery();
 
 		List<Match> list=new ArrayList<>();
@@ -256,7 +256,7 @@ public class MatchDAO extends DAO{
 	public List<Match> searchMatchTournament(int tournament_id)throws Exception{
 
 		Connection con=getConnection();
-		PreparedStatement st=con.prepareStatement("SELECT MATCH_ID,EVENT_DATE,SALE_START_AT FROM MATCH WHERE TOURNAMENT_ID = ? order by event_date");
+		PreparedStatement st=con.prepareStatement("SELECT * FROM MATCH WHERE TOURNAMENT_ID = ? order by event_date");
 
 		st.setInt(1, tournament_id);
 
@@ -273,6 +273,10 @@ public class MatchDAO extends DAO{
 			m.setSaleDayOfWeek();
 			m.setDispFlg();
 			m.setSaleFlg();
+			m.setDuel1(rs.getInt("duel1"));
+			m.setDuel2(rs.getInt("duel2"));
+			m.setDuel3(rs.getInt("duel3"));
+			m.setDuel4(rs.getInt("duel4"));
 			list.add(m);
 		}
 

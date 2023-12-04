@@ -107,6 +107,7 @@ public class MatchRegistrationCompletion extends HttpServlet {
 				request.getRequestDispatcher("/staff/matchRegistrationInput.jsp").forward(request, response);
 				return;
 			}
+			request.setAttribute("tournamentId", tournament.getTournamentId());
 			session.removeAttribute("tournament");
 		} catch (Exception e) {
 			e.printStackTrace();
