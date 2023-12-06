@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@include file="header.jsp"%>
 
 <html>
@@ -18,7 +19,8 @@
 	</c:if>
 	<p>大会名　開催日　購入日時　枚数　価格</p>
 	<c:forEach begin="0" end="${fn:length(ticketNumList)-1 }" step="1" var="i">
-		<p>	第${purchaseList[i].ordinalNum }回${purchaseList[i].tournamentName }　${purchaseList[i].dateStr }　${purchaseList[i].purchaseStr }　${ticketNumList[i] }　${ticketPrice[i] }円</p>
+		<p>	第${purchaseList[i].ordinalNum }回${purchaseList[i].tournamentName }　${purchaseList[i].dateStr }　${purchaseList[i].purchaseStr }　${ticketNumList[i] }　<fmt:formatNumber value="${ticketPrice[i] }" maxFractionDigits="0" groupingUsed="true" />
+	円</p>
 	</c:forEach>
 </body>
 </html>

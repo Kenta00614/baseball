@@ -43,18 +43,29 @@ public class DuelDAO extends DAO{
 
 	}
 
-	//duelの情報を取得する
+	//duelの情報を登録する登録されるとduelIdを返す
 	public int insertDuel(Duel duel)throws Exception{
 
 		Connection con=getConnection();
 		PreparedStatement st=con.prepareStatement("INSERT INTO DUEL VALUES(null,?,?,?,?)");
+		int num=0;
+		int school1 = duel.getSchool1();
+		int school2 = duel.getSchool2();
 
-		st.setInt(1, duel.getSchool1());
-		st.setInt(2, duel.getSchool2());
-		st.setString(3, duel.getStatus());
-		st.setString(4, duel.getRound());
+		if(school1 != 0 && school2 != 0){
+			st.setInt(1, duel.getSchool1());
+			st.setInt(2, duel.getSchool2());
+			st.setString(3, "1");
+			st.setString(4, duel.getRound());
+			st.executeUpdate();
 
-		int num=st.executeUpdate();
+			st=con.prepareStatement("select duel_id from duel");
+			ResultSet rs=st.executeQuery();
+			while(rs.next()){
+				num = rs.getInt("duel_id");
+			}
+		}
+
 
 		st.close();
 		con.close();
@@ -104,5 +115,24 @@ public class DuelDAO extends DAO{
 		con.close();
 
 		return duel;
+	}
+
+	public DuelExp getDuel(int duel_id)throws Exception{
+
+		DuelExp duel=new DuelExp();
+		Connection con = getConnection();
+		PreparedStatement st=con.prepareStatement("select * FROM duel JOIN school ON duel.school1 = school.school_id where duel_id = ? order by duel_id");
+		st.setInt(1,duel_id);
+
+		ResultSet rs=st.executeQuery();
+
+		while(rs.next()){
+			DuelExp d;
+			School s=new School();
+			d=new DuelExp();
+		}
+
+		return duel;
+
 	}
 }

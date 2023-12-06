@@ -1,15 +1,29 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="bean.Staff" %>
+<%@ page import = "bean.Staff" %>
+<!DOCTYPE html>
+<html>
 <head>
     <meta charset="UTF-8">
     <title>メニュー</title>
+    <link rel="stylesheet" type="text/css" href="/baseball/css/Staff.css">
 
-    <link rel="stylesheet" type="text/css"  href ="/baseball/css/Staff.css">
+    <!-- 追加したスタイル -->
+    <style>
+    .staff-header {
+       background-color: black;
+       color: white;
+       font-size: 20px;
+       padding: 1px 0;
+    }
+
+    .nav-menu a {
+        color: white;
+    }
+</style>
 </head>
-
 <body>
-<!-- Header Start -->
+    <!-- Header Start -->
     <header class="staff-header">
         <div class="staff__wrapper">
             <ul class="nav-menu">
@@ -23,8 +37,8 @@
             　　<li class="nav__item">
                     <a href="#">試合情報 &#9662;</a> <!-- ドロップダウンメニューのトリガー -->
                     <div class="dropdown">
-                        <a href="">試合情報登録</a>
-                        <a href="MatchInformation">試合情報表示</a>
+                        <a href="MatchRegistrationInput">試合情報登録</a>
+                        <a href="MatchDisplay">試合情報表示</a>
                         <a href="TournamentRegistrationInputDisplay">大会情報登録</a>
                     </div>
                 </li>
@@ -45,19 +59,17 @@
                 } else {
                     // スタッフがログイン
             %>
-				<li class="nav__item"><a href="MatchInformation">試合情報表示</a></li>
+				<li class="nav__item"><a href="MatchDisplay">試合情報表示</a></li>
 			    <li class="nav__item"><a href="Refund">払い戻し</a></li>
 				<li class="nav__item"><a href="EntryExit">入退場</a></li>
 				<li class="nav__item"><a href="Logout">ログアウト</a></li>
             <%
                 }
             %>
+
             </ul>
-
-
         </div>
-        <hr>
+        <hr> <!-- ここに移動させました -->
     </header>
-<!-- Header End -->
-
 </body>
+</html>

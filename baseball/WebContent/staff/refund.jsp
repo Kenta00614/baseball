@@ -9,7 +9,7 @@
         <form action="RefundHandle" method="get">
             <div class="control">
                 <label for="ticketnumber"> チケット番号</label>
-                <input id="ticketnumber" type="text" name="ticketnumber" pattern="[0-9]+" required>
+                <input id="ticketnumber" type="text" name="ticketnumber" required>
                 <p class="note">※半角数字で入力してください。</p>
             </div>
             <button type="submit">確認</button>
