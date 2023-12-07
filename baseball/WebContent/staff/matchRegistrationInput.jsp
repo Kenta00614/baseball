@@ -16,8 +16,8 @@
 		<c:when test="${tournament != null }">
 		<h2>第${tournament.ordinalNum }回　${tournament.name }</h2>
 	        <form action="MatchRegistrationCompletion" method="post">
-	        	<p>開催日<input type="text" maxlength="2" name="eventDateMonth" pattern="[0-9]|1[0-2]" required>月<input type="text" maxlength="2" name="eventDateDate" pattern="[0-9]|1[0-2]" required>日</p>
-	        	<p>チケット販売開始日<input type="text" maxlength="2" name="saleAtMonth" pattern="[0-9]|1[0-2]" required>月<input type="text" maxlength="2" name="saleAtDate" pattern="[0-9]|1[0-2]" required>日</p>
+	        	<p>開催日<input type="text" maxlength="2" name="eventDateMonth" pattern="[0-9]|1[0-2]" title="1から12の半角数字を入力してください" required>月<input type="text" maxlength="2" name="eventDateDate" pattern="^(0?[1-9]|[1-2][0-9]|3[0-1])$" title="1から31の半角数字を入力してください" required>日</p>
+	        	<p>チケット販売開始日<input type="text" maxlength="2" name="saleAtMonth" pattern="[0-9]|1[0-2]" title="1から12の半角数字を入力してください" required>月<input type="text" maxlength="2" name="saleAtDate" pattern="^(0?[1-9]|[1-2][0-9]|3[0-1])$" title="1から31の半角数字を入力してください" required>日</p>
 	        	<table>
 	        		<tr><th></th><th>高校名</th><th>高校名</th><th>第何回戦</th></tr>
 	        		<tr>
