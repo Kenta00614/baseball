@@ -277,6 +277,8 @@ public class MatchDAO extends DAO{
 			m.setDuel2(rs.getInt("duel2"));
 			m.setDuel3(rs.getInt("duel3"));
 			m.setDuel4(rs.getInt("duel4"));
+			m.setEventDateStr();
+			m.setSaleStartAtStr();
 			list.add(m);
 		}
 
