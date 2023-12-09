@@ -137,7 +137,38 @@ public class StaffDAO extends DAO {
 
 	}
 
-	//IDから職員情報を取得
+	//IDのリストから職員情報を取得
+	public List<Staff> selectStaffs(String[] staffIds)throws Exception{
+
+		Connection con=getConnection();
+		PreparedStatement st=con.prepareStatement("select * from staff where staff_id = ?");
+
+		List<Staff> list=new ArrayList<>();
+
+		for(String id : staffIds){
+			st.setString(1,id);
+
+			ResultSet rs = st.executeQuery();
+
+			while(rs.next()){
+				Staff s = new Staff();
+				s.setStaffId(rs.getString("staff_id"));
+				s.setName(rs.getString("name"));
+				s.setBirth(rs.getDate("birth"));
+				s.setPassword(rs.getString("password"));
+				s.setPosition(rs.getString("position"));
+				list.add(s);
+			}
+		}
+
+
+		st.close();
+		con.close();
+
+		return list;
+	}
+
+	//IDから職員情報取得
 	public List<Staff> selectStaff(String staffId)throws Exception{
 
 		Connection con=getConnection();
@@ -154,6 +185,37 @@ public class StaffDAO extends DAO {
 			s.setName(rs.getString("name"));
 			s.setBirth(rs.getDate("birth"));
 			s.setPassword(rs.getString("password"));
+			s.setPosition(rs.getString("position"));
+
+			list.add(s);
+		}
+
+		st.close();
+		con.close();
+
+		return list;
+	}
+
+	//自分以外の従業員を表示
+	public List<Staff> selectStaffWithoutMe(String id)throws Exception{
+
+		Connection con=getConnection();
+		PreparedStatement st=con.prepareStatement("select * from staff");
+
+		ResultSet rs=st.executeQuery();
+
+		List<Staff> list=new ArrayList<>();
+
+		while(rs.next()){
+			Staff s=new Staff();
+
+			if(rs.getString("staff_id").equals(id)){
+				continue;
+			}
+
+			s.setStaffId(rs.getString("staff_id"));
+			s.setName(rs.getString("name"));
+			s.setBirth(rs.getDate("birth"));
 			s.setPosition(rs.getString("position"));
 
 			list.add(s);

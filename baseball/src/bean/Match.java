@@ -17,7 +17,37 @@ public class Match implements Serializable {
 	private String saleDayOfWeek;
 	private boolean dispFlg=false;
 	private boolean saleFlg=false;
+	private String eventDateStr;
+	private String saleStartAtStr;
 
+	public String getEventDateStr() {
+		return eventDateStr;
+	}
+	public void setEventDateStr() {
+		String saleStartAtStr = this.saleStartAt.toString();
+		int dateIndex = saleStartAtStr.lastIndexOf('-');
+		String date = saleStartAtStr.substring(dateIndex + 1, dateIndex+3);
+		String yyyymm = saleStartAtStr.substring(0,dateIndex);
+		int monthIndex = yyyymm.lastIndexOf('-');
+		String month = yyyymm.substring(monthIndex + 1);
+		String yyyy = yyyymm.substring(0,monthIndex);
+
+		this.saleStartAtStr = yyyy +"年"+ month +"月"+ date +"日";
+	}
+	public String getSaleStartAtStr() {
+		return saleStartAtStr;
+	}
+	public void setSaleStartAtStr() {
+		String eventDateStr = this.eventDate.toString();
+		int dateIndex = eventDateStr.lastIndexOf('-');
+		String date = eventDateStr.substring(dateIndex + 1, dateIndex+3);
+		String yyyymm = eventDateStr.substring(0,dateIndex);
+		int monthIndex = yyyymm.lastIndexOf('-');
+		String month = yyyymm.substring(monthIndex + 1);
+		String yyyy = yyyymm.substring(0,monthIndex);
+
+		this.eventDateStr = yyyy +"年"+ month +"月"+ date +"日";
+	}
 	public int getMatchId() {
 		return matchId;
 	}

@@ -89,24 +89,40 @@ public class MatchDAO extends DAO{
 	}
 
 	//試合情報の追加
-	public int insertMatch(Match match, Duel duel)throws Exception{
+	public int insertMatch(Match match)throws Exception{
 
 		try{
 			Connection con=getConnection();
 
-			PreparedStatement st=con.prepareStatement("insert into MATCH values(null,?,?,?,?,?,?,?)");
+			String SQL = "insert into MATCH values(null,?,?,?,?,";
+				if(match.getDuel4() > 0){
+					SQL += "?,?,?)";
+				}else if(match.getDuel3() > 0){
+					SQL += "?,?,null)";
+				}else if(match.getDuel2() > 0){
+					SQL += "?,null,null)";
+				}else{
+					SQL += "null,null,null)";
+				}
+
+
+			PreparedStatement st=con.prepareStatement(SQL);
 			st.setInt(1,match.getTournamentId());
 			st.setDate(2, match.getEventDate());
 			st.setDate(3, match.getSaleStartAt());
 			st.setInt(4, match.getDuel1());
-			st.setInt(5, match.getDuel2());
-			st.setInt(6, match.getDuel3());
-			st.setInt(7, match.getDuel4());
 
-			DuelDAO DD=new DuelDAO();
-			st.executeUpdate();
+			if(match.getDuel2() > 0){
+				st.setInt(5, match.getDuel2());
+			}
+			if(match.getDuel3() > 0){
+				st.setInt(6, match.getDuel3());
+			}
+			if(match.getDuel4() > 0){
+				st.setInt(7, match.getDuel4());
+			}
 
-			int num=DD.insertDuel(duel);
+			int num = st.executeUpdate();
 
 			st.close();
 			con.close();
@@ -160,7 +176,7 @@ public class MatchDAO extends DAO{
 	public List<Match> getMatchAll()throws Exception{
 
 		Connection con = getConnection();
-		PreparedStatement st=con.prepareStatement("SELECT * FROM MATCH");
+		PreparedStatement st=con.prepareStatement("SELECT * FROM MATCH order by match_id");
 		ResultSet rs=st.executeQuery();
 
 		List<Match> list=new ArrayList<>();
@@ -240,7 +256,7 @@ public class MatchDAO extends DAO{
 	public List<Match> searchMatchTournament(int tournament_id)throws Exception{
 
 		Connection con=getConnection();
-		PreparedStatement st=con.prepareStatement("SELECT MATCH_ID,EVENT_DATE,SALE_START_AT FROM MATCH WHERE TOURNAMENT_ID = ? order by event_date");
+		PreparedStatement st=con.prepareStatement("SELECT * FROM MATCH WHERE TOURNAMENT_ID = ? order by event_date");
 
 		st.setInt(1, tournament_id);
 
@@ -257,6 +273,12 @@ public class MatchDAO extends DAO{
 			m.setSaleDayOfWeek();
 			m.setDispFlg();
 			m.setSaleFlg();
+			m.setDuel1(rs.getInt("duel1"));
+			m.setDuel2(rs.getInt("duel2"));
+			m.setDuel3(rs.getInt("duel3"));
+			m.setDuel4(rs.getInt("duel4"));
+			m.setEventDateStr();
+			m.setSaleStartAtStr();
 			list.add(m);
 		}
 

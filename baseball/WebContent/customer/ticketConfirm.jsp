@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@include file="header.jsp"%>
 
 <html>
@@ -15,25 +16,39 @@
 	<hr>
 	<div>
 	<table>
-		<tr><th colspan="2" style="background-color:#6BEF9E;color:cadetblue;">申込内容</th></tr>
+		<tr><th colspan="4" style="background-color:#6BEF9E;color:cadetblue;">申込内容</th></tr>
 		<%-- 日付と曜日 --%>
-		<tr><th>開催日</th><td>${match.eventDate }(${match.eventDayOfWeek })</td></tr>
+		<tr><th>開催日</th><td colspan="3">${match.eventDate }(${match.eventDayOfWeek })</td></tr>
 		<%-- 座種 --%>
-		<tr><th>座種</th><td>${selTicketsData[0].seat.typeStr }</td></tr>
+		<tr><th>座種</th><td colspan="3">${selTicketsData[0].seat.typeStr }</td></tr>
 		<%-- ↓選択された座席分の情報↓ --%>
 		<c:forEach begin="0" end="${fn:length(selTicketsData)-1 }" step="1" var="i">
-			<tr><th>座席内容</th><td>${selTicketsData[i].seat.step }段　${selTicketsData[i].seat.number }番　${selTicketsData[i].seat.gate }番ゲート　${selTicketsData[i].seat.passage }通路　${selChils[i] }　値段:&yen;${price[i] }</td></tr>
+			<tr>
+				<c:choose>
+					<%-- 一枚購入時 --%>
+					<c:when test="${fn:length(selTicketsData) == 1}">
+						<th>座席内容</th>
+					</c:when>
+					<%-- 複数購入時 --%>
+					<c:when test="${fn:length(selTicketsData) > 1 && i == 0}">
+						<th rowspan="${fn:length(selTicketsData) }">座席内容</th>
+					</c:when>
+				</c:choose>
+				<td colspan="3">${selTicketsData[i].seat.step }段　${selTicketsData[i].seat.number }番　${selTicketsData[i].seat.gate }番ゲート　${selTicketsData[i].seat.passage }通路　${selChils[i] }　値段:<fmt:formatNumber value="${price[i] }" type="CURRENCY" currencySymbol="¥" maxFractionDigits="0" groupingUsed="true" /></td>
+			</tr>
 		</c:forEach>
 		<%-- ↑選択された座席分の情報↑ --%>
-		<tr><th>支払い方法/受け取り方法</th><td>QRコード/Paypal</td></tr>
+		<tr><th>支払い方法/受け取り方法</th><td colspan="3">QRコード/Paypal</td></tr>
 
 		<tr id="app">
+			<th>ご請求</th><td>&yen; {{disPrice.toLocaleString()}}<br><c:if test="${point > 0}">(内ポイント利用&yen;{{usePoint.toLocaleString()}})</c:if></td>
 			<c:if test="${point > 0}">
-				<th>ポイント</th><td>${point }(&yen;${point }相当)利用可能</td>
-				<input type="number" v-model="inputValue">
-				<button type="button" v-on:click="addPoint" :disabled="!isButtonEnabled">適用</button>
+				<th>ポイント</th>
+				<td><fmt:formatNumber value="${point }" maxFractionDigits="0" groupingUsed="true" />ポイント(<fmt:formatNumber value="${point }" type="CURRENCY" currencySymbol="¥" maxFractionDigits="0" groupingUsed="true" />相当)利用可能
+					<input type="number" v-model="inputValue">
+					<button type="button" v-on:click="addPoint" :disabled="!isButtonEnabled">適用</button>
+				</td>
 			</c:if>
-			<th>ご請求</th><td>&yen; {{disPrice}}<c:if test="${point > 0}">(内ポイント利用&yen;{{usePoint}})</c:if></td>
 		</tr>
 	</table>
 	</div>

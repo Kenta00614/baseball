@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import bean.Staff;
 import dao.StaffDAO;
@@ -19,8 +20,13 @@ public class StaffDelete extends HttpServlet {
 
     	StaffDAO DAO = new StaffDAO();
 
+    	HttpSession session = request.getSession();
+    	Staff staff=(Staff)session.getAttribute("staff");
+
+    	String id=staff.getStaffId();
+
     	try {
-			List<Staff> list= DAO.selectStaffAll();
+			List<Staff> list= DAO.selectStaffWithoutMe(id);
 
 			request.setAttribute("list",list);
 			request.getRequestDispatcher("/staff/staffDelete.jsp").forward(request, response);
