@@ -7,7 +7,6 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import bean.Duel;
 import bean.Match;
 
 public class MatchDAO extends DAO{
@@ -71,12 +70,14 @@ public class MatchDAO extends DAO{
 			Match m = new Match();
 			m.setMatchId(rs.getInt("match_id"));
 			m.setTournamentId(rs.getInt("tournament_id"));
-			m.setSaleStartAt(rs.getDate("event_date"));
+			m.setSaleStartAt(rs.getDate("sale_start_at"));
+			m.setEventDate(rs.getDate("event_date"));
 			m.setDuel1(rs.getInt("duel1"));
 			m.setDuel2(rs.getInt("duel2"));
 			m.setDuel3(rs.getInt("duel3"));
 			m.setDuel4(rs.getInt("duel4"));
-
+			m.setEventDateStr();
+			m.setSaleStartAtStr();
 			list.add(m);
 
 		}
@@ -140,23 +141,45 @@ public class MatchDAO extends DAO{
 	}
 
 	//試合日情報を変更する
-	public int changeMatch(Match match, Duel duel)throws Exception{
-
+	public int changeMatch(int duelId,int matchId,int duelNum)throws Exception{
+		int num = 0;
 		try{
 			Connection con=getConnection();
-			PreparedStatement st=con.prepareStatement("UPDATE MATCH SET DUEL1 = ?,DUEL2 = ?, DUEL3 = ?, DUEL4 = ? WHERE MATCH_ID = ?");
+			String SQL = "UPDATE MATCH SET ";
+			if(duelNum == 2){
+				if(duelId != 0){
+					SQL += "DUEL2 = ?";
+				}else{
+					SQL += "duel2=null ";
+				}
+			}else if(duelNum == 3){
+				if(duelId != 0){
+					SQL += "DUEL3 = ?";
+				}else{
+					SQL += "duel3=null ";
+				}
+			}else if(duelNum == 4){
+				if(duelId != 0){
+					SQL += "DUEL4 = ?";
+				}else{
+					SQL += "duel4=null ";
+				}
+			}
 
-			st.setInt(1, match.getDuel1());
-			st.setInt(2, match.getDuel2());
-			st.setInt(3, match.getDuel3());
-			st.setInt(4, match.getDuel4());
-			st.setInt(5, match.getMatchId());
+			SQL += " WHERE MATCH_ID = ?";
+			PreparedStatement st=con.prepareStatement(SQL);
 
-			st.executeUpdate();
+			if(duelId != 0){
+				st.setInt(1, duelId);
+				st.setInt(2, matchId);
+			}else{
+				st.setInt(1, matchId);
+			}
 
-			DuelDAO DD = new DuelDAO();
 
-			int num=DD.changeDuel(duel);
+
+			num = st.executeUpdate();
+
 
 			st.close();
 			con.close();
@@ -165,7 +188,7 @@ public class MatchDAO extends DAO{
 
 		}catch(Exception e){
 
-			int num=0;
+			num=0;
 			return num;
 
 		}
@@ -286,7 +309,6 @@ public class MatchDAO extends DAO{
 		con.close();
 
 		return list;
-
 	}
 
 }

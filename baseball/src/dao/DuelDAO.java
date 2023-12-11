@@ -46,7 +46,11 @@ public class DuelDAO extends DAO{
 		if(school1 != 0 && school2 != 0){
 			st.setInt(1, duel.getSchool1());
 			st.setInt(2, duel.getSchool2());
-			st.setString(3, "1");
+			if(duel.getStatus() == null){
+				st.setString(3, "1");
+			}else{
+				st.setString(3, duel.getStatus());
+			}
 			st.setString(4, duel.getRound());
 			st.executeUpdate();
 
@@ -71,13 +75,20 @@ public class DuelDAO extends DAO{
 		Connection con = getConnection();
 		PreparedStatement st=con.prepareStatement("UPDATE DUEL SET SCHOOL1 = ?,SCHOOL2 = ?,STATUS = ?,ROUND = ? WHERE DUEL_ID = ?");
 
-		st.setInt(1, duel.getSchool1());
-		st.setInt(2, duel.getSchool2());
-		st.setString(3, duel.getStatus());
-		st.setString(4, duel.getRound());
-		st.setInt(5, duel.getDuelId());
+		int num = 0;
+		int school1 = duel.getSchool1();
+		int school2 = duel.getSchool2();
 
-		int num=st.executeUpdate();
+		if(school1 != 0 && school2 != 0){
+			st.setInt(1, duel.getSchool1());
+			st.setInt(2, duel.getSchool2());
+			st.setString(3, duel.getStatus());
+			st.setString(4, duel.getRound());
+			st.setInt(5, duel.getDuelId());
+			num=st.executeUpdate();
+		}else{
+			deleteDuel(duel.getDuelId());
+		}
 
 		st.close();
 		con.close();

@@ -1,6 +1,7 @@
 package staff;
 
 import java.io.IOException;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,6 +27,7 @@ public class MatchInformation extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session=request.getSession();
 		int tournamentId = Integer.parseInt(request.getParameter("tournamentId"));
+		String eventDateStr = request.getParameter("eventDate");
 
 		List<Match> matchList = new ArrayList();
 		List<List<DuelExp>> duelList = new ArrayList<List<DuelExp>>();
@@ -33,6 +35,10 @@ public class MatchInformation extends HttpServlet {
 		DuelDAO duelDAO = new DuelDAO();
 
 		try {
+			if(eventDateStr != null){
+				Date eventDate = Date.valueOf(eventDateStr);
+				matchDAO.deleteMatch(eventDate);
+			}
 
 			matchList = matchDAO.searchMatchTournament(tournamentId);
 
