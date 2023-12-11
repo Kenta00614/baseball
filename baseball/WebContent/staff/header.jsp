@@ -12,15 +12,16 @@
 
     <!-- 追加したスタイル -->
     <style>
-        .staff-header {
-            background-color: black;
-            color: white;
-            font-size: 20px;
-            padding: 1px 0;
-        }
+	    .staff-header {
+	        background-color: f3f2e7; /* ヘッダーの背景色を変更 */
+	        color: brown; /* 文字色を変更 */
+	        font-size: 20px;
+	        padding: 1px 0;
+	    }
+
 
         .nav-menu a {
-            color: white;
+            color: black;
             text-decoration: none; /* Ensure no underline on links */
         }
 
