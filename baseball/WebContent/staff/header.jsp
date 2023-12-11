@@ -14,7 +14,7 @@
 	<style>
 	    /* 既存のスタイル */
 	    .staff-header {
-	        background-color: #fffff;
+	        background-color: white;
 	        color: #555555; /* テキストの色を灰色に変更 */
 	        font-size: 20px;
 	        padding: 1px 0;
@@ -48,7 +48,7 @@
 	    }
 
 	    .dropdown a {
-	        color: white;
+	        color: #fffff;
 	        padding: 12px 16px;
 	        text-decoration: none;
 	        display: block;
@@ -65,8 +65,8 @@
 	    .hr-style {
 	        border: 0;
 	        height: 1px;
-	        background: fffff;
-	        margin: 5px 0;
+	        background: #DDDDDD;
+	        margin: 15px 0;
 	    }
 	</style>
 

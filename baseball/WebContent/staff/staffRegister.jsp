@@ -13,11 +13,11 @@
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background-color: fffff;
         }
 
         .header {
-            background-color: #fff;
+            background-color: fff;
             color: #555555;
             padding: 0.1px;
             text-align: center;
@@ -27,7 +27,7 @@
             max-width: 400px;
             margin: 20px auto;
             padding: 20px;
-            background-color: #fff;
+            background-color: fff;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             border-radius: 5px;
         }
