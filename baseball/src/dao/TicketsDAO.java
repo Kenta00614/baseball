@@ -577,4 +577,30 @@ public class TicketsDAO extends DAO{
 
 		return ticketsId;
 	}
+
+	// チケットIDからチケット情報を取得する
+	public List<Tickets> getTicketsInfo(String tickets_id)throws Exception{
+
+		Connection con=getConnection();
+		PreparedStatement st=con.prepareStatement("SELECT * FROM TICKETS WHERE TICKETS_ID = ?");
+		st.setString(1, tickets_id);
+
+		ResultSet rs=st.executeQuery();
+
+		List<Tickets> list=new ArrayList<>();
+
+		while(rs.next()){
+			Tickets t=new Tickets();
+			t.setTicketsId(rs.getString("tickets_id"));
+			t.setSeatId(rs.getString("seat_id"));
+			t.setChild(rs.getBoolean("is_child"));
+			list.add(t);
+		}
+
+		st.close();
+		con.close();
+
+		return list;
+
+	}
 }
