@@ -6,10 +6,6 @@
 
 <body>
 
-    <div class="header">
-        <form action="Header" method="get">
-    　　　　<button type="submit">メイン画面へ</button>
-　　　　</form>
-    </div>
+
 </body>
 </html>
