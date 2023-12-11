@@ -39,6 +39,16 @@ public class Constants {
     }
   };
   @SuppressWarnings({ "unchecked", "rawtypes" })
+  public static HashMap<String,Integer> CHILD_SEAT_PRICE = new HashMap(){
+    {
+    	  put("0B", 4200);
+	      put("0F", 1200);
+	      put("0T", 1200);
+	      put("0R", 200);
+	      put("0L", 200);
+    }
+  };
+  @SuppressWarnings({ "unchecked", "rawtypes" })
 	public static HashMap<String,String> DUEL_STATUS = new HashMap(){
     {
         put("1", "試合前");

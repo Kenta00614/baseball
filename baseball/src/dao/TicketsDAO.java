@@ -386,9 +386,14 @@ public class TicketsDAO extends DAO{
 	}
 
 	//チケットのステータスを取得する
-	public String checkTickets(String ticketsId,Date today)throws Exception{
+	public String checkTickets(String ticketsId,Date today,Connection con)throws Exception{
+		Boolean flg = false;
 
-		Connection con=getConnection();
+		if(con == null){
+			con=getConnection();
+			flg = true;
+		}
+
 		PreparedStatement st=con.prepareStatement("select * from tickets join match on tickets.match_id = match.match_id where event_date = ? and tickets_id = ?;");
 		st.setDate(1, today);
 		st.setString(2,ticketsId);
@@ -402,7 +407,9 @@ public class TicketsDAO extends DAO{
 		}
 
 		st.close();
-		con.close();
+		if(flg){
+			con.close();
+		}
 
 		return status;
 
@@ -424,37 +431,56 @@ public class TicketsDAO extends DAO{
 
 	}
 
-	//チケットのステータスを退場済みに変更する
-	public String statusLeave(String ticketsId)throws Exception {
+	//チケットのステータスを退場済みに変更する 要変更 リセールチケット追加
+	public TicketsExp statusLeave(String ticketsId,Connection con)throws Exception {
 
-		Connection con=getConnection();
-		PreparedStatement stSpec = con.prepareStatement("select * from tickets join purchase on tickets.purchase_id = purchase.purchase_id where tickets_id = ?;");
-		stSpec.setString(1, ticketsId);
+		//購入者を特定
+		PreparedStatement st1 = con.prepareStatement("select * from tickets join purchase on tickets.purchase_id = purchase.purchase_id where tickets_id = ?;");
+		st1.setString(1, ticketsId);
 
-		ResultSet rs = stSpec.executeQuery();
-		String spectatorId = null;
+		ResultSet rs = st1.executeQuery();
+		TicketsExp ticket = new TicketsExp();
+		ticket.setSpectatorId(-1);
 
 		while(rs.next()){
-			spectatorId = rs.getString("spectator_id");
+			ticket.setSpectatorId(rs.getInt("spectator_id"));
+			ticket.setChild(rs.getBoolean("is_child"));
+			ticket.setType(ticketsId.substring(0,2));
+			ticket.setMatchId(rs.getInt("match_id"));
+			ticket.setSeatId(rs.getString("seat_id"));
 		}
 
-		if(spectatorId == null){
-
-			return spectatorId;
+		//購入者が不明な場合、エラー。リターンする。
+		if(ticket.getSpectatorId() == -1){
+			throw new Exception();
 		}
 
-		PreparedStatement st=con.prepareStatement("update tickets set status = 7 where tickets_id = ?");
-		st.setString(1, ticketsId);
+		//チケットのステータスを退場済みへ書き換え
+		PreparedStatement st2=con.prepareStatement("update tickets set status = 7 where tickets_id = ?");
+		st2.setString(1, ticketsId);
+		st2.executeUpdate();
 
-		st.executeUpdate();
+		//リセ―ルチケットを作成する
+		String resaleNoStr = null;
+		int resaleNo = Integer.parseInt(ticketsId.substring(8,10))+1;
+		if (resaleNo < 10){
+			resaleNoStr = "0"+resaleNo;
+		}else{
+			resaleNoStr = String.valueOf(resaleNo);
+		}
+		String newTicketsId = ticketsId.substring(0,8) + resaleNoStr + ticketsId.substring(10,18);
 
+		PreparedStatement st3=con.prepareStatement("insert into tickets values (?,null,?,?,2,FALSE,FALSE,null)");
+		st3.setString(1, newTicketsId);
+		st3.setInt(2, ticket.getMatchId());
+		st3.setString(3, ticket.getSeatId());
+		st3.executeUpdate();
 
-		st.close();
-		stSpec.close();
-		con.close();
+		st1.close();
+		st2.close();
+		st3.close();
 
-		return spectatorId;
-
+		return ticket;
 	}
 
 //	日付とブロックで絞り込んだ販売中のチケット・座席情報

@@ -3,6 +3,12 @@
     var canvas = canvasElement.getContext("2d");
     var form = document.getElementById("form");
     var input = document.getElementById("ticketId");
+    const sound = document.getElementById("sound").getAttribute('value');
+    console.log(sound);
+    if(sound != null){
+    	var audio = new Audio(sound);
+        audio.play();
+    }
 
     function drawLine(begin, end, color) {
       canvas.beginPath();
