@@ -15,23 +15,23 @@
 	    /* 既存のスタイル */
 	    .staff-header {
 	        background-color: #fffff;
-	        color: #666666; /* テキストの色を灰色に変更 */
+	        color: #555555; /* テキストの色を灰色に変更 */
 	        font-size: 20px;
 	        padding: 1px 0;
 	    }
 
 	    .staff-header a {
-	        color: #666666; /* リンクの色も灰色に変更 */
+	        color: #555555; /* リンクの色も灰色に変更 */
 	    }
 
 	    .nav-menu a {
-	        color: #666666; /* テキストの色を灰色に変更 */
+	        color: #555555; /* テキストの色を灰色に変更 */
 	        text-decoration: none;
 	    }
 
 	    /* フォントアイコンの色を変更 */
 	    .nav-menu a i {
-	        color: #666666;
+	        color: #555555;
 	    }
 
 	    .nav-menu a:hover {
