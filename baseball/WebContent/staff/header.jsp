@@ -1,6 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ page import = "bean.Staff" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="bean.Staff" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,17 +9,53 @@
 
     <!-- 追加したスタイル -->
     <style>
-    .staff-header {
-       background-color: black;
-       color: white;
-       font-size: 20px;
-       padding: 1px 0;
-    }
+        .staff-header {
+            background-color: black;
+            color: white;
+            font-size: 20px;
+            padding: 1px 0;
+        }
 
-    .nav-menu a {
-        color: white;
-    }
-</style>
+        .nav-menu a {
+            color: white;
+            text-decoration: none; /* Ensure no underline on links */
+        }
+
+        .nav-menu a:hover {
+            text-decoration: underline; /* Underline on hover */
+        }
+
+        .dropdown {
+            display: none;
+            position: absolute;
+            background-color: black;
+            min-width: 160px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown a {
+            color: white;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown a:hover {
+            background-color: #555;
+        }
+
+        .nav__item:hover .dropdown {
+            display: block;
+        }
+
+        .hr-style {
+            border: 0;
+            height: 1px;
+            background: white;
+            margin: 5px 0;
+        }
+    </style>
 </head>
 <body>
     <!-- Header Start -->
@@ -30,12 +65,13 @@
 
             <%
                 //管理職がログイン
-                Staff staff=(Staff)session.getAttribute("staff");
+                Staff staff = (Staff) session.getAttribute("staff");
                 int position = Integer.parseInt(staff.getPosition());
                 if (position == 2) {
             %>
-            　　<li class="nav__item">
-                    <a href="#">試合情報 &#9662;</a> <!-- ドロップダウンメニューのトリガー -->
+                <li class="nav__item">
+                    <a href="#">試合情報 &#9662;</a>
+                    <!-- ドロップダウンメニューのトリガー -->
                     <div class="dropdown">
                         <a href="MatchRegistrationInput">試合情報登録</a>
                         <a href="MatchDisplay">試合情報表示</a>
@@ -66,10 +102,9 @@
             <%
                 }
             %>
-
             </ul>
         </div>
-        <hr> <!-- ここに移動させました -->
+        <hr class="hr-style"> <!-- ここに移動させました -->
     </header>
 </body>
 </html>

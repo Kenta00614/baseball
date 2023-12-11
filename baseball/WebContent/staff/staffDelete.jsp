@@ -5,10 +5,61 @@
 <html>
 <head>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
 </head>
 <body>
     <div class="header">
         <h1>職員情報の削除</h1>
+    </div>
+    <div class="container">
         <form action="StaffDeleteCheck" method="get">
             <table>
                 <tr>
@@ -19,16 +70,16 @@
                 </tr>
                 <% for(Staff s : list){ %>
                     <tr>
-                        <th><label><input type="checkbox" name="selectedIDs" value=<%=s.getStaffId() %> v-model="selectedIDs"></label></th>
-                        <th><%=s.getStaffId() %></th>
-                        <th><%=s.getName() %></th>
+                        <td><label><input type="checkbox" name="selectedIDs" value=<%=s.getStaffId() %> v-model="selectedIDs"></label></td>
+                        <td><%=s.getStaffId() %></td>
+                        <td><%=s.getName() %></td>
                         <% String state = s.getPosition();
                         String grade = (state.equals("1")) ? "スタッフ" : "管理者"; %>
-                        <th><%=grade %></th>
+                        <td><%=grade %></td>
                     </tr>
                 <% } %>
             </table>
- 			<button type="submit">削除</button>
+            <button type="submit">削除</button>
             <script>
                 new Vue({
                     el: 'form', // form要素内のすべての要素をバインド
@@ -37,7 +88,6 @@
                     }
                 })
             </script>
-
         </form>
     </div>
 </body>
