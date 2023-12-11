@@ -38,4 +38,24 @@ public class Constants {
 	      put("0L", 700);
     }
   };
+  @SuppressWarnings({ "unchecked", "rawtypes" })
+	public static HashMap<String,String> DUEL_STATUS = new HashMap(){
+    {
+        put("1", "試合前");
+	    put("2", "試合中");
+	    put("3", "試合終了");
+	    put("4", "試合中止");
+    }
+  };
+  @SuppressWarnings({ "unchecked", "rawtypes" })
+	public static HashMap<String,String> DUEL_ROUND = new HashMap(){
+	{
+		put("1", "第一回戦");
+	    put("2", "第二回戦");
+	    put("3", "第三回戦");
+	    put("4", "準々決勝");
+	    put("5", "準決勝");
+	    put("6", "決勝");
+	}
+  };
 }
