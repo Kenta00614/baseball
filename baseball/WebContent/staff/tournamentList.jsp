@@ -13,5 +13,12 @@
             </form>
         </div>
     </c:forEach>
+    <div class="aaa">
+            <!-- 大会名とIDを含むボタン -->
+            <form action="TournamentListChangeDisplay" method="get">
+                <button type="submit">変更</button>
+            </form>
+     </div>
+
 </body>
 </html>
