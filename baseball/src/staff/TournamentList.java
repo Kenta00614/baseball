@@ -19,11 +19,13 @@ public class TournamentList extends HttpServlet {
         throws ServletException, IOException {
 
         TournamentDAO dao = new TournamentDAO();
+        String name = request.getParameter("name");
         try {
             // データベースから大会情報のリストを取得
             List<Tournament> tournamentList = dao.getTournamentDetail();
             // リクエスト属性に大会情報リストをセット
             request.setAttribute("tournamentList", tournamentList);
+            request.setAttribute("name", name);
             // JSPにフォワード
             request.getRequestDispatcher("/staff/tournamentList.jsp").forward(request, response);
         } catch (Exception e) {
