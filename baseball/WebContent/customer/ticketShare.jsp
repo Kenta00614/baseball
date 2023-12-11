@@ -14,10 +14,10 @@
 		<button type="submit" class="return-btn">戻る</button>
 	</form>
 	<h1>第${ordinalNum }回${tournamentName }</h1>
-		<table>
+		<table  class="ticket-shard">
 			<tr><th>チケット内容</th></tr>
-			<tr><td style="text-align:center;">${dateStr }(${eventDayOfWeek })　${typeStr }　<c:choose><c:when test="${child == 'true'}">こども券</c:when><c:when test="${child == 'false'}">おとな券</c:when></c:choose>　<fmt:formatNumber value="${price }" type="CURRENCY" currencySymbol="¥" maxFractionDigits="0" groupingUsed="true" />円　${step }段　${number }番</td></tr>
-			<tr><td><input type="text" value="${url }" id="copyUrl" readonly class="shared-link"><button onclick="copyUrl()">リンクをコピー</button></td></tr>
+			<tr><td style="text-align:center;   display: block;margin-left: auto;margin-right: auto ">${dateStr }(${eventDayOfWeek })　${typeStr }　<c:choose><c:when test="${child == 'true'}">こども券</c:when><c:when test="${child == 'false'}">おとな券</c:when></c:choose>　<fmt:formatNumber value="${price }" type="CURRENCY" currencySymbol="¥" maxFractionDigits="0" groupingUsed="true" />円　${step }段　${number }番</td></tr>
+			<tr><td><input type="text" value="${url }" id="copyUrl" readonly class="shared-link"><button onclick="copyUrl()" class="copy-btn">Copy</button></td></tr>
 		</table>
 
 	<%-- リンクをコピーするjs --%>

@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import bean.Duel;
+import bean.DuelExp;
 import bean.Match;
 import bean.School;
 import bean.Tournament;
@@ -64,15 +65,25 @@ public class MatchUpdateInput extends HttpServlet {
 
 //			試合日情報の取得
 			matchList = matchDAO.searchMatchDetail(eventDate);
+			DuelExp duelNoData = new DuelExp();
+			duelNoData.setSchoolId1(0);
+			duelNoData.setSchoolId2(0);
+
 			duelList.add(duelDAO.getDuelDetail(matchList.get(0).getDuel1()));
 			if(matchList.get(0).getDuel2() > 0){
 				duelList.add(duelDAO.getDuelDetail(matchList.get(0).getDuel2()));
-				if(matchList.get(0).getDuel3() > 0){
-					duelList.add(duelDAO.getDuelDetail(matchList.get(0).getDuel3()));
-					if(matchList.get(0).getDuel4() > 0 ){
-						duelList.add(duelDAO.getDuelDetail(matchList.get(0).getDuel4()));
-					}
-				}
+			}else{
+				duelList.add(duelNoData);
+			}
+	    	if(matchList.get(0).getDuel3() > 0){
+				duelList.add(duelDAO.getDuelDetail(matchList.get(0).getDuel3()));
+	    	}else{
+				duelList.add(duelNoData);
+			}
+	    	if(matchList.get(0).getDuel4() > 0 ){
+				duelList.add(duelDAO.getDuelDetail(matchList.get(0).getDuel4()));
+			}else{
+				duelList.add(duelNoData);
 			}
 
 //			statusのリスト作成
