@@ -5,7 +5,7 @@
 }
 
 body {
-    background-color: #E5FFE5;
+    background-color: #f2fffc;
     width: 960px;
     margin: 15px auto; /* 左右のマージンをautoにして中央寄せに修正 */
     margin-top: 60px;
@@ -227,6 +227,54 @@ table tr:last-child * {
 }
 
 
+
+/*--- memberInformation.jspのスタイル ---*/
+
+.member-selection {
+    display: flex;
+    gap: 10px; /* ボタン間の隙間を設定 */
+}
+
+.member-selection form {
+    margin: 0; /* フォームの余白をリセット */
+}
+
+.memberinfo-else {/*ログイン前*/
+    font-size: 20px;
+}
+
+.member-selection button {
+    /* ボタンのスタイル */
+    padding: 10px 15px;
+    background-color: #808080;
+	width: 120px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 50px;
+}
+
+.member-selection button:hover {
+    background-color: #555;
+}
+
+
+/*--- purchaseHistory.jspのスタイル  ---*/
+.history-list{
+	text-align:center;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 800px;
+}
+
+.history-list td{
+	text-align:center;
+    white-space: normal; /* テキストが領域外にはみ出した場合、折り返し表示する */
+}
+
+
 /*--- signup.jspのスタイル ---*/
 .container {
     width: 600px;
@@ -260,38 +308,6 @@ table tr:last-child * {
     color: white;
     border: none;
     cursor: pointer;
-}
-
-
-/*--- memberInformation.jspのスタイル ---*/
-
-.member-selection {
-    display: flex;
-    gap: 10px; /* ボタン間の隙間を設定 */
-}
-
-.member-selection form {
-    margin: 0; /* フォームの余白をリセット */
-}
-
-.memberinfo-else {/*ログイン前*/
-    font-size: 20px;
-}
-
-.member-selection button {
-    /* ボタンのスタイル */
-    padding: 10px 15px;
-    background-color: #808080;
-	width: 120px;
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    margin: 50px;
-}
-
-.member-selection button:hover {
-    background-color: #555;
 }
 
 
@@ -409,6 +425,9 @@ table tr:last-child * {
     flex-direction: column;
     align-items: center;
 }
+.ticketElement-btn:hover{
+	background-color:#555;
+}
 
 
 
@@ -472,3 +491,44 @@ table tr:last-child * {
 	height:10%;
 }
 
+
+/*--- ticketShare.jspのスタイル ---*/
+.shared-link{
+    text-align:center;
+    width: 85%; /*親要素いっぱい広げる*/
+    padding: 10px 10px; /*ボックスを大きくする*/
+    font-size: 16px;
+    border-radius: 3px; /*ボックス角の丸み*/
+    border: 2px solid #ddd; /*枠線*/
+    box-sizing: border-box; /*横幅の解釈をpadding, borderまでとする*/
+}
+
+.ticket-shard{
+	width: 800px;
+}
+
+table.ticket-shard  th{
+	width: 150px;
+}
+
+table.ticket-shard  td{
+	display: flex;
+	width: 800px;
+}
+
+.copy-btn{
+	 margin: 3px auto; /* 左右のマージンをautoにして中央寄せに修正 */
+	border: 3px solid transparent;
+    display: flex;
+    color: #ffffff;
+    background: #808080;
+    padding: 8px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+	    /* other styles */
+    align-items: center;
+    position: relative; /* bodyを相対的な位置に設定 */
+}
+.copy-btn:hover{
+	background-color:#555;
+}
