@@ -17,9 +17,9 @@
         }
 
         .header {
-            background-color: #333;
-            color: #fff;
-            padding: 10px;
+            background-color: #fff;
+            color: #666666;
+            padding: 1px;
             text-align: center;
         }
 
@@ -79,21 +79,21 @@
     <div class="form-container">
         <form action="StaffRegisterComplete" method="get">
             <div class="control">
-                <label for="id">ID</label>
+                <label for="id" style="color: #666666;">ID</label>
                 <input id="id" type="text" name="id" required>
             </div>
 
             <div class="control">
-                <label for="name">氏名</label>
+                <label for="name" style="color: #666666;">氏名</label>
                 <input type="text" id="name" name="name" required>
             </div>
 
             <div class="control">
-                <label for="birth">生年月日(整数８桁)</label>
+                <label for="birth" style="color: #666666;">生年月日(整数８桁)</label>
                 <input type="text" id="birth" name="BIRTH" pattern="[12][0-9]{3}[01][0-9][0-3][0-9]" required>
             </div>
 
-            <div class="control">
+            <div class="control" style="color: #666666;">
                 <label for="position">職員ステータス:</label>
                 <select name="position">
                     <option value="1">スタッフ</option>

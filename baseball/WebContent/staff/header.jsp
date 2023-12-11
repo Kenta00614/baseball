@@ -11,55 +11,65 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <!-- 追加したスタイル -->
-    <style>
+	<style>
+	    /* 既存のスタイル */
 	    .staff-header {
-	        background-color: f3f2e7; /* ヘッダーの背景色を変更 */
-	        color: brown; /* 文字色を変更 */
+	        background-color: #fffff;
+	        color: #666666; /* テキストの色を灰色に変更 */
 	        font-size: 20px;
 	        padding: 1px 0;
 	    }
 
+	    .staff-header a {
+	        color: #666666; /* リンクの色も灰色に変更 */
+	    }
 
-        .nav-menu a {
-            color: black;
-            text-decoration: none; /* Ensure no underline on links */
-        }
+	    .nav-menu a {
+	        color: #666666; /* テキストの色を灰色に変更 */
+	        text-decoration: none;
+	    }
 
-        .nav-menu a:hover {
-            text-decoration: underline; /* Underline on hover */
-        }
+	    /* フォントアイコンの色を変更 */
+	    .nav-menu a i {
+	        color: #666666;
+	    }
 
-        .dropdown {
-            display: none;
-            position: absolute;
-            background-color: black;
-            min-width: 160px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-            z-index: 1;
-        }
+	    .nav-menu a:hover {
+	        text-decoration: underline;
+	    }
 
-        .dropdown a {
-            color: white;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-        }
+	    .dropdown {
+	        display: none;
+	        position: absolute;
+	        background-color: #333; /* ドロップダウンの背景色を黒に変更 */
+	        min-width: 160px;
+	        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+	        z-index: 1;
+	    }
 
-        .dropdown a:hover {
-            background-color: #555;
-        }
+	    .dropdown a {
+	        color: white;
+	        padding: 12px 16px;
+	        text-decoration: none;
+	        display: block;
+	    }
 
-        .nav__item:hover .dropdown {
-            display: block;
-        }
+	    .dropdown a:hover {
+	        background-color: #555;
+	    }
 
-        .hr-style {
-            border: 0;
-            height: 1px;
-            background: white;
-            margin: 5px 0;
-        }
-    </style>
+	    .nav__item:hover .dropdown {
+	        display: block;
+	    }
+
+	    .hr-style {
+	        border: 0;
+	        height: 1px;
+	        background: fffff;
+	        margin: 5px 0;
+	    }
+	</style>
+
 </head>
 <body>
     <!-- Header Start -->
@@ -74,7 +84,7 @@
                 if (position == 2) {
             %>
                 <li class="nav__item">
-                    <a href="#"><i class="fas fa-futbol"></i> 試合情報 &#9662;</a>
+                    <a href="#"><i class="fas fa-baseball-ball"></i> 試合情報 &#9662;</a>
                     <!-- ドロップダウンメニューのトリガー -->
                     <div class="dropdown">
                         <a href="MatchRegistrationInput"><i class="fas fa-plus"></i> 試合情報登録</a>
