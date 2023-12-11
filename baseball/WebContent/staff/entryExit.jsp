@@ -24,69 +24,66 @@
             height: 100vh;
         }
 
-        .content {
+        .form-container {
             text-align: center;
-        }
-
-        .header {
-            margin: 20px;
-            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
         .button-container {
             display: flex;
             justify-content: space-around;
+            margin-top: 20px;
         }
 
         .custom-btn {
             overflow: hidden;
             position: relative;
-            margin: 20px;
         }
 
         .custom-btn button {
-        background-color: #000;
-        color: #fff;
-        padding: 15px 30px;
-        font-size: 16px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        outline: none;
-        overflow: hidden;
-        position: relative;
-        z-index: 1;
-        transition: color 0.3s ease-in-out, transform 0.3s ease-in-out; /* アニメーションの追加 */
-    }
+            background-color: #000;
+            color: #fff;
+            padding: 15px 30px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            outline: none;
+            overflow: hidden;
+            position: relative;
+            z-index: 1;
+            transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+        }
 
-    .custom-btn button:hover {
-        color: #000;
-        transform: scale(1.1); /* ホバー時のアニメーション */
-    }
+        .custom-btn button:hover {
+            color: #000;
+            transform: scale(1.1);
+        }
 
-    .custom-btn button:before {
-        /* 既存のスタイルは省略 */
-        transition: transform 0.3s ease-in-out; /* アニメーションの追加 */
-    }
+        .custom-btn button:before {
+            transition: transform 0.3s ease-in-out;
+        }
 
-    .custom-btn button:hover:before {
-        transform: translateY(0);
-    }
+        .custom-btn button:hover:before {
+            transform: translateY(0);
         }
     </style>
 </head>
 
 <body>
     <div class="container">
-        <div class="content">
+        <div class="form-container">
             <h1>入退場画面</h1>
             <div class="button-container">
-                <div class="header custom-btn">
+                <div class="custom-btn">
                     <form action="Entry" method="get">
                         <button type="submit">入場</button>
                     </form>
                 </div>
-                <div class="header custom-btn">
+                <div class="custom-btn">
                     <form action="Exit" method="get">
                         <button type="submit">退場</button>
                     </form>

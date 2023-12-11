@@ -10,17 +10,27 @@
 	<link rel="stylesheet" type="text/css"  href ="/baseball/css/Customer.css">
 </head>
 <body>
-	<form action="MemberInformation" method="get">
-		<button type="submit">戻る</button>
-	</form>
-	<h2>購入履歴</h2>
+
+	<h1>購入履歴</h1>
 	<c:if test="${fn:length(ticketNumList)<1 }">
 		<p>購入情報はありません</p>
 	</c:if>
-	<p>大会名　開催日　購入日時　枚数　価格</p>
+	<table class="history-list">
+	<tr>
+		<th style="width:120em;">大会名</th>
+		<th style="width:70em;">開催日</th>
+		<th style="width:70em;">購入日時</th>
+		<th style="width:3px;">枚数</th>
+		<th style="width:30em;">価格</th>
+	</tr>
 	<c:forEach begin="0" end="${fn:length(ticketNumList)-1 }" step="1" var="i">
-		<p>	第${purchaseList[i].ordinalNum }回${purchaseList[i].tournamentName }　${purchaseList[i].dateStr }　${purchaseList[i].purchaseStr }　${ticketNumList[i] }　<fmt:formatNumber value="${ticketPrice[i] }" maxFractionDigits="0" groupingUsed="true" />
-	円</p>
+		<tr>
+			<td>第${purchaseList[i].ordinalNum }回<br>${purchaseList[i].tournamentName }</td>
+			<td>　${purchaseList[i].dateStr }</td><td>${purchaseList[i].purchaseStr }</td>
+			<td>${ticketNumList[i] }枚</td>
+			<td><fmt:formatNumber value="${ticketPrice[i] }" maxFractionDigits="0" groupingUsed="true" />円</td>
+		</tr>
 	</c:forEach>
+	</table>
 </body>
 </html>

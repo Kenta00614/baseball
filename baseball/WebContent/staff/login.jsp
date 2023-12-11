@@ -82,8 +82,7 @@
                 <input name="password" type="password" id="password" placeholder="Password" required>
             </div>
             <p><input type="submit" value="Login"></p>
-            <br>
-            <p>初めてご利用の方はこちら<br><a href="ProvisionalSignupDisplay" class="btn">→新規職員登録へ</a></p>
+
         </form>
     </div>
 </body>
