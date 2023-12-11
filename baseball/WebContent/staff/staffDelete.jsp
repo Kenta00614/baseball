@@ -10,7 +10,8 @@
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background-color: #f4f4f4; /* 背景色を灰色に変更 */
+            color: #333; /* テキスト色を黒に変更 */
         }
 
         .container {
@@ -19,7 +20,7 @@
         }
 
         .header {
-            background-color: #4CAF50;
+            background-color: #333; /* ヘッダーの背景色を黒に変更 */
             color: white;
             padding: 20px;
             text-align: center;
@@ -35,16 +36,17 @@
             padding: 15px;
             text-align: left;
             border-bottom: 1px solid #ddd;
+            background-color: #333; /* 背景色を黒に変更 */
+            color: white; /* テキスト色を白に変更 */
         }
 
-        th {
-            background-color: #4CAF50;
-            color: white;
+        input[type="checkbox"] {
+            background-color: white; /* チェックボックスの背景色を白に変更 */
         }
 
         button {
-            background-color: #4CAF50;
-            color: white;
+            background-color: white; /* ボタンの背景色を白に変更 */
+            color: #333; /* ボタンのテキスト色を黒に変更 */
             padding: 10px 20px;
             border: none;
             cursor: pointer;
@@ -52,6 +54,7 @@
 
         button:hover {
             background-color: #45a049;
+            color: white;
         }
     </style>
 </head>

@@ -73,7 +73,7 @@
                 if (position == 2) {
             %>
                 <li class="nav__item">
-                    <a href="#"><i class="fas fa-baseball-ball"></i> 試合情報 &#9662;</a>
+                    <a href="#"><i class="fas fa-futbol"></i> 試合情報 &#9662;</a>
                     <!-- ドロップダウンメニューのトリガー -->
                     <div class="dropdown">
                         <a href="MatchRegistrationInput"><i class="fas fa-plus"></i> 試合情報登録</a>

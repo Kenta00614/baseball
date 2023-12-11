@@ -55,19 +55,19 @@
             cursor: pointer;
         }
 
-        button {
-            background-color: #4caf50;
-            color: white;
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            width: 100%;
-        }
+	    button {
+	        background-color: #3498db; /* 青に変更 */
+	        color: white;
+	        padding: 10px;
+	        border: none;
+	        border-radius: 5px;
+	        cursor: pointer;
+	        width: 100%;
+	    }
 
-        button:hover {
-            background-color: #45a049;
-        }
+	    button:hover {
+	        background-color: #2980b9; /* ホバー時の色を調整 */
+	    }
     </style>
 </head>
 
