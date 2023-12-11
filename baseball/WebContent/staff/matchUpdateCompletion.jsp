@@ -2,12 +2,11 @@
     pageEncoding="UTF-8"%>
 <%@include file="header.jsp"%>
 <html>
-試合情報変更　入力画面
 <body>
-    <div class="header">
-        <form action="MatchInformation" method="get">
-    　　　　<button type="submit">OK</button>
-　　　　</form>
-    </div>
+	<form action="MatchInformation" method="post">
+		<p>試合情報の変更が完了しました。</p>
+		<input type="hidden" value="${tournamentId }" name="tournamentId">
+		<button type="submit">OK</button>
+	</form>
 </body>
 </html>

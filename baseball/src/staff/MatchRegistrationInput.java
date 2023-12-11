@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import bean.School;
 import bean.Tournament;
@@ -23,6 +24,7 @@ public class MatchRegistrationInput extends HttpServlet {
 
     @SuppressWarnings({ "rawtypes", "unchecked" })
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    	HttpSession session=request.getSession();
 //    	トーナメントのリスト
     	List<Tournament> tournamentList = new ArrayList();
     	Tournament tournament = new Tournament();
@@ -43,12 +45,17 @@ public class MatchRegistrationInput extends HttpServlet {
 
 //			高校情報取得
 			schoolList = schoolDAO.searchSchool(tournament.getTournamentId());
+//			なしの値
+			School school=new School();
+			school.setSchoolId(0);
+			school.setName("なし");
+			schoolList.add(school);
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
-    	request.setAttribute("tournament",tournament );
+    	session.setAttribute("tournament",tournament );
     	request.setAttribute("schoolList",schoolList );
         request.getRequestDispatcher("/staff/matchRegistrationInput.jsp").forward(request, response);
     }

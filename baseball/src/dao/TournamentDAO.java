@@ -63,6 +63,7 @@ public class TournamentDAO extends DAO{
 
 		while(rs.next()){
 			t=new Tournament();
+			t.setTournamentId(rs.getInt("tournament_id"));
 			t.setYear(rs.getInt("year"));
 			t.setOrdinalNum(rs.getInt("ordinal_num"));
 			t.setName(rs.getString("name"));
@@ -90,6 +91,7 @@ public class TournamentDAO extends DAO{
 			t.setYear(rs.getInt("year"));
 			t.setOrdinalNum(rs.getInt("ordinal_num"));
 			t.setName(rs.getString("name"));
+			t.setSeason(rs.getString("season"));
 
 			list.add(t);
 		}

@@ -117,7 +117,6 @@
 				    if(!this.selectedTickets[index].check){
 		        		this.selectedTickets[index].check=true;
 		        		this.selectedTickets[index].checkStr="子供";
-		        		console.log(selectedTickets[index]);
 		        	}else{
 		        		this.selectedTickets[index].check=false;
 		        		this.selectedTickets[index].checkStr="大人";
