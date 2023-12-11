@@ -1,119 +1,250 @@
 @CHARSET "UTF-8";
 /* ========================================================================== */
+@media screen and (min-width:768px) {
 
-.title {
-  font-weight: bold;
-  font-size: 20px;
+	/* PC用CSS記述 */
+
+	.title {
+	  font-weight: bold;
+	  font-size: 20px;
+	}
+
+	/* ドロップダウンメニューのスタイル */
+	.nav-menu li .dropdown {
+	    display: none;
+	    position: absolute;
+	    background-color: #f9f9f9;
+	    min-width: 160px;
+	    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+	    z-index: 1;
+	}
+
+	.nav-menu li .dropdown a {
+	    color: black;
+	    padding: 12px 16px;
+	    text-decoration: none;
+	    display: block;
+	    text-align: left;
+	}
+
+	.nav-menu li .dropdown a:hover {
+	    background-color: #f1f1f1;
+	}
+
+	/* マウスオーバー時にドロップダウンメニューを表示 */
+	.nav-menu li:hover .dropdown {
+	    display: block;
+	}
+
+	/* ========================================================================== */
+
+	/* aタグ(URL)の下線を削除 */
+	a {
+	    text-decoration: none;
+	    color: #4b4b4b;
+	}
+
+	li {
+	    margin: 0 15px 0 0; /* 右側のmarginを30pxに設定 */
+	    font-size: 14px;
+	}
+
+	.nav-menu {
+	    /* ulタグの文頭の「・」を削除 */
+	    list-style: none;
+	    margin: 0;
+	    justify-content: flex-end;
+	    align-items: center;
+
+	    /* 項目を横並びに */
+	    display: flex;
+	}
+
+	* {
+	    box-sizing: border-box;
+	}
+
+	.cust-header {
+	    position: fixed; /*← fixedで固定 */
+	    width: 100%;
+	    height: 40px;
+	    background-color: #e4ffd7;
+	    top: 0;
+	    left: 0;
+	}
+
+	.baseball {
+	    font-weight: bold;
+	    font-size: 20px;
+	}
+
+	.logo {
+	    margin: 5px;
+	    display: flex; /*横並び*/
+	    align-items: center;
+	}
+
+	.menu {
+	    margin: 0 0 0 auto;
+	}
+
+	.logo-image {
+	    display: flex;
+	    padding: 0;
+	    height: 25px;
+	    /* 必要に応じてwidthを追加 */
+	}
+
+	/* ナビゲーションメニューのスタイル */
+	.nav-menu {
+	    list-style-type: none;
+	    margin: 0;
+	    padding: 0;
+	}
+
+	/* 追加設定 */
+	.cust__wrapper {
+	    padding-top: 1rem;
+	    padding-bottom: 1rem;
+	    display: flex;
+	    justify-content: space-between;
+	    align-items: center;
+	    padding-top: 0;
+	    padding-bottom: 0;
+	}
+
+	.nav__wrapper {
+	    display: flex;
+	}
+
+	.nav__toggle {
+	    display: none;
+	}
 }
 
-/* ドロップダウンメニューのスタイル */
-.nav-menu li .dropdown {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    z-index: 1;
-}
 
-.nav-menu li .dropdown a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    text-align: left;
-}
 
-.nav-menu li .dropdown a:hover {
-    background-color: #f1f1f1;
-}
+@media screen and (max-width:768px) {
 
-/* マウスオーバー時にドロップダウンメニューを表示 */
-.nav-menu li:hover .dropdown {
-    display: block;
-}
+	/* スマートフォン用CSS記述 */
+	.title {
+	  font-weight: bold;
+	  font-size: 20px;
+	}
 
-/* ========================================================================== */
+	/* ドロップダウンメニューのスタイル */
+	.nav-menu li .dropdown {
+	    display: none;
+	    position: absolute;
+	    background-color: #f9f9f9;
+	    min-width: 160px;
+	    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+	    z-index: 1;
+	}
 
-/* aタグ(URL)の下線を削除 */
-a {
-    text-decoration: none;
-    color: #4b4b4b;
-}
+	.nav-menu li .dropdown a {
+	    color: black;
+	    padding: 12px 16px;
+	    text-decoration: none;
+	    display: block;
+	    text-align: left;
+	}
 
-li {
-    margin: 0 15px 0 0; /* 右側のmarginを30pxに設定 */
-    font-size: 14px;
-}
+	.nav-menu li .dropdown a:hover {
+	    background-color: #f1f1f1;
+	}
 
-.nav-menu {
-    /* ulタグの文頭の「・」を削除 */
-    list-style: none;
-    margin: 0;
-    justify-content: flex-end;
-    align-items: center;
+	/* マウスオーバー時にドロップダウンメニューを表示 */
+	.nav-menu li:hover .dropdown {
+	    display: block;
+	}
 
-    /* 項目を横並びに */
-    display: flex;
-}
+	/* ========================================================================== */
 
-* {
-    box-sizing: border-box;
-}
+	/* aタグ(URL)の下線を削除 */
+	a {
+	    text-decoration: none;
+	    color: #4b4b4b;
+	    margin-top: 10px;
+	}
 
-.cust-header {
-    position: fixed; /*← fixedで固定 */
-    width: 100%;
-    height: 40px;
-    background-color: #e4ffd7;
-    top: 0;
-    left: 0;
-}
+	li {
+	    margin: 0 15px 0 0; /* 右側のmarginを15pxに設定 */
+	    font-size: 10px;
+	    margin-top: 10px;
+	}
 
-.baseball {
-    font-weight: bold;
-    font-size: 20px;
-}
+	.nav-menu {
+	    /* ulタグの文頭の「・」を削除 */
+	    list-style: none;
+	    margin: 0;
+	    justify-content: flex-end;
+	    align-items: center;
 
-.logo {
-    margin: 5px;
-    display: flex; /*横並び*/
-    align-items: center;
-}
+	    /* 項目を横並びに */
+	    display: flex;
+	}
 
-.menu {
-    margin: 0 0 0 auto;
-}
+	* {
+	    box-sizing: border-box;
+	}
 
-.logo-image {
-    display: flex;
-    padding: 0;
-    height: 25px;
-    /* 必要に応じてwidthを追加 */
-}
+	.cust-header {
+	    position: fixed; /*← fixedで固定 */
+	    width: 100%;
+	    height: 50px;
+	    background-color: #e4ffd7;
+	    top: 0;
+	    left: 0;
+	}
 
-/* ナビゲーションメニューのスタイル */
-.nav-menu {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-}
+	.baseball {
+	    font-weight: bold;
+	    font-size: 30px;
+	}
 
-/* 追加設定 */
-.cust__wrapper {
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-top: 0;
-    padding-bottom: 0;
-}
+	.logo {
+	    margin: 5px;
+	    display: flex; /*横並び*/
+	    align-items: center;
+	}
 
-.nav__wrapper {
-    display: flex;
-}
+	.menu {
+	    margin: 0 0 0 auto;
+	}
 
-.nav__toggle {
-    display: none;
+	.logo-image {
+	    display: flex;
+	    padding: 0;
+	    height: 25px;
+	    /* 必要に応じてwidthを追加 */
+	}
+
+	/* ナビゲーションメニューのスタイル */
+	.nav-menu {
+	    list-style-type: none;
+	    margin: 0;
+	    padding: 0;
+	}
+
+	/* 追加設定 */
+	.cust__wrapper {
+	    padding-top: 1rem;
+	    padding-bottom: 1rem;
+	    display: flex;
+	    justify-content: space-between;
+	    align-items: center;
+	    padding-top: 0;
+	    padding-bottom: 0;
+	}
+
+	.nav__wrapper {
+	    display: flex;
+	}
+
+	.nav__toggle {
+	    display: none;
+	}
+
+
 }
