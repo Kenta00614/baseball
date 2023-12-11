@@ -32,6 +32,11 @@
             <input type="hidden" name="tel" value="${spectator.tel}">
             <button type="submit">会員情報変更</button>
         </form>
+        <form action="EmailChangeDisplay" method="Get">
+            <input type="hidden" name="mail" value="${spectator.mail}">
+            <button type="submit">メールアドレス変更</button>
+        </form>
+
     </div>
 </body>
 </html>
