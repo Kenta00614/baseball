@@ -12,7 +12,7 @@
 <body>
 	<%-- 戻るボタン --%>
 	<form action="TicketDisplay" method="get">
-		<button type="submit">戻る</button>
+		<button type="submit" class="return-btn">戻る</button>
 	</form>
 	<%-- QRコード --%>
 	<img src="<%= BufferedImageUtil.convert2DataURI(bImage, "png") %>"/>
