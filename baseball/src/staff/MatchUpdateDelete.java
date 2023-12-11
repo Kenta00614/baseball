@@ -10,9 +10,15 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/staff/MatchUpdateDelete")
 public class MatchUpdateDelete extends HttpServlet {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doPost(request, response);
+	}
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    	String tournamentId = request.getParameter("tournamentId");
+    	String eventDate = request.getParameter("eventDate");
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+    	request.setAttribute("tournamentId", tournamentId);
+    	request.setAttribute("eventDate", eventDate);
         request.getRequestDispatcher("/staff/matchUpdateDelete.jsp").forward(request, response);
     }
 }
