@@ -6,24 +6,24 @@
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #000;
+            background-color: fff;
             color: #fff;
             margin: 0;
             padding: 0;
         }
 
         .header {
-            background-color: #4CAF50;
-            color: white;
+            background-color: #DCDCDC;
+            color: #555555;
             text-align: center;
-            padding: 20px;
+            padding: 0.1px;
         }
 
         form {
             max-width: 400px;
             margin: 20px auto;
-            background-color: #000;
-            color: #fff;
+            background-color:#F5F5F5;
+            color: #555555;
             padding: 20px;
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
@@ -36,7 +36,7 @@
         label {
             display: block;
             margin-bottom: 5px;
-            color: #fff;
+            color: #555555;
         }
 
         input {
@@ -49,17 +49,17 @@
         }
 
         input[type="submit"] {
-            background-color: #4CAF50;
-            color: white;
+            background-color: #ff6347;
+            color: fff;
             cursor: pointer;
         }
 
         input[type="submit"]:hover {
-            background-color: #45a049;
+            background-color: #ff6347;
         }
 
         .error-message {
-            color: #ff0000;
+            color: #555555;
             margin-top: 5px;
         }
     </style>
