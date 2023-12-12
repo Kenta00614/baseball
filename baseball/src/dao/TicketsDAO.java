@@ -70,7 +70,7 @@ public class TicketsDAO extends DAO{
 
 			Connection con=getConnection();
 
-			PreparedStatement st=con.prepareStatement("select tickets.*,seat.type from tickets left join seat on tickets.seat_id = seat.seat_id where type = ? and status = 3 and match_id = ?");
+			PreparedStatement st=con.prepareStatement("select tickets.*,seat.type from tickets left join seat on tickets.seat_id = seat.seat_id where type = ? and status = 2 and match_id = ?");
 			st.setString(1, type);
 			st.setInt(2, matchId);
 
@@ -155,7 +155,7 @@ public class TicketsDAO extends DAO{
 
 		Connection con=getConnection();
 
-		PreparedStatement st=con.prepareStatement("select tickets.*,seat.block from tickets left join seat on tickets.seat_id = seat.seat_id where block = ? and status = 3 and match_id = ?");
+		PreparedStatement st=con.prepareStatement("select tickets.*,seat.block from tickets left join seat on tickets.seat_id = seat.seat_id where block = ? and status = 2 and match_id = ?");
 		st.setString(1, block);
 		st.setInt(2,matchId);
 

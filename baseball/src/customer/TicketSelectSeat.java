@@ -2,6 +2,7 @@ package customer;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -57,17 +58,19 @@ public class TicketSelectSeat extends HttpServlet {
 			List<TicketsAndSeat> ticketAndSeat=new ArrayList<>();
 //			チケット表示に必要な情報取得
 			ticketAndSeat=ticketDAO.selectTickets(match.getEventDate(), block);
-			List<Seat> seats=seatDAO.getSeat(block);
-
-
-
+			HashMap map = seatDAO.getSeat(block);
+			List<List<Seat>> seats=(List<List<Seat>>)map.get("seats");
 
 //			ブロックの販売中チケット情報
 			request.setAttribute("tickets", ticketAndSeat);
 //			選択されたブロック
 			session.setAttribute("block", block);
 //			ブロックの席情報
-			session.setAttribute("seats", seats);
+			session.setAttribute("seatsList", seats);
+			//描画
+			request.setAttribute("startNum",(int)map.get("startNum"));
+			request.setAttribute("endNum",(int)map.get("endNum"));
+			request.setAttribute("step",(int)map.get("step"));
 	        request.getRequestDispatcher("/customer/ticketSelectSeat.jsp").forward(request, response);
 		} catch (Exception e) {
 			e.printStackTrace();

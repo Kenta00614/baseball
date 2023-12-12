@@ -21,21 +21,18 @@
 
 <%-- 席選択 --%>
 	<div id="app">
+		<table>
 		<%-- 座席の画像--%>
 		<transition-group>
-		<%-- stepが変わったらclear(floatの解除)のclassを適用 --%>
-		<div  v-for="(seat,index) in seatsList" v-bind:key="seat.seatId"  :class="{ 'clear': index>0 && seat.seatStep !== seatsList[index-1].seatStep }">
-			<%-- seatをfloat:leftしてる --%>
-			<li class="seat-img">
-				<label>
-				 	<img alt="座席" :src="'${pageContext.request.contextPath}/customer/image/' + seat.imgsrc + '.jpg'" value="index" v-bind:value="seat.check" v-on:click="changeClass(index)">
+		<tr v-for="(seats,index1) in seatsList">
+			<td v-for="(seat,index2) in seats" v-bind:key="seat.seatId">
+				<label v-if="seat.seatId.length > 5">
+				 	<img alt="座席" src="'${pageContext.request.contextPath}'+ seat.imgsrc + '.jpg'" value="index" v-bind:value="seat.check" v-on:click="changeClass(index1,index2)">
 				</label>
-			</li>
-		</div>
+			</td>
+		</tr>
 		</transition-group>
-
-		<%-- float解除 --%>
-		<div class="clear"></div>
+		</table>
 		<%-- 選択したら出てくる情報 --%>
           <transition-group>
 			<li v-for="(ticket,index) in selectedTickets" v-bind:key="ticket.ticketsId">
@@ -59,18 +56,20 @@
 			data: {
 				<%-- 購入できるチケットの情報 --%>
 				ticketsList: [
-					<c:forEach var="ticket" items="${tickets }">
+					<c:forEach var="ticket" items="${tickets}">
 						{ticketsId:"${ticket.ticket.ticketsId}", seatId:"${ticket.ticket.seatId}",status:${ticket.ticket.status},seatType:"${ticket.seat.type}",
 							step:"${ticket.seat.step}",number:${ticket.seat.number},typeStr:"${ticket.seat.typeStr}",gate:"${ticket.seat.gate}",passage:"${ticket.seat.passage}",check:false,checkStr:"大人",
 						},
 					</c:forEach>
 						],
 				<%-- 座席ID --%>
-				seatsList: [
-					<c:forEach var="seat" items="${seats}">
-						{seatId:"${seat.seatId}",seatStep:"${seat.step}",imgsrc:"seat_0",check:false},
-					</c:forEach>
-				],
+				seatsList:[
+					<c:forEach var="seats" items="${seatsList}">[
+						<c:forEach var="seat" items="${seats}">
+							{seatId:"${seat.seatId}",seatStep:"${seat.step}",seatNumber:"${seat.number}",imgsrc:"seat_0",check:false},
+						</c:forEach>
+					],
+					</c:forEach>],
 				<%-- 選択されたチケット --%>
 			    selectedTickets:[],
 			},
