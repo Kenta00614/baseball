@@ -13,11 +13,11 @@
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: fffff;
+            background-color:fff;
         }
 
         .header {
-            background-color: #EEEEEE;
+            background-color: #DCDCDC;
             color: #555555;
             padding: 0.1px;
             text-align: center;
@@ -27,7 +27,7 @@
             max-width: 400px;
             margin: 20px auto;
             padding: 20px;
-            background-color: #EEEEEE;
+            background-color: #F5F5F5;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             border-radius: 5px;
         }
@@ -56,7 +56,7 @@
         }
 
 	    button {
-	        background-color: #0066FF; /* 青に変更 */
+	        background-color:#ff6347;
 	        color: white;
 	        padding: 10px;
 	        border: none;

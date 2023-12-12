@@ -12,9 +12,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import bean.Point;
 import bean.TicketsExp;
 import common.Constants;
 import dao.DAO;
+import dao.PointDAO;
 import dao.SpectatorDAO;
 import dao.TicketsDAO;
 
@@ -27,7 +29,7 @@ public class ExitConduct extends HttpServlet {
     	String classStr = null;
     	DAO dao = new DAO();
     	Connection con = null;
-    	String soundStr = null;
+    	Point point = null;
 
     	//値の受け取り
     	String ticketId = request.getParameter("ticketId");
@@ -36,6 +38,7 @@ public class ExitConduct extends HttpServlet {
     	//DBへ照合
     	TicketsDAO tDao = new TicketsDAO();
     	SpectatorDAO sDao = new SpectatorDAO();
+    	PointDAO pDao = new PointDAO();
     	long miliseconds = System.currentTimeMillis();
     	Date date = Date.valueOf("1900-01-01");
     	date.setTime(miliseconds);
@@ -50,7 +53,6 @@ public class ExitConduct extends HttpServlet {
 				//退場できないメッセージを送る
 	    		message = "チケットをお間違えです。ご確認ください。";
 	    		classStr = "emergency";
-	    		soundStr = "../staff/sound/error.mp3";
 	    	}else{//当日のチケットだった場合
 	    		//チケットのステータスを退場済みにする
 	    		TicketsExp tickets = tDao.statusLeave(ticketId,con);
@@ -61,11 +63,15 @@ public class ExitConduct extends HttpServlet {
 	    		}else{
 	    			price = Constants.SEAT_PRICE.get(tickets.getType());
 	    		}
-	    		sDao.addPoint(tickets.getSpectatorId(),price);
+	    		point = new Point();
+	    		point.setTicketsId(ticketId);
+	    		point.setFluctuation((int)(price*0.2));
+	    		point.setPurchaseId(tickets.getPurchaseId());
+	    		point.setSpectatorId(tickets.getSpectatorId());
+	    		pDao.insertSavePoint(point,con);
 				//入場メッセージを送る
 	    		message = "ご来場ありがとうございました。";
 	    		classStr = "allGreen";
-	    		soundStr = "../staff/sound/ok.mp3";
 	    		//コミット処理
 	    		con.commit();
 	    	}
@@ -87,7 +93,6 @@ public class ExitConduct extends HttpServlet {
 		}
     	request.setAttribute("massage", message);
     	request.setAttribute("classStr", classStr);
-    	request.setAttribute("sound", soundStr);
 
         request.getRequestDispatcher("/staff/exit.jsp").forward(request, response);
     }

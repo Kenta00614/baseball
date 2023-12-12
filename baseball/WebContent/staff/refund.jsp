@@ -8,61 +8,56 @@
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background-color: #fff; /* Updated background color */
         }
 
         .header {
-            background-color: #4CAF50;
-            padding: 20px;
-            color: white;
+            background-color: #DCDCDC;
+            color: #555555;
+            padding: 0.1px; /* Updated padding */
             text-align: center;
         }
 
-        h1 {
-            margin: 0;
-        }
-
-        form {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-top: 20px;
+        .form-container {
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #F5F5F5;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
         }
 
         .control {
             margin-bottom: 15px;
-            text-align: left;
-            width: 300px;
         }
 
         label {
-            font-weight: bold;
-            margin-bottom: 5px;
             display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
         }
 
-        input {
+        input[type="text"],
+        select {
             width: 100%;
-            padding: 8px;
-            box-sizing: border-box;
-        }
-
-        .note {
-            font-size: 12px;
-            margin: 5px 0 0;
-            color: #666;
-        }
-
-        button {
-            background-color: #4CAF50;
-            color: white;
             padding: 10px;
-            border: none;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        select {
             cursor: pointer;
         }
 
-        button:hover {
-            background-color: #45a049;
+        button {
+            background-color: #ff6347;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
         }
     </style>
 </head>
@@ -70,6 +65,8 @@
 <body>
     <div class="header">
         <h1>払い戻し確認</h1>
+    </div>
+    <div class="form-container"> <!-- Added a container div for the form -->
         <form action="RefundHandle" method="get">
             <div class="control">
                 <label for="ticketnumber"> チケット番号</label>

@@ -1,118 +1,150 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@include file="header.jsp"%>
+<%@ include file="header.jsp"%>
 <html>
+
+<head>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+        }
+
+        .header {
+            background-color: #DCDCDC;
+            color: #555555;
+            padding: 6px;
+            text-align: center;
+        }
+	    .date-input-container {
+	        display: flex;
+	        align-items: center;
+	    }
+
+	    .date-input-container input {
+	        margin-right: 5px;
+	    }
+        .form-container {
+            max-width: 600px; /* Increased the max-width to 600px */
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #F5F5F5;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+        .control {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        select {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        select {
+            cursor: pointer;
+        }
+
+        button {
+            background-color: #ff6347;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+    </style>
+</head>
+
 <body>
-	<c:choose>
-		<%--大会情報がないとき --%>
-		<c:when test="${tournament == null }">大会情報は登録されていません
-			<form action="TournamentRegistrationInputDisplay" method="get">
-	        	<button type="submit">大会情報登録</button>
-	        </form>
-	     </c:when>
-		<%-- 大会情報があるとき --%>
-		<c:when test="${tournament != null }">
-		<h2>第${tournament.ordinalNum }回　${tournament.name }</h2>
-	        <form action="MatchRegistrationCompletion" method="post">
-	        	<p>開催日<input type="text" maxlength="2" name="eventDateMonth" pattern="[0-9]|1[0-2]" title="1から12の半角数字を入力してください" required>月<input type="text" maxlength="2" name="eventDateDate" pattern="^(0?[1-9]|[1-2][0-9]|3[0-1])$" title="1から31の半角数字を入力してください" required>日</p>
-	        	<p>チケット販売開始日<input type="text" maxlength="2" name="saleAtMonth" pattern="[0-9]|1[0-2]" title="1から12の半角数字を入力してください" required>月<input type="text" maxlength="2" name="saleAtDate" pattern="^(0?[1-9]|[1-2][0-9]|3[0-1])$" title="1から31の半角数字を入力してください" required>日</p>
-	        	<table>
-	        		<tr><th></th><th>高校名</th><th>高校名</th><th>第何回戦</th></tr>
-	        		<tr>
-	        			<td>第一試合</td>
-	        			<td><select name="duel1School1">
-	        			<c:forEach begin="0" end="${fn:length(schoolList)-2}" step="1" var="i">
-							<option value="${schoolList[i].schoolId }">${schoolList[i].name }</option>
-	        			</c:forEach>
-	        			</select></td>
-	        			<td><select name="duel1School2">
-	        			<c:forEach begin="0" end="${fn:length(schoolList)-2}" step="1" var="i">
-							<option value="${schoolList[i].schoolId }">${schoolList[i].name }</option>
-	        			</c:forEach>
-	        			</select></td>
-	        			<td><select name="duel1Round">
-							<option value="1">第一回戦</option>
-							<option value="2">第二回戦</option>
-							<option value="3">第三回戦</option>
-							<option value="4">準々決勝</option>
-							<option value="5">準決勝</option>
-							<option value="6">決勝</option>
-	        			</select></td>
-	        		</tr>
-	        		<tr>
-	        			<td>第二試合</td>
-	        			<td><select name="duel2School1">
-	        			<c:forEach var="school" items="${schoolList }">
-							<option value="${school.schoolId }">${school.name }</option>
-	        			</c:forEach>
-	        			</select></td>
-	        			<td><select name="duel2School2">
-	        			<c:forEach var="school" items="${schoolList }">
-							<option value="${school.schoolId }">${school.name }</option>
-	        			</c:forEach>
-	        			</select></td>
-	        			<td><select name="duel2Round">
-							<option value="1">第一回戦</option>
-							<option value="2">第二回戦</option>
-							<option value="3">第三回戦</option>
-							<option value="4">準々決勝</option>
-							<option value="5">準決勝</option>
-							<option value="6">決勝</option>
-	        			</select></td>
-	        		</tr>
-	        		<tr>
-	        			<td>第三試合</td>
-	        			<td><select name="duel3School1">
-	        			<c:forEach var="school" items="${schoolList }">
-							<option value="${school.schoolId }">${school.name }</option>
-	        			</c:forEach>
-	        			</select></td>
-	        			<td><select name="duel3School2">
-	        			<c:forEach var="school" items="${schoolList }">
-							<option value="${school.schoolId }">${school.name }</option>
-	        			</c:forEach>
-	        			</select></td>
-	        			<td><select name="duel3Round">
-							<option value="1">第一回戦</option>
-							<option value="2">第二回戦</option>
-							<option value="3">第三回戦</option>
-							<option value="4">準々決勝</option>
-							<option value="5">準決勝</option>
-							<option value="6">決勝</option>
-	        			</select></td>
-	        		</tr>
-	        		<tr>
-	        			<td>第四試合</td>
-	        			<td><select name="duel4School1">
-	        			<c:forEach var="school" items="${schoolList }">
-							<option value="${school.schoolId }">${school.name }</option>
-	        			</c:forEach>
-	        			</select></td>
-	        			<td><select name="duel4School2">
-	        			<c:forEach var="school" items="${schoolList }">
-							<option value="${school.schoolId }">${school.name }</option>
-	        			</c:forEach>
-	        			</select></td>
-	        			<td><select name="duel4Round">
-							<option value="1">第一回戦</option>
-							<option value="2">第二回戦</option>
-							<option value="3">第三回戦</option>
-							<option value="4">準々決勝</option>
-							<option value="5">準決勝</option>
-							<option value="6">決勝</option>
-	        			</select></td>
-	        		</tr>
-	        	</table>
-	        	<c:if test="${insertNum == 0 }"><p>同じ日付が登録されています</p></c:if>
-	        	<input type="hidden" name="tournamentId" value="${tournament.tournamentId }">
-	        	<button type="submit">試合情報登録</button>
-	        </form>
-	        <form action="TournamentUpdateInput" method="get" value="${tournament.tournamentId}">
-	        	<button type="submit">大会情報変更</button>
-			</form>
-		</c:when>
-	</c:choose>
+    <c:choose>
+        <c:when test="${tournament == null }">
+            <!-- 大会情報がないとき -->
+            <div class="header">
+                <h2>大会情報は登録されていません</h2>
+            </div>
+            <div class="form-container">
+                <form action="TournamentRegistrationInputDisplay" method="get">
+                    <button type="submit">大会情報登録</button>
+                </form>
+            </div>
+        </c:when>
+        <c:when test="${tournament != null }">
+            <!-- 大会情報があるとき -->
+            <div class="header">
+                <h2>第${tournament.ordinalNum }回　${tournament.name }</h2>
+            </div>
+            <div class="form-container">
+                <form action="MatchRegistrationCompletion" method="post">
+					<div class="control">
+					    <label for="eventDateMonth">開催日</label>
+					    <div class="date-input-container">
+					        <input type="text" maxlength="2" name="eventDateMonth" pattern="[0-9]|1[0-2]" title="1から12の半角数字を入力してください" required>月
+					        <input type="text" maxlength="2" name="eventDateDate" pattern="^(0?[1-9]|[1-2][0-9]|3[0-1])$" title="1から31の半角数字を入力してください" required>日
+					    </div>
+					</div>
+                    <div class="control">
+                        <label for="saleAtMonth">チケット販売開始日</label>
+                        <div class="date-input-container">
+					        <input type="text" maxlength="2" name="saleAtMonth" pattern="[0-9]|1[0-2]" title="1から12の半角数字を入力してください" required>月
+					        <input type="text" maxlength="2" name="saleAtDate" pattern="^(0?[1-9]|[1-2][0-9]|3[0-1])$" title="1から31の半角数字を入力してください" required>日
+					    </div>
+                    </div>
+                    <table>
+                        <tr>
+                            <th></th>
+                            <th>高校名</th>
+                            <th>高校名</th>
+                            <th>第何回戦</th>
+                        </tr>
+                        <c:forEach var="duel" begin="1" end="4">
+                            <tr>
+                                <td>第${duel}試合</td>
+                                <td><select name="duel${duel}School1">
+                                        <c:forEach var="school" items="${schoolList }">
+                                            <option value="${school.schoolId }">${school.name }</option>
+                                        </c:forEach>
+                                    </select></td>
+                                <td><select name="duel${duel}School2">
+                                        <c:forEach var="school" items="${schoolList }">
+                                            <option value="${school.schoolId }">${school.name }</option>
+                                        </c:forEach>
+                                    </select></td>
+                                <td><select name="duel${duel}Round">
+                                        <c:forEach var="round" begin="1" end="6">
+                                            <option value="${round}">第${round}回戦</option>
+                                        </c:forEach>
+                                    </select></td>
+                            </tr>
+                        </c:forEach>
+                    </table>
+                    <c:if test="${insertNum == 0 }">
+                        <div class="error-message">同じ日付が登録されています</div>
+                    </c:if>
+                    <input type="hidden" name="tournamentId" value="${tournament.tournamentId }">
+                    <button type="submit">試合情報登録</button>
+                </form>
+                <form action="TournamentUpdateInput" method="get" value="${tournament.tournamentId}">
+                    <button type="submit">大会情報変更</button>
+                </form>
+            </div>
+        </c:when>
+    </c:choose>
 </body>
+
 </html>
