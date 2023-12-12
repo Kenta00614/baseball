@@ -449,6 +449,7 @@ public class TicketsDAO extends DAO{
 			ticket.setType(ticketsId.substring(0,2));
 			ticket.setMatchId(rs.getInt("match_id"));
 			ticket.setSeatId(rs.getString("seat_id"));
+			ticket.setPurchaseId(rs.getInt("purchase_id"));
 		}
 
 		//購入者が不明な場合、エラー。リターンする。

@@ -30,16 +30,21 @@ public class PointDAO extends DAO{
 
 	}
 //	たまったポイントを記帳する
-	public int insertSavePoint(Point point)throws Exception{
+	public int insertSavePoint(Point point,Connection con)throws Exception{
+		boolean flg = false;
 
 		SpectatorDAO s=new SpectatorDAO();
-		int check = s.updatePoint(point.getSpectatorId(),point.getFluctuation(),null);
+		int check = s.updatePoint(point.getSpectatorId(),point.getFluctuation(),con);
 
 		if(check < 0){
-			return -1;
+			throw new Exception();
 		}
 
-		Connection con=getConnection();
+		if(con == null){
+			con=getConnection();
+			flg = true;
+		}
+
 		PreparedStatement st=con.prepareStatement("insert into point values(null,?,?,null,?)");
 
 		st.setInt(1,point.getSpectatorId());
@@ -48,8 +53,9 @@ public class PointDAO extends DAO{
 
 		int num=st.executeUpdate();
 		st.close();
-		con.close();
-
+		if(flg){
+			con.close();
+		}
 		return num;
 
 	}

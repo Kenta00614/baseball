@@ -119,9 +119,9 @@ public class SpectatorDAO extends DAO {
 		}
 
 
-		PreparedStatement stUpdate = con.prepareStatement("update spectator set point = ?");
+		PreparedStatement stUpdate = con.prepareStatement("update spectator set point = ? WHERE spectator_id = ?");
 		stUpdate.setInt(1, pointNew);
-
+		stUpdate.setInt(2, spectatorId);
 		int num = stUpdate.executeUpdate();
 
 
