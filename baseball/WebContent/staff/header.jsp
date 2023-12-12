@@ -65,7 +65,7 @@
 	    .hr-style {
 	        border: 0;
 	        height: 1px;
-	        background: #DDDDDD;
+	        background: fff;
 	        margin: 15px 0;
 	    }
 	</style>

@@ -17,7 +17,7 @@
         }
 
         .header {
-            background-color: fff;
+            background-color: #EEEEEE;
             color: #555555;
             padding: 0.1px;
             text-align: center;
@@ -27,7 +27,7 @@
             max-width: 400px;
             margin: 20px auto;
             padding: 20px;
-            background-color: fff;
+            background-color: #EEEEEE;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             border-radius: 5px;
         }
