@@ -5,7 +5,7 @@
 
 <body>
     <div class="header">
-        <form action="SaleStopComplete" method="get">
+        <form action="SaleStopComplete" method="post">
         	<br><a href="SaleStop" class="btn">戻る</a>
         	<h1>当日券・リセール席の販売停止</h1>
         	<p>当日券・リセール席の販売を停止します。</p><br>
