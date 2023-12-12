@@ -8,12 +8,12 @@
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #fff; /* Updated background color */
+            background-color: #F5F5F5; /* Updated background color */
         }
 
         .header {
-            background-color: #DCDCDC;
-            color: #555555;
+            background-color: #232733;
+            color: white;
             padding: 0.1px; /* Updated padding */
             text-align: center;
         }
@@ -22,7 +22,7 @@
             max-width: 400px;
             margin: 20px auto;
             padding: 20px;
-            background-color: #F5F5F5;
+            background-color: white;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             border-radius: 5px;
         }

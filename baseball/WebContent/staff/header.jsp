@@ -10,16 +10,38 @@
     <!-- FontAwesomeのCDNを追加 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
+
+
     <!-- 追加したスタイル -->
 	<style>
 	    /* 既存のスタイル */
+
+	    .staff-icon-container {
+	        display: flex;
+	        align-items: center;
+	    }
+
+	    .staff-icon-container i {
+	        margin-right: 5px; /* Adjust the margin between the icon and text */
+	    }
+
+	    .staff-text {
+	        font-size: 20px; /* Adjust the font size of the text */
+	    }
+
+
+	    .nav-menu {
+	        float: right;
+	        margin-top: 10px; /* 適切なマージンを設定 */
+	    }
+
 	    .staff-header {
 	        background-color: white;
 	        color: #555555; /* テキストの色を灰色に変更 */
-	        font-size: 20px;
-	        padding: 1px 0;
+	        font-size: 20px; /* フォントサイズを大きくする（適宜調整） */
+	        font-weight: bold; /* フォントの太さを太くする */
+	        padding: 0.1px 0;
 	    }
-
 	    .staff-header a {
 	        color: #555555; /* リンクの色も灰色に変更 */
 	    }
@@ -75,7 +97,11 @@
     <!-- Header Start -->
     <header class="staff-header">
         <div class="staff__wrapper">
-            <ul class="nav-menu">
+	        <div class="staff-icon-container">
+	            <i class="fa-solid fa-user-tie"></i>
+	            <div class="staff-text">Staff</div>
+	        </div>
+	        <ul class="nav-menu">
 
             <%
                 //管理職がログイン

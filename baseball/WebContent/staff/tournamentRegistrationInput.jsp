@@ -4,24 +4,74 @@
 <head>
     <title>大会情報登録</title>
     <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+        }
+
+        .header {
+            background-color: #DCDCDC;
+            color: #555555;
+            padding: 20px; /* Adjust padding for better visibility */
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+        .control {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        select {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        select {
+            cursor: pointer;
+        }
+
+        button {
+            background-color: #ff6347;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
     <div class="header">
         <h2>大会情報登録　入力画面</h2>
         <form action="TournamentRegistrationInput" method="post">
-            <div>
+            <div class="control">
                 <label for="year">開催年:</label>
                 <input type="text" id="year" name="year" required>
             </div>
-            <div>
+            <div class="control">
                 <label for="ordinalNum">第何回:</label>
                 <input type="text" id="ordinalNum" name="ordinalNum" required>
             </div>
-            <div>
+            <div class="control">
                 <label for="season">大会の時期:</label>
                 <input type="text" id="season" name="season" required>
             </div>
-            <div>
+            <div class="control">
                 <label for="name">大会名:</label>
                 <input type="text" id="name" name="name" required>
             </div>
