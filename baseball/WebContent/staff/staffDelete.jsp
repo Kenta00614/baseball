@@ -20,9 +20,9 @@
         }
 
         .header {
-            background-color: #333; /* ヘッダーの背景色を黒に変更 */
-            color: white;
-            padding: 20px;
+            background-color: #fff; /* ヘッダーの背景色を黒に変更 */
+            color: #555555;
+            padding: 0.1px;
             text-align: center;
         }
 
@@ -45,16 +45,11 @@
         }
 
         button {
-            background-color: white; /* ボタンの背景色を白に変更 */
-            color: #333; /* ボタンのテキスト色を黒に変更 */
+            background-color: #0066FF; /* ボタンの背景色を白に変更 */
+            color: white; /* ボタンのテキスト色を黒に変更 */
             padding: 10px 20px;
             border: none;
             cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #45a049;
-            color: white;
         }
     </style>
 </head>

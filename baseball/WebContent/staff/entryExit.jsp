@@ -10,6 +10,10 @@
 	        margin: 0;
 	        padding: 0;
 	    }
+            background-color: #33FFCC;
+            margin: 0;
+            padding: 0;
+        }
 
 	    h1 {
             color: #333;
