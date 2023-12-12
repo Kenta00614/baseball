@@ -6,15 +6,15 @@
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            background-color: fff;
-            color: #fff;
+            background-color:#F5F5F5;
+            color: #F5F5F5;
             margin: 0;
             padding: 0;
         }
 
         .header {
-            background-color: #DCDCDC;
-            color: #555555;
+            background-color:#232733;
+            color: white;
             text-align: center;
             padding: 0.1px;
         }
@@ -22,7 +22,7 @@
         form {
             max-width: 400px;
             margin: 20px auto;
-            background-color:#F5F5F5;
+            background-color:white;
             color: #555555;
             padding: 20px;
             border-radius: 5px;
@@ -35,7 +35,7 @@
 
         label {
             display: block;
-            margin-bottom: 5px;
+            margin-bottom: 10px;
             color: #555555;
         }
 
