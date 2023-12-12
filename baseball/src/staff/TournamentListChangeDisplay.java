@@ -1,6 +1,7 @@
 package staff;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,19 +9,25 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import bean.Tournament;
+import dao.TournamentDAO;
+
 @WebServlet("/staff/TournamentListChangeDisplay")
 public class TournamentListChangeDisplay extends HttpServlet {
 
-	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // リクエストから名前と電話番号を取得
-        String name = request.getParameter("name");
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException {
 
-
-        // リクエストスコープに名前と電話番号を設定
-        request.setAttribute("name", name);
-
-
-        // JSPへフォワード
-        request.getRequestDispatcher("/staff/tournamentListChange.jsp").forward(request, response);
+        TournamentDAO dao = new TournamentDAO();
+        try {
+            // データベースから大会情報のリストを取得
+            List<Tournament> tournamentList = dao.getTournamentDetail();
+            // リクエスト属性に大会情報リストをセット
+            request.setAttribute("tournamentList", tournamentList);
+            // 大会名編集のJSPにフォワード
+            request.getRequestDispatcher("/staff/tournamentListChange.jsp").forward(request, response);
+        } catch (Exception e) {
+            throw new ServletException(e);
+        }
     }
 }

@@ -42,6 +42,7 @@ public class MatchRegistrationInput extends HttpServlet {
 			tournament.setYear(tournamentList.get(tournamentList.size()-1).getYear());
 			tournament.setOrdinalNum(tournamentList.get(tournamentList.size()-1).getOrdinalNum());
 			tournament.setName(tournamentList.get(tournamentList.size()-1).getName());
+			tournament.setSeason(tournamentList.get(tournamentList.size()-1).getSeason());
 
 //			高校情報取得
 			schoolList = schoolDAO.searchSchool(tournament.getTournamentId());

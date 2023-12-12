@@ -110,21 +110,22 @@ public class TicketsDAO extends DAO{
 			String SQL = "INSERT INTO TICKETS VALUES ";
 			for(int i=0;i<list.size();i++){
 				if(i==0){
-					SQL += "(?,?,?,?,?,?,?)";
+					SQL += "(?,?,?,?,?,?,?,?)";
 				}else{
-					SQL += ",(?,?,?,?,?,?,?)";
+					SQL += ",(?,?,?,?,?,?,?,?)";
 				}
 			}
 			//System.out.println(SQL);
 			st = con.prepareStatement(SQL);
 			for(int i=0;i<list.size();i++){
-				st.setString(1+7*i, list.get(i).getTicketsId());
-				st.setInt(2+7*i, list.get(i).getPurchaseId());
-				st.setInt(3+7*i, list.get(i).getMatchId());
-				st.setString(4+7*i, list.get(i).getSeatId());
-				st.setString(5+7*i, String.valueOf(list.get(i).getStatus()));
-				st.setBoolean(6+7*i, list.get(i).getIsShared());
-				st.setBoolean(7+7*i, false);
+				st.setString(1+8*i, list.get(i).getTicketsId());
+				st.setInt(2+8*i, list.get(i).getPurchaseId());
+				st.setInt(3+8*i, list.get(i).getMatchId());
+				st.setString(4+8*i, list.get(i).getSeatId());
+				st.setString(5+8*i, String.valueOf(list.get(i).getStatus()));
+				st.setBoolean(6+8*i, list.get(i).getIsShared());
+				st.setBoolean(7+8*i, false);
+				st.setString(8+8*i, null);
 			}
 
 			boolean bool = st.execute();

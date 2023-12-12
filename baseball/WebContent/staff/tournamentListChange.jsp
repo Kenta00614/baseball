@@ -4,9 +4,13 @@
 <html>
 <body>
     <h1>大会名の編集</h1>
-    <form action="TournamentChange" method="post">
-        <input type="text" name="name" value="${param.name}" placeholder="新しい大会名" />
-        <button type="submit">更新</button>
-    </form>
+    <c:forEach var="tournament" items="${tournamentList}">
+        <form action="TournamentListChange" method="post">
+            <input type="hidden" name="tournamentId" value="${tournament.tournamentId}" />
+            <label for="name${tournament.tournamentId}">大会名:</label>
+            <input type="text" name="name" id="name${tournament.tournamentId}" value="${tournament.name}" />
+            <button type="submit">更新</button>
+        </form>
+    </c:forEach>
 </body>
 </html>
