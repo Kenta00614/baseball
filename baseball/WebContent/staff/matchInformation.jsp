@@ -28,11 +28,18 @@
 		<c:forEach begin="0" end="${fn:length(duelList)-1}" step="1" var="i">
 			<table border="1">
 			<tr><th>開催日</th><th>試合順</th><th>高校名</th><th>高校名</th><th>試合状況</th><th>第何回戦</th><th>販売日時</th></tr>
-				<c:forEach begin="0" end="${fn:length(duelList[i])-1}" step="1" var="j">
+
+				 <c:forEach begin="0" end="${fn:length(duelList[i])-1}" step="1" var="j">
 				<tr>
 				<c:if test="${j == 0 }">
 					<td rowspan="4"><a href="MatchUpdateInput?date=${matchList[i].eventDate }">${matchList[i].eventDateStr }</a></td>
 				</c:if>
+
+				<%--<v-for value="(match ,index in matchList)" >
+
+				</v-for>
+	--%>
+
 				<c:choose>
 					<c:when test="${j == 0 }">
 						<td>第一試合</td>
