@@ -13,13 +13,13 @@
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background-color: fffff;
         }
 
         .header {
-            background-color: #333;
-            color: #fff;
-            padding: 10px;
+            background-color: fff;
+            color: #555555;
+            padding: 0.1px;
             text-align: center;
         }
 
@@ -27,7 +27,7 @@
             max-width: 400px;
             margin: 20px auto;
             padding: 20px;
-            background-color: #fff;
+            background-color: fff;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             border-radius: 5px;
         }
@@ -56,17 +56,13 @@
         }
 
 	    button {
-	        background-color: #3498db; /* 青に変更 */
+	        background-color: #0066FF; /* 青に変更 */
 	        color: white;
 	        padding: 10px;
 	        border: none;
 	        border-radius: 5px;
 	        cursor: pointer;
 	        width: 100%;
-	    }
-
-	    button:hover {
-	        background-color: #2980b9; /* ホバー時の色を調整 */
 	    }
     </style>
 </head>
@@ -79,21 +75,21 @@
     <div class="form-container">
         <form action="StaffRegisterComplete" method="get">
             <div class="control">
-                <label for="id">ID</label>
+                <label for="id" style="color: #555555;">ID</label>
                 <input id="id" type="text" name="id" required>
             </div>
 
             <div class="control">
-                <label for="name">氏名</label>
+                <label for="name" style="color: #555555;">氏名</label>
                 <input type="text" id="name" name="name" required>
             </div>
 
             <div class="control">
-                <label for="birth">生年月日(整数８桁)</label>
+                <label for="birth" style="color: #555555;">生年月日(整数８桁)</label>
                 <input type="text" id="birth" name="BIRTH" pattern="[12][0-9]{3}[01][0-9][0-3][0-9]" required>
             </div>
 
-            <div class="control">
+            <div class="control" style="color: #555555;">
                 <label for="position">職員ステータス:</label>
                 <select name="position">
                     <option value="1">スタッフ</option>

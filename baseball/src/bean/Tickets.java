@@ -59,7 +59,7 @@ public class Tickets implements java.io.Serializable {
 		String id = "";
 		id += this.seatId;
 		id += "r00";
-		id += "202403181000";
+		id += "20240318";
         this.ticketsId = id;
 	}
 

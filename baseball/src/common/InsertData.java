@@ -78,6 +78,7 @@ public class InsertData {
 			ticket.setPurchaseId(0);
 			ticket.setShared(false);
 			ticket.setStatus("3");
+			ticket.setUuid(null);
 			//System.out.println(ticket);
 			ticketsList.add(ticket);
 		}
