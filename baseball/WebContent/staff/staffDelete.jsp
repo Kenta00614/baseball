@@ -10,46 +10,79 @@
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4; /* 背景色を灰色に変更 */
-            color: #333; /* テキスト色を黒に変更 */
-        }
-
-        .container {
-            width: 80%;
-            margin: 0 auto;
+            background-color: #fff;
+            color: #333;
         }
 
         .header {
-            background-color: #fff; /* ヘッダーの背景色を黒に変更 */
+            background-color: #DCDCDC;
             color: #555555;
             padding: 0.1px;
             text-align: center;
         }
 
+        .form-container {
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #F5F5F5;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+        .control {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        select {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        select {
+            cursor: pointer;
+        }
+
+        button {
+            background-color: #ff6347;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+
         table {
             width: 100%;
+            margin: 20px auto;
             border-collapse: collapse;
-            margin-top: 20px;
         }
 
         th, td {
             padding: 15px;
             text-align: left;
             border-bottom: 1px solid #ddd;
-            background-color: #333; /* 背景色を黒に変更 */
-            color: white; /* テキスト色を白に変更 */
+            background-color: #F5F5F5;
+            color: #555555;
+        }
+
+        th {
+            background-color: #DCDCDC;
         }
 
         input[type="checkbox"] {
-            background-color: white; /* チェックボックスの背景色を白に変更 */
-        }
-
-        button {
-            background-color: #0066FF; /* ボタンの背景色を白に変更 */
-            color: white; /* ボタンのテキスト色を黒に変更 */
-            padding: 10px 20px;
-            border: none;
-            cursor: pointer;
+            background-color: white;
         }
     </style>
 </head>
@@ -57,7 +90,7 @@
     <div class="header">
         <h1>職員情報の削除</h1>
     </div>
-    <div class="container">
+    <div class="form-container">
         <form action="StaffDeleteCheck" method="get">
             <table>
                 <tr>
@@ -80,9 +113,9 @@
             <button type="submit">削除</button>
             <script>
                 new Vue({
-                    el: 'form', // form要素内のすべての要素をバインド
+                    el: 'form',
                     data: {
-                        selectedIDs: [] // 選択されたIDを格納する配列
+                        selectedIDs: []
                     }
                 })
             </script>
