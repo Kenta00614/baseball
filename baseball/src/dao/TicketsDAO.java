@@ -70,7 +70,7 @@ public class TicketsDAO extends DAO{
 
 			Connection con=getConnection();
 
-			PreparedStatement st=con.prepareStatement("select tickets.*,seat.type from tickets left join seat on tickets.seat_id = seat.seat_id where type = ? and status = 3 and match_id = ?");
+			PreparedStatement st=con.prepareStatement("select tickets.*,seat.type from tickets left join seat on tickets.seat_id = seat.seat_id where type = ? and status = 2 and match_id = ?");
 			st.setString(1, type);
 			st.setInt(2, matchId);
 
@@ -155,7 +155,7 @@ public class TicketsDAO extends DAO{
 
 		Connection con=getConnection();
 
-		PreparedStatement st=con.prepareStatement("select tickets.*,seat.block from tickets left join seat on tickets.seat_id = seat.seat_id where block = ? and status = 3 and match_id = ?");
+		PreparedStatement st=con.prepareStatement("select tickets.*,seat.block from tickets left join seat on tickets.seat_id = seat.seat_id where block = ? and status = 2 and match_id = ?");
 		st.setString(1, block);
 		st.setInt(2,matchId);
 
@@ -489,7 +489,7 @@ public class TicketsDAO extends DAO{
 	public List<TicketsAndSeat> selectTickets(Date eventDate, String block)throws Exception{
 
 		Connection con=getConnection();
-		PreparedStatement st=con.prepareStatement("select tickets.*,match.event_date,seat.* from tickets join match on tickets.match_id = match.match_id join seat on tickets.seat_id = seat.seat_id where match.event_date = ? and seat.block = ? and tickets.status = 3");
+		PreparedStatement st=con.prepareStatement("select tickets.*,match.event_date,seat.* from tickets join match on tickets.match_id = match.match_id join seat on tickets.seat_id = seat.seat_id where match.event_date = ? and seat.block = ? and tickets.status = 2");
 		st.setDate(1, eventDate);
 		st.setString(2, block);
 

@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.naming.InitialContext;
@@ -144,27 +145,66 @@ public class SeatDAO extends DAO{
 	}
 
 //	ブロックで座席idとstep取得
-	public ArrayList<Seat> getSeat(String block)throws Exception{
+	public HashMap<String,Object> getSeat(String block)throws Exception{
 		Connection con=getConnection();
+		int startNum = 0;
+		int endNum = 0;
+		int step = 0;
+		HashMap<String,Object> map = new HashMap<>();
+		String dummyId = "";
+		int count = 0;
 
-		PreparedStatement st=con.prepareStatement("select seat_id,step from seat where block = ? order by step desc");
+		PreparedStatement st0=con.prepareStatement("select min(number) as min,max(number) as max,count(distinct step) as step from seat where block = ?");
+		st0.setString(1, block);
+		ResultSet rs0=st0.executeQuery();
+
+		while(rs0.next()){
+			startNum = rs0.getInt("min");
+			endNum = rs0.getInt("max");
+			step = rs0.getInt("step");
+		}
+
+		PreparedStatement st=con.prepareStatement("select seat_id,step,number from seat where block = ? order by step desc,number");
 		st.setString(1, block);
-
 		ResultSet rs=st.executeQuery();
 
-		ArrayList<Seat> list= new ArrayList<>();
+		ArrayList<ArrayList<Seat>> list= new ArrayList<>();
+		for(int i=0;i<step;i++){
+			list.add(new ArrayList<Seat>(endNum-startNum+1));
+			for(int j=0;j<(endNum-startNum+1);j++){
+				dummyId = String.valueOf(count++);
+				Seat seat = new Seat();
+				seat.setSeatId(dummyId);
+				list.get(i).add(seat);
+			}
+		}
+
+		count = -1;
+		String tempStep = "";
 
 		while(rs.next()){
 			Seat s = new Seat();
 			s.setSeatId(rs.getString("seat_id"));
 			s.setStep(rs.getString("step"));
-			list.add(s);
+			s.setNumber(rs.getInt("number"));
+			if(!tempStep.equals(s.getStep())){
+				tempStep = s.getStep();
+				count++;
+			}
+			list.get(count).add(s.getNumber()-1, s);
+			list.get(count).remove(list.get(count).size()-1);
+
 		}
 
 		st.close();
 		con.close();
 
-		return list;
+		map.put("step", step);
+		map.put("startNum", startNum);
+		map.put("endNum", endNum);
+		map.put("seats", list);
+
+		return map;
 
 	}
 }

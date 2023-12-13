@@ -21,21 +21,16 @@
 
 <%-- 席選択 --%>
 	<div id="app">
+		<table>
 		<%-- 座席の画像--%>
 		<transition-group>
-		<%-- stepが変わったらclear(floatの解除)のclassを適用 --%>
-		<div  v-for="(seat,index) in seatsList" v-bind:key="seat.seatId"  :class="{ 'clear': index>0 && seat.seatStep !== seatsList[index-1].seatStep }">
-			<%-- seatをfloat:leftしてる --%>
-			<li class="seat-img">
-				<label>
-				 	<img alt="座席" :src="'${pageContext.request.contextPath}/customer/image/' + seat.imgsrc + '.jpg'" value="index" v-bind:value="seat.check" v-on:click="changeClass(index)">
-				</label>
-			</li>
-		</div>
+		<tr v-for="(seats,index1) in seatsList" v-bind:key="seats[0].seatId">
+			<td v-for="(seat,index2) in seats" v-bind:key="seat.seatId">
+				 	<img v-if="(seat.seatId.length > 5)" alt="座席" :src="'${pageContext.request.contextPath}/customer/image/'+ seat.imgsrc + '.jpg'" value="index" v-bind:value="seat.check" v-on:click="changeClass(index1,index2)">
+			</td>
+		</tr>
 		</transition-group>
-
-		<%-- float解除 --%>
-		<div class="clear"></div>
+		</table>
 		<%-- 選択したら出てくる情報 --%>
           <transition-group>
 			<li v-for="(ticket,index) in selectedTickets" v-bind:key="ticket.ticketsId">
@@ -59,18 +54,20 @@
 			data: {
 				<%-- 購入できるチケットの情報 --%>
 				ticketsList: [
-					<c:forEach var="ticket" items="${tickets }">
+					<c:forEach var="ticket" items="${tickets}">
 						{ticketsId:"${ticket.ticket.ticketsId}", seatId:"${ticket.ticket.seatId}",status:${ticket.ticket.status},seatType:"${ticket.seat.type}",
 							step:"${ticket.seat.step}",number:${ticket.seat.number},typeStr:"${ticket.seat.typeStr}",gate:"${ticket.seat.gate}",passage:"${ticket.seat.passage}",check:false,checkStr:"大人",
 						},
 					</c:forEach>
 						],
 				<%-- 座席ID --%>
-				seatsList: [
-					<c:forEach var="seat" items="${seats}">
-						{seatId:"${seat.seatId}",seatStep:"${seat.step}",imgsrc:"seat_0",check:false},
-					</c:forEach>
-				],
+				seatsList:[
+					<c:forEach var="seats" items="${seatsList}">[
+						<c:forEach var="seat" items="${seats}">
+							{seatId:"${seat.seatId}",seatStep:"${seat.step}",seatNumber:"${seat.number}",imgsrc:"seat_0",check:false},
+						</c:forEach>
+					],
+					</c:forEach>],
 				<%-- 選択されたチケット --%>
 			    selectedTickets:[],
 			},
@@ -83,34 +80,36 @@
 				initializeSeats: function() {
 				    for (var i = 0; i < this.ticketsList.length; i++) {
 				        for (var j = 0; j < this.seatsList.length; j++) {
-				            if (this.seatsList[j].seatId === this.ticketsList[i].seatId) {
-				                this.seatsList[j].imgsrc = "seat_1";
-				                break;
-				            }
+				        	for(var k = 0;k<this.seatsList[j].length;k++){
+				        		if (this.seatsList[j][k].seatId === this.ticketsList[i].seatId) {
+					                this.seatsList[j][k].imgsrc = "seat_1";
+					                break;
+					            }
+				        	}
 				        }
 				    }
 				},
 				<%-- 座席の解除選択したときにselectTicketsから値を削除 --%>
-				remove:function(index){
-					var selectedSeatId = this.seatsList[index].seatId;
+				remove:function(index1,index2){
+					var selectedSeatId = this.seatsList[index1][index2].seatId;
 				    for (var i = 0; i < this.selectedTickets.length; i++) {
-				        if (selectedSeatId === this.selectedTickets[i].seatId) {
-				            this.selectedTickets.splice(i, 1);
-				            break;
-				        }
-				    }
+				    	if (selectedSeatId === this.selectedTickets[i].seatId) {
+							this.selectedTickets.splice(i, 1);
+							break;
+						}
+					}
 				},
 				<%-- 座席選択されたときにticketsListに値を追加 --%>
-				add:function(index){
-					var selectedSeatId = this.seatsList[index].seatId;
+				add:function(index1,index2){
+					var selectedSeatId = this.seatsList[index1][index2].seatId;
 					for (var i = 0; i < this.ticketsList.length; i++) {
-				        if (selectedSeatId === this.ticketsList[i].seatId) {
-				            if (this.ticketsList[i].status === 3) {
+						if (selectedSeatId === this.ticketsList[i].seatId) {
+				            if (this.ticketsList[i].status === 2) {
 				                this.selectedTickets.push(this.ticketsList[i]);
 				            }
 				            break;
 				        }
-				    }
+					}
 				},
 				<%-- 大人と子供のチケットボタン変更 --%>
 				changeChild: function(index) {
@@ -124,9 +123,9 @@
 				},
 
 				<%-- 選択・解除されたときの画像・checkフラグの変更、selectedTicketsに追加・削除 --%>
-				changeClass:function(index){
+				changeClass:function(index1,index2){
 					<%-- 選択された座席idのチケット情報statusを探す --%>
-					var selectedSeatId = this.seatsList[index].seatId;
+					var selectedSeatId = this.seatsList[index1][index2].seatId;
 					var selectStatus = 0;
 				    for (var i = 0; i < this.ticketsList.length; i++) {
 				        if (selectedSeatId === this.ticketsList[i].seatId) {
@@ -135,15 +134,15 @@
 				        }
 				    }
 				    <%-- status==3の時は実行しない --%>
-				    if(selectStatus == 3){
-						if(!this.seatsList[index].check){
-							this.seatsList[index].imgsrc="seat_3";
-							this.seatsList[index].check=true;
-		                    this.add(index);
+				    if(selectStatus !== 3){
+						if(!this.seatsList[index1][index2].check){
+							this.seatsList[index1][index2].imgsrc="seat_3";
+							this.seatsList[index1][index2].check=true;
+		                    this.add(index1,index2);
 						}else{
-							this.seatsList[index].imgsrc="seat_1";
-							this.seatsList[index].check=false;
-		                    this.remove(index);
+							this.seatsList[index1][index2].imgsrc="seat_1";
+							this.seatsList[index1][index2].check=false;
+		                    this.remove(index1,index2);
 						}
 				    }
 				},

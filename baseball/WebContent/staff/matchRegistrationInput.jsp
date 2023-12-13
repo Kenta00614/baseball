@@ -5,20 +5,22 @@
 <html>
 
 <head>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #fff;
-        }
+	<style>
+	    /* 既存のスタイル */
+	    body {
+	        font-family: 'Arial', sans-serif;
+	        margin: 0;
+	        padding: 0;
+	        background-color: #F5F5F5;
+	    }
 
-        .header {
-            background-color: #DCDCDC;
-            color: #555555;
-            padding: 6px;
-            text-align: center;
-        }
+	    .header {
+	        background-color: #232733;
+	        color: white;
+	        padding: 6px;
+	        text-align: center;
+	    }
+
 	    .date-input-container {
 	        display: flex;
 	        align-items: center;
@@ -27,48 +29,54 @@
 	    .date-input-container input {
 	        margin-right: 5px;
 	    }
-        .form-container {
-            max-width: 600px; /* Increased the max-width to 600px */
-            margin: 20px auto;
-            padding: 20px;
-            background-color: #F5F5F5;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 5px;
-        }
 
-        .control {
-            margin-bottom: 15px;
-        }
+	    .form-container {
+	        max-width: 600px;
+	        margin: 20px auto;
+	        padding: 20px;
+	        background-color: white;
+	        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	        border-radius: 5px;
+	    }
 
-        label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
+	    .control {
+	        margin-bottom: 15px;
+	    }
 
-        input[type="text"],
-        select {
-            width: 100%;
-            padding: 10px;
-            box-sizing: border-box;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
+	    label {
+	        display: block;
+	        margin-bottom: 5px;
+	        font-weight: bold;
+	    }
 
-        select {
-            cursor: pointer;
-        }
+	    input[type="text"],
+	    select {
+	        width: 100%;
+	        padding: 10px;
+	        box-sizing: border-box;
+	        border: 1px solid #ccc;
+	        border-radius: 4px;
+	    }
 
-        button {
-            background-color: #ff6347;
-            color: white;
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            width: 100%;
-        }
-    </style>
+	    select {
+	        cursor: pointer;
+	    }
+
+	    /* 変更点: ボタンを同じ列に表示するスタイル */
+	    button {
+	        background-color: #ff6347;
+	        color: white;
+	        padding: 8px; /* 調整可能なパディング */
+	        border: none;
+	        border-radius: 5px;
+	        cursor: pointer;
+	        width: 100%; /* 100%にして横幅いっぱいに */
+	        font-size: 14px; /* 調整可能なフォントサイズ */
+	        margin-bottom: 10px; /* 下マージンを追加してボタンを離す */
+	    }
+	</style>
+
+
 </head>
 
 <body>
