@@ -191,7 +191,7 @@ public class SeatDAO extends DAO{
 				tempStep = s.getStep();
 				count++;
 			}
-			list.get(count).add(s.getNumber()-1, s);
+			list.get(count).add(s.getNumber()-startNum, s);
 			list.get(count).remove(list.get(count).size()-1);
 
 		}
