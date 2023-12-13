@@ -489,7 +489,7 @@ public class TicketsDAO extends DAO{
 	public List<TicketsAndSeat> selectTickets(Date eventDate, String block)throws Exception{
 
 		Connection con=getConnection();
-		PreparedStatement st=con.prepareStatement("select tickets.*,match.event_date,seat.* from tickets join match on tickets.match_id = match.match_id join seat on tickets.seat_id = seat.seat_id where match.event_date = ? and seat.block = ? and tickets.status = 3");
+		PreparedStatement st=con.prepareStatement("select tickets.*,match.event_date,seat.* from tickets join match on tickets.match_id = match.match_id join seat on tickets.seat_id = seat.seat_id where match.event_date = ? and seat.block = ? and tickets.status = 2");
 		st.setDate(1, eventDate);
 		st.setString(2, block);
 

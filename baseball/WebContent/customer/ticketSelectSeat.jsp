@@ -24,11 +24,9 @@
 		<table>
 		<%-- 座席の画像--%>
 		<transition-group>
-		<tr v-for="(seats,index1) in seatsList">
+		<tr v-for="(seats,index1) in seatsList" v-bind:key="seats[0].seatId">
 			<td v-for="(seat,index2) in seats" v-bind:key="seat.seatId">
-				<label v-if="seat.seatId.length > 5">
-				 	<img alt="座席" src="'${pageContext.request.contextPath}'+ seat.imgsrc + '.jpg'" value="index" v-bind:value="seat.check" v-on:click="changeClass(index1,index2)">
-				</label>
+				 	<img v-if="(seat.seatId.length > 5)" alt="座席" :src="'${pageContext.request.contextPath}/customer/image/'+ seat.imgsrc + '.jpg'" value="index" v-bind:value="seat.check" v-on:click="changeClass(index1,index2)">
 			</td>
 		</tr>
 		</transition-group>
@@ -82,34 +80,36 @@
 				initializeSeats: function() {
 				    for (var i = 0; i < this.ticketsList.length; i++) {
 				        for (var j = 0; j < this.seatsList.length; j++) {
-				            if (this.seatsList[j].seatId === this.ticketsList[i].seatId) {
-				                this.seatsList[j].imgsrc = "seat_1";
-				                break;
-				            }
+				        	for(var k = 0;k<this.seatsList[j].length;k++){
+				        		if (this.seatsList[j][k].seatId === this.ticketsList[i].seatId) {
+					                this.seatsList[j][k].imgsrc = "seat_1";
+					                break;
+					            }
+				        	}
 				        }
 				    }
 				},
 				<%-- 座席の解除選択したときにselectTicketsから値を削除 --%>
-				remove:function(index){
-					var selectedSeatId = this.seatsList[index].seatId;
+				remove:function(index1,index2){
+					var selectedSeatId = this.seatsList[index1][index2].seatId;
 				    for (var i = 0; i < this.selectedTickets.length; i++) {
-				        if (selectedSeatId === this.selectedTickets[i].seatId) {
-				            this.selectedTickets.splice(i, 1);
-				            break;
-				        }
-				    }
+				    	if (selectedSeatId === this.selectedTickets[i].seatId) {
+							this.selectedTickets.splice(i, 1);
+							break;
+						}
+					}
 				},
 				<%-- 座席選択されたときにticketsListに値を追加 --%>
-				add:function(index){
-					var selectedSeatId = this.seatsList[index].seatId;
+				add:function(index1,index2){
+					var selectedSeatId = this.seatsList[index1][index2].seatId;
 					for (var i = 0; i < this.ticketsList.length; i++) {
-				        if (selectedSeatId === this.ticketsList[i].seatId) {
-				            if (this.ticketsList[i].status === 3) {
+						if (selectedSeatId === this.ticketsList[i].seatId) {
+				            if (this.ticketsList[i].status === 2) {
 				                this.selectedTickets.push(this.ticketsList[i]);
 				            }
 				            break;
 				        }
-				    }
+					}
 				},
 				<%-- 大人と子供のチケットボタン変更 --%>
 				changeChild: function(index) {
@@ -123,9 +123,9 @@
 				},
 
 				<%-- 選択・解除されたときの画像・checkフラグの変更、selectedTicketsに追加・削除 --%>
-				changeClass:function(index){
+				changeClass:function(index1,index2){
 					<%-- 選択された座席idのチケット情報statusを探す --%>
-					var selectedSeatId = this.seatsList[index].seatId;
+					var selectedSeatId = this.seatsList[index1][index2].seatId;
 					var selectStatus = 0;
 				    for (var i = 0; i < this.ticketsList.length; i++) {
 				        if (selectedSeatId === this.ticketsList[i].seatId) {
@@ -134,15 +134,15 @@
 				        }
 				    }
 				    <%-- status==3の時は実行しない --%>
-				    if(selectStatus == 3){
-						if(!this.seatsList[index].check){
-							this.seatsList[index].imgsrc="seat_3";
-							this.seatsList[index].check=true;
-		                    this.add(index);
+				    if(selectStatus !== 3){
+						if(!this.seatsList[index1][index2].check){
+							this.seatsList[index1][index2].imgsrc="seat_3";
+							this.seatsList[index1][index2].check=true;
+		                    this.add(index1,index2);
 						}else{
-							this.seatsList[index].imgsrc="seat_1";
-							this.seatsList[index].check=false;
-		                    this.remove(index);
+							this.seatsList[index1][index2].imgsrc="seat_1";
+							this.seatsList[index1][index2].check=false;
+		                    this.remove(index1,index2);
 						}
 				    }
 				},
