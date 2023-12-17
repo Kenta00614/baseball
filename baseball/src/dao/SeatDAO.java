@@ -168,14 +168,13 @@ public class SeatDAO extends DAO{
 		st.setString(1, block);
 		ResultSet rs=st.executeQuery();
 
-		ArrayList<ArrayList<Seat>> list= new ArrayList<>();
+		Seat[][] list= new Seat[step][endNum-startNum+1];
 		for(int i=0;i<step;i++){
-			list.add(new ArrayList<Seat>(endNum-startNum+1));
 			for(int j=0;j<(endNum-startNum+1);j++){
 				dummyId = String.valueOf(count++);
 				Seat seat = new Seat();
 				seat.setSeatId(dummyId);
-				list.get(i).add(seat);
+				list[i][j] = seat;
 			}
 		}
 
@@ -191,9 +190,7 @@ public class SeatDAO extends DAO{
 				tempStep = s.getStep();
 				count++;
 			}
-			list.get(count).add(s.getNumber()-startNum, s);
-			list.get(count).remove(list.get(count).size()-1);
-
+			list[count][s.getNumber()-startNum]= s;
 		}
 
 		st.close();

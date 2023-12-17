@@ -59,7 +59,7 @@ public class TicketSelectSeat extends HttpServlet {
 //			チケット表示に必要な情報取得
 			ticketAndSeat=ticketDAO.selectTickets(match.getEventDate(), block);
 			HashMap map = seatDAO.getSeat(block);
-			List<List<Seat>> seats=(List<List<Seat>>)map.get("seats");
+			Seat[][] seats=(Seat[][])map.get("seats");
 
 //			ブロックの販売中チケット情報
 			request.setAttribute("tickets", ticketAndSeat);
