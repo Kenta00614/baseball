@@ -11,9 +11,10 @@
 	<div class="header">
 
 	<%-- 第何回　～大会のヘッダー --%>
-    <h1>第${tour.ordinalNum }回${tour.name }</h1>
+	<c:if test="${fn:length(match) > 0}"><h1>第${tour.ordinalNum }回${tour.name }</h1></c:if>
+
     <%-- 試合日情報がないとき --%>
-    <c:if test="${fn:length(match) < 1}">販売中のチケットはありません</c:if>
+    <c:if test="${fn:length(match) <= 0}"><h1>販売中のチケットはありません</h1></c:if>
     <c:forEach var="mat" items="${match}">
 	    <c:choose>
 
