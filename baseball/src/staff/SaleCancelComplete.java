@@ -11,10 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import dao.TicketsDAO;
 
-@WebServlet("/staff/SaleChancelComplete")
+@WebServlet("/staff/SaleCancelComplete")
 public class SaleCancelComplete extends HttpServlet {
 
-	    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	        try {
 	            // 現在の日付を取得
 	            Date today = new Date(System.currentTimeMillis());
