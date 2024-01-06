@@ -9,7 +9,7 @@
 		<button type="submit">続けて登録</button>
 	</form>
 	<form action="MatchInformation" method="post">
-		<input type="hidden" value="${touenamentId }" name="tournamentId">
+		<input type="hidden" value="${tournamentId }" name="tournamentId">
 		<button type="submit">OK</button>
 	</form>
 </body>

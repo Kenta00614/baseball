@@ -2,6 +2,8 @@ package staff;
 
 import java.io.IOException;
 import java.sql.Date;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,6 +30,7 @@ public class MatchInformation extends HttpServlet {
 		HttpSession session=request.getSession();
 		int tournamentId = Integer.parseInt(request.getParameter("tournamentId"));
 		String eventDateStr = request.getParameter("eventDate");
+		Date nowDate = null;
 
 		List<Match> matchList = new ArrayList();
 		List<List<DuelExp>> duelList = new ArrayList<List<DuelExp>>();
@@ -50,7 +53,9 @@ public class MatchInformation extends HttpServlet {
 				array.add(duelDAO.getDuelDetail(m.getDuel4()));
 				duelList.add(array);
 			}
-
+			Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+	        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+	        nowDate = Date.valueOf(sdf.format(timestamp));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -58,6 +63,7 @@ public class MatchInformation extends HttpServlet {
 		session.setAttribute("dispSelectTour",tournamentId );
 		request.setAttribute("duelList",duelList);
 		request.setAttribute("matchList",matchList);
+		request.setAttribute("nowDate", nowDate);
         request.getRequestDispatcher("/staff/matchInformation.jsp").forward(request, response);
     }
 }
