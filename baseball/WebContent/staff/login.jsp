@@ -57,7 +57,7 @@
             display: block;
             text-align: center;
             text-decoration: none;
-            background-color: #007bff;
+            background-color:#0066FF;
             color: #fff;
             padding: 10px;
             border-radius: 4px;

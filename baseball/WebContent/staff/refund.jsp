@@ -12,8 +12,8 @@
         }
 
         .header {
-            background-color: #232733;
-            color: white;
+            background-color: #F5F5F5;
+            color: #555555;
             padding: 0.1px; /* Updated padding */
             text-align: center;
         }
@@ -51,7 +51,7 @@
         }
 
         button {
-            background-color: #ff6347;
+            background-color: #0066FF;
             color: white;
             padding: 10px;
             border: none;
