@@ -86,7 +86,7 @@
 		    computed: {
 		    	<%-- 保有ポイントより多いときのみボタン活性化 --%>
 		        isButtonEnabled() {
-		          return this.inputValue >= 0 && this.inputValue <= ${point };
+		          return this.inputValue >= 0 && this.inputValue <= ${point } && this.inputValue <= this.allPrice;
 		        }
 		      },
 			methods:{
