@@ -9,42 +9,66 @@
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #fff;
+            background-color: #F5F5F5;
         }
 
         .header {
-            background-color: #DCDCDC;
+            background-color: #F5F5F5;
             color: #555555;
-            padding: 10px; /* Adjust padding */
+            padding: 0.1px 0; /* Adjusted padding */
             text-align: center;
-            margin: 10px; /* Add margin for spacing */
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
-        button {
-            background-color: #ff6347;
+        .tournament-btn-container {
+            max-width: 600px; /* Adjusted max-width */
+            margin: 20px auto;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+        .tournament-btn {
+            overflow: hidden;
+            position: relative;
+            margin: 10px;
+        }
+
+        .tournament-btn button {
+            background-color: #0066FF;
             color: white;
-            padding: 10px;
+            padding: 10px 20px; /* Adjusted padding */
             border: none;
             border-radius: 5px;
             cursor: pointer;
             width: 100%;
+            transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+        }
+
+        .tournament-btn button:hover {
+            background-color: #ff6347;
+            transform: scale(1.05); /* Adjusted scale */
+        }
+
+        .tournament-btn button:hover:before {
+            transform: translateY(-3px); /* Adjusted translateY */
         }
     </style>
 </head>
 
 <body>
-    <h1>大会情報一覧</h1>
-    <c:forEach var="tournament" items="${tournamentList}">
-        <div class="header">
-            <!-- 大会名とIDを含むボタン -->
-            <form action="MatchInformation" method="post">
-                <input type="hidden" name="tournamentId" value="${tournament.tournamentId}" />
-                <button type="submit">${tournament.year }年 第${tournament.ordinalNum }回 ${tournament.season } ${tournament.name}</button>
-            </form>
-        </div>
-    </c:forEach>
+    <div class="header">
+        <h1>大会情報一覧</h1>
+    </div>
+    <div class="tournament-btn-container">
+        <c:forEach var="tournament" items="${tournamentList}">
+            <div class="tournament-btn">
+                <form action="MatchInformation" method="post">
+                    <input type="hidden" name="tournamentId" value="${tournament.tournamentId}" />
+                    <button type="submit">${tournament.year}年 第${tournament.ordinalNum}回 ${tournament.season} ${tournament.name}</button>
+                </form>
+            </div>
+        </c:forEach>
+    </div>
 </body>
 
 </html>

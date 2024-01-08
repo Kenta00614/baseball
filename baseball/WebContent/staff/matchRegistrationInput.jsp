@@ -15,8 +15,8 @@
 	    }
 
 	    .header {
-	        background-color: #232733;
-	        color: white;
+	        background-color: #F5F5F5;
+	        color: #555555;
 	        padding: 6px;
 	        text-align: center;
 	    }
@@ -64,7 +64,7 @@
 
 	    /* 変更点: ボタンを同じ列に表示するスタイル */
 	    button {
-	        background-color: #ff6347;
+	        background-color: #0066FF;
 	        color: white;
 	        padding: 8px; /* 調整可能なパディング */
 	        border: none;

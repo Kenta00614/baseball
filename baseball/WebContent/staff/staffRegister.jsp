@@ -17,9 +17,9 @@
         }
 
         .header {
-            background-color:#000;
-            color: white;
-            padding: 0.01px;
+            background-color:#F5F5F5;
+            color: #555555;
+            padding: 0.1px;
             text-align: center;
         }
 
