@@ -7,6 +7,7 @@
 <html>
 <head>
 	<link rel="stylesheet" type="text/css"  href ="/baseball/css/Customer.css">
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
 </head>
 <body>
 <%-- 戻るボタン --%>
@@ -40,19 +41,75 @@
     	購入枚数分用意できません
     </c:if>
 
+	<div id="app">
+		<form name="myForm" action="TicketSelectSeat" method="post">
 
+		<%-- 左のドロップダウン --%>
+			段数
+            <select id="leftDropdown" v-model="selectedLeft" @change="updateRightDropdown">
+                <option v-for="(num, index) in leftNumbers" :value="num">{{ num }}</option>
+            </select>
 
-<%-- ブロック選択 --%>
-	<form action="TicketSelectSeat" method="post">
-	<p>ブロック選択：
-<%-- ドロップダウン --%>
-		<select name="block">
-			<c:forEach begin="0" end="${fn:length(blocks)-1 }" step="1" var="i">
-				<option value="${blocks[i] }">${ fn:substring(blocks[i], 2, fn:length(blocks[i]))} </option>
-			</c:forEach>
-		</select>
-	</p>
-		<button type="submit" class="home-btn">次へ</button>
-	</form>
+		<%-- 右のドロップダウン --%>
+			番号
+            <select id="rightDropdown" v-model="selectedRight">
+                <option v-for="(num, index) in rightNumbers" :value="num">{{ num }}</option>
+            </select>
+			<input type="hidden" id="block" name="block" value="" >
+
+		<%-- ボタン --%>
+            <button type="submit"  v-on:click="submitFunc" class="home-btn">次へ</button>
+        </form>
+    </div>
+
+	<script>
+        new Vue({
+            el: '#app',
+            data: {
+                <%-- 1-1,1-2...の数字のみのリスト --%>
+            	numbers: [
+                	<c:forEach begin="0" end="${fn:length(blocks)-1 }" step="1" var="i">
+						"${ fn:substring(blocks[i], 2, fn:length(blocks[i]))}",
+					</c:forEach>
+				],
+				<%-- 重複をなくした左ドロップダウン用のリスト --%>
+                leftNumbers:[],
+                <%-- 重複をなくした右ドロップダウン用のリスト --%>
+                rightNumbers: [],
+                <%-- 左で選択した数字 --%>
+                selectedLeft: '',
+                <%-- 右で選択した数字 --%>
+                selectedRight: '',
+                <%-- 座種 --%>
+                seatType: "${ fn:substring(blocks[0], 0, 2)}",
+            },
+
+            methods: {
+            	<%-- 左で選択された数字の番号だけのrightNumbers作成 --%>
+            	updateRightDropdown: function() {
+                    const rightList = this.numbers.filter(num => num.startsWith(this.selectedLeft + "-"));
+                    const uniqueRightNumbers = [...new Set(rightList.map(item => item.split('-')[1]))];
+		    	    this.rightNumbers = uniqueRightNumbers;
+		    	    this.selectedRight = this.rightNumbers[0];
+                },
+                <%-- leftNumbers作成 --%>
+                leftNumbersCreate:function(){
+		    		const uniqueLeftNumbers = [...new Set(this.numbers.map(item => item.split('-')[0]))];
+		    	    this.leftNumbers = uniqueLeftNumbers;
+		    	    this.selectedLeft = this.leftNumbers[0];
+		    	},
+		    	<%-- ボタン押されたらservletに送る値を生成。"0B1-1"などの形 --%>
+		    	submitFunc:function(){
+					var blockValue = this.seatType + this.selectedLeft + '-' + this.selectedRight;
+					document.getElementById("block").value=blockValue;
+					document.myForm.submit();
+				},
+            },
+            mounted() {
+                this.leftNumbersCreate();
+                this.updateRightDropdown();
+            }
+        });
+    </script>
 </body>
 </html>
