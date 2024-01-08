@@ -49,18 +49,6 @@
             transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
         }
 
-        .custom-btn button:hover {
-            background-color: #ff6347;
-            transform: scale(1.1);
-        }
-
-        .custom-btn button:before {
-            transition: transform 0.3s ease-in-out;
-        }
-
-        .custom-btn button:hover:before {
-            transform: translateY(0);
-        }
     </style>
 </head>
 

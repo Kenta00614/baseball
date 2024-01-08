@@ -44,14 +44,6 @@
             transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
         }
 
-        .tournament-btn button:hover {
-            background-color: #ff6347;
-            transform: scale(1.05);
-        }
-
-        .tournament-btn button:hover:before {
-            transform: translateY(-3px);
-        }
     </style>
 </head>
 
