@@ -23,18 +23,31 @@ public class StaffDeleteCheck extends HttpServlet {
     	StaffDAO DAO=new StaffDAO();
 
     	HttpSession session=request.getSession();
+//    	ログインしているか
+    	Staff staffData = (Staff) session.getAttribute("staff");
+    	if(staffData == null){
+    		request.setAttribute("sessionOut","1");
+    		request.getRequestDispatcher("login.jsp").forward(request, response);
+    		return;
+    	}else{
+	    	try {
+				List<Staff> staffList = DAO.selectStaffs(list);
+				request.setAttribute("staffList", staffList);
+				session.setAttribute("list",list);
+			    request.getRequestDispatcher("/staff/staffDeleteCheck.jsp").forward(request, response);
 
-    	try {
-			List<Staff> staffList = DAO.selectStaffs(list);
-			request.setAttribute("staffList", staffList);
-			session.setAttribute("list",list);
-		    request.getRequestDispatcher("/staff/staffDeleteCheck.jsp").forward(request, response);
+			} catch (Exception e) {
+				String id=staffData.getStaffId();
 
-		} catch (Exception e) {
-			request.getRequestDispatcher("staff/staffDelete.jsp").forward(request, response);
-		}
+		    	try {
+					List<Staff> staffList= DAO.selectStaffWithoutMe(id);
 
-
-
+					request.setAttribute("list",staffList);
+					request.getRequestDispatcher("/staff/staffDelete.jsp").forward(request, response);
+				} catch (Exception f) {
+					e.printStackTrace();
+				}
+			}
+    	}
     }
 }

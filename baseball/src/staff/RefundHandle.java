@@ -31,6 +31,9 @@ public class RefundHandle extends HttpServlet {
 
 	    	try {
 				String state = DAO.getStatus(ticketId);
+				if(state == null){
+					state = "-1";
+				}
 
 				request.setAttribute("ticketId", ticketId);
 				request.setAttribute("state", state);

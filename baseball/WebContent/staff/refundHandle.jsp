@@ -18,6 +18,8 @@
 			<button type="submit">払い戻し</button>
 		<% }else if(state.equals("5")){ %>
 			<p>払い戻し済みです。</p>
+		<% }else if(state.equals("-1")){ %>
+			<p>照合するチケット番号がありません。</p>
 		<% }else{ %>
 			<p>払い戻し対応が不要なチケットです。</p>
 		<% } %>

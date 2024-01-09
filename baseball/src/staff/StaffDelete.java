@@ -22,16 +22,22 @@ public class StaffDelete extends HttpServlet {
 
     	HttpSession session = request.getSession();
     	Staff staff=(Staff)session.getAttribute("staff");
+//    	ログインしているか
+    	if(staff == null){
+    		request.setAttribute("sessionOut","1");
+    		request.getRequestDispatcher("login.jsp").forward(request, response);
+    		return;
+    	}else{
+	    	String id=staff.getStaffId();
 
-    	String id=staff.getStaffId();
+	    	try {
+				List<Staff> list= DAO.selectStaffWithoutMe(id);
 
-    	try {
-			List<Staff> list= DAO.selectStaffWithoutMe(id);
-
-			request.setAttribute("list",list);
-			request.getRequestDispatcher("/staff/staffDelete.jsp").forward(request, response);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+				request.setAttribute("list",list);
+				request.getRequestDispatcher("/staff/staffDelete.jsp").forward(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+    	}
     }
 }
