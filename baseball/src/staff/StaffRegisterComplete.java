@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import bean.Staff;
 import dao.StaffDAO;
@@ -17,36 +18,44 @@ import dao.StaffDAO;
 public class StaffRegisterComplete extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    	HttpSession session=request.getSession();
 
-    	String id=request.getParameter("id");
-    	String name=request.getParameter("name");
-    	String birth=request.getParameter("BIRTH");
-    	String position=request.getParameter("position");
+//    	ログインしているか
+    	Staff staffData = (Staff) session.getAttribute("staff");
+    	if(staffData == null){
+    		request.setAttribute("sessionOut","1");
+    		request.getRequestDispatcher("login.jsp").forward(request, response);
+    		return;
+    	}else{
+	    	String id=request.getParameter("id");
+	    	String name=request.getParameter("name");
+	    	String birth=request.getParameter("BIRTH");
+	    	String position=request.getParameter("position");
 
-    	String year = birth.substring(0,4);
-    	String month = birth.substring(4,6);
-    	String day = birth.substring(6,8);
+	    	String year = birth.substring(0,4);
+	    	String month = birth.substring(4,6);
+	    	String day = birth.substring(6,8);
 
-    	birth = year + "-" + month + "-" + day;
+	    	birth = year + "-" + month + "-" + day;
 
-    	Date Birth = Date.valueOf(birth);
+	    	Date Birth = Date.valueOf(birth);
 
-    	StaffDAO DAO = new StaffDAO();
+	    	StaffDAO DAO = new StaffDAO();
 
-    	try {
-			int RegNum = DAO.addNewStaff(id, name, Birth, position);
+	    	try {
+				int RegNum = DAO.addNewStaff(id, name, Birth, position);
 
-			if(RegNum == 1){
-				List<Staff> list =  DAO.selectStaff(id);
+				if(RegNum == 1){
+					List<Staff> list =  DAO.selectStaff(id);
 
-				request.setAttribute("list", list);
-				request.getRequestDispatcher("/staff/staffRegisterComplete.jsp").forward(request, response);
-			}else{
-				request.getRequestDispatcher("/staff/staffRegister.jsp").forward(request, response);
+					request.setAttribute("list", list);
+					request.getRequestDispatcher("/staff/staffRegisterComplete.jsp").forward(request, response);
+				}else{
+					request.getRequestDispatcher("/staff/staffRegister.jsp").forward(request, response);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
+    	}
     }
 }

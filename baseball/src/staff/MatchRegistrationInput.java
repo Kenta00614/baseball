@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import bean.School;
+import bean.Staff;
 import bean.Tournament;
 import dao.SchoolDAO;
 import dao.TournamentDAO;
@@ -25,39 +26,48 @@ public class MatchRegistrationInput extends HttpServlet {
     @SuppressWarnings({ "rawtypes", "unchecked" })
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	HttpSession session=request.getSession();
-//    	トーナメントのリスト
-    	List<Tournament> tournamentList = new ArrayList();
-    	Tournament tournament = new Tournament();
-//    	高校名のリスト
-    	List<School> schoolList = new ArrayList();
 
-    	TournamentDAO tournamentDAO = new TournamentDAO();
-    	SchoolDAO schoolDAO = new SchoolDAO();
+//    	ログインしているか
+    	Staff staffData = (Staff) session.getAttribute("staff");
+    	if(staffData == null){
+    		request.setAttribute("sessionOut","1");
+    		request.getRequestDispatcher("login.jsp").forward(request, response);
+    		return;
+    	}else{
+	//    	トーナメントのリスト
+	    	List<Tournament> tournamentList = new ArrayList();
+	    	Tournament tournament = new Tournament();
+	//    	高校名のリスト
+	    	List<School> schoolList = new ArrayList();
 
-    	try {
-//    		大会情報取得
-			tournamentList = tournamentDAO.getTournamentDetail();
-//			大会情報セット
-			tournament.setTournamentId(tournamentList.get(tournamentList.size()-1).getTournamentId());
-			tournament.setYear(tournamentList.get(tournamentList.size()-1).getYear());
-			tournament.setOrdinalNum(tournamentList.get(tournamentList.size()-1).getOrdinalNum());
-			tournament.setName(tournamentList.get(tournamentList.size()-1).getName());
-			tournament.setSeason(tournamentList.get(tournamentList.size()-1).getSeason());
+	    	TournamentDAO tournamentDAO = new TournamentDAO();
+	    	SchoolDAO schoolDAO = new SchoolDAO();
 
-//			高校情報取得
-			schoolList = schoolDAO.searchSchool(tournament.getTournamentId());
-//			なしの値
-			School school=new School();
-			school.setSchoolId(0);
-			school.setName("なし");
-			schoolList.add(school);
+	    	try {
+	//    		大会情報取得
+				tournamentList = tournamentDAO.getTournamentDetail();
+	//			大会情報セット
+				tournament.setTournamentId(tournamentList.get(tournamentList.size()-1).getTournamentId());
+				tournament.setYear(tournamentList.get(tournamentList.size()-1).getYear());
+				tournament.setOrdinalNum(tournamentList.get(tournamentList.size()-1).getOrdinalNum());
+				tournament.setName(tournamentList.get(tournamentList.size()-1).getName());
+				tournament.setSeason(tournamentList.get(tournamentList.size()-1).getSeason());
 
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+	//			高校情報取得
+				schoolList = schoolDAO.searchSchool(tournament.getTournamentId());
+	//			なしの値
+				School school=new School();
+				school.setSchoolId(0);
+				school.setName("なし");
+				schoolList.add(school);
 
-    	session.setAttribute("tournament",tournament );
-    	request.setAttribute("schoolList",schoolList );
-        request.getRequestDispatcher("/staff/matchRegistrationInput.jsp").forward(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+	    	session.setAttribute("tournament",tournament );
+	    	request.setAttribute("schoolList",schoolList );
+	        request.getRequestDispatcher("/staff/matchRegistrationInput.jsp").forward(request, response);
+	    }
     }
 }

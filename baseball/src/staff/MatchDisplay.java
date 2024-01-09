@@ -9,7 +9,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import bean.Staff;
 import bean.Tournament;
 import dao.TournamentDAO;
 
@@ -21,16 +23,26 @@ public class MatchDisplay extends HttpServlet {
 
     @SuppressWarnings({ "rawtypes", "unchecked" })
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<Tournament> tournamentList = new ArrayList();
-		TournamentDAO dao = new TournamentDAO();
-        try {
-            // データベースから大会情報のリストを取得
-            tournamentList = dao.getTournamentDetail();
-        }catch (Exception e) {
-        	throw new ServletException(e);
-        }
-        // リクエスト属性に大会情報リストをセット
-        request.setAttribute("tournamentList", tournamentList);
-        request.getRequestDispatcher("/staff/matchDisplay.jsp").forward(request, response);
+    	HttpSession session=request.getSession();
+
+//    	ログインしているか
+    	Staff staffData = (Staff) session.getAttribute("staff");
+    	if(staffData == null){
+    		request.setAttribute("sessionOut","1");
+    		request.getRequestDispatcher("login.jsp").forward(request, response);
+    		return;
+    	}else{
+	    	List<Tournament> tournamentList = new ArrayList();
+			TournamentDAO dao = new TournamentDAO();
+	        try {
+	            // データベースから大会情報のリストを取得
+	            tournamentList = dao.getTournamentDetail();
+	        }catch (Exception e) {
+	        	throw new ServletException(e);
+	        }
+	        // リクエスト属性に大会情報リストをセット
+	        request.setAttribute("tournamentList", tournamentList);
+	        request.getRequestDispatcher("/staff/matchDisplay.jsp").forward(request, response);
+	    }
     }
 }
