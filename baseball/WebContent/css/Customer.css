@@ -78,6 +78,19 @@
 	.home-btn:hover{
 		background-color:#555;
 	}
+	.form-btn{
+	 	border: 3px solid transparent;
+	    margin: 15px auto; /* 左右のマージンをautoにして中央寄せに修正 */
+	    display: flex;
+	    color: #ffffff;
+	    background: #000000;
+	    padding: 8px 10px;
+	    cursor: pointer;
+	    border-radius: 5px;
+	    /* other styles */
+	    align-items: center;
+	    position: relative; /* bodyを相対的な位置に設定 */
+	}
 
 
 	.return-btn {
@@ -128,6 +141,13 @@
 	}
 
 
+	/*--- 入力欄のスタイル ---*/
+	.field{
+	    padding: 10px;
+	    margin-top: 5px;
+	    width: 100%;
+	    box-sizing: border-box;
+	}
 
 
 	/*--- login.jspのスタイル ---*/
