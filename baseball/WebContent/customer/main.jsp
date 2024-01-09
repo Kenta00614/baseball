@@ -29,7 +29,9 @@
 					<div class="schedule">
 						<c:choose>
 							<c:when test="${j == 0 }">
-								<div>第一試合(${duelList[i][j].roundStr })</div>
+								<c:if test="${duelList[i][j].roundStr != null}">
+									<div>第一試合(${duelList[i][j].roundStr })</div>
+								</c:if>
 							</c:when>
 							<c:when test="${j == 1 }">
 								<c:if test="${duelList[i][j].roundStr != null}">

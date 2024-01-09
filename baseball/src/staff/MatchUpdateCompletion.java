@@ -69,7 +69,17 @@ public class MatchUpdateCompletion extends HttpServlet {
 	    	duel.setDuelId(duelId1);
 
 	    	try {
-				duelDAO.changeDuel(duel);
+	    		if(duelId1 > 0){
+			    	int num = duelDAO.changeDuel(duel);
+			    	if(num == 0){
+			    		matchDAO.changeMatch(num, matchId, 1);
+			    	}
+				}else{
+					newDuelId = duelDAO.insertDuel(duel);
+					matchDAO.changeMatch(newDuelId, matchId, 1);
+					newDuelId = 0;
+				}
+
 
 	//			試合2
 				duel.setSchool1(duel2School);

@@ -14,12 +14,12 @@
      		<tr>
      			<td>第一試合</td>
      			<td><select name="duel1School1">
-	     			<c:forEach begin="0" end="${fn:length(schoolList)-2}" step="1" var="i">
+	     			<c:forEach begin="0" end="${fn:length(schoolList)-1}" step="1" var="i">
 					<option value="${schoolList[i].schoolId }" <c:if test="${duelList[0].schoolId1 == schoolList[i].schoolId}">selected</c:if>>${schoolList[i].name }</option>
 	     			</c:forEach>
      			</select></td>
      			<td><select name="duel1School2">
-	     			<c:forEach begin="0" end="${fn:length(schoolList)-2}" step="1" var="i">
+	     			<c:forEach begin="0" end="${fn:length(schoolList)-1}" step="1" var="i">
 					<option value="${schoolList[i].schoolId }" <c:if test="${duelList[0].schoolId2 == schoolList[i].schoolId}">selected</c:if>>${schoolList[i].name }</option>
 	     			</c:forEach>
      			</select></td>

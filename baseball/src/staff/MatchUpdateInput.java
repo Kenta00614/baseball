@@ -78,7 +78,11 @@ public class MatchUpdateInput extends HttpServlet {
 				duelNoData.setSchoolId1(0);
 				duelNoData.setSchoolId2(0);
 
-				duelList.add(duelDAO.getDuelDetail(matchList.get(0).getDuel1()));
+				if(matchList.get(0).getDuel1() > 0){
+					duelList.add(duelDAO.getDuelDetail(matchList.get(0).getDuel1()));
+				}else{
+					duelList.add(duelNoData);
+				}
 				if(matchList.get(0).getDuel2() > 0){
 					duelList.add(duelDAO.getDuelDetail(matchList.get(0).getDuel2()));
 				}else{
