@@ -54,11 +54,11 @@ public class ProvisionalSignup extends HttpServlet {
                 response.sendRedirect(contextPath + "/customer/provisionalSignupComplete.jsp");
             } else {
                 // 仮登録失敗ページへリダイレクト
-                response.sendRedirect(contextPath + "/baseball/customer/signupError.jsp");
+                response.sendRedirect(contextPath + "/customer/signupError.jsp");
             }
         } catch (Exception e) {
             e.printStackTrace(); // 本番環境では、適切なロギングに置き換えてください。
-            response.sendRedirect("/baseball/customer/sigupError.jsp"); // エラーページへリダイレクト
+            response.sendRedirect("/customer/signupError.jsp"); // エラーページへリダイレクト
         }
     }
 
