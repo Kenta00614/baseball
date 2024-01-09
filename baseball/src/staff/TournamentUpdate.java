@@ -36,7 +36,7 @@ public class TournamentUpdate extends HttpServlet {
         try {
             dao.changeTournament(tournament);
             // 更新が完了したら、適切なページにリダイレクトする
-            response.sendRedirect("somePage.jsp");
+            response.sendRedirect("matchInformation.jsp");
         } catch (Exception e) {
             throw new ServletException(e);
         }
