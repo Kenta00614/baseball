@@ -13,8 +13,8 @@
         }
 
         .header {
-            background-color:#232733;
-            color: white;
+            background-color:#F5F5F5;
+            color: #555555;
             text-align: center;
             padding: 0.1px;
         }
@@ -49,8 +49,8 @@
         }
 
         input[type="submit"] {
-            background-color: #ff6347;
-            color: fff;
+            background-color:#0066FF;
+            color: white;
             cursor: pointer;
         }
 

@@ -50,5 +50,10 @@
 	    </c:choose>
     </c:forEach>
    </div>
+   <c:if test="${canselPurchase == 1 }">
+	   <script>
+	      	alert('セッションが切れています、もう一度最初から購入してください。');
+	   </script>
+   </c:if>
 </body>
 </html>

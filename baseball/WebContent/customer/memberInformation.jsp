@@ -34,7 +34,7 @@
         </form>
         <form action="EmailChangeDisplay" method="Get">
             <input type="hidden" name="mail" value="${spectator.mail}">
-            <button type="submit">メールアドレス変更</button>
+            <button type="submit" class="email-change-btn">メールアドレス変更</button>
         </form>
 
     </div>
