@@ -16,11 +16,11 @@
 <div class=main_display>
 	<c:choose>
 	<%-- 試合情報がないとき --%>
-	<c:when test="${matchList == null }">
+	<c:when test="${fn:length(matchList) == 0 }">
 		試合情報が登録されていません
 	</c:when>
 	<%-- 試合情報があるとき --%>
-	<c:when test="${matchList != null }">
+	<c:when test="${fn:length(matchList) > 0 }">
 		<h1 class="tournament">第${tournament.ordinalNum }回${tournament.name }</h1>
 	    <%-- 開催日ごとのテーブル --%>
 		<c:forEach begin="0" end="${fn:length(duelList)-1}" step="1" var="i">
