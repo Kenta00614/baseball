@@ -9,7 +9,7 @@
 	<link rel="stylesheet" type="text/css"  href ="/baseball/css/Customer.css">
 </head>
 <body>
-    <h2>Account Verified!</h2>
-    <p>Your account has been successfully verified.</p>
+    <h2>アカウントを登録しました</h2>
+    <p></p>
 </body>
 </html>

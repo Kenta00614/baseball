@@ -54,7 +54,7 @@
     <div class="tournament-btn-container">
         <c:forEach var="tournament" items="${tournamentList}">
             <div class="tournament-btn">
-                <form action="MatchInformation" method="post">
+                <form action="HighschoolRegistrationDisplay" method="post">
                     <input type="hidden" name="tournamentId" value="${tournament.tournamentId}" />
                     <button type="submit">${tournament.year}年 第${tournament.ordinalNum}回 ${tournament.season} ${tournament.name}</button>
                 </form>
