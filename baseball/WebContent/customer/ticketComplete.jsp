@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@include file="header.jsp"%>
 
 <html>
@@ -13,7 +14,7 @@
 
 	<c:choose>
 	    <%-- 決済行われなかったとき --%>
-	    <c:when test="${selTicketsData == null}">
+	    <c:when test="${fn:length(selTicketsData) == 0}">
 	    	<p style="font-size:20px;">決済が正常に行われませんでした<p>
 	    </c:when>
 		<c:when test="${selTicketsData != null}">

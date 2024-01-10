@@ -45,7 +45,16 @@ public class TicketSelectAll extends HttpServlet {
 
 //			希望枚数よりチケットが少ない場合前の画面に戻る
 			if(remaining<count){
-				request.setAttribute("seatType",Constants.SEAT_TYPE );
+				List<String> seatType = new ArrayList<>();
+
+				String[] seatOrder = {"0B","0F","0T","0R","0L"};
+
+		        for (String key : seatOrder) {
+		            String value = Constants.SEAT_TYPE.get(key);
+		            seatType.add(value);
+		        }
+		        request.setAttribute("seatOrder", seatOrder);
+				request.setAttribute("seatType",seatType );
 				request.setAttribute("remaining", remaining);
 				request.getRequestDispatcher("/customer/ticketApplication.jsp").forward(request, response);
 				return;

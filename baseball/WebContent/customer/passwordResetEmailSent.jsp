@@ -8,8 +8,8 @@
 </head>
 <body>
 
-<h2>変更が完了しました。</h2>
-
-  <button onclick="location.href='Main'">メイン画面へ</button>
+<h2>メールを送信しました</h2>
+<p>メールのリンクをクリックしてください</p>
+  <button onclick="location.href='LoginDisplay'" class="home-btn">ログイン画面に戻る</button>
 </body>
 </html>

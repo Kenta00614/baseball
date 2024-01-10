@@ -9,31 +9,42 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import bean.Staff;
 import dao.TicketsDAO;
 
 @WebServlet("/staff/RefundHandle")
 public class RefundHandle extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-    	String ticketId = request.getParameter("ticketnumber");
-
-    	TicketsDAO DAO=new TicketsDAO();
-
     	HttpSession session=request.getSession();
 
-    	try {
-			String state = DAO.getStatus(ticketId);
+//    	ログインしているか
+    	Staff staffData = (Staff) session.getAttribute("staff");
+    	if(staffData == null){
+    		request.setAttribute("sessionOut","1");
+    		request.getRequestDispatcher("login.jsp").forward(request, response);
+    		return;
+    	}else{
+	    	String ticketId = request.getParameter("ticketnumber");
 
-			request.setAttribute("ticketId", ticketId);
-			request.setAttribute("state", state);
+	    	TicketsDAO DAO=new TicketsDAO();
 
-			session.setAttribute("ticketId",ticketId);
+	    	try {
+				String state = DAO.getStatus(ticketId);
+				if(state == null){
+					state = "-1";
+				}
 
-	        request.getRequestDispatcher("/staff/refundHandle.jsp").forward(request, response);
+				request.setAttribute("ticketId", ticketId);
+				request.setAttribute("state", state);
 
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+				session.setAttribute("ticketId",ticketId);
+
+		        request.getRequestDispatcher("/staff/refundHandle.jsp").forward(request, response);
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+    	}
     }
 }

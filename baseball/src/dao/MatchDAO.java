@@ -146,7 +146,13 @@ public class MatchDAO extends DAO{
 		try{
 			Connection con=getConnection();
 			String SQL = "UPDATE MATCH SET ";
-			if(duelNum == 2){
+			if(duelNum == 1){
+				if(duelId != 0){
+					SQL += "DUEL1 = ?";
+				}else{
+					SQL += "duel1=0 ";
+				}
+			}else if(duelNum == 2){
 				if(duelId != 0){
 					SQL += "DUEL2 = ?";
 				}else{

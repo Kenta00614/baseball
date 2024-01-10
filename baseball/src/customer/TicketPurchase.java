@@ -18,7 +18,9 @@ import dao.TournamentDAO;
 
 @WebServlet("/customer/TicketPurchase")
 public class TicketPurchase extends HttpServlet {
-
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doGet(request, response);
+	}
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session=request.getSession();
 		List<Tournament> list=new ArrayList<>();

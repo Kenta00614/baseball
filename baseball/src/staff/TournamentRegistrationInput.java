@@ -21,10 +21,21 @@ public class TournamentRegistrationInput extends HttpServlet {
     	request.setCharacterEncoding("UTF-8");
 
         // リクエストパラメータの取得
-        int year = Integer.parseInt(request.getParameter("year"));
-        int ordinalNum = Integer.parseInt(request.getParameter("ordinalNum"));
+        String yearStr = request.getParameter("year");
+        String ordinalNumStr = request.getParameter("ordinalNum");
         String season = request.getParameter("season");
         String name = request.getParameter("name");
+
+        // バリデーション: "year"と"ordinalNum"が数字かどうかを確認
+        if (!isValidNumber(yearStr) || !isValidNumber(ordinalNumStr)) {
+            // 無効な入力の場合、カスタムエラーページにリダイレクト
+            response.sendRedirect("/baseball/staff/tournamentRegistrationError.jsp");
+            return;
+        }
+
+        // 確認した値をパース
+        int year = Integer.parseInt(yearStr);
+        int ordinalNum = Integer.parseInt(ordinalNumStr);
 
         // Tournament オブジェクトの作成
         Tournament tournament = new Tournament();
@@ -46,6 +57,16 @@ public class TournamentRegistrationInput extends HttpServlet {
             }
         } catch (Exception e) {
             throw new ServletException(e);
+        }
+    }
+
+    // 入力文字列が数値かどうかをバリデーション
+    private boolean isValidNumber(String input) {
+        try {
+            Integer.parseInt(input);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
         }
     }
 }
