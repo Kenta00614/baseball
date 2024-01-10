@@ -55,6 +55,9 @@
 								<div>${duelList[i][j].statusStr }</div>
 								<div>${duelList[i][j].schoolNameB }</div>
 							</c:when>
+							<c:when test="${duelList[i][j].schoolNameA == null && j == 0}">
+								<div>対戦校の情報は未定です</div>
+							</c:when>
 						</c:choose>
 					</div>
 				</c:forEach>
