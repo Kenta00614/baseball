@@ -19,11 +19,11 @@ public class Constants {
 	 @SuppressWarnings({ "unchecked", "rawtypes" })
 	public static HashMap<String,String> SEAT_TYPE = new HashMap(){
 		      {
-		          put("0B", "バックネット裏");
-		          put("0F", "内野一塁側");
-		          put("0T", "内野三塁側");
-		          put("0R", "外野ライト");
-		          put("0L", "外野レフト");
+		          put("0B", "中央指定席");
+		          put("0F", "1塁指定席");
+		          put("0T", "3塁指定席");
+		          put("0R", "ライト指定席");
+		          put("0L", "レフト指定席");
 //		          put("FA", "一塁側アルプス");
 //		          put("TA", "三塁側アルプス");
 		        }
