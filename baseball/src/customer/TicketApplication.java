@@ -1,6 +1,8 @@
 package customer;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,6 +20,14 @@ public class TicketApplication extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session=request.getSession();
 		Match match = (Match) session.getAttribute("match");
+		List<String> seatType = new ArrayList<>();
+
+		String[] seatOrder = {"0B","0F","0T","0R","0L"};
+
+        for (String key : seatOrder) {
+            String value = Constants.SEAT_TYPE.get(key);
+            seatType.add(value);
+        }
 
         if (match == null) {
             match = new Match();
@@ -35,7 +45,8 @@ public class TicketApplication extends HttpServlet {
 			session.setAttribute("match", match);
         }
         request.setAttribute("remaining", -1);
-        request.setAttribute("seatType",Constants.SEAT_TYPE );
+        request.setAttribute("seatType",seatType );
+        request.setAttribute("seatOrder", seatOrder);
 		request.getRequestDispatcher("/customer/ticketApplication.jsp").forward(request, response);
     }
 }

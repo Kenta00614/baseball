@@ -12,8 +12,8 @@
         }
 
         .header {
-            background-color: #232733	;
-            color: white;
+            background-color:#F5F5F5	;
+            color: #555555;
             padding: 0.1px;
             text-align: center;
         }
@@ -39,7 +39,7 @@
         }
 
         .custom-btn button {
-            background-color: #ff6347;
+            background-color: #0066FF;
             color: white;
             padding: 10px;
             border: none;
@@ -49,18 +49,6 @@
             transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
         }
 
-        .custom-btn button:hover {
-            background-color: #ff6347;
-            transform: scale(1.1);
-        }
-
-        .custom-btn button:before {
-            transition: transform 0.3s ease-in-out;
-        }
-
-        .custom-btn button:hover:before {
-            transform: translateY(0);
-        }
     </style>
 </head>
 
