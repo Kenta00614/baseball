@@ -25,6 +25,7 @@ public class TicketDisplay extends HttpServlet {
     	HttpSession session=request.getSession();
     	List<Spectator> spectator = (List<Spectator>)session.getAttribute("spectatorIds");
     	List<TicketsExp> tickets = new ArrayList<>();
+    	List<TicketsExp> refundTickets = new ArrayList<>();
 
 //    	観戦客IDがある
     	if(spectator != null){
@@ -38,10 +39,12 @@ public class TicketDisplay extends HttpServlet {
 
         	try {
         		tickets = ticketsDAO.viewTickets(spectator.get(0).getSpectatorId(),today);
+        		refundTickets = ticketsDAO.viewTicketsRefund(spectator.get(0).getSpectatorId());
     		} catch (Exception e) {
     			e.printStackTrace();
     		}
     	}
+    	request.setAttribute("refundTickets", refundTickets);
     	request.setAttribute("tickets", tickets);
         request.getRequestDispatcher("/customer/ticketDisplay.jsp").forward(request, response);
     }

@@ -2,6 +2,9 @@ package customer;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.sql.Date;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.UUID;
 
@@ -33,6 +36,8 @@ public class TicketQr extends HttpServlet {
     	String ticketsId = request.getParameter("ticketsId");
 //		UUID
     	String uuidStr = request.getParameter("id");
+//    	チケットの日付と処理の日時が同じかのflug
+    	String DispQrFlg = "0";
 
 //    	第何回
     	String ordinalStr = request.getParameter("ordinalNum");
@@ -68,6 +73,17 @@ public class TicketQr extends HttpServlet {
 		    	tournamentName = ticketData.getTournamentName();
 		    	dateStr = ticketData.getDateStr();
 		    	eventDayOfWeek = ticketData.getEventDayOfWeek();
+		    	Date eventDate = ticketData.getEventDate();
+//		    	現在の日付を取得
+		    	Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+		        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+//		        DATEに変換
+		        Date sqlDate= Date.valueOf(sdf.format(timestamp));
+//		        開催日と現在の日付を比べる
+		    	if(eventDate.compareTo(sqlDate) == -1){
+//		    		すでに終わった試合ならflugの値を変える
+		    		DispQrFlg = "1";
+		    	}
 	    	}
     	} catch (Exception e) {
 			e.printStackTrace();
@@ -89,6 +105,7 @@ public class TicketQr extends HttpServlet {
 		image = MatrixToImageWriter.toBufferedImage(bitMatrix);
 
 
+		request.setAttribute("DispQrFlg", DispQrFlg);
 		request.setAttribute("bImage", image);
 		request.setAttribute("ticketData", ticketData);
     	request.setAttribute("ticketsId", ticketsId);
