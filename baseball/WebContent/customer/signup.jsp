@@ -40,7 +40,7 @@
 	    <input type="tel" id="tel" name="tel" pattern="\d{10}|\d{11}" placeholder="0332378711" class="custom-input" required>
 
 	    <p class="signup-label"><label for="password">パスワード</label></p>
-	    <input type="password" id="password" name="password" class="member" required>
+	    <input type="password" id="password" name="password" class="custom-input" required>
 
 	    <p class="signup-label"><label for="confirmPassword">パスワード確認</label></p>
 	    <input type="password" id="confirmPassword" name="confirmPassword" class="custom-input" required>
