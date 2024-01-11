@@ -37,15 +37,15 @@ public class Signup extends HttpServlet {
                     response.sendRedirect("/baseball/customer/signupComplete.jsp");
                 } else {
                     // 該当するユーザーが見つからない場合のエラーハンドリング
-                    response.sendRedirect("/a/error.jsp");
+                    response.sendRedirect("/baseball/customer/aError.jsp");
                 }
             } else {
                 // UUID が無効な場合のエラーハンドリング
-                response.sendRedirect("/b/error.jsp");
+                response.sendRedirect("/baseball/customer/error.jsp");
             }
         } catch (Exception e) {
             e.printStackTrace();
-            response.sendRedirect("/c/error.jsp");
+            response.sendRedirect("/baseball/customer/error.jsp");
         }
     }
 }

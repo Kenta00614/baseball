@@ -15,7 +15,7 @@ import dao.SchoolDAO;
 @WebServlet("/staff/HighschoolRegistrationDisplay")
 public class HighschoolRegistrationDisplay extends HttpServlet {
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	    String tournamentId = request.getParameter("tournamentId");
 	    request.setAttribute("tournamentId", tournamentId);
 
