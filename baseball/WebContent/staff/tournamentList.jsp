@@ -97,11 +97,6 @@
             </div>
         </c:forEach>
     </div>
-    <div class="change-btn-container">
-        <form action="TournamentListChangeDisplay" method="post" class="change-btn">
-            <button type="submit">変更</button>
-        </form>
-    </div>
 </body>
 
 </html>
