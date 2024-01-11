@@ -313,18 +313,23 @@
 
 	.signup-container .signup-label,
 	.signup-label {
-	    margin-top: 10px;
+	    margin-top: 20px;
 	}
 
-	.signup-container .custom-input,
+	.signup-container
 	.custom-input {
-	    padding: 10px;
-	    margin-top: 5px;
+	    padding: 5px;
+	    margin-top: 3px;
+	}
+
+	.custom-input{
+		padding: 5px;
+	    margin-top: 0px;
 	}
 
 	.signup-container .submit-button,
 	.submit-button {
-	    margin-top: 20px;
+	    margin-top: 30px;
 	    padding: 10px 20px;
 	    background-color: #000;
 	    color: white;
