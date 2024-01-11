@@ -8,6 +8,7 @@
 	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
 </head>
 <body>
+	<a href="MatchDisplay" type="submit">戻る</a>
 	<c:choose>
 	<%-- 試合情報がないとき --%>
 	<c:when test="${fn:length(matchList)== 0 }">

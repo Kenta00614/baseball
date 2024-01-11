@@ -14,13 +14,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import bean.DuelExp;
+import bean.Match;
 import bean.Spectator;
+import bean.Tournament;
+import dao.DuelDAO;
+import dao.MatchDAO;
 import dao.SeatDAO;
 import dao.SpectatorDAO;
+import dao.TournamentDAO;
 @WebServlet("/customer/Login")
 public class Login extends HttpServlet {
 
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings({ "unchecked", "rawtypes" })
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         String mail = request.getParameter("mail");
@@ -62,7 +68,33 @@ public class Login extends HttpServlet {
     				return;
                 }
 
-                response.sendRedirect("/baseball/customer/loginWelcome.jsp"); // ログイン成功ページへリダイレクト
+                List<Match> matchList = new ArrayList();
+            	List<Tournament> tournamentList = new ArrayList();
+        		List<List<DuelExp>> duelList = new ArrayList<List<DuelExp>>();
+
+        		MatchDAO matchDAO = new MatchDAO();
+        		DuelDAO duelDAO = new DuelDAO();
+        		TournamentDAO tournamentDAO = new TournamentDAO();
+
+//        			tournamntの情報取得
+    			tournamentList = tournamentDAO.getTournamentDetail();
+//        			最後に登録されているトーナメントのmatch情報を取得
+    			matchList = matchDAO.searchMatchTournament(tournamentList.get(tournamentList.size()-1).getTournamentId());
+
+//        			duelの情報をListに詰める
+    			for(Match match: matchList){
+    				List<DuelExp> array = new ArrayList<>();
+    				array.add(duelDAO.getDuelDetail(match.getDuel1()));
+    				array.add(duelDAO.getDuelDetail(match.getDuel2()));
+    				array.add(duelDAO.getDuelDetail(match.getDuel3()));
+    				array.add(duelDAO.getDuelDetail(match.getDuel4()));
+    				duelList.add(array);
+    			}
+
+        		request.setAttribute("tournament", tournamentList.get(tournamentList.size()-1));
+        		request.setAttribute("duelList",duelList);
+        		request.setAttribute("matchList",matchList);
+        		request.getRequestDispatcher("/customer/main.jsp").forward(request, response); // メイン画面へ
 
             } else {
                 // ログイン失敗

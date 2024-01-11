@@ -104,7 +104,7 @@ public class Match implements Serializable {
 		Calendar searchCalendar = Calendar.getInstance();
 		searchCalendar.setTime(this.eventDate);
 	    int dayNumber = searchCalendar.get(Calendar.DAY_OF_WEEK);
-	    if(dayNumber==0){
+	    if(dayNumber==7){
 	    	this.eventDayOfWeek = "土";
 	    }else if(dayNumber==1){
 	    	this.eventDayOfWeek = "日";

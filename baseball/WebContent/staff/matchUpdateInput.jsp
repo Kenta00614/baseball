@@ -5,6 +5,11 @@
 <%@include file="header.jsp"%>
 <html>
 <body>
+<form action="MatchInformation" method="post">
+	<input type="hidden" name="tournamentId" value="${tournament.tournamentId }">
+	<button type="submit">戻る</button>
+</form>
+
 <h2>第${tournament.ordinalNum }回　${tournament.name }</h2>
 	<form action="MatchUpdateCompletion" method="post">
 		<p>開催日　${matchList[0].eventDateStr }</p>
