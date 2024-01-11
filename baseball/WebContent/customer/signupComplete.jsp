@@ -9,7 +9,7 @@
 	<link rel="stylesheet" type="text/css"  href ="/baseball/css/Customer.css">
 </head>
 <body>
-    <h2>アカウントを登録しました</h2>
+    <h2 class="email-change-send">アカウントを登録しました</h2>
     <p></p>
 </body>
 </html>

@@ -6,14 +6,14 @@
 </head>
 
 <body>
-    <div class="login-box">
+    <div class="pass-change-box">
     <h1 class="login-title">メールアドレス入力</h1>
     　　<form action="PasswordChangeMail" method="post">
 	        <div class="login-input">
 	            <label for="user-id">ID(email)</label>
 	            <input name="mail" type="email" id="email" placeholder="✉Mail" class="login-email" required>
 
-	            <button type="submit">送信</button>
+	            <button type="submit" class="form-btn">送信</button>
 	        </div>
 
 

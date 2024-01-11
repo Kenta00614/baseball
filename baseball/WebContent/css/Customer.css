@@ -75,9 +75,13 @@
 	    align-items: center;
 	    position: relative; /* bodyを相対的な位置に設定 */
 	}
+
+
 	.home-btn:hover{
 		background-color:#555;
 	}
+
+
 	.form-btn{
 	 	border: 3px solid transparent;
 	    margin: 15px auto; /* 左右のマージンをautoにして中央寄せに修正 */
@@ -149,10 +153,23 @@
 	    box-sizing: border-box;
 	}
 
+	/*--- emailChangeComplete.jsp ---*/
+	.email-change{
+		margin-top: 100px;
+		text-align:center;
+	}
+
+
+	/*--- emailChangeRequestComplete.jspのスタイル ---*/
+	.email-change-send{
+		text-align:center;
+		line-height:calc( 300px - 60px );
+	}
+
 
 	/*--- login.jspのスタイル ---*/
 	.login-box {
-	    width: 400px;
+	    width: 500px;
 	    margin: 30px auto;
 	    padding: 20px;
 	    border: 1px solid #ccc;
@@ -248,6 +265,10 @@
 	    justify-content: center;
 	}
 
+	.date-col { width: 150px; }
+    .match-number-col { width: 100px; }
+    .teams-col { width: 300px; }
+    .status-col { width: 150px; }
 
 
 	/*--- memberInformation.jspのスタイル ---*/
@@ -279,6 +300,16 @@
 
 	.member-selection button:hover {
 	    background-color: #555;
+	}
+
+
+	/*--- passwordChangeForm.jspのスタイル ---*/
+	.pass-change-box {
+	    width: 600px;
+	    margin: 45px auto;
+	    padding: 20px;
+	    border: 1px solid #ccc;
+	    box-shadow: 0px 0px 10px #ccc;
 	}
 
 
@@ -510,6 +541,13 @@
 	}
 
 
+	/*--- ticketQr.jsp ---*/
+	.ticket-qr{
+		margin-top: 100px;
+		text-align:center;
+	}
+
+
 	/*--- ticketSelectAll.jspのスタイル ---*/
 	.seat-type-img{
 		width:80%;
@@ -527,6 +565,7 @@
 	    margin: 15px auto; /* 左右のマージンをautoにして中央寄せに修正 */
 
 	}
+
 
 
 	/*--- ticketShare.jspのスタイル ---*/

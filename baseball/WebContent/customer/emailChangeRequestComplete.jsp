@@ -8,8 +8,8 @@
 </head>
 <body>
 
-<h2>送信が完了しました。</h2>
+<h2 class="email-change-send">送信が完了しました。</h2>
 
-  <button onclick="location.href='LoginDisplay'"></button>
+
 </body>
 </html>

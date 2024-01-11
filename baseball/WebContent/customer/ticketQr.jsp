@@ -15,6 +15,7 @@
 	<form action="TicketDisplay" method="get">
 		<button type="submit" class="return-btn">戻る</button>
 	</form>
+	<div class="ticket-qr">
 	<%-- QRコード --%>
 	<c:if test="${DispQrFlg == 0 }">
 		<img src="<%= BufferedImageUtil.convert2DataURI(bImage, "png") %>"/>
@@ -25,5 +26,6 @@
 	<%-- 情報 --%>
 	<p>第${ordinalNum }回${tournamentName }</p>
 	<p>${dateStr }(${eventDayOfWeek }) 08:00</p>
+	</div>
 </body>
 </html>
