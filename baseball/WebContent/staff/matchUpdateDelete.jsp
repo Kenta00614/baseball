@@ -11,7 +11,7 @@
 
 	<form action="MatchInformation" method="post">
 		<input type="hidden" value="${tournamentId }" name="tournamentId">
-		<input type="hidden" value="${eventDate }" name="eventDate">
+		<input type="hidden" value="${eventDate }" name="delEventDate">
 		<button type="submit">確認</button>
 	</form>
 </body>
