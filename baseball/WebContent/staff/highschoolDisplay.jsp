@@ -58,6 +58,7 @@
 </head>
 
 <body>
+	<a href="TournamentList" type="submit">戻る</a>
     <h2>高校情報一覧</h2>
     <form action="HighschoolUpdate" method="post">
         <table border="1">

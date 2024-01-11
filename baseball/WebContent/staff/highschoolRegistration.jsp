@@ -60,6 +60,7 @@
 </head>
 
 <body>
+	<a href="TournamentList" type="submit">戻る</a>
     <h2>高校情報登録</h2>
     <form action="HighschoolRegistration" method="post">
         <!-- 大会IDの隠しフィールド -->
