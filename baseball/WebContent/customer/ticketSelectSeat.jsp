@@ -32,8 +32,8 @@
 		</transition-group>
 		</table>
 		<%-- 選択したら出てくる情報 --%>
-          <transition-group>
-			<li v-for="(ticket,index) in selectedTickets" v-bind:key="ticket.ticketsId">
+          <transition-group >
+			<li v-for="(ticket,index) in selectedTickets" v-bind:key="ticket.ticketsId" >
 				<p>{{ticket.typeStr}}　{{ticket.step}}段　{{ticket.number}}番　{{ticket.gate}}番ゲート　{{ticket.passage}}通路　<button id="childBtn" value="index" v-bind:value="ticket.check" v-on:click="changeChild(index)">{{ticket.checkStr}}</button></p>
 			</li>
 		</transition-group>
