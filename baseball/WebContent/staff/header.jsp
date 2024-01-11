@@ -113,6 +113,7 @@
                        <a href="MatchRegistrationInput"><i class="fas fa-plus"></i> 試合情報登録</a>
                        <a href="MatchDisplay"><i class="fas fa-eye"></i> 試合情報表示</a>
                        <a href="TournamentRegistrationInputDisplay"><i class="fas fa-trophy"></i> 大会情報登録</a>
+                       <a href="TournamentUpdateInput"> 大会情報変更</a>
                    </div>
                </li>
                <li class="nav__item"><a href="TournamentList"><i class="fas fa-school"></i> 高校情報</a></li>

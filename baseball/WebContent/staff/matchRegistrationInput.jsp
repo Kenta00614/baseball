@@ -147,9 +147,6 @@
                     <input type="hidden" name="tournamentId" value="${tournament.tournamentId }">
                     <button type="submit">試合情報登録</button>
                 </form>
-                <form action="TournamentUpdateInput" method="get" value="${tournament.tournamentId}">
-                    <button type="submit">大会情報変更</button>
-                </form>
             </div>
         </c:when>
     </c:choose>
