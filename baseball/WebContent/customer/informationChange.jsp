@@ -11,7 +11,7 @@
 <body>
     <div class="container">
         <h1>会員情報変更</h1>
-        <form id="memberChangeForm" action="InformationChange" method="post">
+        <form id="memberChangeForm" action="InformationChangeConfirm" method="post">
             <label for="name">氏名</label>
             <input type="text" id="name" name="name" value="${param.name}"  class="field" required>
 
