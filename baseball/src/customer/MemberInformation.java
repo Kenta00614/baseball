@@ -18,6 +18,7 @@ public class MemberInformation extends HttpServlet {
     @SuppressWarnings("unchecked")
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
+    	request.setCharacterEncoding("UTF-8");
 
         HttpSession session = request.getSession();
         List<Spectator> spectatorIds = (List<Spectator>) session.getAttribute("spectatorIds");

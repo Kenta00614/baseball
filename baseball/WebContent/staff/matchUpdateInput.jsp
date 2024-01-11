@@ -127,13 +127,13 @@
 		<input type="hidden" value="${matchList[0].duel3 }" name="duel3">
 		<input type="hidden" value="${matchList[0].duel4 }" name="duel4">
 		<input type="hidden" value="${matchList[0].matchId }" name="matchId">
-		<button type="submit">試合変更</button>
+		<button type="submit">変更</button>
 	</form>
 
 	<form action="MatchUpdateDelete" method="post">
 		<input type="hidden" value="${matchList[0].eventDate }" name="eventDate">
 		<input type="hidden" value="${tournament.tournamentId }" name="tournamentId">
-    	<button type="submit">試合削除</button>
+    	<button type="submit">削除</button>
 	</form>
 </body>
 </html>

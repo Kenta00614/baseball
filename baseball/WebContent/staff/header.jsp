@@ -37,7 +37,7 @@
 	    }
 
 	    .staff-header {
-	        background-color: white;
+	        background-color: fff;
 	        color: #555555; /* テキストの色を灰色に変更 */
 	        font-size: 20px; /* フォントサイズを大きくする（適宜調整） */
 	        font-weight: bold; /* フォントの太さを太くする */

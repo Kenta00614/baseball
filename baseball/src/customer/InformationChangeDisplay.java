@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 public class InformationChangeDisplay extends HttpServlet {
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    	request.setCharacterEncoding("UTF-8");
         // リクエストから名前と電話番号を取得
         String name = request.getParameter("name");
         String tel = request.getParameter("tel");
