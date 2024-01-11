@@ -5,6 +5,11 @@
 <%@include file="header.jsp"%>
 <html>
 <body>
+<form action="MatchInformation" method="post">
+	<input type="hidden" name="tournamentId" value="${tournament.tournamentId }">
+	<button type="submit">戻る</button>
+</form>
+
 <h2>第${tournament.ordinalNum }回　${tournament.name }</h2>
 	<form action="MatchUpdateCompletion" method="post">
 		<p>開催日　${matchList[0].eventDateStr }</p>
@@ -122,13 +127,13 @@
 		<input type="hidden" value="${matchList[0].duel3 }" name="duel3">
 		<input type="hidden" value="${matchList[0].duel4 }" name="duel4">
 		<input type="hidden" value="${matchList[0].matchId }" name="matchId">
-		<button type="submit">試合変更</button>
+		<button type="submit">変更</button>
 	</form>
 
 	<form action="MatchUpdateDelete" method="post">
 		<input type="hidden" value="${matchList[0].eventDate }" name="eventDate">
 		<input type="hidden" value="${tournament.tournamentId }" name="tournamentId">
-    	<button type="submit">試合削除</button>
+    	<button type="submit">削除</button>
 	</form>
 </body>
 </html>

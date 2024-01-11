@@ -38,7 +38,7 @@ public class MatchInformation extends HttpServlet {
     		return;
     	}else{
 			int tournamentId = Integer.parseInt(request.getParameter("tournamentId"));
-			String eventDateStr = request.getParameter("eventDate");
+			String delEventDateStr = request.getParameter("delEventDate");
 			Date nowDate = null;
 
 			List<Match> matchList = new ArrayList();
@@ -47,8 +47,8 @@ public class MatchInformation extends HttpServlet {
 			DuelDAO duelDAO = new DuelDAO();
 
 			try {
-				if(eventDateStr != null){
-					Date eventDate = Date.valueOf(eventDateStr);
+				if(delEventDateStr != null){
+					Date eventDate = Date.valueOf(delEventDateStr);
 					matchDAO.deleteMatch(eventDate);
 				}
 

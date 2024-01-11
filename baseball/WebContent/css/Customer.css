@@ -313,18 +313,23 @@
 
 	.signup-container .signup-label,
 	.signup-label {
-	    margin-top: 10px;
+	    margin-top: 20px;
 	}
 
-	.signup-container .custom-input,
+	.signup-container
 	.custom-input {
-	    padding: 10px;
-	    margin-top: 5px;
+	    padding: 5px;
+	    margin-top: 3px;
+	}
+
+	.custom-input{
+		padding: 5px;
+	    margin-top: 0px;
 	}
 
 	.signup-container .submit-button,
 	.submit-button {
-	    margin-top: 20px;
+	    margin-top: 30px;
 	    padding: 10px 20px;
 	    background-color: #000;
 	    color: white;
@@ -430,9 +435,7 @@
 	  box-sizing: border-box;
 	}
 
-	.ticket-btn {
 
-	}
 	.ticketElement-btn{
 	    border: 3px solid transparent;
 	    margin: 5px;
@@ -514,6 +517,18 @@
 	}
 
 
+	/*--- ticketSelectSeat.jspのスタイル ---*/
+	.ticket-select{
+		font-size: 36px;
+		background-color: #CCFFCC;
+	    margin-left: 75px;
+	    border: 3px solid #a9a9a9;
+	    border-radius: 20px;
+	    margin: 15px auto; /* 左右のマージンをautoにして中央寄せに修正 */
+
+	}
+
+
 	/*--- ticketShare.jspのスタイル ---*/
 	.shared-link{
 	    text-align:center;
@@ -557,11 +572,23 @@
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 @media screen and (max-width:768px;){
 
 	/* スマートフォン用CSS記述 */
 
-	* {
+		* {
 	    box-sizing: border-box;
 	}
 
@@ -580,10 +607,12 @@
 
 	h1 {
 	    text-align: center;
+	    font-size: 36px;
 	}
 
 	h2 {
 	    text-align: center;
+	    font-size: 28px;
 	}
 
 	.btn {
@@ -592,7 +621,6 @@
 
 
 	/*テーブル設定*/
-
 	table{
 		border: 3px solid #a9a9a9;
 	    width: 700px;
@@ -636,6 +664,19 @@
 	}
 	.home-btn:hover{
 		background-color:#555;
+	}
+	.form-btn{
+	 	border: 3px solid transparent;
+	    margin: 15px auto; /* 左右のマージンをautoにして中央寄せに修正 */
+	    display: flex;
+	    color: #ffffff;
+	    background: #000000;
+	    padding: 8px 10px;
+	    cursor: pointer;
+	    border-radius: 5px;
+	    /* other styles */
+	    align-items: center;
+	    position: relative; /* bodyを相対的な位置に設定 */
 	}
 
 
@@ -687,6 +728,13 @@
 	}
 
 
+	/*--- 入力欄のスタイル ---*/
+	.field{
+	    padding: 10px;
+	    margin-top: 5px;
+	    width: 100%;
+	    box-sizing: border-box;
+	}
 
 
 	/*--- login.jspのスタイル ---*/
@@ -808,7 +856,7 @@
 	    /* ボタンのスタイル */
 	    padding: 10px 15px;
 	    background-color: #808080;
-		width: 120px;
+		width: 150px;
 	    color: white;
 	    border: none;
 	    cursor: pointer;
@@ -1094,3 +1142,5 @@
 		background-color:#555;
 	}
 }
+
+

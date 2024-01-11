@@ -20,11 +20,12 @@
         }
 
         .tournament-btn-container {
-            max-width: 600px; /* Adjusted max-width */
-            margin: 20px auto;
-            background-color: white;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 5px;
+	        max-width: 500px; /* Adjust the max-width according to your design */
+	        margin: 20px auto;
+	        background-color: white;
+	        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	        border-radius: 5px;
+	        overflow: hidden; /* Add overflow property to hide overflowing content */
         }
 
         .tournament-btn {

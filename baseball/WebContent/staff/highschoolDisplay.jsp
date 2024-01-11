@@ -3,9 +3,60 @@
 <%@ page import="bean.School" %>
 <%@ include file="header.jsp" %>
 <html>
+
 <head>
     <title>高校情報一覧</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+
+        h2 {
+            text-align: center;
+            color: #3498db;
+            margin-top: 20px;
+        }
+
+        table {
+            margin: 20px auto;
+            border-collapse: collapse;
+            width: 80%;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ecf0f1;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #2980b9;
+        }
+    </style>
 </head>
+
 <body>
     <h2>高校情報一覧</h2>
     <form action="HighschoolUpdate" method="post">
@@ -14,7 +65,7 @@
                 <th>高校名</th>
             </tr>
             <%
-            List<School> schools = (List<School>)request.getAttribute("schools");
+            List<School> schools = (List<School>) request.getAttribute("schools");
             for (School school : schools) {
             %>
                 <tr>
@@ -24,8 +75,11 @@
                 </tr>
             <% } %>
         </table>
-        <input type="submit" value="変更">
-        <input type="hidden" name="tournamentId" value="<%= request.getAttribute("tournamentId") %>">
+        <div style="text-align: center;">
+            <input type="submit" value="変更">
+            <input type="hidden" name="tournamentId" value="<%= request.getAttribute("tournamentId") %>">
+        </div>
     </form>
 </body>
+
 </html>

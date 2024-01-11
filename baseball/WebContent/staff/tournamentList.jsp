@@ -20,17 +20,16 @@
         }
 
         .tournament-btn-container {
-            max-width: 600px;
+            max-width: 500px;
             margin: 20px auto;
             background-color: white;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             border-radius: 5px;
+            overflow: hidden;
         }
 
         .tournament-btn {
-            overflow: hidden;
-            position: relative;
-            margin: 10px;
+            margin: 5px;
         }
 
         .tournament-btn button {
@@ -42,8 +41,45 @@
             cursor: pointer;
             width: 100%;
             transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
+        .change-btn-container {
+            text-align: center;
+            margin: 20px auto;
+        }
+
+        .change-btn {
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .change-btn:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: linear-gradient(90deg, #45a049, #0066FF); /* Gradient effect */
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .change-btn:hover:before {
+            opacity: 1;
+        }
     </style>
 </head>
 
@@ -61,8 +97,8 @@
             </div>
         </c:forEach>
     </div>
-    <div class="aaa">
-        <form action="TournamentListChangeDisplay" method="post">
+    <div class="change-btn-container">
+        <form action="TournamentListChangeDisplay" method="post" class="change-btn">
             <button type="submit">変更</button>
         </form>
     </div>
