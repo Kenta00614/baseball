@@ -31,6 +31,7 @@
 		</tr>
 		</transition-group>
 		</table>
+		<p>グラウンド側</p>
 		<%-- 選択したら出てくる情報 --%>
           <transition-group >
 			<li v-for="(ticket,index) in selectedTickets" v-bind:key="ticket.ticketsId" >
