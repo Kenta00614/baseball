@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import bean.Staff;
+import bean.Tournament;
+import dao.TournamentDAO;
 
 @WebServlet("/staff/MatchUpdateDelete")
 public class MatchUpdateDelete extends HttpServlet {
@@ -29,9 +31,19 @@ public class MatchUpdateDelete extends HttpServlet {
 	    	String tournamentId = request.getParameter("tournamentId");
 	    	String eventDate = request.getParameter("eventDate");
 
+	    	int TournamentId = Integer.parseInt(tournamentId);
+	    	TournamentDAO TD=new TournamentDAO();
+
+	    	try {
+	    		Tournament tournament = TD.getTournamentInfo(TournamentId);
+
+
 	    	request.setAttribute("tournamentId", tournamentId);
+	    	request.setAttribute("tournament", tournament);
 	    	request.setAttribute("eventDate", eventDate);
 	        request.getRequestDispatcher("/staff/matchUpdateDelete.jsp").forward(request, response);
+			} catch (Exception e) {
+			}
 	    }
     }
 }
