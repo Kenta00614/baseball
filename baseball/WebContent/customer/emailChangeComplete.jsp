@@ -7,9 +7,9 @@
 	<link rel="stylesheet" type="text/css"  href ="/baseball/css/Customer.css">
 </head>
 <body>
-
-<h2>変更が完了しました。</h2>
-
-  <button onclick="location.href='Main'">メイン画面へ</button>
+<div class="email-change">
+	<h2 class="email-change">変更が完了しました</h2>
+	  <button onclick="location.href='Main'" >メイン画面へ</button>
+</div>
 </body>
 </html>

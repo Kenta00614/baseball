@@ -80,6 +80,10 @@
 	h1 {
 	    text-align: center;
 	}
+
+	.seat{
+		  margin: 0 auto;
+	}
 }
 
 
