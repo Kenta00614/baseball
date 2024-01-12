@@ -1,139 +1,136 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@include file="header.jsp"%>
+<%@ include file="header.jsp" %>
 <html>
+<head>
+    <style>
+        body {
+            font-family: 'Helvetica', 'Arial', sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            margin-top: 20px;
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f8f8f8;
+            color: #555;
+        }
+
+        select {
+            width: 100%;
+            padding: 8px;
+            margin: 8px 0;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #007BFF; /* 青色 */
+            color: #fff; /* 白色 */
+            padding: 12px 18px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #0056b3; /* ホバー時の色 */
+        }
+    </style>
+</head>
 <body>
-<form action="MatchInformation" method="post">
-	<input type="hidden" name="tournamentId" value="${tournament.tournamentId }">
-	<button type="submit">戻る</button>
-</form>
+    <form action="MatchInformation" method="post">
+        <input type="hidden" name="tournamentId" value="${tournament.tournamentId}">
+        <button type="submit">戻る</button>
+    </form>
 
-<h2>第${tournament.ordinalNum }回　${tournament.name }</h2>
-	<form action="MatchUpdateCompletion" method="post">
-		<p>開催日　${matchList[0].eventDateStr }</p>
-     	<p>チケット販売開始日　${matchList[0].saleStartAtStr }</p>
-     	<table>
-     		<tr><th></th><th>高校名</th><th>高校名</th><th>試合状況</th><th>第何回戦</th></tr>
-     		<tr>
-     			<td>第一試合</td>
-     			<td><select name="duel1School1">
-	     			<c:forEach begin="0" end="${fn:length(schoolList)-1}" step="1" var="i">
-					<option value="${schoolList[i].schoolId }" <c:if test="${duelList[0].schoolId1 == schoolList[i].schoolId}">selected</c:if>>${schoolList[i].name }</option>
-	     			</c:forEach>
-     			</select></td>
-     			<td><select name="duel1School2">
-	     			<c:forEach begin="0" end="${fn:length(schoolList)-1}" step="1" var="i">
-					<option value="${schoolList[i].schoolId }" <c:if test="${duelList[0].schoolId2 == schoolList[i].schoolId}">selected</c:if>>${schoolList[i].name }</option>
-	     			</c:forEach>
-     			</select></td>
-     			<td><select name="status1">
-     				<c:forEach begin="0" end="${fn:length(duelStatus)-1}" step="1" var="i">
-     				<option value="${i+1 }" <c:if test="${duelList[0].status == i+1}">selected</c:if>>${duelStatus[i] }</option>
-     				</c:forEach>
-     			</select></td>
-     			<td><select name="duel1Round">
-					<option value="1" <c:if test="${duelList[0].round == 1}">selected</c:if>>第一回戦</option>
-					<option value="2" <c:if test="${duelList[0].round == 2}">selected</c:if>>第二回戦</option>
-					<option value="3" <c:if test="${duelList[0].round == 3}">selected</c:if>>第三回戦</option>
-					<option value="4" <c:if test="${duelList[0].round == 4}">selected</c:if>>準々決勝</option>
-					<option value="5" <c:if test="${duelList[0].round == 5}">selected</c:if>>準決勝</option>
-					<option value="6" <c:if test="${duelList[0].round == 6}">selected</c:if>>決勝</option>
-     			</select></td>
-     		</tr>
-     		<tr>
-     			<td>第二試合</td>
-     			<td><select name="duel2School1">
-	     			<c:forEach var="school" items="${schoolList }">
-					<option value="${school.schoolId }" <c:if test="${duelList[1].schoolId1 == school.schoolId}">selected</c:if>>${school.name }</option>
-	     			</c:forEach>
-     			</select></td>
-     			<td><select name="duel2School2">
-	     			<c:forEach var="school" items="${schoolList }">
-					<option value="${school.schoolId }" <c:if test="${duelList[1].schoolId2 == school.schoolId}">selected</c:if>>${school.name }</option>
-	     			</c:forEach>
-     			</select></td>
-     			<td><select name="status2">
-     				<c:forEach begin="0" end="${fn:length(duelStatus)-1}" step="1" var="i">
-     				<option value="${i+1 }" <c:if test="${duelList[1].status == i+1}">selected</c:if>>${duelStatus[i] }</option>
-     				</c:forEach>
-     			</select></td>
-     			<td><select name="duel2Round">
-					<option value="1" <c:if test="${duelList[1].round == 1}">selected</c:if>>第一回戦</option>
-					<option value="2" <c:if test="${duelList[1].round == 2}">selected</c:if>>第二回戦</option>
-					<option value="3" <c:if test="${duelList[1].round == 3}">selected</c:if>>第三回戦</option>
-					<option value="4" <c:if test="${duelList[1].round == 4}">selected</c:if>>準々決勝</option>
-					<option value="5" <c:if test="${duelList[1].round == 5}">selected</c:if>>準決勝</option>
-					<option value="6" <c:if test="${duelList[1].round == 6}">selected</c:if>>決勝</option>
-     			</select></td>
-     		</tr>
-     		<tr>
-     			<td>第三試合</td>
-     			<td><select name="duel3School1">
-	     			<c:forEach var="school" items="${schoolList }">
-					<option value="${school.schoolId }" <c:if test="${duelList[2].schoolId1 == school.schoolId}">selected</c:if>>${school.name }</option>
-	     			</c:forEach>
-     			</select></td>
-     			<td><select name="duel3School2">
-	     			<c:forEach var="school" items="${schoolList }">
-					<option value="${school.schoolId }" <c:if test="${duelList[2].schoolId2 == school.schoolId}">selected</c:if>>${school.name }</option>
-	     			</c:forEach>
-     			</select></td>
-     			<td><select name="status3">
-     				<c:forEach begin="0" end="${fn:length(duelStatus)-1}" step="1" var="i">
-     				<option value="${i+1 }" <c:if test="${duelList[2].status == i+1}">selected</c:if>>${duelStatus[i] }</option>
-     				</c:forEach>
-     			</select></td>
-     			<td><select name="duel3Round">
-					<option value="1" <c:if test="${duelList[2].round == 1}">selected</c:if>>第一回戦</option>
-					<option value="2" <c:if test="${duelList[2].round == 2}">selected</c:if>>第二回戦</option>
-					<option value="3" <c:if test="${duelList[2].round == 3}">selected</c:if>>第三回戦</option>
-					<option value="4" <c:if test="${duelList[2].round == 4}">selected</c:if>>準々決勝</option>
-					<option value="5" <c:if test="${duelList[2].round == 5}">selected</c:if>>準決勝</option>
-					<option value="6" <c:if test="${duelList[2].round == 6}">selected</c:if>>決勝</option>
-     			</select></td>
-     		</tr>
-     		<tr>
-     			<td>第四試合</td>
-     			<td><select name="duel4School1">
-	     			<c:forEach var="school" items="${schoolList }">
-					<option value="${school.schoolId }" <c:if test="${duelList[3].schoolId1 == school.schoolId}">selected</c:if>>${school.name }</option>
-	     			</c:forEach>
-     			</select></td>
-     			<td><select name="duel4School2">
-	     			<c:forEach var="school" items="${schoolList }">
-					<option value="${school.schoolId }" <c:if test="${duelList[3].schoolId2 == school.schoolId}">selected</c:if>>${school.name }</option>
-	     			</c:forEach>
-     			</select></td>
-     			<td><select name="status4">
-     				<c:forEach begin="0" end="${fn:length(duelStatus)-1}" step="1" var="i">
-     				<option value="${i+1 }" <c:if test="${duelList[3].status == i+1}">selected</c:if>>${duelStatus[i] }</option>
-     				</c:forEach>
-     			</select></td>
-     			<td><select name="duel4Round">
-					<option value="1" <c:if test="${duelList[3].round == 1}">selected</c:if>>第一回戦</option>
-					<option value="2" <c:if test="${duelList[3].round == 2}">selected</c:if>>第二回戦</option>
-					<option value="3" <c:if test="${duelList[3].round == 3}">selected</c:if>>第三回戦</option>
-					<option value="4" <c:if test="${duelList[3].round == 4}">selected</c:if>>準々決勝</option>
-					<option value="5" <c:if test="${duelList[3].round == 5}">selected</c:if>>準決勝</option>
-					<option value="6" <c:if test="${duelList[3].round == 6}">selected</c:if>>決勝</option>
-     			</select></td>
-     		</tr>
-     	</table>
+    <h2>第${tournament.ordinalNum}回　${tournament.name}</h2>
 
-		<input type="hidden" value="${matchList[0].duel1 }" name="duel1">
-		<input type="hidden" value="${matchList[0].duel2 }" name="duel2">
-		<input type="hidden" value="${matchList[0].duel3 }" name="duel3">
-		<input type="hidden" value="${matchList[0].duel4 }" name="duel4">
-		<input type="hidden" value="${matchList[0].matchId }" name="matchId">
-		<button type="submit">変更</button>
-	</form>
+    <form action="MatchUpdateCompletion" method="post">
+        <!-- 試合情報表示 -->
+        <p>開催日 ${matchList[0].eventDateStr}</p>
+        <p>チケット販売開始日 ${matchList[0].saleStartAtStr}</p>
 
-	<form action="MatchUpdateDelete" method="post">
-		<input type="hidden" value="${matchList[0].eventDate }" name="eventDate">
-		<input type="hidden" value="${tournament.tournamentId }" name="tournamentId">
-    	<button type="submit">削除</button>
-	</form>
+        <!-- 試合情報編集フォーム -->
+        <table>
+            <tr>
+                <th></th>
+                <th>高校名</th>
+                <th>高校名</th>
+                <th>試合状況</th>
+                <th>第何回戦</th>
+            </tr>
+            <c:forEach var="duel" items="${duelList}" varStatus="loop">
+                <tr>
+                    <td>第${loop.index}試合</td>
+                    <td>
+                        <select name="duel${loop.index}School1">
+                            <c:forEach var="school" items="${schoolList}">
+                                <option value="${school.schoolId}" <c:if test="${duel.schoolId1 == school.schoolId}">selected</c:if>>${school.name}</option>
+                            </c:forEach>
+                        </select>
+                    </td>
+                    <td>
+                        <select name="duel${loop.index}School2">
+                            <c:forEach var="school" items="${schoolList}">
+                                <option value="${school.schoolId}" <c:if test="${duel.schoolId2 == school.schoolId}">selected</c:if>>${school.name}</option>
+                            </c:forEach>
+                        </select>
+                    </td>
+                    <td>
+                        <select name="status${loop.index}">
+                            <c:forEach var="i" begin="0" end="${fn:length(duelStatus)-1}" step="1">
+                                <option value="${i+1}" <c:if test="${duel.status == i+1}">selected</c:if>>${duelStatus[i]}</option>
+                            </c:forEach>
+                        </select>
+                    </td>
+                    <td>
+                        <select name="duel${loop.index}Round">
+                            <c:forEach var="round" items="${roundList}">
+                                <option value="${round.value}" <c:if test="${duel.round == round.value}">selected</c:if>>${round.label}</option>
+                            </c:forEach>
+                        </select>
+                    </td>
+                </tr>
+            </c:forEach>
+        </table>
+
+        <!-- 非表示フィールド -->
+        <c:forEach var="duel" items="${duelList}" varStatus="loop">
+            <input type="hidden" value="${duel.duelId}" name="duel${loop.index}">
+        </c:forEach>
+
+        <input type="hidden" value="${matchList[0].matchId}" name="matchId">
+        <button type="submit">変更</button>
+    </form>
+
+    <form action="MatchUpdateDelete" method="post">
+        <input type="hidden" value="${matchList[0].eventDate}" name="eventDate">
+        <input type="hidden" value="${tournament.tournamentId}" name="tournamentId">
+        <button type="submit">削除</button>
+    </form>
 </body>
 </html>
