@@ -95,7 +95,10 @@
 
             <div class="control">
                 <label for="season">開催時期</label>
-                <input type="text" class="form-control" id="season" name="season" value="${tournament.season}" required />
+                <select id="season" name="season">
+	            	<option value="春">春</option>
+	               	<option value="夏">夏</option>
+	            </select>
             </div>
 
             <button type="submit" class="btn btn-primary">変更</button>
