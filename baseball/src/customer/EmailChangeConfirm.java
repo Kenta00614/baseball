@@ -18,7 +18,7 @@ public class EmailChangeConfirm extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String uuidString = request.getParameter("uuid");
         try {
-            if (uuidString != null) {
+            if (uuidString != null && uuidString.length() == 36) {
                 UUID uuid = UUID.fromString(uuidString);
                 ProvisionalDAO provisionalDAO = new ProvisionalDAO();
                 SpectatorDAO spectatorDAO = new SpectatorDAO();
@@ -33,14 +33,15 @@ public class EmailChangeConfirm extends HttpServlet {
                     // 更新後、Provisional テーブルから情報を削除
                     provisionalDAO.delUuid(uuid);
 
-                    // メールアドレス変更完了ページへリダイレクト
-                    response.sendRedirect("/baseball/customer/emailChangeComplete.jsp");
+                    // メールアドレス変更完了ページへ
+                    request.setAttribute("comfilmFlg","0");
                 } else {
-                    response.sendRedirect("/baseball/customer/error.jsp");
+                	request.setAttribute("comfilmFlg","1");
                 }
             } else {
-                response.sendRedirect("/baseball/customer/error.jsp");
+            	request.setAttribute("comfilmFlg","2");
             }
+            request.getRequestDispatcher("/customer/emailChangeComplete.jsp").forward(request, response);
         } catch (Exception e) {
             e.printStackTrace();
             response.sendRedirect("/baseball/customer/error.jsp");

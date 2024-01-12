@@ -6,7 +6,6 @@
 
 <head>
 	<style>
-	    /* 既存のスタイル */
 	    body {
 	        font-family: 'Arial', sans-serif;
 	        margin: 0;
@@ -62,17 +61,16 @@
 	        cursor: pointer;
 	    }
 
-	    /* 変更点: ボタンを同じ列に表示するスタイル */
 	    button {
 	        background-color: #0066FF;
 	        color: white;
-	        padding: 8px; /* 調整可能なパディング */
+	        padding: 8px;
 	        border: none;
 	        border-radius: 5px;
 	        cursor: pointer;
-	        width: 100%; /* 100%にして横幅いっぱいに */
-	        font-size: 14px; /* 調整可能なフォントサイズ */
-	        margin-bottom: 10px; /* 下マージンを追加してボタンを離す */
+	        width: 100%;
+	        font-size: 14px;
+	        margin-bottom: 10px;
 	    }
 	</style>
 

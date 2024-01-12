@@ -15,7 +15,7 @@
         }
 
         h1 {
-            color: #d9534f; /* 赤色のテキスト */
+            color: #d9534f;
             text-align: center;
             margin-top: 100px;
             font-size: 2em;

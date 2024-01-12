@@ -15,17 +15,17 @@
         .header {
             background-color: #F5F5F5;
             color: #555555;
-            padding: 0.1px 0; /* Adjusted padding */
+            padding: 0.1px 0;
             text-align: center;
         }
 
         .tournament-btn-container {
-	        max-width: 500px; /* Adjust the max-width according to your design */
+	        max-width: 500px;
 	        margin: 20px auto;
 	        background-color: white;
 	        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 	        border-radius: 5px;
-	        overflow: hidden; /* Add overflow property to hide overflowing content */
+	        overflow: hidden;
         }
 
         .tournament-btn {
@@ -37,7 +37,7 @@
         .tournament-btn button {
             background-color: #0066FF;
             color: white;
-            padding: 10px 20px; /* Adjusted padding */
+            padding: 10px 20px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
