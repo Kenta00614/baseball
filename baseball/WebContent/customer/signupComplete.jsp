@@ -4,12 +4,9 @@
 
 <html>
 <head>
-    <title>Verification Success</title>
-
 	<link rel="stylesheet" type="text/css"  href ="/baseball/css/Customer.css">
 </head>
 <body>
     <h2 class="email-change-send">アカウントを登録しました</h2>
-    <p></p>
 </body>
 </html>

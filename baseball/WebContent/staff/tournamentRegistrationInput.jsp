@@ -79,7 +79,10 @@
 	            </div>
 	            <div class="control">
 	                <label for="season">大会の時期:</label>
-	                <input type="text" id="season" name="season" required>
+	                <select id="season" name="season">
+	                	<option value="春">春</option>
+	                	<option value="夏">夏</option>
+	                </select>
 	            </div>
 	            <div class="control">
 	                <label for="name">大会名:</label>
