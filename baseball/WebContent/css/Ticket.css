@@ -52,6 +52,8 @@
 	    flex-direction: column;
 	}
 
+
+
 	/*--- アニメーション---*/
 	.v-enter-active,.v-leave-active{
 		transition: 0.5s;
@@ -81,10 +83,11 @@
 	    text-align: center;
 	}
 
-	.seat{
-		  margin: 0 auto;
-	}
+
+
+
 }
+
 
 
 @media screen and (max-width:768px) {
