@@ -250,4 +250,22 @@ public class SpectatorDAO extends DAO {
 			con.close();
 			return point;
 		}
+
+//	引数と同じ電話番号を持つ場合は引数と同じ電話番号を返す
+	public String searchSameTel(String Tel)throws Exception {
+			String search="";
+			Connection con=getConnection();
+
+			PreparedStatement stdup=con.prepareStatement(
+					"SELECT * FROM SPECTATOR WHERE TEL=?");
+				stdup.setString(1, Tel);
+				ResultSet rsdup=stdup.executeQuery();
+				while (rsdup.next()) {
+					search=rsdup.getString("Tel");
+				}
+
+			stdup.close();
+			con.close();
+			return search;
+		}
 }
