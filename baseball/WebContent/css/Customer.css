@@ -49,6 +49,7 @@
 	table td {
 	    background-color: #f0fff0;
 	    width: 550px;
+	    text-align: center; /* ブロック内の中央寄せ */
 	}
 
 	table th,
@@ -248,6 +249,8 @@
 	    flex-wrap: wrap;
 	}
 
+
+
 	.schedule > div {
 	    margin: 0 10px;
 	}
@@ -269,6 +272,8 @@
     .match-number-col { width: 100px; }
     .teams-col { width: 300px; }
     .status-col { width: 150px; }
+
+
 
 
 	/*--- memberInformation.jspのスタイル ---*/
