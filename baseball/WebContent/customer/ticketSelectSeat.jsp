@@ -8,6 +8,58 @@
 
 
  <link rel="stylesheet" type="text/css" href="/baseball/css/Ticket.css">
+ <style>
+    .selected-ticket {
+        width: 400px;
+        height: 50px;
+        margin-top: 0px;
+        margin: 3px;
+
+		display: inline-block;
+	    position: relative;
+	    padding: 0;
+	    border-right: 27px solid #75ffb3;
+	    background-color: #dbffeb;
+	    color: #333333;
+    }
+
+    .selected-ticket::before {
+    position: absolute;
+    bottom: 2px;
+    right: -20px;
+    z-index: -1;
+    transform: rotate(5deg);
+    width: 100%;
+    height: 50%;
+    background-color: #d0d0d0;
+    content: "";
+    filter: blur(4px);
+	}
+
+	.age{
+		background-color: #9fffc5;
+		border: solid 3px #01e25b;
+		border-radius: 20px;
+	}
+	.kids{
+		background-color:#ffec99;
+		border: solid 3px #ffcf00;
+		border-radius: 20px;
+	}
+
+	.ground{
+		width: 420px;
+		margin-top: 0px;
+		padding:3px ;/*内側余白*/
+
+		border-top:solid 5px #f7b100;/*線の種類・太さ・色*/
+		background-color:#F9F4E8;/*背景色*/
+		box-shadow:3px 1px 4px rgba(0, 0, 0, 0.2)	;/*ボックス影*/
+		text-align: center; /* ブロック内の中央寄せ */
+	}
+
+
+</style>
 </head>
 <body>
 	<%-- 戻るボタン --%>
@@ -31,13 +83,21 @@
 		</tr>
 		</transition-group>
 		</table>
-		<p>グラウンド側</p>
+		<p class="ground">グラウンド側</p>
 		<%-- 選択したら出てくる情報 --%>
-          <transition-group >
-			<li v-for="(ticket,index) in selectedTickets" v-bind:key="ticket.ticketsId" >
-				<p>{{ticket.typeStr}}　{{ticket.step}}段　{{ticket.number}}番　{{ticket.gate}}番ゲート　{{ticket.passage}}通路　<button id="childBtn" value="index" v-bind:value="ticket.check" v-on:click="changeChild(index)">{{ticket.checkStr}}</button></p>
-			</li>
-		</transition-group>
+          <transition-group>
+			    <li v-for="(ticket, index) in selectedTickets" v-bind:key="ticket.ticketsId" class="selected-ticket">
+			        <p>
+			             {{ ticket.typeStr }} {{ ticket.step }}段 {{ ticket.number }}番
+			             {{ ticket.gate }}番ゲート {{ ticket.passage }}通路
+			             <button id="childBtn" value="index" v-bind:value="ticket.check" v-on:click="changeChild(index)" v-bind:class="{ 'age': ticket.checkStr === '大人', 'kids': ticket.checkStr === '子供' }">
+			                {{ ticket.checkStr }}<br>
+			            </button>
+			        </p>
+			    </li>
+		 </transition-group>
+
+
 
 		<form name="myForm" action="TicketConfirm" method="post">
 			<input type="hidden" id="tickets" name="tickets" value="" ><!-- 隠しパラメータ ticketのIDリスト-->
@@ -117,6 +177,7 @@
 				    if(!this.selectedTickets[index].check){
 		        		this.selectedTickets[index].check=true;
 		        		this.selectedTickets[index].checkStr="子供";
+
 		        	}else{
 		        		this.selectedTickets[index].check=false;
 		        		this.selectedTickets[index].checkStr="大人";

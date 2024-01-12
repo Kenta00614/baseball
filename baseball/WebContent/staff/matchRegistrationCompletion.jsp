@@ -41,6 +41,11 @@
             cursor: pointer;
             width: 100%;
         }
+
+        /* Add margin between the buttons */
+        .form-container form:not(:last-child) {
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 
@@ -53,6 +58,7 @@
         <form action="MatchRegistrationInput" method="get">
             <button type="submit">続けて登録</button>
         </form>
+
         <form action="MatchInformation" method="post">
             <input type="hidden" value="${tournamentId}" name="tournamentId">
             <button type="submit">OK</button>
