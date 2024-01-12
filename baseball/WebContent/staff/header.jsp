@@ -13,46 +13,42 @@
 
 
 
-    <!-- 追加したスタイル -->
 	<style>
-	    /* 既存のスタイル */
-
 	    .staff-icon-container {
 	        display: flex;
 	        align-items: center;
 	    }
 
 	    .staff-icon-container i {
-	        margin-right: 5px; /* Adjust the margin between the icon and text */
+	        margin-right: 5px;
 	    }
 
 	    .staff-text {
-	        font-size: 20px; /* Adjust the font size of the text */
+	        font-size: 20px;
 	    }
 
 
 	    .nav-menu {
 	        float: right;
-	        margin-top: 10px; /* 適切なマージンを設定 */
+	        margin-top: 10px;
 	    }
 
 	    .staff-header {
 	        background-color: fff;
-	        color: #555555; /* テキストの色を灰色に変更 */
-	        font-size: 20px; /* フォントサイズを大きくする（適宜調整） */
-	        font-weight: bold; /* フォントの太さを太くする */
+	        color: #555555;
+	        font-size: 20px;
+	        font-weight: bold;
 	        padding: 0.1px 0;
 	    }
 	    .staff-header a {
-	        color: #555555; /* リンクの色も灰色に変更 */
+	        color: #555555;
 	    }
 
 	    .nav-menu a {
-	        color: #555555; /* テキストの色を灰色に変更 */
+	        color: #555555;
 	        text-decoration: none;
 	    }
 
-	    /* フォントアイコンの色を変更 */
 	    .nav-menu a i {
 	        color: #555555;
 	    }
@@ -64,7 +60,7 @@
 	    .dropdown {
 	        display: none;
 	        position: absolute;
-	        background-color: #333; /* ドロップダウンの背景色を黒に変更 */
+	        background-color: #333;
 	        min-width: 160px;
 	        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 	        z-index: 1;
@@ -113,7 +109,7 @@
                        <a href="MatchRegistrationInput"><i class="fas fa-plus"></i> 試合情報登録</a>
                        <a href="MatchDisplay"><i class="fas fa-eye"></i> 試合情報表示</a>
                        <a href="TournamentRegistrationInputDisplay"><i class="fas fa-trophy"></i> 大会情報登録</a>
-                       <a href="TournamentUpdateInput"> 大会情報変更</a>
+                       <a href="TournamentUpdateInput"><i class="fas fa-pencil-alt"></i> 大会情報変更</a>
                    </div>
                </li>
                <li class="nav__item"><a href="TournamentList"><i class="fas fa-school"></i> 高校情報</a></li>
@@ -139,7 +135,7 @@
            </c:if>
            </ul>
        </div>
-       <hr class="hr-style"> <!-- ここに移動させました -->
+       <hr class="hr-style">
    </header>
 </body>
 </html>

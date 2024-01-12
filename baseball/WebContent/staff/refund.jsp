@@ -8,13 +8,13 @@
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #F5F5F5; /* Updated background color */
+            background-color: #F5F5F5;
         }
 
         .header {
             background-color: #F5F5F5;
             color: #555555;
-            padding: 0.1px; /* Updated padding */
+            padding: 0.1px;
             text-align: center;
         }
 
