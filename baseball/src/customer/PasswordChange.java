@@ -29,22 +29,23 @@ public class PasswordChange extends HttpServlet {
             SpectatorDAO spectatorDAO = new SpectatorDAO();
             ProvisionalDAO provisionalDAO = new ProvisionalDAO();
             String hashedPassword = hashPassword(newPassword);
-
             int result = spectatorDAO.updatePassword(uuid, hashedPassword);
             provisionalDAO.delUuid(uuid);
 
 
 
             if (result > 0) {
-                // パスワード更新成功ページへリダイレクト
-                response.sendRedirect(request.getContextPath() + "/customer/passwordResetSuccess.jsp");
+                // パスワード更新成功
+            	request.setAttribute("sucssesFlg", "0");
             } else {
-                // 更新失敗ページへリダイレクト
-                response.sendRedirect(request.getContextPath() + "/customer/passwordResetFail.jsp");
+            	 // パスワード更新失敗
+            	request.setAttribute("sucssesFlg", "1");
             }
+            request.getRequestDispatcher("/customer/passwordReset.jsp").forward(request, response);
         } catch (Exception e) {
             e.printStackTrace();
-            response.sendRedirect("/baseball/customer/error.jsp");
+            request.setAttribute("sucssesFlg", "1");
+            request.getRequestDispatcher("/customer/passwordReset.jsp").forward(request, response);
         }
     }
 

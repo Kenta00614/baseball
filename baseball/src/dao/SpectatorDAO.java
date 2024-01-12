@@ -154,23 +154,25 @@ public class SpectatorDAO extends DAO {
 
 	//パスワードの再設定
 	public int updatePassword(UUID uuid,String hashedPassword)throws Exception{
-
+		int num=0;
 		ProvisionalDAO PD=new ProvisionalDAO();
 		Provisional provisional=PD.searchUuid(uuid);
 
-		String mail=provisional.getMail();
+		if(provisional != null){
+			String mail=provisional.getMail();
 
-		Connection con=getConnection();
-		PreparedStatement st=con.prepareStatement("update spectator set password = ? where mail = ?");
-		st.setString(1, hashedPassword);
-		st.setString(2, mail);
+			Connection con=getConnection();
+			PreparedStatement st=con.prepareStatement("update spectator set password = ? where mail = ?");
+			st.setString(1, hashedPassword);
+			st.setString(2, mail);
 
-		int num=st.executeUpdate();
+			num=st.executeUpdate();
 
-		PD.delUuid(uuid);
+			PD.delUuid(uuid);
 
-		st.close();
-		con.close();
+			st.close();
+			con.close();
+		}
 
 		return num;
 
