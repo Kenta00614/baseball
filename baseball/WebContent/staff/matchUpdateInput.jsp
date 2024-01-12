@@ -47,8 +47,8 @@
         }
 
         button {
-            background-color: #007BFF; /* 青色 */
-            color: #fff; /* 白色 */
+            background-color: #007BFF;
+            color: #fff;
             padding: 12px 18px;
             border: none;
             border-radius: 4px;
@@ -57,7 +57,7 @@
         }
 
         button:hover {
-            background-color: #0056b3; /* ホバー時の色 */
+            background-color: #0056b3;
         }
     </style>
 </head>
@@ -132,5 +132,3 @@
         <input type="hidden" value="${tournament.tournamentId}" name="tournamentId">
         <button type="submit">削除</button>
     </form>
-</body>
-</html>

@@ -26,18 +26,18 @@
         }
 
         h2 {
-            color: #000; /* Black color */
+            color: #000;
         }
 
         p {
-            color: #000; /* Black color */
+            color: #000;
             margin-bottom: 20px;
         }
 
         .home-btn {
             display: inline-block;
             padding: 10px 20px;
-            background-color: #000; /* Black color */
+            background-color: #000;
             color: #fff;
             text-decoration: none;
             border-radius: 5px;
@@ -45,7 +45,7 @@
         }
 
         .home-btn:hover {
-            background-color: #333; /* Darker black on hover */
+            background-color: #333;
         }
     </style>
 </head>

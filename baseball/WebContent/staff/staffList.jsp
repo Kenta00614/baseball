@@ -24,7 +24,7 @@
         }
 
         button {
-            background-color: #007BFF; /* 青のカラーコードに変更 */
+            background-color: #007BFF;
             color: white;
             padding: 10px;
             border: none;
@@ -33,8 +33,7 @@
         }
 
         button:hover {
-            background-color: #0056b3; /* ホバー時の青のカラーコードに変更 */
-        }
+            background-color: #0056b3;
     </style>
 </head>
 

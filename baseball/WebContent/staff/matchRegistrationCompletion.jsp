@@ -42,7 +42,6 @@
             width: 100%;
         }
 
-        /* Add margin between the buttons */
         .form-container form:not(:last-child) {
             margin-bottom: 10px;
         }
