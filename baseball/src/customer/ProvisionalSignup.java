@@ -54,7 +54,8 @@ public class ProvisionalSignup extends HttpServlet {
                 response.sendRedirect(contextPath + "/customer/provisionalSignupComplete.jsp");
             } else {
                 // 仮登録失敗ページへリダイレクト
-                response.sendRedirect(contextPath + "/customer/signupError.jsp");
+            	request.setAttribute("situFlg","2");
+            	request.getRequestDispatcher("/customer/signupError.jsp").forward(request, response);
             }
         } catch (Exception e) {
             e.printStackTrace(); // 本番環境では、適切なロギングに置き換えてください。

@@ -15,10 +15,12 @@ import dao.SpectatorDAO;
 
 @WebServlet("/customer/Signup")
 public class Signup extends HttpServlet {
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    @SuppressWarnings("unused")
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String uuidString = request.getParameter("uuid");
         try {
-            if (uuidString != null) {
+//        	UUIDがあって、長さが36のとき
+            if (uuidString != null && uuidString.length() == 36) {
                 UUID uuid = UUID.fromString(uuidString);
 
                 // ProvisionalDAO を使用して仮登録されたユーザーの情報を検索
@@ -37,15 +39,18 @@ public class Signup extends HttpServlet {
                     response.sendRedirect("/baseball/customer/signupComplete.jsp");
                 } else {
                     // 該当するユーザーが見つからない場合のエラーハンドリング
-                    response.sendRedirect("/baseball/customer/aError.jsp");
+                	request.setAttribute("situFlg","0");
+                	request.getRequestDispatcher("/customer/signupError.jsp").forward(request, response);
                 }
             } else {
                 // UUID が無効な場合のエラーハンドリング
-                response.sendRedirect("/baseball/customer/error.jsp");
+            	request.setAttribute("situFlg","1");
+            	request.getRequestDispatcher("/customer/signupError.jsp").forward(request, response);
             }
         } catch (Exception e) {
             e.printStackTrace();
-            response.sendRedirect("/baseball/customer/error.jsp");
+            request.setAttribute("situFlg","1");
+            request.getRequestDispatcher("/customer/signupError.jsp").forward(request, response);
         }
     }
 }
