@@ -4,7 +4,7 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>メニュー</title>
+    <title>甲子園チケット販売システム</title>
 
     <link rel="stylesheet" type="text/css"  href ="/baseball/css/CustHeader.css">
 </head>

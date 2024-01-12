@@ -5,7 +5,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>メニュー</title>
+    <title>甲子園管理システム</title>
     <link rel="stylesheet" type="text/css" href="/baseball/css/Staff.css">
 
     <!-- FontAwesomeのCDNを追加 -->
