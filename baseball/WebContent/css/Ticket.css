@@ -12,7 +12,7 @@
 
 	/* PC用CSS記述 */
 	.return-btn {
-	    /* 戻るボタンのスタイル */
+	  	 /* 戻るボタンのスタイル */
 	    position: absolute; /* 絶対位置に配置 */
 	    top: 15px; /* 上から15pxの位置に配置 */
 	    left: 15px; /* 左から15pxの位置に配置 */
@@ -23,7 +23,7 @@
 	    border: none;
 	    cursor: pointer;
 	    border-radius: 20px;
-	    z-index: -1;
+
 	}
 	.return-btn:hover{
 		background-color:#555;
