@@ -87,12 +87,12 @@
                     <table>
 						<tr><th  colspan="4" class="date-center">${matchList[i].eventDateStr }(${matchList[i].eventDayOfWeek})</th></tr>
                         <c:forEach begin="0" end="${fn:length(duelList[i])-1}" step="1" var="j">
-
+								<c:if test="${duelList[i][j].roundStr != null}">
                                 <tr><td>第${j + 1}試合(${duelList[i][j].roundStr })</td>
                                 	<td>${duelList[i][j].schoolNameA }</td>
                                 	<td>${duelList[i][j].statusStr }</td>
                                 	<td>${duelList[i][j].schoolNameB }</td></tr>
-
+								</c:if>
                         </c:forEach>
 
                     </table>
