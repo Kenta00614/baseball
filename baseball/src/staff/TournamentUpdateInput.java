@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import bean.School;
+import bean.Staff;
 import bean.Tournament;
 import dao.SchoolDAO;
 import dao.TournamentDAO;
@@ -26,21 +27,29 @@ public class TournamentUpdateInput extends HttpServlet {
         TournamentDAO tournamentDAO = new TournamentDAO();
         SchoolDAO schoolDAO = new SchoolDAO();
 
-        try {
-            List<Tournament> tournamentList = tournamentDAO.getTournamentDetail();
-            Tournament tournament = tournamentList.get(tournamentList.size() - 1);
-            session.setAttribute("tournament", tournament);
+//    	ログインしているか
+    	Staff staffData = (Staff) session.getAttribute("staff");
+    	if(staffData == null){
+    		request.setAttribute("sessionOut","1");
+    		request.getRequestDispatcher("login.jsp").forward(request, response);
+    		return;
+    	}else{
+	        try {
+	            List<Tournament> tournamentList = tournamentDAO.getTournamentDetail();
+	            Tournament tournament = tournamentList.get(tournamentList.size() - 1);
+	            session.setAttribute("tournament", tournament);
 
-            List<School> schoolList = schoolDAO.searchSchool(tournament.getTournamentId());
-            School school = new School();
-            school.setSchoolId(0);
-            school.setName("なし");
-            schoolList.add(school);
+	            List<School> schoolList = schoolDAO.searchSchool(tournament.getTournamentId());
+	            School school = new School();
+	            school.setSchoolId(0);
+	            school.setName("なし");
+	            schoolList.add(school);
 
-            request.setAttribute("schoolList", schoolList);
-            request.getRequestDispatcher("/staff/tournamentUpdateInput.jsp").forward(request, response);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+	            request.setAttribute("schoolList", schoolList);
+	            request.getRequestDispatcher("/staff/tournamentUpdateInput.jsp").forward(request, response);
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        }
+    	}
     }
 }
