@@ -72,7 +72,7 @@
     <form action="StaffPass" method="post" onsubmit="return validatePassword()">
         <div class="control">
             <label for="id">ID</label>
-            <input id="id" type="id" name="id" required>
+            <input id="id" type="id" name="id" value="${id }" readonly>
         </div>
         <div class="control">
             <label for="password">パスワード</label>
@@ -100,6 +100,8 @@
                 return true; // フォームを送信
             }
         }
+
+        alert('初期パスワードのままです、パスワードの再設定をしてください。');
     </script>
 </body>
 

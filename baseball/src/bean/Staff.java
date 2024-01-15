@@ -8,6 +8,7 @@ public class Staff implements java.io.Serializable {
 	private Date birth;
 	private String password;
 	private String position;
+	private String initialPassFlg;
 
 	public String getStaffId() {
 		return staffId;
@@ -38,6 +39,12 @@ public class Staff implements java.io.Serializable {
 	}
 	public void setPosition(String position) {
 		this.position = position;
+	}
+	public String getInitialPassFlg() {
+		return initialPassFlg;
+	}
+	public void setInitialPassFlg(String initialPassFlg) {
+		this.initialPassFlg = initialPassFlg;
 	}
 
 }

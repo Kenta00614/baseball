@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,7 +12,7 @@ import bean.Staff;
 
 public class StaffDAO extends DAO {
 
-//IDとパスワード一致で職員情報を取得。生年月日とパスワードが同じならnull
+//IDとパスワード一致で職員情報を取得。情報がない場合はnull
 	public Staff loginStaff(String id, String password)throws Exception {
 		Staff staff=null;
 		Connection con=getConnection();
@@ -29,6 +30,14 @@ public class StaffDAO extends DAO {
 			staff.setBirth(rs.getDate("BIRTH"));
 			staff.setPassword(rs.getString("PASSWORD"));
 			staff.setPosition(rs.getString("POSITION"));
+
+			String str = new SimpleDateFormat("yyyyMMdd").format(rs.getDate("BIRTH"));
+			if(rs.getString("PASSWORD").equals(str)){
+//				生年月日とパスワードが一緒
+				staff.setInitialPassFlg("1");
+			}else{
+				staff.setInitialPassFlg("0");
+			}
 		}
 
 		st.close();
@@ -81,17 +90,30 @@ public class StaffDAO extends DAO {
 //	パスワードの変更。成功すると1を返す
 	public int updateStaff(String id, String password) throws Exception{
 		int line=0;
+		String birthStr = "";
 		Connection con=getConnection();
 
 		PreparedStatement st=con.prepareStatement(
-				"UPDATE STAFF SET PASSWORD=? WHERE STAFF_ID=?");
+				"SELECT * FROM STAFF WHERE STAFF_ID=?");
+			st.setString(1, id);
+			ResultSet rs=st.executeQuery();
 
-			st.setString(1,password);
-			st.setString(2,id);
-			line=st.executeUpdate();
+			while (rs.next()) {
+				birthStr = new SimpleDateFormat("yyyyMMdd").format(rs.getDate("BIRTH"));
+			}
 
-			st.close();
-			con.close();
+//		生年月日とパスワードが一緒じゃないとき
+		if(!birthStr.equals(password)){
+			st=con.prepareStatement(
+					"UPDATE STAFF SET PASSWORD=? WHERE STAFF_ID=?");
+
+				st.setString(1,password);
+				st.setString(2,id);
+				line=st.executeUpdate();
+
+				st.close();
+		}
+		con.close();
 		return line;
 	}
 
