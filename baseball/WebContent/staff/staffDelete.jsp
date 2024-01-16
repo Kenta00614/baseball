@@ -110,6 +110,9 @@
                     </tr>
                 <% } %>
             </table>
+            <c:if test="${noSelectFlg == 0 }">
+            	<p>職員が選択されていません</p>
+            </c:if>
             <button type="submit">削除</button>
             <script>
                 new Vue({

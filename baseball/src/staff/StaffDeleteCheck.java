@@ -42,6 +42,7 @@ public class StaffDeleteCheck extends HttpServlet {
 		    	try {
 					List<Staff> staffList= DAO.selectStaffWithoutMe(id);
 
+					request.setAttribute("noSelectFlg","0");
 					request.setAttribute("list",staffList);
 					request.getRequestDispatcher("/staff/staffDelete.jsp").forward(request, response);
 				} catch (Exception f) {
