@@ -26,9 +26,9 @@
     <h1 class="login-title">パスワード変更</h1>
     　　<form action="PasswordChange" method="post">
 	        <div class="login-input">
-	            <label for="password">Password</label>
+	            <label for="password">パスワード</label>
 	            <input name="newPassword" type="password" id="password" placeholder="🔒Password" class="login-pass" required>
-	            <label for="password">Password</label>
+	            <label for="password"  >パスワード確認</label>
 	            <input name="newPassword" type="password" id="confirm_password" placeholder="🔒Password" class="login-pass" required>
 	            <button type="submit" class="form-btn">パスワード変更</button>
 	        </div>

@@ -32,7 +32,7 @@
 		<%-- 変更が正常に行われたとき --%>
 			<div class="email-change">
 				<h2 class="poster">変更が完了しました</h2>
-	  			<button onclick="location.href='Main'" >メイン画面へ</button>
+	  			<button onclick="location.href='Main'"  class="home-btn">メイン画面へ</button>
 			</div>
 		</c:when>
 		<c:when test="${comfilmFlg == 1 }">
