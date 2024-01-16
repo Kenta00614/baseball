@@ -4,16 +4,33 @@
 <head>
 	<link rel="stylesheet" type="text/css"  href ="/baseball/css/Customer.css">
 </head>
+<script language="JavaScript" type="text/javascript">
 
+function CheckEmail_1() {
+	  var mail = document.getElementById("email_1").value;
+	  var mailConfirm = document.getElementById("emailConfirm_1").value;
+
+	  if (mail != mailConfirm) {
+	    alert("メールアドレスと確認用メールアドレスが一致しません");
+	    return false; // フォームの送信をキャンセル
+	  } else {
+	    return true; // フォームの送信を許可
+	  }
+	};
+
+</script>
 <body>
-    <div class="pass-change-box">
-    <h1 class="login-title">メールアドレス入力</h1>
-    　　<form action="PasswordChangeMail" method="post">
+    <div class="login-box">
+    <h1 class="login-title">パスワード変更</h1>
+    　　<form action="PasswordChangeMail" method="post" onsubmit="return CheckEmail_1();">
+
 	        <div class="login-input">
 	            <label for="user-id">ID(email)</label>
-	            <input name="mail" type="email" id="email" placeholder="✉Mail" class="login-email" required>
+	            <input name="newMail" type="email" id="email_1" placeholder="✉Mail" class="login-email" required>
+	            <label for="user-id">確認用ID(email)</label>
+	            <input name="newMail" type="email" id="emailConfirm_1" placeholder="✉Mail" class="login-email" required>
 
-	            <button type="submit" class="form-btn">送信</button>
+	            <button type="submit" class="form-btn">パスワード変更</button>
 	        </div>
 
 
