@@ -5,6 +5,7 @@
 <html>
 <head>
 	<link rel="stylesheet" type="text/css"  href ="/baseball/css/Customer.css">
+
 </head>
 <body>
 
