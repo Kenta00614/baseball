@@ -29,7 +29,7 @@
 <body>
 	<div class="container">
 	  <h1>新規会員登録</h1>
-	  <form id="registrationForm" action="ProvisionalSignup" method="post">
+	  <form id="registrationForm" action="ProvisionalSignupConfirm" method="post">
 	    <p class="signup-label"><label for="name">氏名</label></p>
 	    <input type="text" id="name" name="name" class="custom-input" required>
 
