@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 import bean.School;
 import bean.Staff;
 import bean.Tournament;
+import common.Constants;
 import dao.SchoolDAO;
 import dao.TournamentDAO;
 
@@ -39,6 +40,8 @@ public class MatchRegistrationInput extends HttpServlet {
 	    	Tournament tournament = new Tournament();
 	//    	高校名のリスト
 	    	List<School> schoolList = new ArrayList();
+//	    	roundのリスト
+	    	List<String> duelRound = new ArrayList();
 
 	    	TournamentDAO tournamentDAO = new TournamentDAO();
 	    	SchoolDAO schoolDAO = new SchoolDAO();
@@ -61,12 +64,20 @@ public class MatchRegistrationInput extends HttpServlet {
 				school.setName("なし");
 				schoolList.add(school);
 
+//				roundのリスト作成
+				duelRound.add(Constants.DUEL_ROUND.get("1"));
+				duelRound.add(Constants.DUEL_ROUND.get("2"));
+				duelRound.add(Constants.DUEL_ROUND.get("3"));
+				duelRound.add(Constants.DUEL_ROUND.get("4"));
+				duelRound.add(Constants.DUEL_ROUND.get("5"));
+				duelRound.add(Constants.DUEL_ROUND.get("6"));
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 
 	    	session.setAttribute("tournament",tournament );
 	    	request.setAttribute("schoolList",schoolList );
+	    	request.setAttribute("duelRound",duelRound );
 	        request.getRequestDispatcher("/staff/matchRegistrationInput.jsp").forward(request, response);
 	    }
     }

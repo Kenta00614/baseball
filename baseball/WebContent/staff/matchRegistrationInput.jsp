@@ -121,19 +121,20 @@
                         <c:forEach var="duel" begin="1" end="4">
                             <tr>
                                 <td>第${duel}試合</td>
-                                <td><select name="duel${duel}School1">
+                                <td><select name="duel${duel}School1" id="duel${duel}School1">
                                         <c:forEach var="school" items="${schoolList }">
                                             <option value="${school.schoolId }">${school.name }</option>
                                         </c:forEach>
                                     </select></td>
-                                <td><select name="duel${duel}School2">
+                                <td><select name="duel${duel}School2" id="duel${duel}School2">
                                         <c:forEach var="school" items="${schoolList }">
                                             <option value="${school.schoolId }">${school.name }</option>
                                         </c:forEach>
                                     </select></td>
-                                <td><select name="duel${duel}Round">
-                                        <c:forEach var="round" begin="1" end="6">
-                                            <option value="${round}">第${round}回戦</option>
+                                <td>
+                                	<select name="duel${duel}Round">
+                                        <c:forEach var="i" begin="0" end="5">
+                                            <option value="${i+1}">${duelRound[i]}</option>
                                         </c:forEach>
                                     </select></td>
                             </tr>
@@ -142,12 +143,49 @@
                     <c:if test="${insertNum == 0 }">
                         <div class="error-message">同じ日付が登録されています</div>
                     </c:if>
+                    <c:if test="${insertNum == 1 }">
+                        <div class="error-message">同じ高校は登録できません</div>
+                    </c:if>
                     <input type="hidden" name="tournamentId" value="${tournament.tournamentId }">
-                    <button type="submit">試合情報登録</button>
+                    <button type="submit" id ="button">試合情報登録</button>
                 </form>
             </div>
         </c:when>
     </c:choose>
-</body>
+    <%--
+<script>
+	document.addEventListener('change', function () {
+		var inputs = [];
+	    for (let i = 1; i < 5; i++) {
+	        var school1 = document.getElementById('duel' + i + 'School1');
+	        var school2 = document.getElementById('duel' + i + 'School2');
+	        inputs.push(school1);
+	        inputs.push(school2);
+	    }
+	    console.log(inputs);
+	    const submitButton = document.getElementById('button');
 
+	    inputs.forEach(input => {
+	        input.addEventListener('change', validateInputs());
+	    });
+
+
+
+	    function validateInputs() {
+	    	var result = inputs.filter(function( input ) {
+	    		  return input.value !== 0;
+	    		});
+
+	    	console.log(result);
+	        console.log(isDuplicated(result));
+        	if(!isDuplicated(result)){
+        		submitButton.disabled = false;
+        	}else{
+        		submitButton.disabled = true;
+        	}
+	    }
+	});
+</script>
+ --%>
+</body>
 </html>
