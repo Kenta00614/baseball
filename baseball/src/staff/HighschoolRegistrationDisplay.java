@@ -43,7 +43,7 @@ public class HighschoolRegistrationDisplay extends HttpServlet {
 		        }
 		    } catch (Exception e) {
 		        e.printStackTrace();
-		        response.sendRedirect("errorPage.jsp"); // エラーページへの遷移
+		        response.sendRedirect("error.jsp"); // エラーページへの遷移
 		    }
     	}
 	}

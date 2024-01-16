@@ -36,15 +36,12 @@ public class HighschoolRegistration extends HttpServlet {
 	                schoolName[i - 1] = request.getParameter("schoolName" + i);
 	            }
 	            // 高校名をデータベースに登録
-	            int result = dao.insertSchool(schoolName, tournamentId);
-	            if (result > 0) {
-	                // 登録成功
-	                response.sendRedirect("tournamentRegistrationCompletion.jsp");
-	            } else {
-	                // 登録失敗
-	                response.sendRedirect("error.jsp");
-	            }
+	           dao.insertSchool(schoolName, tournamentId);
+
+                // 登録成功
+                response.sendRedirect("tournamentRegistrationCompletion.jsp");
 	        } catch (Exception e) {
+	        	response.sendRedirect("error.jsp");
 	            throw new ServletException(e);
 	        }
     	}
