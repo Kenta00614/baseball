@@ -123,12 +123,16 @@
                                 <td>第${duel}試合</td>
                                 <td><select name="duel${duel}School1" id="duel${duel}School1">
                                         <c:forEach var="school" items="${schoolList }">
-                                            <option value="${school.schoolId }">${school.name }</option>
+                                        	<c:if test="${school.name != ''}">
+                                            	<option value="${school.schoolId }">${school.name }</option>
+                                            </c:if>
                                         </c:forEach>
                                     </select></td>
                                 <td><select name="duel${duel}School2" id="duel${duel}School2">
                                         <c:forEach var="school" items="${schoolList }">
-                                            <option value="${school.schoolId }">${school.name }</option>
+                                        	<c:if test="${school.name != ''}">
+                                            	<option value="${school.schoolId }">${school.name }</option>
+                                            </c:if>
                                         </c:forEach>
                                     </select></td>
                                 <td>

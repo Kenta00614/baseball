@@ -89,14 +89,18 @@
                     <td>
                         <select name="duel${loop.index+1}School1">
                             <c:forEach var="school" items="${schoolList}">
-                                <option value="${school.schoolId}" <c:if test="${duel.schoolId1 == school.schoolId}">selected</c:if>>${school.name}</option>
+                            	<c:if test="${school.name != ''}">
+                                	<option value="${school.schoolId}" <c:if test="${duel.schoolId1 == school.schoolId}">selected</c:if>>${school.name}</option>
+                            	</c:if>
                             </c:forEach>
                         </select>
                     </td>
                     <td>
                         <select name="duel${loop.index+1}School2">
                             <c:forEach var="school" items="${schoolList}">
-                                <option value="${school.schoolId}" <c:if test="${duel.schoolId2 == school.schoolId}">selected</c:if>>${school.name}</option>
+                            	<c:if test="${school.name != ''}">
+                                	<option value="${school.schoolId}" <c:if test="${duel.schoolId2 == school.schoolId}">selected</c:if>>${school.name}</option>
+                            	</c:if>
                             </c:forEach>
                         </select>
                     </td>
