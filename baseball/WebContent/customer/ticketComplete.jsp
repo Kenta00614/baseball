@@ -7,6 +7,24 @@
 <html>
 <head>
 	<link rel="stylesheet" type="text/css"  href ="/baseball/css/Customer.css">
+	<style>
+	/*--- 張り紙スタイル ---*/
+	.poster{
+	 	border:5px double #a4c3b2;
+	 	background-color:#F3F7F5;
+	 	padding:16px;
+	 	margin:20px;
+	 	margin-top:10px;
+	}
+
+	.error{
+		border:5px double #fb8883;
+	 	background-color:#fee7e6;
+	 	padding:16px;
+	 	margin:20px;
+	 	margin-top:10px;
+	}
+	</style>
 </head>
 <body>
 	<%-- 大会名 --%>
@@ -15,11 +33,11 @@
 	<c:choose>
 	    <%-- 決済行われなかったとき --%>
 	    <c:when test="${fn:length(selTicketsData) == 0}">
-	    	<p style="font-size:20px;">決済が正常に行われませんでした<p>
+	    	<h2 class="error">決済が正常に行われませんでした</h2>
 	    </c:when>
 		<c:when test="${selTicketsData != null}">
 			<%-- 決済行われたとき --%>
-			<p style="font-size:20px;">決済が完了しました。ご購入ありがとうございます。</p>
+			<p class="poster">決済が完了しました。ご購入ありがとうございます。</p>
 			<table>
 			<tr><th>申込内容</th></tr>
 			<c:forEach var="data" items="${selTicketsData }">

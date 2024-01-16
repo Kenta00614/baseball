@@ -2,9 +2,17 @@
 
 @media screen and (min-width:768px) {
 
+	header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
 	/* PC用CSS記述 */
 	.return-btn {
-	    /* 戻るボタンのスタイル */
+	  	 /* 戻るボタンのスタイル */
 	    position: absolute; /* 絶対位置に配置 */
 	    top: 15px; /* 上から15pxの位置に配置 */
 	    left: 15px; /* 左から15pxの位置に配置 */
@@ -15,10 +23,13 @@
 	    border: none;
 	    cursor: pointer;
 	    border-radius: 20px;
+
 	}
 	.return-btn:hover{
 		background-color:#555;
 	}
+
+
 
 	.home-btn{
 		/* その他ボタン */
@@ -32,11 +43,13 @@
 	    border-radius: 5px;
 	    /* other styles */
 	    align-items: center;
-	    position: relative; /* bodyを相対的な位置に設定 */
+	      z-index: -1;
+
 	}
 	.home-btn:hover{
 		background-color:#555;
 	}
+
 
 
 	body {
@@ -50,6 +63,8 @@
 	    align-items: center;
 	    position: relative;
 	    flex-direction: column;
+	      z-index: -1;
+
 	}
 
 
@@ -68,9 +83,19 @@
 		list-style:none;
 	}
 
+
+
 	/*--- 座席横に並べるクラス ---*/
 	.seat-img {
 		float: left;
+		 position: relative;
+	}
+
+	.seat-img img {
+    display: block; /* 画像をブロック要素に変更 */
+    margin: 0 auto; /* 左右のマージンをautoにして中央寄せに修正 */
+     z-index: 1; /* 座席画像を前面に配置 */
+
 	}
 
 	/*--- floatを解除するクラス ---*/
@@ -82,6 +107,107 @@
 	h1 {
 	    text-align: center;
 	}
+
+	 .selected-ticket {
+        width: 450px;
+        height: 40px;
+        margin-top: 0px;
+        margin: 0px;
+
+		display: block;
+	    position: relative;
+
+	    border-right: 27px solid #75ffb3;
+	    background-color: #dbffeb;
+	    color: #333333;
+	    font-size: 15px;
+	    align-items: center;
+		margin: 15px auto; /* 左右のマージンをautoにして中央寄せに修正 */
+		padding-left: 3px;
+		position: relative; /* bodyを相対的な位置に設定 */
+
+    }
+
+    .selected-ticket::before {
+    position: absolute;
+    right: -20px;
+    bottom: 4px;
+    z-index: -1;
+    transform: rotate(5deg);
+    width: 100%;
+    height: 50%;
+
+    background-color: #d0d0d0;
+    content: "";
+    filter: blur(4px);
+
+	}
+
+	.selected-ticket p{
+		line-height: 40px;
+	}
+
+
+	.age{		/* 大人の状態 */
+		background-color: #9fffc5;
+		border: solid 3px #01e25b;
+		border-radius: 20px;
+	}
+	.kids{		/* 子供の状態 */
+		background-color:#ffec99;
+		border: solid 3px #ffcf00;
+		border-radius: 20px;
+	}
+
+
+	.ground{	/* グラウンド側の文字 */
+		width: 420px;
+		margin-top: 0px;
+		padding:3px ;/*内側余白*/
+
+		border-top:solid 5px #f7b100;/*線の種類・太さ・色*/
+		background-color:#F9F4E8;/*背景色*/
+		box-shadow:3px 1px 4px rgba(0, 0, 0, 0.2)	;/*ボックス影*/
+		text-align: center; /* ブロック内の中央寄せ */
+
+		align-items: center;
+		margin: 15px auto; /* 左右のマージンをautoにして中央寄せに修正 */
+		position: relative; /* bodyを相対的な位置に設定 */
+	}
+
+
+
+
+
+	/*テーブル設定*/
+
+	table{
+	    margin: 0px;
+	    align-items: center;
+		margin: 15px auto; /* 左右のマージンをautoにして中央寄せに修正 */
+		position: relative; /* bodyを相対的な位置に設定 */
+		text-align: center; /* ブロック内の中央寄せ */
+	}
+
+
+	table td {
+	    text-align: center; /* ブロック内の中央寄せ */
+	}
+
+	table th,
+	table td {
+	    padding: 0px;
+	}
+
+	table tr:last-child * {
+	    border-bottom: none;
+	}
+
+	form {
+    text-align: center; /* ボタンを中央揃えにする */
+	}
+
+
 
 
 
