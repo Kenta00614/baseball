@@ -52,7 +52,7 @@ public class TicketsDAO extends DAO{
 	public int changeStopSales(Date date)throws Exception{
 
 		Connection con=getConnection();
-		PreparedStatement st=con.prepareStatement("UPDATE tickets SET status = '3' WHERE match_id IN (SELECT match_id FROM match WHERE event_date = ?)");
+		PreparedStatement st=con.prepareStatement("UPDATE tickets SET status = '3' WHERE match_id IN (SELECT match_id FROM match WHERE event_date = ?) and status = '2'");
 
 		st.setDate(1, date);
 

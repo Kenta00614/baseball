@@ -85,34 +85,35 @@
             </tr>
             <c:forEach var="duel" items="${duelList}" varStatus="loop">
                 <tr>
-                    <td>第${loop.index}試合</td>
+                    <td>第${loop.index+1}試合</td>
                     <td>
-                        <select name="duel${loop.index}School1">
+                        <select name="duel${loop.index+1}School1">
                             <c:forEach var="school" items="${schoolList}">
                                 <option value="${school.schoolId}" <c:if test="${duel.schoolId1 == school.schoolId}">selected</c:if>>${school.name}</option>
                             </c:forEach>
                         </select>
                     </td>
                     <td>
-                        <select name="duel${loop.index}School2">
+                        <select name="duel${loop.index+1}School2">
                             <c:forEach var="school" items="${schoolList}">
                                 <option value="${school.schoolId}" <c:if test="${duel.schoolId2 == school.schoolId}">selected</c:if>>${school.name}</option>
                             </c:forEach>
                         </select>
                     </td>
                     <td>
-                        <select name="status${loop.index}">
+                        <select name="status${loop.index+1}">
                             <c:forEach var="i" begin="0" end="${fn:length(duelStatus)-1}" step="1">
                                 <option value="${i+1}" <c:if test="${duel.status == i+1}">selected</c:if>>${duelStatus[i]}</option>
                             </c:forEach>
                         </select>
                     </td>
                     <td>
-                        <select name="duel${loop.index}Round">
-                            <c:forEach var="round" items="${roundList}">
-                                <option value="${round.value}" <c:if test="${duel.round == round.value}">selected</c:if>>${round.label}</option>
-                            </c:forEach>
-                        </select>
+
+                    	<select name="duel${loop.index+1}Round">
+                        	<c:forEach var="i" begin="0" end="5">
+                            	<option value="${i+1}" <c:if test="${duel.round == i+1}">selected</c:if>>${duelRound[i]}</option>
+                        	</c:forEach>
+                    	</select>
                     </td>
                 </tr>
             </c:forEach>
@@ -120,7 +121,7 @@
 
         <!-- 非表示フィールド -->
         <c:forEach var="duel" items="${duelList}" varStatus="loop">
-            <input type="hidden" value="${duel.duelId}" name="duel${loop.index}">
+            <input type="hidden" value="${duel.duelId}" name="duel${loop.index+1}">
         </c:forEach>
 
         <input type="hidden" value="${matchList[0].matchId}" name="matchId">

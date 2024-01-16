@@ -30,7 +30,7 @@
 	            <input name="newPassword" type="password" id="password" placeholder="🔒Password" class="login-pass" required>
 	            <label for="password">Password</label>
 	            <input name="newPassword" type="password" id="confirm_password" placeholder="🔒Password" class="login-pass" required>
-	            <button type="submit">パスワード変更</button>
+	            <button type="submit" class="form-btn">パスワード変更</button>
 	        </div>
 	    	<input type="hidden" name="uuid" value="${uuid}">
 	    </form>

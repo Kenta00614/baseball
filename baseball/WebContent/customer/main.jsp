@@ -94,7 +94,9 @@
                                 	<td>${duelList[i][j].schoolNameB }</td></tr>
 								</c:if>
                         </c:forEach>
-
+						<c:if test="${duelList[i][0].roundStr == null}">
+							<tr><td>試合情報は未定です</td></tr>
+						</c:if>
                     </table>
                 </div>
             </c:forEach>
