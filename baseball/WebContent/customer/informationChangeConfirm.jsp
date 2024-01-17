@@ -11,10 +11,13 @@
         <h1>会員情報変更確認</h1>
         <form id="memberChangeConfirmForm" action="InformationChange" method="post">
             <label for="name">氏名</label>
-            <input type="text" id="name" name="name" value="${requestScope.name}" class="field" required readonly>
-
+            <p id="name" class="field">${requestScope.name}</p>
             <label for="tel">電話番号</label>
-            <input type="tel" id="tel" name="tel" value="${requestScope.tel}" pattern="\d{10}|\d{11}" class="field" required readonly>
+            <p id="tel" class="field">${requestScope.tel}</p>
+
+			<%-- 送る値 --%>
+			<input type="hidden" name="name" value="${requestScope.name}">
+			<input type="hidden" name="tel" value="${requestScope.tel}">
 
             <!-- 戻るボタン -->
             <input type="button" value="戻る" onclick="history.back();" class="submit-button">
