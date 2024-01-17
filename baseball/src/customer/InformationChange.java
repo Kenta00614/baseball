@@ -48,7 +48,8 @@ public class InformationChange extends HttpServlet {
 	            currentSpectator.setName(name);
 	            currentSpectator.setTel(tel);
 
-	            response.sendRedirect("/baseball/customer/informationChangeConfirm.jsp");
+	            request.setAttribute("spectator", currentSpectator);
+	            request.getRequestDispatcher("/customer/memberInformation.jsp").forward(request, response);;
 	        } else {
 	            response.sendRedirect("/baseball/customer/changeFailure.jsp");
 	        }
