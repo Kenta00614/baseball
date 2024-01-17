@@ -8,35 +8,72 @@
       color: #333;
       margin: 0 auto;
       position: relative;
+      text-align: center;
+      background-color: #f4f4f4;
     }
+
     h1 {
-      margin: 10px 0;
+      margin: 20px 0;
       font-size: 40px;
+      color: 000;
     }
+
     #emergency {
-    	color : red;
-    	font-size : 40px;
+      color: red;
+      font-size: 24px;
     }
+
     #allGreen {
-    	color : rightGreen;
-    	font-size : 40px;
+      color: green;
+      font-size: 24px;
     }
+
     #canvas {
-      width:100%;
-      hight:50%;
+      width: 70%;
+      max-width: 640px;
+      height: auto;
+      margin: 20px auto;
+      border: 5px solid gray;
+      border-radius: 10px;
     }
+
     #output {
       margin-top: 20px;
-      background: #eee;
-      padding: 10px;
-      padding-bottom: 0;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
+
     #output div {
       padding-bottom: 10px;
       word-wrap: break-word;
     }
+
     #noQRFound {
       text-align: center;
+      color: #555;
+      font-size: 10px;
+      margin-top: 20px;
+    }
+
+    .header {
+      margin-top: 20px;
+    }
+
+    .header button {
+      background-color: #007BFF;
+      color: #fff;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 18px;
+      transition: background-color 0.3s;
+    }
+
+    .header button:hover {
+      background-color: #0056b3;
     }
   </style>
 </head>
@@ -47,6 +84,7 @@
   </div>
   <% if(request.getAttribute("massage") != null){ %><div id="${classStr}">${massage}</div><%}%>
   <canvas id="canvas" hidden></canvas>
+  <div id="output"></div>
   <form id="form" action="EntryConduct" >
   	<input type="hidden" id="ticketId" name="ticketId" value="">
   </form>

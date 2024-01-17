@@ -8,6 +8,7 @@
       color: #333;
       margin: 0 auto;
       position: relative;
+      text-align: center;
     }
     h1 {
       margin: 10px 0;
@@ -22,8 +23,10 @@
     	font-size : 40px;
     }
     #canvas {
-      width:100%;
-      hight:50%;
+      width: 50%;
+      max-width: 640px;
+      height: auto;
+      margin: 20px auto;
     }
     #output {
       margin-top: 20px;

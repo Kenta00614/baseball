@@ -29,14 +29,15 @@
 	        margin-right: 5px;
 	    }
 
-	    .form-container {
-	        max-width: 600px;
-	        margin: 20px auto;
-	        padding: 20px;
-	        background-color: white;
-	        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-	        border-radius: 5px;
-	    }
+		.form-container {
+		    max-width: 500px;
+		    margin: 20px auto;
+		    padding: 15px;
+		    background-color: white;
+		    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+		    border-radius: 5px;
+}
+
 
 	    .control {
 	        margin-bottom: 15px;
@@ -51,7 +52,7 @@
 	    input[type="text"],
 	    select {
 	        width: 100%;
-	        padding: 10px;
+	        padding: 8px;
 	        box-sizing: border-box;
 	        border: 1px solid #ccc;
 	        border-radius: 4px;
@@ -59,6 +60,7 @@
 
 	    select {
 	        cursor: pointer;
+	        text-align: center;
 	    }
 
 	    button {
@@ -69,9 +71,25 @@
 	        border-radius: 5px;
 	        cursor: pointer;
 	        width: 100%;
-	        font-size: 14px;
+	        font-size: 15px;
 	        margin-bottom: 10px;
 	    }
+
+	    table {
+	        width: 100%;
+	        border-collapse: collapse;
+	        margin-top: 15px;
+	    }
+
+	    table, th, td {
+	        border: 1.5px solid #ddd;
+	    }
+
+	    th, td {
+	        padding: 10px;
+	        text-align: center;
+	    }
+
 	</style>
 
 

@@ -53,15 +53,7 @@
             cursor: pointer;
         }
 
-        button {
-            background-color: #0066FF;
-            color: white;
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            width: 100%;
-        }
+
 
         table {
             width: 100%;

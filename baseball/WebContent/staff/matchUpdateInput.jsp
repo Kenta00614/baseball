@@ -9,6 +9,7 @@
             font-family: 'Helvetica', 'Arial', sans-serif;
             margin: 20px;
             background-color: #f5f5f5;
+            text-align: center;
         }
 
         form {
@@ -47,13 +48,13 @@
         }
 
         button {
-            background-color: #007BFF;
-            color: #fff;
-            padding: 12px 18px;
+            background-color: #0066FF;
+            color: white;
+            padding: 13px;
             border: none;
-            border-radius: 4px;
+            border-radius: 10px;
             cursor: pointer;
-            font-size: 16px;
+            width: 35%;
         }
 
         button:hover {
@@ -132,3 +133,5 @@
         <input type="hidden" value="${tournament.tournamentId}" name="tournamentId">
         <button type="submit">削除</button>
     </form>
+</body>
+</html>
