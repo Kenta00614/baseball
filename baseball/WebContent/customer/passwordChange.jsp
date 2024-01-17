@@ -30,7 +30,7 @@
 	            <input name="newPassword" type="password" id="password" placeholder="🔒Password" class="login-pass" pattern="[!-~]{8,}" required>
 	            <label for="password"  >パスワード確認</label>
 	            <input name="newPassword" type="password" id="confirm_password" placeholder="🔒Password" class="login-pass" pattern="[!-~]{8,}" required>
-	            <button type="submit" class="form-btn">パスワード変更</button>
+	            <button type="submit" class="form-change-btn">変更</button>
 	        </div>
 	    	<input type="hidden" name="uuid" value="${uuid}">
 	    </form>

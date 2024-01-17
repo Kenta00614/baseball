@@ -23,21 +23,24 @@
 	    background-color:initial;
 	    width:initial;
 	    color: initial;
+	    padding: 30px;
 	}
 
 	table td {
 	    background-color: initial;
 	    width: initial;
+	    width: 180px;/*枠の横幅*/
+	    padding: 20px;
 	}
 
 	table th,
 	table td {
 	    border-bottom:  initial;
-	    padding: 20px; /* 枠線指定 */
 	}
 
 	table tr:last-child * {
-	     border-bottom: none;
+	    border-bottom: none;
+
 	}
 
 	  .main_display {
