@@ -18,7 +18,7 @@ public class PasswordChangeMail extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	    request.setCharacterEncoding("UTF-8");
-	    String mail = request.getParameter("mail");
+	    String mail = request.getParameter("newMail");
 	    String contextPath = request.getContextPath();
 
 	    try {

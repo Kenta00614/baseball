@@ -4,23 +4,23 @@
 <head>
 	<link rel="stylesheet" type="text/css"  href ="/baseball/css/Customer.css">
 </head>
-<script language="JavaScript" type="text/javascript">
+<script>
+	  function validatePassword() {
+	    var password = document.getElementById('password');
+	    var confirmPassword = document.getElementById('confirm_password');
 
-  function CheckPassword_1() {
-    //IE対応の為変更
-    //var mail = email_1.value; //メールフォームの値を取得
-    //var mailConfirm = emailConfirm_1.value; //メール確認用フォームの値を取得
-    var password = document.getElementById("password").value; //メールフォームの値を取得
-    var passwordConfirm = document.getElementById("confirm_password").value; //メール確認用フォームの値を取得
-    // パスワードの一致確認
-    if (mail != mailConfirm){
-      alert("パスワードと確認用パスワードが一致しません"); // 一致していなかったら、エラーメッセージを表示する
-      return false;
-    }else{
-      return true;
-    }
-  };
-</script>
+	    if (password.value !== confirmPassword.value) {
+	      confirmPassword.setCustomValidity('パスワードが一致しません。');
+	    } else {
+	      confirmPassword.setCustomValidity('');
+	    }
+	  }
+
+	  window.onload = function() {
+	    document.getElementById('password').onchange = validatePassword;
+	    document.getElementById('confirm_password').onkeyup = validatePassword;
+	  }
+	</script>
 <body>
     <div class="login-box">
     <h1 class="login-title">パスワード変更</h1>
