@@ -151,45 +151,60 @@
                         <div class="error-message">同じ高校は登録できません</div>
                     </c:if>
                     <input type="hidden" name="tournamentId" value="${tournament.tournamentId }">
-                    <button type="submit" id ="button">試合情報登録</button>
+                    <button type="submit" id ="button" >試合情報登録</button>
                 </form>
             </div>
         </c:when>
     </c:choose>
-    <%--
-<script>
-	document.addEventListener('change', function () {
-		var inputs = [];
+
+	<script>
+	<%-- なし以外で重複がないようにする --%>
+	document.addEventListener('DOMContentLoaded', function () {
+		<%-- 配列作成 --%>
+	    var inputs = [];
 	    for (let i = 1; i < 5; i++) {
 	        var school1 = document.getElementById('duel' + i + 'School1');
 	        var school2 = document.getElementById('duel' + i + 'School2');
 	        inputs.push(school1);
 	        inputs.push(school2);
 	    }
-	    console.log(inputs);
 	    const submitButton = document.getElementById('button');
 
+	    <%-- 重複があるときはボタンを非活性 --%>
 	    inputs.forEach(input => {
-	        input.addEventListener('change', validateInputs());
+	        input.addEventListener('change', validateInputs);
 	    });
 
+	    <%-- 重複ありでボタン押されたらalert --%>
+	    submitButton.addEventListener('click', function () {
+	        validateInputs();
+	        if (submitButton.disabled) {
+	        	alert('同じ高校名は選択できません');
+	            return false; // ボタンが無効な場合はフォームの送信をキャンセル
+	        }
+	    });
 
-
+	    <%-- ボタン非活性メソッド --%>
 	    function validateInputs() {
-	    	var result = inputs.filter(function( input ) {
-	    		  return input.value !== 0;
-	    		});
+	        var result = inputs.filter(function (input) {
+	            return input.value !== '0';
+	        });
 
-	    	console.log(result);
-	        console.log(isDuplicated(result));
-        	if(!isDuplicated(result)){
-        		submitButton.disabled = false;
-        	}else{
-        		submitButton.disabled = true;
-        	}
+	        if (isDuplicated(result)) {
+	            submitButton.disabled = true;
+	        } else {
+	            submitButton.disabled = false;
+	        }
+	    }
+
+	    <%-- 重複確認メソッド --%>
+	    function isDuplicated(array) {
+	        var uniqueValues = new Set(array.map(input => input.value));
+	        return array.length !== uniqueValues.size;
 	    }
 	});
-</script>
- --%>
+
+
+	</script>
 </body>
 </html>

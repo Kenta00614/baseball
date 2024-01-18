@@ -30,7 +30,7 @@ function CheckEmail_1() {
 	            <label for="user-id">確認用ID(email)</label>
 	            <input name="newMail" type="email" id="emailConfirm_1" placeholder="✉Mail" class="login-email" required>
 
-	            <button type="submit" class="form-btn">パスワード変更</button>
+	            <button type="submit" class="form-change-btn">変更</button>
 	        </div>
 
 

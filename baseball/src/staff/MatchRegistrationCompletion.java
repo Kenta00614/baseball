@@ -17,6 +17,7 @@ import bean.Match;
 import bean.School;
 import bean.Staff;
 import bean.Tournament;
+import common.Constants;
 import dao.DuelDAO;
 import dao.MatchDAO;
 import dao.SchoolDAO;
@@ -103,6 +104,8 @@ public class MatchRegistrationCompletion extends HttpServlet {
 	//		    	高校名のリスト
 			    	List<School> schoolList = new ArrayList();
 			    	SchoolDAO schoolDAO = new SchoolDAO();
+//			    	roundのリスト
+			    	List<String> duelRound = new ArrayList();
 	//				高校情報取得
 					schoolList = schoolDAO.searchSchool(tournament.getTournamentId());
 	//				なしの値
@@ -111,8 +114,17 @@ public class MatchRegistrationCompletion extends HttpServlet {
 					school.setName("なし");
 					schoolList.add(school);
 
+//					roundのリスト作成
+					duelRound.add(Constants.DUEL_ROUND.get("1"));
+					duelRound.add(Constants.DUEL_ROUND.get("2"));
+					duelRound.add(Constants.DUEL_ROUND.get("3"));
+					duelRound.add(Constants.DUEL_ROUND.get("4"));
+					duelRound.add(Constants.DUEL_ROUND.get("5"));
+					duelRound.add(Constants.DUEL_ROUND.get("6"));
+
 					request.setAttribute("insertNum", num);
 					request.setAttribute("schoolList",schoolList );
+					request.setAttribute("duelRound",duelRound );
 					request.getRequestDispatcher("/staff/matchRegistrationInput.jsp").forward(request, response);
 					return;
 				}
