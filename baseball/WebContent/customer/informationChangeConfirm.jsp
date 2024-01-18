@@ -10,17 +10,21 @@
     <div class="container">
         <h1>会員情報変更確認</h1>
         <form id="memberChangeConfirmForm" action="InformationChange" method="post">
-            <label for="name">氏名</label>
-            <input type="text" id="name" name="name" value="${requestScope.name}" class="field" required readonly>
+            <p class="signup-label"><label for="name">氏名</label></p>
+            <!-- サーバーサイドで受け取った値を表示 -->
+            <span><%= request.getParameter("name") %></span>
 
-            <label for="tel">電話番号</label>
-            <input type="tel" id="tel" name="tel" value="${requestScope.tel}" pattern="\d{10}|\d{11}" class="field" required readonly>
+            <p class="signup-label"><label for="tel">電話番号</label></p>
+            <!-- サーバーサイドで受け取った値を表示 -->
+            <span><%= request.getParameter("tel") %></span>
 
-            <!-- 戻るボタン -->
-            <input type="button" value="戻る" onclick="history.back();" class="submit-button">
+
+
 
             <!-- 確定ボタン -->
             <input type="submit" value="確定" class="submit-button">
+            <!-- 戻るボタン -->
+            <input type="button" value="戻る" onclick="history.back();" class="submit-button">
         </form>
     </div>
 </body>
