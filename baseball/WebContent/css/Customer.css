@@ -777,6 +777,22 @@
 	    position: relative; /* bodyを相対的な位置に設定 */
 	}
 
+	.form-change-btn{
+		border: 3px solid transparent;
+	    margin: 15px auto; /* 左右のマージンをautoにして中央寄せに修正 */
+	    margin-top: 30px;
+	    display: flex;
+	    color: #ffffff;
+	    background: #000000;
+	    padding: 7px 210px;
+	    cursor: pointer;
+	    border-radius: 3px;
+	    /* other styles */
+	    align-items: center;
+	    position: relative; /* bodyを相対的な位置に設定 */
+
+	}
+
 
 	.return-btn {
 	    /* 戻るボタンのスタイル */

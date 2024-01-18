@@ -15,7 +15,7 @@
 </head>
 <body>
 	<%-- 戻るボタン --%>
-	<form action="TicketSelectAll" method="post">
+	<form action="TicketSelectAll" method="post"><br>
 		<input type="hidden" name="count" value="${count }">
 		<input type="hidden" name="seat" value="${seat }">
 		<button type="submit" class="return-btn">戻る</button>
