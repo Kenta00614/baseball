@@ -13,6 +13,6 @@ public class StaffPassComplete extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        request.getRequestDispatcher("/staff/staffPassComplete.jsp").forward(request, response);
+    	request.getRequestDispatcher("/staff/staffPassComplete.jsp").forward(request, response);
     }
 }

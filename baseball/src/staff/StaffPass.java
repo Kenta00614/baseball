@@ -24,12 +24,18 @@ public class StaffPass extends HttpServlet {
             int result = staffDAO.updateStaff(id, password);
             if (result > 0) {
                 // パスワード更新成功
-                response.sendRedirect("/baseball/staff/staffPassComplete.jsp");
+            	request.setAttribute("id", id);
+            	request.setAttribute("password", password);
+            	request.getRequestDispatcher("/staff/staffPassComplete.jsp").forward(request, response);
+            	return;
             } else {
-                // パスワード更新失敗
-                response.sendRedirect("/baseball/staff/staffPassFailed.jsp");
+//              生年月日と新しいパスワードが一緒の場合
+            	request.setAttribute("id", id);
+            	request.getRequestDispatcher("/staff/staffPass.jsp").forward(request, response);
             }
         } catch (Exception e) {
+        	// パスワード更新失敗
+        	response.sendRedirect("/baseball/staff/staffPassFailed.jsp");
             throw new ServletException(e);
         }
     }

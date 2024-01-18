@@ -38,7 +38,7 @@
 			</tr>
 		</c:forEach>
 		<%-- ↑選択された座席分の情報↑ --%>
-		<tr><th>支払い方法/受け取り方法</th><td colspan="3">QRコード/Paypal</td></tr>
+		<tr><th>支払い方法/受け取り方法</th><td colspan="3">Paypal/QRコード</td></tr>
 
 		<tr id="app">
 			<th>ご請求</th><td>&yen; {{disPrice.toLocaleString()}}<br><c:if test="${point > 0}">(内ポイント利用&yen;{{usePoint.toLocaleString()}})</c:if></td>

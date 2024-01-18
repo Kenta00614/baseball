@@ -5,7 +5,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>メニュー</title>
+    <title>甲子園管理システム</title>
     <link rel="stylesheet" type="text/css" href="/baseball/css/Staff.css">
 
     <!-- FontAwesomeのCDNを追加 -->
@@ -120,7 +120,7 @@
                    <div class="dropdown">
                        <a href="StaffRegister"><i class="fas fa-user-plus"></i> 新規職員登録</a>
                        <a href="StaffDelete"><i class="fas fa-user-minus"></i> 職員情報削除</a>
-                       <a href="StaffPassDisplay"><i class="fas fa-key"></i> パスワード再設定</a>
+                       <%-- <a href="StaffPassDisplay"><i class="fas fa-key"></i> パスワード再設定</a> --%>
                    </div>
                </li>
                <li class="nav__item"><a href="EntryExit"><i class="fas fa-sign-in-alt"></i> 入退場</a></li>

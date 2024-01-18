@@ -29,7 +29,7 @@
 <body>
 	<div class="container">
 	  <h1>新規会員登録</h1>
-	  <form id="registrationForm" action="ProvisionalSignup" method="post">
+	  <form id="registrationForm" action="ProvisionalSignupConfirm" method="post">
 	    <p class="signup-label"><label for="name">氏名</label></p>
 	    <input type="text" id="name" name="name" class="custom-input" required>
 
@@ -40,10 +40,10 @@
 	    <input type="tel" id="tel" name="tel" pattern="\d{10}|\d{11}" placeholder="0332378711" class="custom-input" required>
 
 	    <p class="signup-label"><label for="password">パスワード</label></p>
-	    <input type="password" id="password" name="password" class="custom-input" required>
+	    <input type="password" id="password" name="password" class="custom-input" pattern="[!-~]{8,}"　required>
 
 	    <p class="signup-label"><label for="confirmPassword">パスワード確認</label></p>
-	    <input type="password" id="confirmPassword" name="confirmPassword" class="custom-input" required>
+	    <input type="password" id="confirmPassword" name="confirmPassword" class="custom-input" pattern="[!-~]{8,}" required>
 
 	    <input type="submit" value="確認" class="submit-button">
 	  </form>

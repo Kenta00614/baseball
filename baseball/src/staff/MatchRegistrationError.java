@@ -7,12 +7,24 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import bean.Staff;
 
 @WebServlet("/staff/MatchRegistrationError")
 public class MatchRegistrationError extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    	HttpSession session=request.getSession();
 
-        request.getRequestDispatcher("/staff/matchRegistrationError.jsp").forward(request, response);
+//    	ログインしているか
+    	Staff staffData = (Staff) session.getAttribute("staff");
+    	if(staffData == null){
+    		request.setAttribute("sessionOut","1");
+    		request.getRequestDispatcher("login.jsp").forward(request, response);
+    		return;
+    	}else{
+    		request.getRequestDispatcher("/staff/matchRegistrationError.jsp").forward(request, response);
+    	}
     }
 }

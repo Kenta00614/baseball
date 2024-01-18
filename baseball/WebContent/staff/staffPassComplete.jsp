@@ -37,8 +37,13 @@
 
 <body>
     <div class="header">
-        <h1>パスワード再設定</h1>
-        <p>パスワードの再設定が完了しました。</p>
+    	<form action="Login" method="post">
+	        <h1>パスワード再設定</h1>
+	        <p>パスワードの再設定が完了しました。</p>
+	        <input type="hidden" name="id" value="${id }">
+	        <input type="hidden" name="password" value="${password }">
+	        <input type="submit" value="確認">
+        </form>
     </div>
 </body>
 

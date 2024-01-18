@@ -27,8 +27,15 @@ public class Login extends HttpServlet {
             if (staff != null) {
                 // ログイン成功
                 HttpSession session = request.getSession();
-                session.setAttribute("staff", staff);
-                response.sendRedirect("/baseball/staff/loginWelcome.jsp"); // ログイン成功ページへリダイレクト
+//                初期パスワード(生年月日8桁)のままの場合
+                if(staff.getInitialPassFlg().equals("1")){
+                	request.setAttribute("id", id);
+                	request.getRequestDispatcher("/staff/staffPass.jsp").forward(request, response);
+                	return;
+                }else{
+	                session.setAttribute("staff", staff);
+	                response.sendRedirect("/baseball/staff/loginWelcome.jsp"); // ログイン成功ページへリダイレクト
+                }
             } else {
                 // ログイン失敗
                 HttpSession session = request.getSession();

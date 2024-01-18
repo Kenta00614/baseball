@@ -36,21 +36,21 @@ public class Signup extends HttpServlet {
                     provisionalDAO.delUuid(uuid);
 
                     // 登録完了ページへリダイレクト
-                    response.sendRedirect("/baseball/customer/signupComplete.jsp");
+                    request.setAttribute("situFlg","2");
+                    request.getRequestDispatcher("/customer/signupComplete.jsp").forward(request, response);
                 } else {
                     // 該当するユーザーが見つからない場合のエラーハンドリング
                 	request.setAttribute("situFlg","0");
-                	request.getRequestDispatcher("/customer/signupError.jsp").forward(request, response);
+                	request.getRequestDispatcher("/customer/signupComplete.jsp").forward(request, response);
                 }
             } else {
                 // UUID が無効な場合のエラーハンドリング
             	request.setAttribute("situFlg","1");
-            	request.getRequestDispatcher("/customer/signupError.jsp").forward(request, response);
+            	request.getRequestDispatcher("/customer/signupComplete.jsp").forward(request, response);
             }
         } catch (Exception e) {
             e.printStackTrace();
-            request.setAttribute("situFlg","1");
-            request.getRequestDispatcher("/customer/signupError.jsp").forward(request, response);
+            request.getRequestDispatcher("/customer/error.jsp").forward(request, response);
         }
     }
 }

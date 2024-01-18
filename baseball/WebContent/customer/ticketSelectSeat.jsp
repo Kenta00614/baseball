@@ -9,54 +9,6 @@
 
  <link rel="stylesheet" type="text/css" href="/baseball/css/Ticket.css">
  <style>
-    .selected-ticket {
-        width: 400px;
-        height: 50px;
-        margin-top: 0px;
-        margin: 3px;
-
-		display: inline-block;
-	    position: relative;
-	    padding: 0;
-	    border-right: 27px solid #75ffb3;
-	    background-color: #dbffeb;
-	    color: #333333;
-    }
-
-    .selected-ticket::before {
-    position: absolute;
-    bottom: 2px;
-    right: -20px;
-    z-index: -1;
-    transform: rotate(5deg);
-    width: 100%;
-    height: 50%;
-    background-color: #d0d0d0;
-    content: "";
-    filter: blur(4px);
-	}
-
-	.age{
-		background-color: #9fffc5;
-		border: solid 3px #01e25b;
-		border-radius: 20px;
-	}
-	.kids{
-		background-color:#ffec99;
-		border: solid 3px #ffcf00;
-		border-radius: 20px;
-	}
-
-	.ground{
-		width: 420px;
-		margin-top: 0px;
-		padding:3px ;/*内側余白*/
-
-		border-top:solid 5px #f7b100;/*線の種類・太さ・色*/
-		background-color:#F9F4E8;/*背景色*/
-		box-shadow:3px 1px 4px rgba(0, 0, 0, 0.2)	;/*ボックス影*/
-		text-align: center; /* ブロック内の中央寄せ */
-	}
 
 
 </style>
@@ -77,8 +29,8 @@
 		<%-- 座席の画像--%>
 		<transition-group>
 		<tr v-for="(seats,index1) in seatsList" v-bind:key="seats[0].seatId">
-			<td v-for="(seat,index2) in seats" v-bind:key="seat.seatId">
-				 	<img v-if="(seat.seatId.length > 5)" alt="座席" :src="'${pageContext.request.contextPath}/customer/image/'+ seat.imgsrc + '.jpg'" value="index" v-bind:value="seat.check" v-on:click="changeClass(index1,index2)">
+			<td v-for="(seat,index2) in seats" v-bind:key="seat.seatId" >
+				 	<img v-if="(seat.seatId.length > 5)" alt="座席" :src="'${pageContext.request.contextPath}/customer/image/'+ seat.imgsrc + '.jpg'" value="index" v-bind:value="seat.check" v-on:click="changeClass(index1,index2)" >
 			</td>
 		</tr>
 		</transition-group>
@@ -99,10 +51,10 @@
 
 
 
-		<form name="myForm" action="TicketConfirm" method="post">
+		<form name="myForm" action="TicketConfirm" method="post" >
 			<input type="hidden" id="tickets" name="tickets" value="" ><!-- 隠しパラメータ ticketのIDリスト-->
 			<input type="hidden" id="child" name="child" value="">
-			<button type="button" v-on:click="submitFunc" :disabled="${count } != selectedTickets.length" >次へ</button><!-- 送信ボタン -->
+			<button type="button" v-on:click="submitFunc" :disabled="${count } != selectedTickets.length"  >次へ</button><!-- 送信ボタン -->
 		</form>
 	</div>
 

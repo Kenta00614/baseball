@@ -4,6 +4,10 @@
 
 	/* PC用CSS記述 */
 
+	body{
+		  position: fixed;
+	}
+
 	.title {
 	  font-weight: bold;
 	  font-size: 20px;
@@ -71,6 +75,8 @@
 	    background-color: #e4ffd7;
 	    top: 0;
 	    left: 0;
+	    position: fixed;
+
 	}
 
 	.baseball {
