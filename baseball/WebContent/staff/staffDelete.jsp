@@ -105,7 +105,8 @@
             <c:if test="${noSelectFlg == 0 }">
             	<p>職員が選択されていません</p>
             </c:if>
-            <button type="submit">削除</button>
+            <button type="submit" style="background-color: #007BFF; color: #fff; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer;">削除</button>
+
             <script>
                 new Vue({
                     el: 'form',
