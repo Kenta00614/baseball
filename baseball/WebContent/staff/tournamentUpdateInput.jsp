@@ -6,64 +6,65 @@
 <head>
     <!-- Bootstrap CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #F5F5F5;
-        }
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #FFEBEE; /* Light pink background */
+    }
 
-        .header {
-            background-color: #F5F5F5;
-            color: #555555;
-            padding: 0.1px;
-            text-align: center;
-        }
+    .header {
+        background-color: #E91E63; /* Pink header */
+        color: white;
+        padding: 6px;
+        text-align: center;
+    }
 
-        .form-container {
-            max-width: 600px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: white;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 5px;
-        }
+    .form-container {
+        max-width: 600px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #FFF; /* White form background */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+    }
 
-        .control {
-            margin-bottom: 15px;
-        }
+    .control {
+        margin-bottom: 15px;
+    }
 
-        label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-            color: #000;
-        }
+    label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+        color: #E91E63; /* Pink label text */
+    }
 
-        input[type="text"],
-        select {
-            width: 100%;
-            padding: 10px;
-            box-sizing: border-box;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
+    input[type="text"],
+    select {
+        width: 100%;
+        padding: 10px;
+        box-sizing: border-box;
+        border: 1px solid #FF4081; /* Dark pink border */
+        border-radius: 4px;
+    }
 
-        select {
-            cursor: pointer;
-        }
+    select {
+        cursor: pointer;
+    }
 
-        button {
-            background-color: #0066FF;
-            color: white;
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            width: 100%;
-        }
-    </style>
+    button {
+        background-color: #E91E63; /* Pink button */
+        color: white;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 100%;
+    }
+</style>
+
 </head>
 
 <body>
