@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 public class ProvisionalSignupConfirm extends HttpServlet {
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    	request.setCharacterEncoding("UTF-8");
 
         request.getRequestDispatcher("/customer/signupConfirm.jsp").forward(request, response);
     }

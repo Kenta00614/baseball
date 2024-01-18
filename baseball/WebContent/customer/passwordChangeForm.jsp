@@ -23,7 +23,7 @@ function CheckEmail_1() {
     <div class="login-box">
     <h1 class="login-title">パスワード変更</h1>
     　　<form action="PasswordChangeMail" method="post" onsubmit="return CheckEmail_1();">
-
+			<p class="form-comment">本人確認の為、IDを入力してください。</p>
 	        <div class="login-input">
 	            <label for="user-id">ID(email)</label>
 	            <input name="newMail" type="email" id="email_1" placeholder="✉Mail" class="login-email" required>
