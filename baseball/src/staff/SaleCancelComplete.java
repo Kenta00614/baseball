@@ -36,10 +36,7 @@ public class SaleCancelComplete extends HttpServlet {
 		            // 現在の日付で販売停止処理を行う
 		            int num = dao.changePostpone(today);
 
-		            // 処理結果の出力
-		            response.setContentType("text/html;charset=UTF-8");
-		            response.getWriter().println(num + "件のチケットが販売停止になりました。");
-
+		            request.getRequestDispatcher("/staff/saleCancelComplete.jsp").forward(request, response);
 		        } catch (Exception e) {
 		            // 予期せぬ例外のハンドリング
 		            throw new ServletException("サーブレット内でエラーが発生しました: " + e.getMessage(), e);

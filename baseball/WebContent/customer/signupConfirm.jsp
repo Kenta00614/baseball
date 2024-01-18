@@ -10,24 +10,33 @@
     <div class="container">
         <h1>新規会員登録確認</h1>
         <form id="registrationForm" action="ProvisionalSignup" method="post">
-            <p class="signup-label"><label for="name">氏名</label></p>
-            <!-- サーバーサイドで受け取った値を表示 -->
-            <span><%= request.getParameter("name") %></span>
+        <p class="form-comment">以下の内容で登録してよろしいですか？</p>
+        <div class="form-inline">
+        	<hr class="inline">
+        	<div class="form-cfm">
+            	<p class="signup-label"><label for="name" class="form-element"> 　氏　　名　　</label></p>
+            	<!-- サーバーサイドで受け取った値を表示 -->
+            	<span class="form-input"><%= request.getParameter("name") %></span>
+			</div>
+			<hr class="inline">
+			<div class="form-cfm">
+	            <p class="signup-label"><label for="mail" class="form-element">メールアドレス</label></p>
+	            <!-- サーバーサイドで受け取った値を表示 -->
+	            <span class="form-input"><%= request.getParameter("mail") %></span>
+			</div>
+			<hr class="inline">
+			<div class="form-cfm">
+	            <p class="signup-label"><label for="tel" class="form-element">電　話　番　号</label></p>
+	            <!-- サーバーサイドで受け取った値を表示 -->
+	            <span class="form-input"><%= request.getParameter("tel") %></span>
+	        </div>
+            <hr class="inline">
+        </div>
 
-            <p class="signup-label"><label for="mail">メールアドレス</label></p>
-            <!-- サーバーサイドで受け取った値を表示 -->
-            <span><%= request.getParameter("mail") %></span>
-
-            <p class="signup-label"><label for="tel">電話番号</label></p>
-            <!-- サーバーサイドで受け取った値を表示 -->
-            <span><%= request.getParameter("tel") %></span>
-
-            <p class="signup-label"><label for="password">パスワード</label></p>
-            <!-- サーバーサイドで受け取った値を表示 -->
-            <span><%= request.getParameter("password") %></span>
-
-            <input type="button" value="戻る" onclick="history.back();" class="submit-button">
-            <input type="submit" value="登録" class="submit-button">
+		<div class="infor-change">
+            <input type="button" value="戻る" onclick="history.back();" class="infor-change-btn">
+            <input type="submit" value="登録" class="infor-change-btn">
+        </div>
         </form>
     </div>
 </body>
