@@ -7,11 +7,12 @@
 	<link rel="stylesheet" type="text/css"  href ="/baseball/css/Customer.css">
 </head>
 <body>
-<h1>メールアドレスが存在しません</h1>
+<h2 class="error" >メールアドレスが存在しません</h2>
 
     <div class="header">
+			<p class="form-comment">正しいメールアドレスを入力してください</p>
         <form action="PasswordChangeFormDisplay" method="get">
-    　　　　<button type="submit">戻る</button>
+    　　　　<button type="submit" class="home-btn">　戻る　</button>
 　　　　</form>
     </div>
 </body>
