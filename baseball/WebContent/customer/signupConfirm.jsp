@@ -34,6 +34,10 @@
         </div>
 
 		<div class="infor-change">
+			<input type="hidden" name="mail" value="<%= request.getParameter("mail") %>">
+			<input type="hidden" name="name" value="<%= request.getParameter("name") %>">
+			<input type="hidden" name="password" value="<%= request.getParameter("password") %>">
+			<input type="hidden" name="tel" value="<%= request.getParameter("tel") %>">
             <input type="button" value="戻る" onclick="history.back();" class="infor-change-btn">
             <input type="submit" value="登録" class="infor-change-btn">
         </div>
