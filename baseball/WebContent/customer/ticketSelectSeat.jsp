@@ -147,8 +147,8 @@
 				            break;
 				        }
 				    }
-				    <%-- status==3の時は実行しない --%>
-				    if(selectStatus !== 3){
+				    <%-- 販売中の時のみ画像変更 --%>
+				    if(this.seatsList[index1][index2].imgsrc !== "seat_0"){
 						if(!this.seatsList[index1][index2].check){
 							this.seatsList[index1][index2].imgsrc="seat_3";
 							this.seatsList[index1][index2].check=true;
