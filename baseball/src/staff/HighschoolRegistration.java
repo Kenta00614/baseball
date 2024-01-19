@@ -1,6 +1,7 @@
 package staff;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import bean.School;
 import bean.Staff;
 import dao.SchoolDAO;
 
@@ -38,8 +40,11 @@ public class HighschoolRegistration extends HttpServlet {
 	            // 高校名をデータベースに登録
 	           dao.insertSchool(schoolName, tournamentId);
 
+			   List<School> schools = dao.searchSchool(tournamentId);
+			   request.setAttribute("schools", schools);
+			   request.setAttribute("tournamentId", tournamentId);
                 // 登録成功
-                response.sendRedirect("tournamentRegistrationCompletion.jsp");
+			   request.getRequestDispatcher("/staff/highschoolDisplay.jsp").forward(request, response);;
 	        } catch (Exception e) {
 	        	response.sendRedirect("error.jsp");
 	            throw new ServletException(e);
