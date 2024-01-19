@@ -21,7 +21,8 @@ public class HighschoolRegistrationDisplay extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	    String tournamentId = request.getParameter("tournamentId");
+		request.setCharacterEncoding("UTF-8");
+		String tournamentId = request.getParameter("tournamentId");
 	    request.setAttribute("tournamentId", tournamentId);
 		HttpSession session=request.getSession();
 

@@ -3,10 +3,9 @@
 <%@ page import="bean.School" %>
 <%@ include file="header.jsp" %>
 <html>
-
 <head>
     <title>高校情報一覧</title>
-    <style>
+        <style>
         body {
             font-family: 'Arial', sans-serif;
             margin: 0;
@@ -35,12 +34,6 @@
             border-bottom: 1px solid #ecf0f1;
         }
 
-        input[type="text"] {
-            width: 100%;
-            padding: 10px;
-            box-sizing: border-box;
-        }
-
         input[type="submit"] {
             background-color: #3498db;
             color: #fff;
@@ -56,9 +49,7 @@
         }
     </style>
 </head>
-
 <body>
-	<a href="TournamentList" type="submit">戻る</a>
     <h2>高校情報一覧</h2>
     <form action="HighschoolUpdate" method="post">
         <table border="1">
@@ -68,12 +59,14 @@
             <%
             List<School> schools = (List<School>) request.getAttribute("schools");
             for (School school : schools) {
+            	if(!school.getName().equals("")){
             %>
                 <tr>
                     <td>
-                        <input type="text" name="schoolName<%= school.getSchoolId() %>" value="<%= school.getName() %>">
+	                	<p><%= school.getName() %></p>
                     </td>
                 </tr>
+                <%} %>
             <% } %>
         </table>
         <div style="text-align: center;">
@@ -82,5 +75,4 @@
         </div>
     </form>
 </body>
-
 </html>
