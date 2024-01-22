@@ -33,6 +33,11 @@ public class TournamentList extends HttpServlet {
 	        try {
 	            // データベースから大会情報のリストを取得
 	            List<Tournament> tournamentList = dao.getTournamentDetail();
+
+	            if(tournamentList.size() == 0){
+	            	request.getRequestDispatcher("/staff/tournamentNone.jsp").forward(request, response);
+	            	return;
+	            }
 	            // リクエスト属性に大会情報リストをセット
 	            request.setAttribute("tournamentList", tournamentList);
 	            request.setAttribute("name", name);
