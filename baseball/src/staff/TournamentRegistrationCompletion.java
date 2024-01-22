@@ -14,7 +14,7 @@ import bean.Staff;
 @WebServlet("/staff/TournamentRegistrationCompletion")
 public class TournamentRegistrationCompletion extends HttpServlet {
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doget(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	HttpSession session=request.getSession();
 
 //    	ログインしているか

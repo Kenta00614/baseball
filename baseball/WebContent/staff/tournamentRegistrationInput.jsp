@@ -68,7 +68,7 @@
 	<div class="header">
 	    <h2>大会情報登録　入力画面</h2>
 	    <div class="form-container"> <!-- form-container を追加 -->
-	        <form action="TournamentRegistrationInput" method="post">
+	        <form action="TournamentRegistrationInputConfirm" method="post">
 	            <div class="control">
 	                <label for="year">開催年:</label>
 	                <input type="text" id="year" name="year" required>
