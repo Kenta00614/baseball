@@ -67,13 +67,15 @@
     <div class="form-container">
         <form action="SaleOptionsRedirect" method="post" onsubmit="return validateSelection();">
             <div class="control">
-                <input type="radio" id="sale1" name="sale" value="cancel"><label for="sale1">雨天時などの試合中止(払い戻し可)</label>
+                <input type="radio" id="sale1" name="sale" value="cancel">
+                <label for="sale1">雨天時などの試合中止(払い戻し可)</label>
             </div>
             <div class="control">
-                <input type="radio" id="sale2" name="sale" value="end"><label for="sale2">当日券・リセール席の販売停止</label>
+                <input type="radio" id="sale2" name="sale" value="end">
+                <label for="sale2">当日券・リセール席の販売停止</label>
             </div>
             <button type="submit">確認</button>
-        </form>
+        </form>	
     </div>
 
     <script>
