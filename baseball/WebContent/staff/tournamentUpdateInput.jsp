@@ -73,7 +73,7 @@
     </div>
 
     <div class="form-container">
-        <form action="TournamentUpdate" method="post">
+        <form action="TournamentUpdateConfirmation" method="post">
             <%-- セッションから大会情報を取得 --%>
             <c:set var="tournament" value="${sessionScope.tournament}" />
 
