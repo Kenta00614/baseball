@@ -70,7 +70,8 @@
     <form action="StaffPass" method="post" onsubmit="return validatePassword()">
         <div class="control">
 		    <label for="id">ID</label>
-		    <p id="id">${id}</p>
+		    <p>${id}</p>
+		    <input id="id" type="hidden" name="id" value="${id}" >
         </div>
         <div class="control">
             <label for="password">パスワード</label>
