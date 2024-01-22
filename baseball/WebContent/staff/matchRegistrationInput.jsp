@@ -169,7 +169,7 @@
                         <div class="error-message">同じ高校は登録できません</div>
                     </c:if>
                     <input type="hidden" name="tournamentId" value="${tournament.tournamentId }">
-                    <button type="submit" id ="button" >試合情報登録</button>
+                    <button type="submit" id ="button" >登録</button>
                 </form>
             </div>
         </c:when>
