@@ -37,6 +37,11 @@ public class MatchDisplay extends HttpServlet {
 	        try {
 	            // データベースから大会情報のリストを取得
 	            tournamentList = dao.getTournamentDetail();
+
+	            if(tournamentList.size() == 0){
+	            	request.getRequestDispatcher("/staff/tournamentNone.jsp").forward(request, response);
+	            	return;
+	            }
 	        }catch (Exception e) {
 	        	throw new ServletException(e);
 	        }
