@@ -71,6 +71,7 @@ public class Login extends HttpServlet {
                 List<Match> matchList = new ArrayList();
             	List<Tournament> tournamentList = new ArrayList();
         		List<List<DuelExp>> duelList = new ArrayList<List<DuelExp>>();
+        		Tournament tournament = null;
 
         		MatchDAO matchDAO = new MatchDAO();
         		DuelDAO duelDAO = new DuelDAO();
@@ -78,20 +79,23 @@ public class Login extends HttpServlet {
 
 //        			tournamntの情報取得
     			tournamentList = tournamentDAO.getTournamentDetail();
-//        			最後に登録されているトーナメントのmatch情報を取得
-    			matchList = matchDAO.searchMatchTournament(tournamentList.get(tournamentList.size()-1).getTournamentId());
+    			if(tournamentList.size() != 0){
+	//        			最後に登録されているトーナメントのmatch情報を取得
+	    			matchList = matchDAO.searchMatchTournament(tournamentList.get(tournamentList.size()-1).getTournamentId());
 
-//        			duelの情報をListに詰める
-    			for(Match match: matchList){
-    				List<DuelExp> array = new ArrayList<>();
-    				array.add(duelDAO.getDuelDetail(match.getDuel1()));
-    				array.add(duelDAO.getDuelDetail(match.getDuel2()));
-    				array.add(duelDAO.getDuelDetail(match.getDuel3()));
-    				array.add(duelDAO.getDuelDetail(match.getDuel4()));
-    				duelList.add(array);
+	//        			duelの情報をListに詰める
+	    			for(Match match: matchList){
+	    				List<DuelExp> array = new ArrayList<>();
+	    				array.add(duelDAO.getDuelDetail(match.getDuel1()));
+	    				array.add(duelDAO.getDuelDetail(match.getDuel2()));
+	    				array.add(duelDAO.getDuelDetail(match.getDuel3()));
+	    				array.add(duelDAO.getDuelDetail(match.getDuel4()));
+	    				duelList.add(array);
+	    			}
+	    			tournament = tournamentList.get(tournamentList.size()-1);
     			}
 
-        		request.setAttribute("tournament", tournamentList.get(tournamentList.size()-1));
+        		request.setAttribute("tournament", tournament);
         		request.setAttribute("duelList",duelList);
         		request.setAttribute("matchList",matchList);
         		request.getRequestDispatcher("/customer/main.jsp").forward(request, response); // メイン画面へ
