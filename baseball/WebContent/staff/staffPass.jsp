@@ -45,7 +45,7 @@
             box-sizing: border-box;
             border: 1px solid #ccc;
             border-radius: 3px;
-            color: #000; /* Input text color */
+            color: #000;
         }
 
         input[type="submit"] {
@@ -54,8 +54,6 @@
             cursor: pointer;
         }
 
-        input[type="submit"]:hover {
-            background-color: #ff6347;
         }
 
         .error-message {
@@ -71,8 +69,8 @@
     </div>
     <form action="StaffPass" method="post" onsubmit="return validatePassword()">
         <div class="control">
-            <label for="id">ID</label>
-            <input id="id" type="id" name="id" value="${id }" readonly>
+		    <label for="id">ID</label>
+		    <p id="id">${id}</p>
         </div>
         <div class="control">
             <label for="password">パスワード</label>

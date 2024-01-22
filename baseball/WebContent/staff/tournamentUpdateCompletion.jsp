@@ -5,10 +5,9 @@
 大会情報変更　完了
 <body>
     <div class="header">
-        <form action="TournamentRegistrationInput" method="get">
+        <form action="Header" method="get">
     　　　　<button type="submit">OK</button>
 　　　　</form>
     </div>
 </body>
-</html>	
-	
+</html>

@@ -11,8 +11,8 @@ import javax.servlet.http.HttpSession;
 
 import bean.Staff;
 
-@WebServlet("/staff/TournamentUpdateConfirmation")
-public class TournamentUpdateConfirmation extends HttpServlet {
+@WebServlet("/staff/TournamentRegistrationInputConfirm")
+public class TournamentRegistrationInputConfirm extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	HttpSession session=request.getSession();
@@ -29,6 +29,7 @@ public class TournamentUpdateConfirmation extends HttpServlet {
         request.setAttribute("season", season);
         request.setAttribute("name", name);
 
+
 //    	ログインしているか
     	Staff staffData = (Staff) session.getAttribute("staff");
     	if(staffData == null){
@@ -36,7 +37,7 @@ public class TournamentUpdateConfirmation extends HttpServlet {
     		request.getRequestDispatcher("login.jsp").forward(request, response);
     		return;
     	}else{
-    		request.getRequestDispatcher("/staff/tournamentUpdateConfirmation.jsp").forward(request, response);
+    		request.getRequestDispatcher("/staff/tournamentRegistrationInputConfirm.jsp").forward(request, response);
     	}
     }
 }
