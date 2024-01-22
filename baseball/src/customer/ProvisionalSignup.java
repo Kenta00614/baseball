@@ -59,7 +59,7 @@ public class ProvisionalSignup extends HttpServlet {
             }
         } catch (Exception e) {
             e.printStackTrace(); // 本番環境では、適切なロギングに置き換えてください。
-            response.sendRedirect("/customer/signupError.jsp"); // エラーページへリダイレクト
+            response.sendRedirect("/customer/error.jsp"); // エラーページへリダイレクト
         }
     }
 
