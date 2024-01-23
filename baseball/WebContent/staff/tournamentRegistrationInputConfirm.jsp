@@ -4,6 +4,63 @@
 <head>
     <title>大会情報登録確認</title>
     <meta charset="UTF-8">
+        <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color:#F5F5F5;
+        }
+
+        .header {
+            background-color:#F5F5F5;
+            color: #555555;
+            padding: 0.1px;
+            text-align: center;
+        }
+
+        .form-container {
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+        .control {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        select {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        select {
+            cursor: pointer;
+        }
+
+	    button {
+	        background-color:#0066FF;
+	        color: white;
+	        padding: 10px;
+	        border: none;
+	        border-radius: 5px;
+	        cursor: pointer;
+	        width: 100%;
+	    }
+    </style>
 </head>
 <body>
 	<div class="header">
