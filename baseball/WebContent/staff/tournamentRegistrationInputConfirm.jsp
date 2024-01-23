@@ -4,16 +4,16 @@
 <head>
     <title>大会情報登録確認</title>
     <meta charset="UTF-8">
-        <style>
+    <style>
         body {
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            background-color:#F5F5F5;
+            background-color: #F5F5F5;
         }
 
         .header {
-            background-color:#F5F5F5;
+            background-color: #F5F5F5;
             color: #555555;
             padding: 0.1px;
             text-align: center;
@@ -33,67 +33,66 @@
         }
 
         label {
-            display: block;
+            display: inline-block;
             margin-bottom: 5px;
             font-weight: bold;
+            width: 100px;
         }
 
-        input[type="text"],
-        select {
-            width: 100%;
+        .form-input {
+            display: inline-block;
+            width: calc(100% - 120px);
             padding: 10px;
             box-sizing: border-box;
-            border: 1px solid #ccc;
-            border-radius: 4px;
         }
 
         select {
             cursor: pointer;
         }
 
-	    button {
-	        background-color:#0066FF;
-	        color: white;
-	        padding: 10px;
-	        border: none;
-	        border-radius: 5px;
-	        cursor: pointer;
-	        width: 100%;
-	    }
+        button {
+            background-color: #0066FF;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
     </style>
 </head>
 <body>
-	<div class="header">
-	    <h2>大会情報登録　確認画面</h2>
-	    <div class="form-container"> <!-- form-container を追加 -->
-	        <form action="TournamentRegistrationInput" method="post">
-	            <div class="control">
-	                <label for="year">開催年:</label>
-	                <p id="year" class=""form-input">${requestScope.year}</p>
-	            </div>
-	            <div class="control">
-	                <label for="ordinalNum">第何回:</label>
-	                <p id="ordinalNum" class="form-input">${requestScope.ordinalNum}</p>
-	            </div>
+<div class="header">
+    <h2>大会情報登録　確認画面</h2>
+    <div class="form-container">
+        <form action="TournamentRegistrationInput" method="post">
+            <div class="control">
+                <label for="year">開催年:</label>
+                <p class="form-input">${requestScope.year}</p>
+            </div>
+            <div class="control">
+                <label for="ordinalNum">第何回:</label>
+                <p class="form-input">${requestScope.ordinalNum}</p>
+            </div>
 
-	            <div class="control">
-		            <label for="name">大会の時期</label>
-		            <p id="season" class="form-input">${requestScope.season}</p>
-		        </div>
+            <div class="control">
+                <label for="season">大会の時期:</label>
+                <p class="form-input">${requestScope.season}</p>
+            </div>
 
-	            <div class="control">
-	                <label for="name">大会名:</label>
-	                <p id="name" class="form-input">${requestScope.name}</p>
-	            </div>
+            <div class="control">
+                <label for="name">大会名:</label>
+                <p class="form-input">${requestScope.name}</p>
+            </div>
 
-	        <input type="hidden" name="year" value="${requestScope.year}">
-			<input type="hidden" name="ordinalNum" value="${requestScope.ordinalNum}">
-			<input type="hidden" name="season" value="${requestScope.season}">
-			<input type="hidden" name="name" value="${requestScope.name}">
+            <input type="hidden" name="year" value="${requestScope.year}">
+            <input type="hidden" name="ordinalNum" value="${requestScope.ordinalNum}">
+            <input type="hidden" name="season" value="${requestScope.season}">
+            <input type="hidden" name="name" value="${requestScope.name}">
 
-	            <button type="submit">登録</button>
-	        </form>
-	    </div> <!-- form-container を追加 -->
-	</div>
+            <button type="submit">登録</button>
+        </form>
+    </div>
+</div>
 </body>
 </html>
