@@ -11,21 +11,26 @@
         font-family: 'Arial', sans-serif;
         margin: 0;
         padding: 0;
-        background-color: #FFEBEE; /* Light pink background */
+        background-color:#F5F5F5;
+       	display: flex;
+	    flex-direction: column;
+	    min-height: 100vh;
     }
 
     .header {
-        background-color: #E91E63; /* Pink header */
-        color: white;
+        background-color: #F5F5F5;
+        color: #555555;
         padding: 6px;
         text-align: center;
+        flex: 1;
     }
 
     .form-container {
-        max-width: 600px;
+        flex-grow: 1;
+        max-width: 1000px;
         margin: 20px auto;
-        padding: 20px;
-        background-color: #FFF; /* White form background */
+        padding: 40px;
+        background-color: #FFF;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         border-radius: 5px;
     }
@@ -36,9 +41,9 @@
 
     label {
         display: block;
-        margin-bottom: 5px;
+        margin-bottom: 5px	;
         font-weight: bold;
-        color: #E91E63; /* Pink label text */
+        color:  #555555
     }
 
     input[type="text"],
@@ -46,7 +51,7 @@
         width: 100%;
         padding: 10px;
         box-sizing: border-box;
-        border: 1px solid #FF4081; /* Dark pink border */
+        border: 1px solid #ccc;
         border-radius: 4px;
     }
 
@@ -55,7 +60,7 @@
     }
 
     button {
-        background-color: #E91E63; /* Pink button */
+        background-color: #E91E63;
         color: white;
         padding: 10px;
         border: none;
