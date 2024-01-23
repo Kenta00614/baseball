@@ -69,7 +69,7 @@
 	        <form action="TournamentRegistrationInput" method="post">
 	            <div class="control">
 	                <label for="year">開催年:</label>
-	                <p id="year" class=""form-input">${requestScope.year}</p>
+					<p id="year" class=""form-input">${requestScope.year}</p>
 	            </div>
 	            <div class="control">
 	                <label for="ordinalNum">第何回:</label>
@@ -82,7 +82,7 @@
 		        </div>
 
 	            <div class="control">
-	                <label for="name">大会名:</label>
+	                <label for="name">大会名：</label>
 	                <p id="name" class="form-input">${requestScope.name}</p>
 	            </div>
 
