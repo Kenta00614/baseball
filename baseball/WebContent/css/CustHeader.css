@@ -1,16 +1,26 @@
 @CHARSET "UTF-8";
+@import url('https://https://mimi.moe.in/nmp/fonts/fonts');
 /* ========================================================================== */
-@media screen and (min-width:768px) {
+@media screen and (max-width: 1050px){
+	/* スマートフォン用CSS記述 */
 
-	/* PC用CSS記述 */
+	.nav__item{
+		  font-family: "游教科書体","YuKyokasho"; font-weight: bold;
+		  margin:15px ;
+		  font-size: 28px;
+		  margin-left: 0;
+	}
+
 
 	body{
 		  position: fixed;
+		  margin-left: 0;
 	}
 
 	.title {
 	  font-weight: bold;
 	  font-size: 20px;
+
 	}
 
 	/* ドロップダウンメニューのスタイル */
@@ -49,7 +59,7 @@
 	}
 
 	li {
-	    margin: 0 15px 0 0; /* 右側のmarginを30pxに設定 */
+	    margin: 0 30px 0 0; /* 右側のmarginを30pxに設定 */
 	    font-size: 14px;
 	}
 
@@ -71,13 +81,14 @@
 	.cust-header {
 	    position: fixed; /*← fixedで固定 */
 	    width: 100%;
-	    height: 40px;
+	    height: 100px;
 	    background-color: #e4ffd7;
 	    top: 0;
 	    left: 0;
-	    position: fixed;
+
 
 	}
+
 
 	.baseball {
 	    font-weight: bold;
@@ -85,7 +96,7 @@
 	}
 
 	.logo {
-	    margin: 5px;
+	    margin: 20px;
 	    display: flex; /*横並び*/
 	    align-items: center;
 	}
@@ -97,7 +108,9 @@
 	.logo-image {
 	    display: flex;
 	    padding: 0;
-	    height: 25px;
+	    margin-left: 2px;
+	    height: 65px;
+
 	    /* 必要に応じてwidthを追加 */
 	}
 
@@ -106,6 +119,8 @@
 	    list-style-type: none;
 	    margin: 0;
 	    padding: 0;
+	    padding-right: 20px;
+
 	}
 
 	/* 追加設定 */
@@ -127,17 +142,33 @@
 	    display: none;
 	}
 
-
 }
 
 
 
-@media screen and (max-width:768px) {
 
-	/* スマートフォン用CSS記述 */
+
+
+
+
+@media screen and (min-width: 1050px){
+
+		/* PC用CSS記述 */
+
+	.nav__item{
+		  font-family: "游教科書体","YuKyokasho"; font-weight: bold;
+		  margin:15px ;
+	}
+
+
+	body{
+		  position: fixed;
+	}
+
 	.title {
 	  font-weight: bold;
 	  font-size: 20px;
+
 	}
 
 	/* ドロップダウンメニューのスタイル */
@@ -173,13 +204,11 @@
 	a {
 	    text-decoration: none;
 	    color: #4b4b4b;
-	    margin-top: 10px;
 	}
 
 	li {
 	    margin: 0 15px 0 0; /* 右側のmarginを15pxに設定 */
-	    font-size: 10px;
-	    margin-top: 10px;
+	    font-size: 14px;
 	}
 
 	.nav-menu {
@@ -204,15 +233,17 @@
 	    background-color: #e4ffd7;
 	    top: 0;
 	    left: 0;
+
+
 	}
 
 	.baseball {
 	    font-weight: bold;
-	    font-size: 30px;
+	    font-size: 20px;
 	}
 
 	.logo {
-	    margin: 5px;
+	    margin: 10px;
 	    display: flex; /*横並び*/
 	    align-items: center;
 	}
@@ -224,7 +255,9 @@
 	.logo-image {
 	    display: flex;
 	    padding: 0;
-	    height: 25px;
+	    margin-left: 10px;
+	    height: 30px;
+
 	    /* 必要に応じてwidthを追加 */
 	}
 
@@ -233,6 +266,8 @@
 	    list-style-type: none;
 	    margin: 0;
 	    padding: 0;
+	    padding-right: 30px;
+
 	}
 
 	/* 追加設定 */
