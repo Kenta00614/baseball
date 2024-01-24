@@ -33,15 +33,22 @@ public class HighschoolRegistration extends HttpServlet {
 	        int tournamentId = Integer.parseInt(request.getParameter("tournamentId")); // 大会IDを取得
 
 	        try {
-	            String[] schoolName = new String[49];
-	            for (int i = 1; i <= 49; i++) {
-	                schoolName[i - 1] = request.getParameter("schoolName" + i);
-	            }
-	            // 高校名をデータベースに登録
-	           dao.insertSchool(schoolName, tournamentId);
+	        	List<School> searchList = null;
+	        	searchList = dao.searchSchool(tournamentId);
+	        	if(searchList.size() != 52){
 
-			   List<School> schools = dao.searchSchool(tournamentId);
-			   request.setAttribute("schools", schools);
+		            String[] schoolName = new String[52];
+		            for (int i = 1; i <= 52; i++) {
+		                schoolName[i - 1] = request.getParameter("schoolName" + i);
+		            }
+		            // 高校名をデータベースに登録
+		           dao.insertSchool(schoolName, tournamentId);
+
+				   List<School> schools = dao.searchSchool(tournamentId);
+				   request.setAttribute("schools", schools);
+	        	}else{
+	        		request.setAttribute("schools", searchList);
+	        	}
 			   request.setAttribute("tournamentId", tournamentId);
                 // 登録成功
 			   request.getRequestDispatcher("/staff/highschoolDisplay.jsp").forward(request, response);;

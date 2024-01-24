@@ -53,21 +53,25 @@
     <h2>高校情報一覧</h2>
     <form action="HighschoolUpdate" method="post">
         <table border="1">
-            <tr>
-                <th>高校名</th>
-            </tr>
+        	<tr><th>高校名</th></tr>
             <%
             List<School> schools = (List<School>) request.getAttribute("schools");
+            int count = 0;
             for (School school : schools) {
             	if(!school.getName().equals("")){
-            %>
-                <tr>
-                    <td>
-	                	<p><%= school.getName() %></p>
-                    </td>
-                </tr>
-                <%} %>
-            <% } %>
+            		if(count == 0 || count%4 == 0){%>
+            			<tr>
+            		<%}%>
+                   <td><%= school.getName() %></td>
+                <%count += 1;
+                if(count%4 == 0){%>
+					</tr>
+                <%}
+                }
+             }
+             if(count%4 != 0){%>
+             </tr>
+             <%} %>
         </table>
         <div style="text-align: center;">
             <input type="submit" value="変更">
