@@ -5,7 +5,6 @@
     <title>大会情報登録</title>
     <meta charset="UTF-8">
     <style>
-        /* 既存のスタイルを追加 */
         body {
             font-family: 'Arial', sans-serif;
             margin: 0;

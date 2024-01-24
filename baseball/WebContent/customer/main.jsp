@@ -3,15 +3,83 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ include file="header.jsp"%>
 
-<html lang="ja">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>メイン画面</title>
     <link rel="stylesheet" type="text/css"  href="/baseball/css/Customer.css">
 <style>
+@media screen and (max-width: 1050px){
+	/* スマートフォン用CSS記述 */
 
 	/*テーブル設定*/
+
+	table{
+		border: initial;
+	    width: initial;
+	    margin: initial;
+
+
+	}
+
+	table th {
+	    background-color:initial;
+	    width:initial;
+	    color: initial;
+	    padding: 20px;
+	}
+
+	table td {
+	    background-color: initial;
+	    width: initial;
+	    width: 28%;/*要素の横幅*/
+	    font-size: 8px;
+	    margin: 3px;
+	}
+
+	table th,
+	table td {
+	    border-bottom:  initial;
+	}
+
+	table tr:last-child * {
+	    border-bottom: none;
+
+	}
+
+
+        .schedule {		/*1試合ごとの枠*/
+            border: 3px solid #000000;
+            padding: 2px;
+            margin-bottom: 5px;
+            margin-top: 20px;
+            border-radius: 20px;
+            width: 98%;
+        }
+
+        .schedule > div {
+            margin-bottom: 5px;
+        }
+
+        .date-center {/* 日付 */
+            font-weight: bold;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        .num_match{/* 〇試合目 */
+			width: 23%;
+        }
+
+}
+
+
+
+@media screen and (min-width: 1050px){
+
+		/* PC用CSS記述 */
+/*テーブル設定*/
 
 	table{
 		border: initial;
@@ -43,11 +111,7 @@
 
 	}
 
-	  .main_display {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+
 
         .tournament {
             margin-bottom: 10px;
@@ -59,10 +123,11 @@
             margin-bottom: 10px;
             margin-top: 25px;
             border-radius: 20px;
+
         }
 
         .schedule > div {
-            margin-bottom: 5px;
+            margin-bottom: 10px;
         }
 
         .date-center {
@@ -70,7 +135,7 @@
             margin-top: 20px;
             margin-bottom: 10px;
         }
-
+}
 </style>
 </head>
 <body>
@@ -91,7 +156,7 @@
 						<tr><th  colspan="4" class="date-center">${matchList[i].eventDateStr }(${matchList[i].eventDayOfWeek})</th></tr>
                         <c:forEach begin="0" end="${fn:length(duelList[i])-1}" step="1" var="j">
 								<c:if test="${duelList[i][j].roundStr != null}">
-                                <tr><td>第${j + 1}試合(${duelList[i][j].roundStr })</td>
+                                <tr><td class="num_match">第${j + 1}試合(${duelList[i][j].roundStr })</td>
                                 	<td>${duelList[i][j].schoolNameA }</td>
                                 	<td>${duelList[i][j].statusStr }</td>
                                 	<td>${duelList[i][j].schoolNameB }</td></tr>

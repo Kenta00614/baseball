@@ -12,7 +12,7 @@
 
         form {
             max-width: 400px;
-            margin: 0 auto;
+            margin: 50px auto 0;
             background-color: #fff;
             padding: 50px;
             border-radius: 8px;
@@ -32,10 +32,6 @@
             border: none;
             border-radius: 4px;
             cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #45a049;
         }
     </style>
 </head>
