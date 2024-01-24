@@ -128,6 +128,7 @@ public class MatchRegistrationCompletion extends HttpServlet {
 					request.getRequestDispatcher("/staff/matchRegistrationInput.jsp").forward(request, response);
 					return;
 				}
+				request.setAttribute("newEventDate", tournament.getYear()+"-"+eventDateMonth+"-"+eventDateDate);
 				request.setAttribute("tournamentId", tournament.getTournamentId());
 				session.removeAttribute("tournament");
 			} catch (Exception e) {
