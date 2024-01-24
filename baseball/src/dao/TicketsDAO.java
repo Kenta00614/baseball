@@ -391,7 +391,7 @@ public class TicketsDAO extends DAO{
 	}
 
 	//チケットのステータスを取得する
-	public String checkTickets(String ticketsId,Date today,Connection con)throws Exception{
+	public Tickets checkTickets(String ticketsId,Date today,Connection con)throws Exception{
 		Boolean flg = false;
 
 		if(con == null){
@@ -405,10 +405,11 @@ public class TicketsDAO extends DAO{
 
 		ResultSet rs=st.executeQuery();
 
-		String status=null;
+		Tickets ticket=new Tickets();
 
 		while(rs.next()){
-			status = rs.getString("status");
+			ticket.setStatus(rs.getString("status"));
+			ticket.setTicketsId(rs.getString("id"));
 		}
 
 		st.close();
@@ -416,7 +417,7 @@ public class TicketsDAO extends DAO{
 			con.close();
 		}
 
-		return status;
+		return ticket;
 
 	}
 

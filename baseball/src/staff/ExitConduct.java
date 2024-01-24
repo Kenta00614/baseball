@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import bean.Point;
+import bean.Tickets;
 import bean.TicketsExp;
 import common.Constants;
 import dao.DAO;
@@ -25,7 +26,7 @@ public class ExitConduct extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	String message = null;
-    	String status = null;
+    	Tickets ticket = null;
     	String classStr = null;
     	DAO dao = new DAO();
     	Connection con = null;
@@ -33,7 +34,6 @@ public class ExitConduct extends HttpServlet {
 
     	//値の受け取り
     	String ticketId = request.getParameter("ticketId");
-    	System.out.println("ID:"+ticketId);
 
     	//DBへ照合
     	TicketsDAO tDao = new TicketsDAO();
@@ -46,10 +46,10 @@ public class ExitConduct extends HttpServlet {
     		con = dao.getConnection();
     		con.setAutoCommit(false);
     		//照合
-			status = tDao.checkTickets(ticketId,date,con);
-			System.out.println("status:"+status);
+    		ticket = tDao.checkTickets(ticketId,date,con);
+			//System.out.println("status:"+status);
 	    	//処理分岐
-	    	if(Objects.isNull(status) || !status.equals("4")){//当日のチケット以外の場合
+	    	if(Objects.isNull(ticket.getStatus()) || !ticket.getStatus().equals("4")){//当日のチケット以外の場合
 				//退場できないメッセージを送る
 	    		message = "チケットをお間違えです。ご確認ください。";
 	    		classStr = "emergency";
