@@ -40,6 +40,7 @@ public class MatchInformation extends HttpServlet {
 			int tournamentId = Integer.parseInt(request.getParameter("tournamentId"));
 			String delEventDateStr = request.getParameter("delEventDate");
 			Date nowDate = null;
+			String newEventDate = request.getParameter("newEventDate");
 
 			List<Match> matchList = new ArrayList();
 			List<List<DuelExp>> duelList = new ArrayList<List<DuelExp>>();
@@ -65,9 +66,13 @@ public class MatchInformation extends HttpServlet {
 				Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 		        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		        nowDate = Date.valueOf(sdf.format(timestamp));
+		        if(!newEventDate.equals("")){
+		        	nowDate = Date.valueOf(newEventDate);
+		        }
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+
 
 			session.setAttribute("dispSelectTour",tournamentId );
 			request.setAttribute("duelList",duelList);
