@@ -52,6 +52,8 @@ public class MatchUpdateInput extends HttpServlet {
 	//    	試合情報
 	    	List<Duel> duelList = new ArrayList();
 	    	List<String> duelStatus = new ArrayList();
+//	    	roundのリスト
+	    	List<String> duelRound = new ArrayList();
 
 
 	    	TournamentDAO tournamentDAO = new TournamentDAO();
@@ -105,6 +107,14 @@ public class MatchUpdateInput extends HttpServlet {
 				duelStatus.add(Constants.DUEL_STATUS.get("3"));
 				duelStatus.add(Constants.DUEL_STATUS.get("4"));
 
+//				roundのリスト作成
+				duelRound.add(Constants.DUEL_ROUND.get("1"));
+				duelRound.add(Constants.DUEL_ROUND.get("2"));
+				duelRound.add(Constants.DUEL_ROUND.get("3"));
+				duelRound.add(Constants.DUEL_ROUND.get("4"));
+				duelRound.add(Constants.DUEL_ROUND.get("5"));
+				duelRound.add(Constants.DUEL_ROUND.get("6"));
+
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -114,6 +124,7 @@ public class MatchUpdateInput extends HttpServlet {
 	    	request.setAttribute("matchList",matchList );
 	    	request.setAttribute("tournament",tournament );
 	    	request.setAttribute("schoolList",schoolList );
+	    	request.setAttribute("duelRound",duelRound );
 	        request.getRequestDispatcher("/staff/matchUpdateInput.jsp").forward(request, response);
 	    }
     }

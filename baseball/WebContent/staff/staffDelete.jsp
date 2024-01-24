@@ -53,15 +53,7 @@
             cursor: pointer;
         }
 
-        button {
-            background-color: #0066FF;
-            color: white;
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            width: 100%;
-        }
+
 
         table {
             width: 100%;
@@ -110,7 +102,11 @@
                     </tr>
                 <% } %>
             </table>
-            <button type="submit">削除</button>
+            <c:if test="${noSelectFlg == 0 }">
+            	<p>職員が選択されていません</p>
+            </c:if>
+            <button type="submit" style="background-color: #007BFF; color: #fff; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer;">削除</button>
+
             <script>
                 new Vue({
                     el: 'form',

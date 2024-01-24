@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@include file="header.jsp"%>
 <html>
 
@@ -32,17 +31,32 @@
             color: #666666;
             margin-bottom: 20px;
         }
+
+        /* Style for the confirmation button */
+        input[type="submit"] {
+            background-color: #007BFF;
+            color: #ffffff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 
 <body>
     <div class="header">
-    	<form action="Login" method="post">
-	        <h1>パスワード再設定</h1>
-	        <p>パスワードの再設定が完了しました。</p>
-	        <input type="hidden" name="id" value="${id }">
-	        <input type="hidden" name="password" value="${password }">
-	        <input type="submit" value="確認">
+        <form action="Login" method="post">
+            <h1>パスワード再設定</h1>
+            <p>パスワードの再設定が完了しました。</p>
+            <input type="hidden" name="id" value="${id }">
+            <input type="hidden" name="password" value="${password }">
+            <input type="submit" value="確認">
         </form>
     </div>
 </body>

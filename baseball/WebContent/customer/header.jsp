@@ -29,7 +29,7 @@
 			    <li class="nav__item"><a href="TicketPurchase">チケット購入</a></li>
 			    <li class="nav__item"><a href="TicketDisplay">チケット表示</a></li>
 			    <li class="nav__item">
-			        <a href="#">マイページ &#9662;</a> <!-- ドロップダウンメニューのトリガー -->
+			        <a href="#">マイページ &#9662; </a> <!-- ドロップダウンメニューのトリガー -->
 			        <div class="dropdown">
 			            <a href="MemberInformation">会員情報</a>
 			            <a href="PurchaseHistory">購入履歴表示</a>

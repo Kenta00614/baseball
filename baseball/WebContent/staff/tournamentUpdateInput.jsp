@@ -6,64 +6,70 @@
 <head>
     <!-- Bootstrap CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #F5F5F5;
-        }
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color:#F5F5F5;
+       	display: flex;
+	    flex-direction: column;
+	    min-height: 100vh;
+    }
 
-        .header {
-            background-color: #F5F5F5;
-            color: #555555;
-            padding: 0.1px;
-            text-align: center;
-        }
+    .header {
+        background-color: #F5F5F5;
+        color: #555555;
+        padding: 6px;
+        text-align: center;
+        flex: 1;
+    }
 
-        .form-container {
-            max-width: 600px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: white;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 5px;
-        }
+    .form-container {
+        flex-grow: 1;
+        max-width: 1000px;
+        margin: 20px auto;
+        padding: 40px;
+        background-color: #FFF;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+    }
 
-        .control {
-            margin-bottom: 15px;
-        }
+    .control {
+        margin-bottom: 15px;
+    }
 
-        label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-            color: #000;
-        }
+    label {
+        display: block;
+        margin-bottom: 5px	;
+        font-weight: bold;
+        color:  #555555
+    }
 
-        input[type="text"],
-        select {
-            width: 100%;
-            padding: 10px;
-            box-sizing: border-box;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
+    input[type="text"],
+    select {
+        width: 100%;
+        padding: 10px;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
 
-        select {
-            cursor: pointer;
-        }
+    select {
+        cursor: pointer;
+    }
 
-        button {
-            background-color: #0066FF;
-            color: white;
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            width: 100%;
-        }
-    </style>
+    button {
+        background-color: #E91E63;
+        color: white;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 100%;
+    }
+</style>
+
 </head>
 
 <body>
@@ -72,7 +78,7 @@
     </div>
 
     <div class="form-container">
-        <form action="TournamentUpdate" method="post">
+        <form action="TournamentUpdateConfirmation" method="post">
             <%-- セッションから大会情報を取得 --%>
             <c:set var="tournament" value="${sessionScope.tournament}" />
 

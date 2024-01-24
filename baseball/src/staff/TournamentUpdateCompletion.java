@@ -24,7 +24,7 @@ public class TournamentUpdateCompletion extends HttpServlet {
     		request.getRequestDispatcher("login.jsp").forward(request, response);
     		return;
     	}else{
-    		request.getRequestDispatcher("/staff/ournamentUpdateCompletion.jsp").forward(request, response);
+    		request.getRequestDispatcher("/staff/tournamentUpdateCompletion.jsp").forward(request, response);
     	}
     }
 }

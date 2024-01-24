@@ -75,7 +75,7 @@
                 <label for="sale2">当日券・リセール席の販売停止</label>
             </div>
             <button type="submit">確認</button>
-        </form>
+        </form>	
     </div>
 
     <script>

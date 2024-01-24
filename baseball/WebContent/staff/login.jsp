@@ -71,7 +71,7 @@
     <title>Login</title>
 </head>
 <body>
-    <h2>ログイン</h2>
+    <h2>甲子園管理システム</h2>
     <div class="login-box">
         <form action="Login" method="post">
             <div class="input">

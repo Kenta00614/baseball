@@ -37,7 +37,7 @@ public class Signup extends HttpServlet {
 
                     // 登録完了ページへリダイレクト
                     request.setAttribute("situFlg","2");
-                    request.getRequestDispatcher("/baseball/customer/signupComplete.jsp").forward(request, response);
+                    request.getRequestDispatcher("/customer/signupComplete.jsp").forward(request, response);
                 } else {
                     // 該当するユーザーが見つからない場合のエラーハンドリング
                 	request.setAttribute("situFlg","0");

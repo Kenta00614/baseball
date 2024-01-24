@@ -270,4 +270,32 @@ public class SpectatorDAO extends DAO {
 			con.close();
 			return search;
 		}
+
+//	spectatorIdで情報取得
+	public Spectator serchSpec(int specId)
+			throws Exception {
+			Spectator spectator=null;
+
+			Connection con=getConnection();
+
+			PreparedStatement st;
+			st=con.prepareStatement(
+				"SELECT * FROM SPECTATOR WHERE SPECTATOR_ID=?");
+			st.setInt(1, specId);
+			ResultSet rs=st.executeQuery();
+
+			while (rs.next()) {
+				spectator=new Spectator();
+				spectator.setSpectatorId(rs.getInt("SPECTATOR_ID"));
+				spectator.setName(rs.getString("NAME"));
+				spectator.setPassword(rs.getString("PASSWORD"));
+				spectator.setTel(rs.getString("TEL"));
+				spectator.setPoint(rs.getInt("POINT"));
+				spectator.setMail(rs.getString("MAIL"));
+			}
+
+			st.close();
+			con.close();
+			return spectator;
+		}
 }

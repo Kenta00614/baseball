@@ -10,17 +10,32 @@
     <div class="container">
         <h1>会員情報変更確認</h1>
         <form id="memberChangeConfirmForm" action="InformationChange" method="post">
-            <label for="name">氏名</label>
-            <input type="text" id="name" name="name" value="${requestScope.name}" class="field" required readonly>
+			<p class="form-comment">以下の内容で変更してよろしいですか？</p>
+			<div class="form-inline">
+				<hr class="inline">
+				<div class="form-cfm">
+		            <label for="name" class="form-element">氏　名　</label>
+		            <p id="name" class="form-input">${requestScope.name}</p>
+		        </div>
+		        <hr class="inline">
+		        <div class="form-cfm">
+		            <label for="tel"  class="form-element">電話番号 </label>
+		            <p id="tel" class="form-input">${requestScope.tel}</p>
+	            </div>
+	            <hr class="inline">
 
-            <label for="tel">電話番号</label>
-            <input type="tel" id="tel" name="tel" value="${requestScope.tel}" pattern="\d{10}|\d{11}" class="field" required readonly>
+	        </div>
 
+			<%-- 送る値 --%>
+			<input type="hidden" name="name" value="${requestScope.name}">
+			<input type="hidden" name="tel" value="${requestScope.tel}">
+		<div class="infor-change">
             <!-- 戻るボタン -->
-            <input type="button" value="戻る" onclick="history.back();" class="submit-button">
+            <input type="button" value="戻る" onclick="history.back();" class="infor-change-btn">
 
             <!-- 確定ボタン -->
-            <input type="submit" value="確定" class="submit-button">
+            <input type="submit" value="確定" class="infor-change-btn">
+        </div>
         </form>
     </div>
 </body>

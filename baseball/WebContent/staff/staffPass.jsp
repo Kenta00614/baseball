@@ -45,7 +45,7 @@
             box-sizing: border-box;
             border: 1px solid #ccc;
             border-radius: 3px;
-            color: #000; /* Input text color */
+            color: #000;
         }
 
         input[type="submit"] {
@@ -54,8 +54,6 @@
             cursor: pointer;
         }
 
-        input[type="submit"]:hover {
-            background-color: #ff6347;
         }
 
         .error-message {
@@ -71,16 +69,17 @@
     </div>
     <form action="StaffPass" method="post" onsubmit="return validatePassword()">
         <div class="control">
-            <label for="id">ID</label>
-            <input id="id" type="id" name="id" value="${id }" readonly>
+		    <label for="id">ID</label>
+		    <p>${id}</p>
+		    <input id="id" type="hidden" name="id" value="${id}" >
         </div>
         <div class="control">
             <label for="password">パスワード</label>
-            <input id="password" type="password" name="password" required>
+            <input id="password" type="password" name="password" pattern="[!-~]{8,}" required>
         </div>
         <div class="control">
             <label for="password2">パスワード確認</label>
-            <input id="password2" type="password" name="password2" required>
+            <input id="password2" type="password" name="password2" pattern="[!-~]{8,}" required>
             <p class="error-message" id="passwordError"></p>
         </div>
         <p><input type="submit" value="Reset"></p>

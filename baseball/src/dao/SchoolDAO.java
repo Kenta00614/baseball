@@ -40,8 +40,9 @@ public class SchoolDAO extends DAO {
 		if(schoolName!=null){
 			PreparedStatement st=con.prepareStatement(
 					"INSERT INTO SCHOOL VALUES(NULL,?,?)");
+
+			st.setInt(1, tournamentId);
 			for(int i=0;i<schoolName.length; i++){
-				st.setInt(1, tournamentId);
 				st.setString(2,schoolName[i]);
 				line+=st.executeUpdate();
 			}

@@ -15,7 +15,7 @@
 </head>
 <body>
 	<%-- 戻るボタン --%>
-	<form action="TicketSelectAll" method="post">
+	<form action="TicketSelectAll" method="post"><br>
 		<input type="hidden" name="count" value="${count }">
 		<input type="hidden" name="seat" value="${seat }">
 		<button type="submit" class="return-btn">戻る</button>
@@ -147,8 +147,8 @@
 				            break;
 				        }
 				    }
-				    <%-- status==3の時は実行しない --%>
-				    if(selectStatus !== 3){
+				    <%-- 販売中の時のみ画像変更 --%>
+				    if(this.seatsList[index1][index2].imgsrc !== "seat_0"){
 						if(!this.seatsList[index1][index2].check){
 							this.seatsList[index1][index2].imgsrc="seat_3";
 							this.seatsList[index1][index2].check=true;
