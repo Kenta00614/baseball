@@ -27,7 +27,7 @@
 
     .form-container {
         flex-grow: 1;
-        max-width: 1000px;
+        max-width: 1200px;
         margin: 20px auto;
         padding: 40px;
         background-color: #FFF;

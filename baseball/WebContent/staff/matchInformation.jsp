@@ -51,10 +51,13 @@
 <body>
     <a href="MatchDisplay" type="submit">戻る</a>
     <c:choose>
-        <%-- 試合情報がないとき --%>
-        <c:when test="${fn:length(matchList)== 0 }">
-            <p>試合情報が登録されていません</p>
-        </c:when>
+<%-- 試合情報がないとき --%>
+<c:when test="${fn:length(matchList) == 0}">
+    <div style="text-align: center; margin-top: 50px; font-size: 20px;">
+        <p>試合情報が登録されていません</p>
+    </div>
+</c:when>
+
         <%-- 試合情報があるとき --%>
         <c:when test="${fn:length(matchList)> 0}">
             <h2>試合情報</h2>
