@@ -67,14 +67,22 @@
             </tr>
             <%
             List<School> schools = (List<School>) request.getAttribute("schools");
+            int count = 0;
             for (School school : schools) {
-            %>
-                <tr>
-                    <td>
-                        <input type="text" name="schoolName<%= school.getSchoolId() %>" value="<%= school.getName() %>">
-                    </td>
-                </tr>
-            <% } %>
+	          	if(count == 0 || count%4 == 0){%>
+	          		<tr>
+	          	<%}%>
+	            <td>
+	            <input type="text" name="schoolName<%= school.getSchoolId() %>" value="<%= school.getName() %>">
+	            </td>
+	            <%count += 1;
+	            if(count%4 == 0){%>
+					</tr>
+	            <%}
+              }
+             if(count%4 != 0){%>
+             </tr>
+             <%} %>
         </table>
         <div style="text-align: center;">
             <input type="submit" value="保存">
