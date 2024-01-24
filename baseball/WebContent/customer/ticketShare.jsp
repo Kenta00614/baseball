@@ -7,7 +7,6 @@
 <html>
 <head>
 	<link rel="stylesheet" type="text/css"  href ="/baseball/css/Customer.css">
-	<script type="text/javascript" charset="UTF-8" src="../js/hoge.js"></script>
 </head>
 <body>
 	<form action="TicketDisplay" method="get">
