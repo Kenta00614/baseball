@@ -26,7 +26,7 @@
 
 	h1 {
 	    text-align: center;
-	    font-size: 36px;
+	    font-size: 45px;
 	}
 
 	h2 {
@@ -69,6 +69,40 @@
 	    border-bottom: none;
 	}
 
+
+
+	/*--- 張り紙スタイル ---*/
+	.poster{
+	 	border:5px double #a4c3b2;
+	 	background-color:#F3F7F5;
+	 	padding:16px;
+	 	margin:30px;
+	 	margin-top:450px;
+	 	font-size: 36px;
+	}
+	.error{
+		border:5px double #fb8883;
+	 	background-color:#fee7e6;
+	 	padding:16px;
+	 	margin:30px;
+	 	margin-top:450px;
+	 	font-size: 40px;
+	}
+
+
+
+	.form-comment{	/*コメントのスタイル*/
+		margin: 25px;
+		margin: 15px auto; /* 左右のマージンをautoにして中央寄せに修正 */
+		font-family: '游明朝';
+		margin-top: 5px;
+		font-size: 25px;
+
+	}
+
+
+
+
 	.home-btn{
 		/* その他ボタン */
 	    border: 3px solid transparent;
@@ -77,25 +111,25 @@
 	    color: #ffffff;
 	    background: #808080;
 	    padding: 8px 10px;
+	    font-size: 20px;
 	    cursor: pointer;
 	    border-radius: 5px;
 	    /* other styles */
 	    align-items: center;
 	    position: relative; /* bodyを相対的な位置に設定 */
 	}
-
-
 	.home-btn:hover{
 		background-color:#555;
 	}
 
 
-	.form-btn{
+	.form-btn{ /* フォームのボタン(大きめ) */
 	 	border: 3px solid transparent;
 	    margin: 15px auto; /* 左右のマージンをautoにして中央寄せに修正 */
 	    display: flex;
 	    color: #ffffff;
 	    background: #000000;
+	    font-size: 20px;
 	    padding: 8px 10px;
 	    cursor: pointer;
 	    border-radius: 5px;
@@ -189,25 +223,22 @@
 
 	/*--- informationChangeConfirm.jspのスタイル ---*/
 
-	.form-comment{	/*コメントのスタイル*/
-		margin: 15px auto; /* 左右のマージンをautoにして中央寄せに修正 */
-		font-family: '游明朝';
-		margin-top: 2px;
-	}
+
 
 
 	.form-inline{
 		 border: 2px solid #156bb3;
 		 border-radius: 20px;
-		 width: 450px;
+		 width: 95%;
 		 margin: 10px auto; /* 左右のマージンをautoにして中央寄せに修正 */
 	     align-items: center;
-	     padding: 10px;
+	     padding: 40px;
+	     margin-top: 80px;
 
 	}
 
 	.inline{
-		width: 400px;
+		width: 98%;
 	}
 
 	.form-element{/*「氏名」「電話番号」のスタイル*/
@@ -224,7 +255,7 @@
 	}
 
 	.form-cfm{/*要素ごとのスタイル*/
-		width: 450px;
+		width: 90%;
 		text-align:center;
 		display:flex;
 		gap: 5px; /* 隙間を設定 */
@@ -259,6 +290,7 @@
 		display:flex;
 		gap: 10px; /* ボタン間の隙間を設定 */
 		margin: 15px auto; /* 左右のマージンをautoにして中央寄せに修正 */
+		margin-top: 50px;
 	    align-items: center;
 	}
 
@@ -269,11 +301,12 @@
 	/*--- login.jspのスタイル ---*/
 	.login-title{
 		margin-top: 50px;
+		font-size: 50px;
 	}
 
 	.login-box {
 	    width: 80%;
-	    height: 1000px;
+	    height: 1300px;
 	    margin: 30px auto;
 	    padding: 20px;
 	    border: 1px solid #ccc;
@@ -283,6 +316,7 @@
 	.login-box>form {
 	    display: flex;
 	    flex-direction: column;
+	    font-size: 30px;
 	}
 
 	.login-input {
@@ -303,6 +337,7 @@
 	    margin-top: 5px;
 	    width: 100%;
 	    box-sizing: border-box;
+	    font-size: 30px;	/* 入力された文字のサイズ */
 	}
 
 	.login-btn {
@@ -316,11 +351,13 @@
 	    color: white;
 	    border: none;
 	    cursor: pointer;
+	    font-size: 25px;
 	}
 
 	.login-btn input:active {
 	    top: 3px;
 	    box-shadow: none;
+	    font-size: 20px;
 	}
 
 	.registration {
@@ -441,9 +478,12 @@
 
 	/*--- signup.jspのスタイル ---*/
 	.container {
-	    width: 600px;
+	    width: 85%;
+	    height: 1300px;
 	    margin: 30px auto;
 	    padding: 20px;
+	    padding-top: 80px;
+	    padding-bottom: 1400px;
 	    border: 1px solid #ccc;
 	    box-shadow: 0px 0px 10px #ccc;
 	}
@@ -451,33 +491,40 @@
 	.container>form {
 	    display: flex;
 	    flex-direction: column;
+	    font-size: 30px;
 	}
 
 	.signup-container .signup-label,
 	.signup-label {
-	    margin-top: 20px;
+	    margin-top: 40px;
+	    font-size: 30px;
 	}
 
 	.signup-container
 	.custom-input {
-	    padding: 5px;
-	    margin-top: 3px;
+	    padding: 30px;
+	    margin-top: 0px;
+		font-size: 30px;
 	}
 
 	.custom-input{
-		padding: 5px;
-	    margin-top: 0px;
+		padding: 10px;
+	    margin-bottom: 20px;
+	    font-size: 35px;
 	}
 
-	.signup-container .submit-button,
+
 	.submit-button {
-	    margin-top: 30px;
+	    margin-top: 80px;
 	    padding: 10px 20px;
 	    background-color: #000;
 	    color: white;
 	    border: none;
 	    cursor: pointer;
+	    font-size: 25px;
 	}
+
+
 
 
 	/*--- ticketApplication.jspのスタイル ---*/
@@ -722,23 +769,6 @@
 
 
 
-	/*--- 張り紙スタイル ---*/
-	.poster{
-	 	border:5px double #a4c3b2;
-	 	background-color:#F3F7F5;
-	 	padding:16px;
-	 	margin:20px;
-	 	margin-top:450px;
-	}
-
-	.error{
-		border:5px double #fb8883;
-	 	background-color:#fee7e6;
-	 	padding:16px;
-	 	margin:20px;
-	 	margin-top:450px;
-
-	}
 
 }
 
