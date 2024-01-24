@@ -69,8 +69,8 @@
         }
 		.btn-link {
             display: inline-block;
-            margin-top: 20px;
-            padding: 10px 20px;
+            margin-top: 0.01px;
+            padding: 6px 6px;
             background-color: transparent;
             color: #007bff;
             text-decoration: underline;
