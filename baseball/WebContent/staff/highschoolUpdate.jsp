@@ -2,38 +2,46 @@
 <%@ page import="java.util.List" %>
 <%@ page import="bean.School" %>
 <%@ include file="header.jsp" %>
-<html>
+<!DOCTYPE html>
+<html lang="ja">
 
 <head>
+    <meta charset="UTF-8">
     <title>高校情報変更</title>
     <style>
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f5f5f5;
+            background-color: #f4f4f4;
         }
 
         h2 {
             text-align: center;
-            color: #3498db;
-            margin-top: 20px;
+            color: #555555;
+        }
+
+        .form-container {
+            width: 80%;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
         table {
-            margin: 20px auto;
+            width: 100%;
             border-collapse: collapse;
-            width: 80%;
-            background-color: #fff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 5px;
+            margin-top: 20px;
         }
 
         th, td {
-            padding: 15px;
+            padding: 12px;
             text-align: left;
-            border-bottom: 1px solid #ecf0f1;
+            border: 1px solid #ddd;
         }
+
 
         input[type="text"] {
             width: 100%;
@@ -41,54 +49,71 @@
             box-sizing: border-box;
         }
 
+        div.center {
+            text-align: center;
+            margin-top: 20px;
+        }
+
         input[type="submit"] {
-            background-color: #3498db;
-            color: #fff;
-            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            padding: 12px 24px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+            font-size: 16px;
         }
 
         input[type="submit"]:hover {
-            background-color: #2980b9;
+            background-color: #0056b3;
         }
     </style>
 </head>
 
 <body>
-	<%--<a href="TournamentList" type="submit">戻る</a> --%>
-    <h2>高校情報変更</h2>
-    <form action="HighschoolUpdateCompletion" method="post">
-        <table border="1">
-            <tr>
-                <th>高校名</th>
-            </tr>
-            <%
-            List<School> schools = (List<School>) request.getAttribute("schools");
-            int count = 0;
-            for (School school : schools) {
-	          	if(count == 0 || count%4 == 0){%>
-	          		<tr>
-	          	<%}%>
-	            <td>
-	            <input type="text" name="schoolName<%= school.getSchoolId() %>" value="<%= school.getName() %>">
-	            </td>
-	            <%count += 1;
-	            if(count%4 == 0){%>
-					</tr>
-	            <%}
-              }
-             if(count%4 != 0){%>
-             </tr>
-             <%} %>
-        </table>
-        <div style="text-align: center;">
-            <input type="submit" value="保存">
-            <input type="hidden" name="tournamentId" value="<%= request.getAttribute("tournamentId") %>">
-        </div>
-    </form>
+    <div class="form-container">
+        <h2>高校情報変更</h2>
+        <form action="HighschoolUpdateCompletion" method="post">
+            <table>
+                <thead>
+                    <tr>
+                        <th>高校名</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <%
+                        List<School> schools = (List<School>) request.getAttribute("schools");
+                        int count = 0;
+                        for (School school : schools) {
+                            if (count == 0 || count % 4 == 0) {
+                    %>
+                                <tr>
+                            <%}%>
+                            <td>
+							    <input type="text" name="schoolName<%= school.getSchoolId() %>" value="<%= school.getName() %>" style="color: f5f5f5;">
+							</td>
+                            <%
+                                count += 1;
+                                if (count % 4 == 0) {
+                            %>
+                                    </tr>
+                            <%
+                                }
+                            }
+                            if (count % 4 != 0) {
+                            %>
+                                </tr>
+                            <%
+                            }
+                        %>
+                </tbody>
+            </table>
+            <div class="center">
+                <input type="submit" value="保存">
+                <input type="hidden" name="tournamentId" value="<%= request.getAttribute("tournamentId") %>">
+            </div>
+        </form>
+    </div>
 </body>
 
 </html>
