@@ -20,6 +20,7 @@
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
             max-width: 600px;
             margin: 50px auto;
+            text-align: center;
         }
 
         h1 {

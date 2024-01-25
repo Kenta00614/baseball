@@ -2,81 +2,128 @@
 <%@ page import="java.util.List" %>
 <%@ page import="bean.School" %>
 <%@ include file="header.jsp" %>
-<html>
+<%! int formContainerMargin = 100; %>
+
+<%
+    // Check if a request parameter for margin is present
+    String marginParam = request.getParameter("margin");
+    if (marginParam != null && !marginParam.isEmpty()) {
+        try {
+            formContainerMargin = Integer.parseInt(marginParam);
+        } catch (NumberFormatException e) {
+            // Handle parsing error if necessary
+        }
+    }
+%>
+
+<!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>高校情報一覧</title>
-        <style>
+    <style>
         body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f5f5f5;
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f4f4f4;
         }
 
         h2 {
-            text-align: center;
-            color: #3498db;
-            margin-top: 20px;
+            color: #333;
         }
 
         table {
-            margin: 10px auto;
+            width: 100%;
             border-collapse: collapse;
-            width: 80%;
-            background-color: #fff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 5px;
+            margin-top: 20px;
         }
 
         th, td {
-            padding: 15px;
+            padding: 10px;
             text-align: left;
-            border-bottom: 1px solid #ecf0f1;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color:#555555;
+            color: white;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: <%= formContainerMargin %>px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .center {
+            text-align: center;
+            margin-top: 20px;
         }
 
         input[type="submit"] {
-            background-color: #3498db;
-            color: #fff;
+            background-color: #007bff;
+            color: white;
             padding: 10px 20px;
             border: none;
-            border-radius: 5px;
+            border-radius: 4px;
             cursor: pointer;
-            transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
         }
 
         input[type="submit"]:hover {
-            background-color: #2980b9;
+            background-color: #0056b3;
         }
     </style>
 </head>
 <body>
-    <h2>高校情報一覧</h2>
-    <form action="HighschoolUpdate" method="post">
-        <table border="1">
-        	<tr><th>高校名</th></tr>
-            <%
-            List<School> schools = (List<School>) request.getAttribute("schools");
-            int count = 0;
-            for (School school : schools) {
-            	if(!school.getName().equals("")){
-            		if(count == 0 || count%4 == 0){%>
-            			<tr>
-            		<%}%>
-                   <td><%= school.getName() %></td>
-                <%count += 1;
-                if(count%4 == 0){%>
-					</tr>
-                <%}
-                }
-             }
-             if(count%4 != 0){%>
-             </tr>
-             <%} %>
-        </table>
-        <div style="text-align: center;">
-            <input type="submit" value="変更">
-            <input type="hidden" name="tournamentId" value="<%= request.getAttribute("tournamentId") %>">
-        </div>
-    </form>
+    <div class="form-container" style="max-width: 400px; margin: <%= formContainerMargin %>px auto;">
+        <h2>高校情報一覧</h2>
+        <form action="HighschoolUpdate" method="post">
+            <table>
+                <thead>
+                    <tr>
+                        <th>高校名</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <%
+                        List<School> schools = (List<School>) request.getAttribute("schools");
+                        int count = 0;
+                        for (School school : schools) {
+                            if (!school.getName().equals("")) {
+                                if (count == 0 || count % 4 == 0) {
+                    %>
+                                    <tr>
+                                <%
+                                }
+                    %>
+                                <td><%= school.getName() %></td>
+                    <%
+                                count += 1;
+                                if (count % 4 == 0) {
+                    %>
+                                    </tr>
+                    <%
+                                }
+                            }
+                        }
+                        if (count % 4 != 0) {
+                    %>
+                            </tr>
+                    <%
+                        }
+                    %>
+                </tbody>
+            </table>
+            <div class="center">
+                <input type="submit" value="変更">
+                <input type="hidden" name="tournamentId" value="<%= request.getAttribute("tournamentId") %>">
+            </div>
+        </form>
+    </div>
 </body>
 </html>

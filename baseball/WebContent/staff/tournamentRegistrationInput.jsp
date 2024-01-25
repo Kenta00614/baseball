@@ -20,7 +20,7 @@
         }
 
         .form-container {
-            max-width: 400px; /* Adjust the max-width as needed */
+            max-width: 400px;
             margin: 20px auto;
             padding: 20px;
             background-color: white;

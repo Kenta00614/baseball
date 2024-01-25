@@ -6,28 +6,78 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>当日券・リセール席の販売停止</title>
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #F5F5F5;
+        }
+
+        .header {
+            background-color: #F5F5F5;
+            color: #555555;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .form-container {
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+        .control {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        label {
+            display: inline-block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555555;
+        }
+
+        button {
+            background-color: #0066FF;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 18%;
+            display: block;
+            margin: auto;
+        }
+    </style>
 </head>
 
-<body style="font-family: 'Arial', sans-serif; margin: 0; padding: 0; background-color: #F5F5F5;">
+<body>
 
-    <div class="header" style="background-color: #F5F5F5; color: #555555; padding: 0.1px; text-align: center;">
+    <div class="header">
         <h1>当日券・リセール席の販売停止</h1>
     </div>
 
-    <div class="form-container" style="max-width: 400px; margin: 20px auto; padding: 20px; background-color: white; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); border-radius: 5px;">
+    <div class="form-container">
 
         <form action="SaleOptionsRedirect" method="post" onsubmit="return validateSelection();">
-            <div class="control" style="margin-bottom: 15px; display: flex; align-items: center;">
+            <div class="control">
                 <input type="radio" id="sale1" name="sale" value="cancel" style="margin-right: 10px;">
-                <label for="sale1" style="display: inline-block; margin-bottom: 5px; font-weight: bold; color: #555555;">雨天時などの試合中止(払い戻し可)</label>
+                <label for="sale1">雨天時などの試合中止(払い戻し可)</label>
             </div>
 
-            <div class="control" style="margin-bottom: 15px; display: flex; align-items: center;">
+            <div class="control">
                 <input type="radio" id="sale2" name="sale" value="end" style="margin-right: 10px;">
-                <label for="sale2" style="display: inline-block; margin-bottom: 5px; font-weight: bold; color: #555555;">当日券・リセール席の販売停止</label>
+                <label for="sale2">当日券・リセール席の販売停止</label>
             </div>
 
-            <button type="submit" style="background-color: #0066FF; color: white; padding: 10px; border: none; border-radius: 5px; cursor: pointer; width: 18%; display: block; margin: auto;">確認</button>
+            <button type="submit">確認</button>
 
         </form>
 
