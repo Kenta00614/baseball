@@ -90,7 +90,7 @@
                                 <tr>
                             <%}%>
                             <td>
-							    <input type="text" name="schoolName<%= school.getSchoolId() %>" value="<%= school.getName() %>" style="color: f5f5f5;">
+							    <input type="text" name="schoolName<%= school.getSchoolId() %>" value="<%= school.getName() %>" style="color: black;">
 							</td>
                             <%
                                 count += 1;

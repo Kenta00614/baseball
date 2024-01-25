@@ -47,8 +47,8 @@
         }
 
         th {
-            background-color:#555555;
-            color: white;
+            background-color:white;
+            color: f5f5f5;
         }
 
         .form-container {
