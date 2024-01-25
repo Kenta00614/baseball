@@ -20,7 +20,7 @@
         }
 
         table {
-            margin: 20px auto;
+            margin: 10px auto;
             border-collapse: collapse;
             width: 80%;
             background-color: #fff;
