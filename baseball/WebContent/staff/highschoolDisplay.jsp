@@ -52,7 +52,7 @@
         }
 
         .form-container {
-            max-width: 600px;
+            max-width:800px;
             margin: <%= formContainerMargin %>px;
             background-color: white;
             padding: 20px;
@@ -80,7 +80,7 @@
     </style>
 </head>
 <body>
-    <div class="form-container" style="max-width: 400px; margin: <%= formContainerMargin %>px auto;">
+    <div class="form-container" style="max-width: 600px; margin: <%= formContainerMargin %>px auto;">
         <h2>高校情報一覧</h2>
         <form action="HighschoolUpdate" method="post">
             <table>
