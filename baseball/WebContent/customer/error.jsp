@@ -9,6 +9,6 @@
 </head>
 <body>
 	<h2 class="error" >予期せぬエラーが起きました</h2>
-	<p>お手数ですが、最初からやり直してください</p>
+	<p class="form-comment">お手数ですが、最初からやり直してください</p>
 </body>
 </html>
