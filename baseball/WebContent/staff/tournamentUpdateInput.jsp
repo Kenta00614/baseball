@@ -50,6 +50,7 @@
 
     select {
         cursor: pointer;
+        text-align: center;
     }
 
     button {
@@ -61,6 +62,10 @@
         cursor: pointer;
         width: 100%;
         margin-top: 10px;
+    }
+
+    input{
+    	text-align: center;
     }
 
 
