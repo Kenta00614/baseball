@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@include file="header.jsp"%>
 <html>
 
@@ -33,14 +32,28 @@
             margin-bottom: 20px;
         }
 
-        .btn {
+        .link-btn {
+            color: #007bff;
+            text-decoration: underline;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .link-btn:hover {
+            color: #0056b3;
+        }
+
+        .btn, .button-container {
             display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .btn {
             background-color: #007bff;
             color: #ffffff;
             padding: 10px 20px;
             border-radius: 4px;
             text-decoration: none;
-            margin-bottom: 20px;
             transition: background-color 0.3s ease;
         }
 
@@ -61,13 +74,16 @@
         button:hover {
             background-color: #c9302c;
         }
+
     </style>
 </head>
 
 <body>
     <div class="header">
+		<div class="button-container" style="text-align: left; display: block;">
+		    <a href="SaleStop" class="link-btn">戻る</a>
+		</div>
         <form action="SaleStopComplete" method="post">
-            <a href="SaleStop" class="btn">戻る</a>
             <h1>当日券・リセール席の販売停止</h1>
             <p>当日券・リセール席の販売を停止します。</p>
             <p>よろしいですか？</p>

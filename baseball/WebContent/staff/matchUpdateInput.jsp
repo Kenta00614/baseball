@@ -13,6 +13,7 @@
 
         form {
             margin-bottom: 20px;
+
         }
 
         h2 {
@@ -59,6 +60,7 @@
         button:hover {
             background-color: #0056b3;
         }
+
     </style>
 </head>
 <body>
@@ -69,7 +71,7 @@
 
     <h2>第${tournament.ordinalNum}回　${tournament.name}</h2>
 
-    <form action="MatchUpdateCompletion" method="post">
+    <form action="MatchUpdateCompletion" method="post" id="changeForm">
         <!-- 試合情報表示 -->
         <p>開催日 ${matchList[0].eventDateStr}</p>
         <p>チケット販売開始日 ${matchList[0].saleStartAtStr}</p>
@@ -129,14 +131,17 @@
         </c:forEach>
 
         <input type="hidden" value="${matchList[0].matchId}" name="matchId">
-        <button type="submit" id="button">変更</button>
+
     </form>
 
-    <form action="MatchUpdateDelete" method="post">
+    <form action="MatchUpdateDelete" method="post" id="deleteForm">
         <input type="hidden" value="${matchList[0].eventDate}" name="eventDate">
         <input type="hidden" value="${tournament.tournamentId}" name="tournamentId">
-        <button type="submit">削除</button>
+
     </form>
+
+     <button type="submit" id="button" class="change-button" form="changeForm">変更</button>
+     <button type="submit" class="delete-button" form="deleteForm">削除</button>
 
 	<script>
 		<%-- なし以外で重複がないようにする --%>

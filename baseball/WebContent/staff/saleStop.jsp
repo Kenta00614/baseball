@@ -1,6 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@include file="header.jsp"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ include file="header.jsp" %>
 <html lang="ja">
 
 <head>
@@ -19,7 +18,7 @@
         .header {
             background-color: #F5F5F5;
             color: #555555;
-            padding: 0.1px;
+            padding: 10px;
             text-align: center;
         }
 
@@ -34,17 +33,16 @@
 
         .control {
             margin-bottom: 15px;
+            display: flex;
+            text-align: center;
+			margin-left: 50px;
         }
 
         label {
-            display: block;
+            display: inline-block;
             margin-bottom: 5px;
             font-weight: bold;
             color: #555555;
-        }
-
-        input[type="radio"] {
-            margin-right: 10px;
         }
 
         button {
@@ -54,28 +52,36 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            width: 100%;
+            width: 18%;
+            display: block;
+            margin: auto;
         }
     </style>
 </head>
 
 <body>
+
     <div class="header">
         <h1>当日券・リセール席の販売停止</h1>
     </div>
 
     <div class="form-container">
+
         <form action="SaleOptionsRedirect" method="post" onsubmit="return validateSelection();">
             <div class="control">
-                <input type="radio" id="sale1" name="sale" value="cancel">
-                <label for="sale1">雨天時などの試合中止(払い戻し可)</label>
+
+                <label for="sale1"><input type="radio" id="sale1" name="sale" value="cancel" style="margin-right: 10px;">雨天時などの試合中止(払い戻し可)</label>
             </div>
+
             <div class="control">
-                <input type="radio" id="sale2" name="sale" value="end">
-                <label for="sale2">当日券・リセール席の販売停止</label>
+
+                <label for="sale2"><input type="radio" id="sale2" name="sale" value="end" style="margin-right: 10px;">当日券・リセール席の販売停止</label>
             </div>
+
             <button type="submit">確認</button>
-        </form>	
+
+        </form>
+
     </div>
 
     <script>
@@ -88,6 +94,7 @@
             return true;
         }
     </script>
+
 </body>
 
 </html>

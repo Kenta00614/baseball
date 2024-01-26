@@ -6,75 +6,112 @@
     <title>高校登録</title>
     <style>
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
             margin: 0;
             padding: 0;
-            background-color: #f5f5f5;
+        }
+
+        .form-container {
+            text-align: center;
+            margin: 50px auto;
+            max-width: 800px;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
         }
 
         h2 {
-            text-align: center;
-            color: #3498db;
-            margin-top: 20px;
+            color: #333333;
+            margin-bottom: 20px;
         }
 
-        form {
-            max-width: 600px;
-            margin: 20px auto;
-            background-color: #fff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 5px;
-            padding: 20px;
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-bottom: 20px;
         }
 
-        div {
-            margin-bottom: 15px;
+        table, th, td {
+            border: 1px solid #dddddd;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
         }
 
         label {
             display: block;
             margin-bottom: 5px;
-            color: #555555;
+            color: #333333;
+            font-weight: bold;
         }
 
         input[type="text"] {
-            width: 100%;
-            padding: 10px;
+            width: calc(100% - 20px);
+            padding: 8px;
             box-sizing: border-box;
+            margin-bottom: 10px;
         }
 
         input[type="submit"] {
-            background-color: #3498db;
-            color: #fff;
-            padding: 10px 20px;
+            background-color: #007bff;
+            color: #ffffff;
             border: none;
-            border-radius: 5px;
+            padding: 10px 20px;
+            border-radius: 4px;
             cursor: pointer;
-            transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+            transition: background-color 0.3s ease;
         }
 
         input[type="submit"]:hover {
-            background-color: #2980b9;
+            background-color: #0056b3;
+        }
+
+        a {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 
 <body>
-	<a href="TournamentList" type="submit">戻る</a>
-    <h2>高校情報登録</h2>
-    <form action="HighschoolRegistration" method="post">
-        <!-- 大会IDの隠しフィールド -->
-        <input type="hidden" name="tournamentId" value="${tournamentId}">
-        <% for (int i = 1; i <= 49; i++) { %>
+    <div class="form-container">
+     <a href="TournamentList" style="display: block; margin-bottom: 20px; color: #007bff; text-decoration: none; font-weight: bold; text-align: left;">戻る</a>
+        <h2>高校情報登録</h2>
+        <form action="HighschoolRegistration" method="post">
+            <!-- 大会IDの隠しフィールド -->
+            <input type="hidden" name="tournamentId" value="${tournamentId}">
+            <table>
+                <% for (int i = 1; i <= 52; i++) { %>
+                    <% if (i == 1) { %>
+                        <tr>
+                    <% } %>
+                    <td>
+                        <label for="schoolName<%=i%>">高校名<%=i%>:</label>
+                        <input type="text" name="schoolName<%=i%>" id="schoolName<%=i%>">
+                    </td>
+                    <% if (i % 4 == 0 && i != 52) { %>
+                        </tr><tr>
+                    <% } else if (i == 52) { %>
+                        </tr>
+                    <% } %>
+                <% } %>
+            </table>
             <div>
-                <label for="schoolName<%=i%>">高校名<%=i%>:</label>
-                <input type="text" name="schoolName<%=i%>" id="schoolName<%=i%>">
+                <input type="submit" value="登録">
             </div>
-        <% } %>
-        <div>
-            <input type="submit" value="登録">
-        </div>
-    </form>
+        </form>
+    </div>
 </body>
 
 </html>

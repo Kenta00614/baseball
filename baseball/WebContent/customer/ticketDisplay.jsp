@@ -10,7 +10,7 @@
 	<link rel="stylesheet" type="text/css"  href ="/baseball/css/Customer.css">
 </head>
 <body>
-	<h1>購入済みチケット一覧</h1>
+	<h1 class="match-title">購入済みチケット一覧</h1>
 
 	<%-- 購入チケットがないとき --%>
 	<c:if test="${fn:length(tickets) == 0 && fn:length(refundTickets) == 0}">購入済みのチケットはありません</c:if>
@@ -20,7 +20,7 @@
 	<c:forEach var="refundTicket" items="${refundTickets }">
 	<div class=ticket-list>
 		<%--購入チケットの情報 --%>
-		<h3>第${refundTicket.ordinalNum }回${refundTicket.tournamentName }</h3>
+		<h3 class="match-buy">第${refundTicket.ordinalNum }回${refundTicket.tournamentName }</h3>
 		<div class="ticket-show">
 			<div class="ticket-item">
 			<p>${refundTicket.dateStr }(${refundTicket.eventDayOfWeek })<br>　${refundTicket.typeStr }　<c:choose><c:when test="${refundTicket.child }">こども券</c:when><c:when test="${!refundTicket.child }">おとな券</c:when></c:choose>　<fmt:formatNumber value="${refundTicket.price }" type="CURRENCY" currencySymbol="¥" maxFractionDigits="0" groupingUsed="true" />円　${refundTicket.step }段　${refundTicket.number }番<br>

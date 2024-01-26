@@ -1,10 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@include file="header.jsp"%>
 <html>
 
 <head>
-    <title>販売中止確認</title>
+    <title>販売停止確認</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -33,14 +32,28 @@
             margin-bottom: 20px;
         }
 
-        .btn {
+        .link-btn {
+            color: #007bff;
+            text-decoration: underline;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .link-btn:hover {
+            color: #0056b3;
+        }
+
+        .btn, .button-container {
             display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .btn {
             background-color: #007bff;
             color: #ffffff;
             padding: 10px 20px;
             border-radius: 4px;
             text-decoration: none;
-            margin-bottom: 20px;
             transition: background-color 0.3s ease;
         }
 
@@ -61,16 +74,23 @@
         button:hover {
             background-color: #c9302c;
         }
+
+        .button-container {
+            text-align: left;
+            display: block;
+            margin-bottom: 20px;
+        }
     </style>
 </head>
 
 <body>
     <div class="header">
-        <form action="SaleCancelComplete" method="get">
-            <a href="SaleStop" class="btn">戻る</a>
-            <h1>雨天時などの販売中止</h1>
+        <div class="button-container">
+            <a href="SaleStop" class="link-btn">戻る</a>
+        </div>
+        <form action="SaleStopComplete" method="post">
+            <h1>雨天時などの試合中止</h1>
             <p>当日券・リセール席の販売を停止します。</p>
-            <p>チケットステータスを払い戻し未対応に変更します。</p>
             <p>よろしいですか？</p>
             <button type="submit">停止</button>
         </form>

@@ -67,6 +67,16 @@
             border-radius: 4px;
             cursor: pointer;
         }
+		.btn-link {
+            display: inline-block;
+            margin-top: 0.01px;
+            padding: 6px 6px;
+            background-color: transparent;
+            color: #007bff;
+            text-decoration: underline;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
 
     </style>
 </head>
@@ -74,7 +84,7 @@
 <body>
     <div class="header">
         <form action="StaffDeleteComplete" method="get">
-            <br><a href="StaffDelete" class="btn">戻る</a>
+            <br><a href="StaffDelete" class="btn-link">戻る</a>
             <h1>職員情報の削除</h1>
             <p>以下の情報を削除しますか？</p>
             <table>

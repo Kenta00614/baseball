@@ -29,7 +29,7 @@
         }
 
         .control {
-            margin-bottom: 15px;
+            margin-bottom: 10px;
         }
 
         label {
@@ -62,20 +62,7 @@
     </style>
 </head>
 <body>
-<<<<<<< HEAD
-	<div class="header">
-	    <h2>大会情報登録　確認画面</h2>
-	    <div class="form-container"> <!-- form-container を追加 -->
-	        <form action="TournamentRegistrationInput" method="post">
-	            <div class="control">
-	                <label for="year">開催年:</label>
-					<p id="year" class=""form-input">${requestScope.year}</p>
-	            </div>
-	            <div class="control">
-	                <label for="ordinalNum">第何回:</label>
-	                <p id="ordinalNum" class="form-input">${requestScope.ordinalNum}</p>
-	            </div>
-=======
+
 <div class="header">
     <h2>大会情報登録　確認画面</h2>
     <div class="form-container">
@@ -88,24 +75,15 @@
                 <label for="ordinalNum">第何回:</label>
                 <p class="form-input">${requestScope.ordinalNum}</p>
             </div>
->>>>>>> branch 'master' of https://github.com/Kenta00614/baseball.git
 
-            <div class="control">
-                <label for="season">大会の時期:</label>
-                <p class="form-input">${requestScope.season}</p>
-            </div>
-
-<<<<<<< HEAD
 	            <div class="control">
 	                <label for="name">大会名：</label>
 	                <p id="name" class="form-input">${requestScope.name}</p>
 	            </div>
-=======
-            <div class="control">
-                <label for="name">大会名:</label>
-                <p class="form-input">${requestScope.name}</p>
+	                        <div class="control">
+                <label for="season">大会の時期:</label>
+                <p class="form-input">${requestScope.season}</p>
             </div>
->>>>>>> branch 'master' of https://github.com/Kenta00614/baseball.git
 
             <input type="hidden" name="year" value="${requestScope.year}">
             <input type="hidden" name="ordinalNum" value="${requestScope.ordinalNum}">

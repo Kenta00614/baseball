@@ -7,13 +7,12 @@
 <html>
 <head>
 	<link rel="stylesheet" type="text/css"  href ="/baseball/css/Customer.css">
-	<script type="text/javascript" charset="UTF-8" src="../js/hoge.js"></script>
 </head>
 <body>
 	<form action="TicketDisplay" method="get">
 		<button type="submit" class="return-btn">戻る</button>
 	</form>
-	<h1>第${ordinalNum }回${tournamentName }</h1>
+	<h1 class="select-title">第${ordinalNum }回${tournamentName }</h1>
 		<table  class="ticket-shard">
 			<tr><th>チケット内容</th></tr>
 			<tr><td style="text-align:center;   display: block;margin-left: auto;margin-right: auto ">${dateStr }(${eventDayOfWeek })　${typeStr }　<c:choose><c:when test="${child == 'true'}">こども券</c:when><c:when test="${child == 'false'}">おとな券</c:when></c:choose>　<fmt:formatNumber value="${price }" type="CURRENCY" currencySymbol="¥" maxFractionDigits="0" groupingUsed="true" />円　${step }段　${number }番</td></tr>

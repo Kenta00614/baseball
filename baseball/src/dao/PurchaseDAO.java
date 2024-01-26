@@ -1,6 +1,7 @@
 package dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Timestamp;
@@ -99,8 +100,35 @@ public class PurchaseDAO extends DAO{
 		return list;
 	}
 
+	//開催日の購入履歴の取得
+	public List<PurchaseExp> getDatePurchase(int spectatorId,Date eventDate)throws Exception{
 
+		Connection con=getConnection();
+		PreparedStatement st=con.prepareStatement(" select purchase.* ,tickets.status,tickets.is_child,match.event_date,seat.type,tournament.ordinal_num,tournament.name from purchase join tickets on purchase.purchase_id = tickets.purchase_id join match on tickets.match_id = match.match_id join seat on tickets.seat_id = seat.seat_id join tournament on match.tournament_id = tournament.tournament_id where purchase.spectator_id = ? and tickets.status != 2 and match.event_date=? order by event_date,purchase_at");
+		st.setInt(1, spectatorId);
+		st.setObject(2, eventDate);
+
+		ResultSet rs=st.executeQuery();
+
+		List<PurchaseExp> list=new ArrayList<>();
+
+		while(rs.next()){
+			PurchaseExp p=new PurchaseExp();
+			p.setPurchaseId(rs.getInt("purchase_id"));
+			p.setOrdinalNum(rs.getInt("ordinal_num"));
+			p.setTournamentName(rs.getString("name"));
+			p.setEventDate(rs.getDate("event_date"));
+			p.setPurchaseAt(rs.getTimestamp("purchase_at"));
+			p.setSeatType(rs.getString("type"));
+			p.setChild(rs.getBoolean("is_child"));
+			p.setDateStr();
+			p.setPurchaseStr();
+			list.add(p);
+		}
+
+		st.close();
+		con.close();
+
+		return list;
 	}
-
-
-
+}

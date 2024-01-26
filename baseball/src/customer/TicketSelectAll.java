@@ -12,16 +12,18 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import bean.Match;
+import bean.PurchaseExp;
 import bean.Spectator;
 import bean.Tickets;
 import common.Constants;
+import dao.PurchaseDAO;
 import dao.SeatDAO;
 import dao.TicketsDAO;
 
 @WebServlet("/customer/TicketSelectAll")
 public class TicketSelectAll extends HttpServlet {
 
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings( "unchecked")
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //    	値の取得
     	HttpSession session=request.getSession();
@@ -43,9 +45,40 @@ public class TicketSelectAll extends HttpServlet {
     		tickets = ticketDAO.getTypeSurplus(seat,match.getMatchId());
 			remaining=tickets.size();
 
-//			希望枚数よりチケットが少ない場合前の画面に戻る
-			if(remaining<count){
-				List<String> seatType = new ArrayList<>();
+////			希望枚数よりチケットが少ない場合前の画面に戻る
+//			if(remaining<count){
+//				List<String> seatType = new ArrayList<>();
+//
+//				String[] seatOrder = {"0B","0F","0T","0R","0L"};
+//
+//		        for (String key : seatOrder) {
+//		            String value = Constants.SEAT_TYPE.get(key);
+//		            seatType.add(value);
+//		        }
+//		        request.setAttribute("seatOrder", seatOrder);
+//				request.setAttribute("seatType",seatType );
+//				request.setAttribute("remaining", remaining);
+//				request.getRequestDispatcher("/customer/ticketApplication.jsp").forward(request, response);
+//				return;
+//			}
+
+//	    	ログインしていないときログイン画面へ
+	    	if (spectatorIds == null) {
+	    		session.setAttribute("seat", seat);
+				session.setAttribute("count", count);
+				session.setAttribute("remaining", remaining);
+	            response.sendRedirect("login.jsp");
+	            return;
+	    	}
+
+//			開催日の購入チケット取得
+	    	List<PurchaseExp> purchaseList=new ArrayList<>();
+	    	PurchaseDAO purchaseDAO=new PurchaseDAO();
+	    	purchaseList = purchaseDAO.getDatePurchase(spectatorIds.get(spectatorIds.size()-1).getSpectatorId(),match.getEventDate());
+
+	    	if(count+purchaseList.size()>6 || remaining<count){
+
+	    		List<String> seatType = new ArrayList<>();
 
 				String[] seatOrder = {"0B","0F","0T","0R","0L"};
 
@@ -55,16 +88,14 @@ public class TicketSelectAll extends HttpServlet {
 		        }
 		        request.setAttribute("seatOrder", seatOrder);
 				request.setAttribute("seatType",seatType );
-				request.setAttribute("remaining", remaining);
+				if(remaining<count){
+					request.setAttribute("remaining", remaining);
+				}
+				if(count+purchaseList.size()>6){
+					request.setAttribute("countTic", 6-purchaseList.size());
+				}
 				request.getRequestDispatcher("/customer/ticketApplication.jsp").forward(request, response);
 				return;
-			}
-//	    	ログインしていないときログイン画面へ
-	    	if (spectatorIds == null) {
-	    		session.setAttribute("seat", seat);
-				session.setAttribute("count", count);
-	            response.sendRedirect("login.jsp");
-	            return;
 	    	}
 
 //			通常の時送る値

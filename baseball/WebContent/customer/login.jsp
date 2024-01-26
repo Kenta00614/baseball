@@ -2,8 +2,14 @@
     pageEncoding="UTF-8"%>
 <%@include file="header.jsp"%>
 
+<html>
 <head>
 	<link rel="stylesheet" type="text/css"  href ="/baseball/css/Customer.css">
+	<style>
+		placeholder{
+			font-size: 30px;
+		}
+	</style>
 </head>
 <body>
 
@@ -12,7 +18,7 @@
     <h1 class="login-title">ログイン</h1>
     　　<form action="Login" method="post">
 	        <div class="login-input">
-	            <label for="user-id">ID(email)</label>
+	            <label for="user-id" >ID(email)</label>
 	            <input name="mail" type="email" id="user-id" placeholder="✉Mail" class="login-email" required>
 	        </div>
 	        <div class="login-input">

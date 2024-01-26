@@ -40,6 +40,10 @@
 	    button:hover {
 	        background-color: #2980b9; /* Darker blue color on hover */
 	    }
+
+	    .check-button{
+	    	margin-left: 10px;
+	    }
     </style>
 </head>
 <body>
@@ -47,16 +51,18 @@
         <h2><%=t.getOrdinalNum() %>回　<%=t.getName() %></h2>
         <p><%=date.substring(0,4) %>年<%=date.substring(5,7) %>月<%=date.substring(8,10) %>日の試合情報を削除します。</p>
 
-        <form action="MatchUpdateInput" method="post">
+        <form action="MatchUpdateInput" method="post" id="returnButton">
             <input type="hidden" value="${eventDate}" name="date">
-            <button type="submit">戻る</button>
+
         </form>
 
-        <form action="MatchInformation" method="post">
+        <form action="MatchInformation" method="post" id="checkButton">
             <input type="hidden" value="${tournamentId}" name="tournamentId">
             <input type="hidden" value="${eventDate}" name="delEventDate">
-            <button type="submit">確認</button>
+
         </form>
+        <button type="submit" form="returnButton">戻る</button>
+        <button type="submit" form="checkButton" class="check-button">確認</button>
     </div>
 </body>
 </html>

@@ -60,6 +60,7 @@
 
         <form action="MatchInformation" method="post">
             <input type="hidden" value="${tournamentId}" name="tournamentId">
+            <input type="hidden" value="${newEventDate}" name="newEventDate">
             <button type="submit">OK</button>
         </form>
     </div>
