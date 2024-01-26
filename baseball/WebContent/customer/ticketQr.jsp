@@ -18,14 +18,14 @@
 	<div class="ticket-qr">
 	<%-- QRコード --%>
 	<c:if test="${DispQrFlg == 0 }">
-		<img src="<%= BufferedImageUtil.convert2DataURI(bImage, "png") %>"/>
+		<img src="<%= BufferedImageUtil.convert2DataURI(bImage, "png") %>" class="qr-img"/>
 	</c:if>
 	<c:if test="${DispQrFlg == 1 }">
 		このチケットは使用期限が過ぎています。
 	</c:if>
 	<%-- 情報 --%>
-	<p>第${ordinalNum }回${tournamentName }</p>
-	<p>${dateStr }(${eventDayOfWeek }) 08:00</p>
+	<p class="qr-memo">第${ordinalNum }回${tournamentName }</p>
+	<p class="qr-memo">${dateStr }(${eventDayOfWeek }) 08:00</p>
 	</div>
 </body>
 </html>

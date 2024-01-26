@@ -8,13 +8,12 @@
 	<link rel="stylesheet" type="text/css"  href ="/baseball/css/Customer.css">
 </head>
 <body>
-	<div class="header">
 
 	<%-- 第何回　～大会のヘッダー --%>
-	<c:if test="${fn:length(match) > 0}"><h1>第${tour.ordinalNum }回${tour.name }</h1></c:if>
+	<c:if test="${fn:length(match) > 0}"><h1 class="match-title">第${tour.ordinalNum }回${tour.name }</h1></c:if>
 
     <%-- 試合日情報がないとき --%>
-    <c:if test="${fn:length(match) <= 0}"><h1>販売中のチケットはありません</h1></c:if>
+    <c:if test="${fn:length(match) <= 0}"><h1 class="match-title">販売中のチケットはありません</h1></c:if>
     <c:forEach var="mat" items="${match}">
 	    <c:choose>
 
@@ -24,8 +23,8 @@
 
 	    <c:otherwise>
 	    	<div class="pre-order">
-	    		<p>受付期間${mat.saleStartAt}(${mat.saleDayOfWeek})～${mat.eventDate }(${mat.eventDayOfWeek})</p>
-		    	<p>開催日:${mat.eventDate}(${mat.eventDayOfWeek})</p>
+	    		<p class="match-buy">受付期間${mat.saleStartAt}(${mat.saleDayOfWeek})～${mat.eventDate }(${mat.eventDayOfWeek})</p>
+		    	<p class="match-buy">開催日:${mat.eventDate}(${mat.eventDayOfWeek})</p>
 
 		    	<%-- 10時になったら受付中にしてボタン表示する --%>
 		    	<div class="apply">
@@ -49,7 +48,7 @@
 	    </c:otherwise>
 	    </c:choose>
     </c:forEach>
-   </div>
+
    <c:if test="${canselPurchase == 1 }">
 	   <script>
 	      	alert('セッションが切れています、もう一度最初から購入してください。');

@@ -13,6 +13,7 @@
 
         form {
             margin-bottom: 20px;
+
         }
 
         h2 {
@@ -46,21 +47,6 @@
             box-sizing: border-box;
         }
 
-        .link-button {
-            background: none;
-            border: none;
-            color: #007BFF;
-            text-decoration: underline;
-            cursor: pointer;
-            font-size: 16px;
-            margin-bottom: 10px;
-            display: inline-block;
-        }
-
-        .link-button:hover {
-            color: #0056b3;
-        }
-
         button {
             background-color: #007BFF;
             color: #fff;
@@ -75,15 +61,17 @@
             background-color: #0056b3;
         }
 
-
     </style>
 </head>
 <body>
-    <a href="MatchInformation?tournamentId=${tournament.tournamentId}" class="link-button">戻る</a>
+    <form action="MatchInformation" method="post">
+        <input type="hidden" name="tournamentId" value="${tournament.tournamentId}">
+        <button type="submit">戻る</button>
+    </form>
 
     <h2>第${tournament.ordinalNum}回　${tournament.name}</h2>
 
-    <form action="MatchUpdateCompletion" method="post">
+    <form action="MatchUpdateCompletion" method="post" id="changeForm">
         <!-- 試合情報表示 -->
         <p>開催日 ${matchList[0].eventDateStr}</p>
         <p>チケット販売開始日 ${matchList[0].saleStartAtStr}</p>
@@ -99,38 +87,39 @@
             </tr>
             <c:forEach var="duel" items="${duelList}" varStatus="loop">
                 <tr>
-                    <td>第${loop.index + 1}試合</td>
+                    <td>第${loop.index+1}試合</td>
                     <td>
-                        <select name="duel${loop.index + 1}School1" id="duel${loop.index + 1}School1">
+                        <select name="duel${loop.index+1}School1" id="duel${loop.index+1}School1">
                             <c:forEach var="school" items="${schoolList}">
-                                <c:if test="${school.name != ''}">
-                                    <option value="${school.schoolId}" <c:if test="${duel.schoolId1 == school.schoolId}">selected</c:if>>${school.name}</option>
-                                </c:if>
+                            	<c:if test="${school.name != ''}">
+                                	<option value="${school.schoolId}" <c:if test="${duel.schoolId1 == school.schoolId}">selected</c:if>>${school.name}</option>
+                            	</c:if>
                             </c:forEach>
                         </select>
                     </td>
                     <td>
-                        <select name="duel${loop.index + 1}School2" id="duel${loop.index + 1}School2">
+                        <select name="duel${loop.index+1}School2" id="duel${loop.index+1}School2">
                             <c:forEach var="school" items="${schoolList}">
-                                <c:if test="${school.name != ''}">
-                                    <option value="${school.schoolId}" <c:if test="${duel.schoolId2 == school.schoolId}">selected</c:if>>${school.name}</option>
-                                </c:if>
+                            	<c:if test="${school.name != ''}">
+                                	<option value="${school.schoolId}" <c:if test="${duel.schoolId2 == school.schoolId}">selected</c:if>>${school.name}</option>
+                            	</c:if>
                             </c:forEach>
                         </select>
                     </td>
                     <td>
-                        <select name="status${loop.index + 1}">
-                            <c:forEach var="i" begin="0" end="${fn:length(duelStatus) - 1}" step="1">
-                                <option value="${i + 1}" <c:if test="${duel.status == i + 1}">selected</c:if>>${duelStatus[i]}</option>
+                        <select name="status${loop.index+1}">
+                            <c:forEach var="i" begin="0" end="${fn:length(duelStatus)-1}" step="1">
+                                <option value="${i+1}" <c:if test="${duel.status == i+1}">selected</c:if>>${duelStatus[i]}</option>
                             </c:forEach>
                         </select>
                     </td>
                     <td>
-                        <select name="duel${loop.index + 1}Round">
-                            <c:forEach var="i" begin="0" end="5">
-                                <option value="${i + 1}" <c:if test="${duel.round == i + 1}">selected</c:if>>${duelRound[i]}</option>
-                            </c:forEach>
-                        </select>
+
+                    	<select name="duel${loop.index+1}Round">
+                        	<c:forEach var="i" begin="0" end="5">
+                            	<option value="${i+1}" <c:if test="${duel.round == i+1}">selected</c:if>>${duelRound[i]}</option>
+                        	</c:forEach>
+                    	</select>
                     </td>
                 </tr>
             </c:forEach>
@@ -138,59 +127,68 @@
 
         <!-- 非表示フィールド -->
         <c:forEach var="duel" items="${duelList}" varStatus="loop">
-            <input type="hidden" value="${duel.duelId}" name="duel${loop.index + 1}">
+            <input type="hidden" value="${duel.duelId}" name="duel${loop.index+1}">
         </c:forEach>
 
-		<div>
-	        <input type="hidden" value="${matchList[0].matchId}" name="matchId">
-	        <button  type="submit" id="button">変更</button>
-        </div>
-
+        <input type="hidden" value="${matchList[0].matchId}" name="matchId">
 
     </form>
 
-    <form action="MatchUpdateDelete" method="post">
+    <form action="MatchUpdateDelete" method="post" id="deleteForm">
         <input type="hidden" value="${matchList[0].eventDate}" name="eventDate">
         <input type="hidden" value="${tournament.tournamentId}" name="tournamentId">
-        <button type="submit">削除</button>
+
     </form>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            var inputs = [];
-            for (let i = 1; i < 5; i++) {
-                var school1 = document.getElementById('duel' + i + 'School1');
-                var school2 = document.getElementById('duel' + i + 'School2');
-                inputs.push(school1);
-                inputs.push(school2);
-            }
-            const submitButton = document.getElementById('button');
+     <button type="submit" id="button" class="change-button" form="changeForm">変更</button>
+     <button type="submit" class="delete-button" form="deleteForm">削除</button>
 
-            inputs.forEach(input => {
-                input.addEventListener('change', validateInputs);
-            });
+	<script>
+		<%-- なし以外で重複がないようにする --%>
+		document.addEventListener('DOMContentLoaded', function () {
+			<%-- 配列作成 --%>
+		    var inputs = [];
+		    for (let i = 1; i < 5; i++) {
+		        var school1 = document.getElementById('duel' + i + 'School1');
+		        var school2 = document.getElementById('duel' + i + 'School2');
+		        inputs.push(school1);
+		        inputs.push(school2);
+		    }
+		    const submitButton = document.getElementById('button');
 
-            submitButton.addEventListener('click', function () {
-                validateInputs();
-                if (submitButton.disabled) {
-                    alert('同じ高校名は選択できません');
-                    return false;
-                }
-            });
+		    <%-- 重複があるときはボタンを非活性 --%>
+		    inputs.forEach(input => {
+		        input.addEventListener('change', validateInputs);
+		    });
 
-            function validateInputs() {
-                var result = inputs.filter(function (input) {
-                    return input.value !== '0';
-                });
+		    <%-- 重複ありでボタン押されたらalert --%>
+		    submitButton.addEventListener('click', function () {
+		        validateInputs();
+		        if (submitButton.disabled) {
+		        	alert('同じ高校名は選択できません');
+		            return false; // ボタンが無効な場合はフォームの送信をキャンセル
+		        }
+		    });
 
-                submitButton.disabled = isDuplicated(result);
-            }
+		    <%-- ボタン非活性メソッド --%>
+		    function validateInputs() {
+		        var result = inputs.filter(function (input) {
+		            return input.value !== '0';
+		        });
 
-            function isDuplicated(array) {
-                var uniqueValues = new Set(array.map(input => input.value));
-                return array.length !== uniqueValues.size;
-            }
-        });
-    </script>
+		        if (isDuplicated(result)) {
+		            submitButton.disabled = true;
+		        } else {
+		            submitButton.disabled = false;
+		        }
+		    }
+
+		    <%-- 重複確認メソッド --%>
+		    function isDuplicated(array) {
+		        var uniqueValues = new Set(array.map(input => input.value));
+		        return array.length !== uniqueValues.size;
+		    }
+		});
+	</script>
 </body>
 </html>

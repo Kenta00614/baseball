@@ -34,7 +34,8 @@
         .control {
             margin-bottom: 15px;
             display: flex;
-            align-items: center;
+            text-align: center;
+			margin-left: 50px;
         }
 
         label {
@@ -68,13 +69,13 @@
 
         <form action="SaleOptionsRedirect" method="post" onsubmit="return validateSelection();">
             <div class="control">
-                <input type="radio" id="sale1" name="sale" value="cancel" style="margin-right: 10px;">
-                <label for="sale1">雨天時などの試合中止(払い戻し可)</label>
+
+                <label for="sale1"><input type="radio" id="sale1" name="sale" value="cancel" style="margin-right: 10px;">雨天時などの試合中止(払い戻し可)</label>
             </div>
 
             <div class="control">
-                <input type="radio" id="sale2" name="sale" value="end" style="margin-right: 10px;">
-                <label for="sale2">当日券・リセール席の販売停止</label>
+
+                <label for="sale2"><input type="radio" id="sale2" name="sale" value="end" style="margin-right: 10px;">当日券・リセール席の販売停止</label>
             </div>
 
             <button type="submit">確認</button>
