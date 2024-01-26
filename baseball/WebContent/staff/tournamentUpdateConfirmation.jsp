@@ -22,7 +22,7 @@
         max-width: 300px;
         margin: 20px auto;
         background-color: #ffffff;
-        padding: 20px;
+        padding: 20px 50px 10px 50px;
         border-radius: 8px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
@@ -31,6 +31,7 @@
 	    margin-bottom: 15px;
 	    display: flex;
 	    align-items: center;
+	    text-align: center;
 	}
 
 	label {
