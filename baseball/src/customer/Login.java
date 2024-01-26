@@ -16,10 +16,13 @@ import javax.servlet.http.HttpSession;
 
 import bean.DuelExp;
 import bean.Match;
+import bean.PurchaseExp;
 import bean.Spectator;
 import bean.Tournament;
+import common.Constants;
 import dao.DuelDAO;
 import dao.MatchDAO;
+import dao.PurchaseDAO;
 import dao.SeatDAO;
 import dao.SpectatorDAO;
 import dao.TournamentDAO;
@@ -60,6 +63,37 @@ public class Login extends HttpServlet {
                 if(seat != null){
                 	List<String> blocks=new ArrayList<>();
         	   	 	SeatDAO seatDAO=new SeatDAO();
+
+//        			開催日の購入チケット取得
+        	    	List<PurchaseExp> purchaseList=new ArrayList<>();
+        	    	PurchaseDAO purchaseDAO=new PurchaseDAO();
+        	    	Match match=(Match)session.getAttribute("match");
+        	    	purchaseList = purchaseDAO.getDatePurchase(spectatorIds.get(spectatorIds.size()-1).getSpectatorId(),match.getEventDate());
+        	    	int count = (int)session.getAttribute("count");
+        	    	int remaining = (int)session.getAttribute("remaining");
+
+        	    	if(count+purchaseList.size()>6 || remaining<count){
+
+        	    		List<String> seatType = new ArrayList<>();
+
+        				String[] seatOrder = {"0B","0F","0T","0R","0L"};
+
+        		        for (String key : seatOrder) {
+        		            String value = Constants.SEAT_TYPE.get(key);
+        		            seatType.add(value);
+        		        }
+        		        request.setAttribute("seatOrder", seatOrder);
+        				request.setAttribute("seatType",seatType );
+        				if(remaining<count){
+        					request.setAttribute("remaining", remaining);
+        				}
+        				if(count+purchaseList.size()>6){
+        					request.setAttribute("countTic", 6-purchaseList.size());
+        				}
+        				session.removeAttribute("remaining");
+        				request.getRequestDispatcher("/customer/ticketApplication.jsp").forward(request, response);
+        				return;
+        	    	}
 
                 	blocks = seatDAO.getBlock(seat);
     				request.setAttribute("blocks", blocks);
