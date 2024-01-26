@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
 	<style>
@@ -83,9 +84,15 @@
    <form action="EntryExit" method="get"><button type="submit">戻る</button></form>
   </div>
   <% if(request.getAttribute("massage") != null){ %><div id="${classStr}">${massage}</div><%}%>
+  <form id="form" action="EntryConduct">
+	<select name="seatType">
+	<c:forEach var="seatType" items="${seatTypeList}">
+	<option value="${seatType.key}">${seatType.value}</option>
+	</c:forEach>
+	</select>
   <canvas id="canvas" hidden></canvas>
   <div id="output"></div>
-  <form id="form" action="EntryConduct" >
+
   	<input type="hidden" id="ticketId" name="ticketId" value="">
   </form>
   <script src="../js/jsQR.js"></script>

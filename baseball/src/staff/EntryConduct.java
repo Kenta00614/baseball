@@ -25,7 +25,7 @@ public class EntryConduct extends HttpServlet {
     	//値の受け取り
     	String ticketId = request.getParameter("ticketId");
     	String seatType = request.getParameter("seatType");
-    	System.out.println("ID:"+ticketId);
+    	//System.out.println("ID:"+ticketId);
 
     	//DBへ照合
     	TicketsDAO dao = new TicketsDAO();
