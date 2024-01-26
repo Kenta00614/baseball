@@ -8,16 +8,6 @@
 <html>
 <head>
 	<link rel="stylesheet" type="text/css"  href ="/baseball/css/Customer.css">
-	<style>
-	/*--- 張り紙スタイル ---*/
-	.poster{
-	 	border:5px double #a4c3b2;
-	 	background-color:#F3F7F5;
-	 	padding:16px;
-	 	margin:20px;
-	 	margin-top:100px;
-	}
-	</style>
 </head>
 <body>
 	<h1>購入履歴</h1>
@@ -28,11 +18,11 @@
 		<c:otherwise>
 			<table class="history-list">
 			<tr>
-				<th style="width:120em;">大会名</th>
-				<th style="width:70em;">開催日</th>
-				<th style="width:70em;">購入日時</th>
-				<th style="width:3px;">枚数</th>
-				<th style="width:30em;">価格</th>
+				<th class="history-title">大会名</th>
+				<th class="history-date">開催日</th>
+				<th class="history-date">購入日時</th>
+				<th class="history-number">枚数</th>
+				<th class="history-price">価格</th>
 			</tr>
 			<c:forEach begin="0" end="${fn:length(ticketNumList)-1 }" step="1" var="i">
 				<tr>
