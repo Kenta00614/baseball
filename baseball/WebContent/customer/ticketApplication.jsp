@@ -10,12 +10,12 @@
 <body>
 
 <%-- 前へ戻るボタン --%>
-	<br><a href="TicketPurchase" type="submit" class="return-btn">戻る</a>
+	<br><a href="TicketPurchase"  class="return-btn">戻る</a>
 <%-- 大会名 --%>
-    <h1>第${tour.ordinalNum }回　${tour.name }</h1>
+    <h1 class="apply-title">第${tour.ordinalNum }回${tour.name }</h1>
 
-	<div class="ticket-summary">
-	<table>
+	<div >
+	<table class="ticket-summary">
 	<%-- 日付 --%>
 		<tr><th>公演名</th><td><b>第${tour.ordinalNum }回${tour.name }</b></td></tr>
 	    <tr><th>開催日</th><td>${match.eventDate }(${match.eventDayOfWeek })</td></tr>
@@ -23,10 +23,10 @@
 	    <tr><th>開始時刻</th><td>${match.eventDate }(${match.eventDayOfWeek })　8:00~(開場7:00)</td></tr>
 	    <tr><th>注意事項</th><td>一回のお申し込みで6枚まで指定できます</td></tr>
 	    <tr><th>座種・料金</th>
-	    	<td>
-	    		　　中央指定席　1・3塁指定席　外野指定席(レフト・ライト)<br>
-	    		大人　&yen;4,200　　　　&yen;3,700　　　　　　&yen;700<br>
-	    		子供　&yen;4,200　　　　&yen;1,200　　　　　　&yen;200<br>
+	    	<td class="ticket-price">
+	    		中央指定席　1・3塁指定席　外野指定席(レフト・ライト)<br>
+	    		大人　&yen;4,200　　　　&yen;3,700　　　　　&yen;700　　　<br>
+	    		子供　&yen;4,200　　　　&yen;1,200　　　　　&yen;200　　　<br>
 	    	</td></tr>
 	    	<%--<td>中央指定席: 大人・子供 &yen;4,200<br>
 	    		1・3塁指定席: 大人 &yen;3,700 子供 &yen;1,200<br>
@@ -52,16 +52,16 @@
 		</c:choose>
 
 		<p class="ticket-element">座種：
-			<select name="seat">
+			<select name="seat" class="element">
 			<c:forEach begin="0" end="${fn:length(seatType)-1}" step="1" var="i">
 				<option value="${seatOrder[i] }">${seatType[i] }</option>
 			</c:forEach>
 			</select>
 		</p>
 		<p class="ticket-element">枚数：
-			<select name="count">
+			<select name="count" class="element">
 				<c:forEach begin="1" end="6" step="1" var="i">
-				<option value="${i }">${i }</option>
+				<option value="${i }" >${i }</option>
 				</c:forEach>
 			</select>
 		</p>

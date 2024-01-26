@@ -11,7 +11,7 @@
 	body {
 	    background-color: #f2fffc;
 	    width: 960px;
-	    margin: 15px auto; /* 左右のマージンをautoにして中央寄せに修正 */
+	    margin: 10px auto; /* 左右のマージンをautoにして中央寄せに修正 */
 	    margin-top:175px;
 	    padding: 0;
 	    font-family: 'Arial', sans-serif;
@@ -26,7 +26,7 @@
 
 	h1 {
 	    text-align: center;
-	    font-size: 45px;
+	    font-size: 50px;
 	}
 
 	h2 {
@@ -43,26 +43,25 @@
 
 	table{
 		border: 3px solid #a9a9a9;
-	    width: 700px;
-	    margin: 20px;
 	}
 
 	table th {
 	    background-color: #99FFCC;
-	    width: 250px;
 	    color: cadetblue;
+	    font-size: 20px;
 	}
 
 	table td {
 	    background-color: #f0fff0;
-	    width: 550px;
 	    text-align: center; /* ブロック内の中央寄せ */
+	    font-size: 25px;
 	}
 
 	table th,
 	table td {
-	    border-bottom: 2px solid #a9a9a9;
-	    padding: 10px; /* 枠線指定 */
+	    border-bottom: 4px solid #a9a9a9;
+	    padding-top: 25px; /* 枠線指定 */
+	    padding-bottom: 25px;
 	}
 
 	table tr:last-child * {
@@ -111,7 +110,7 @@
 	    color: #ffffff;
 	    background: #808080;
 	    padding: 8px 10px;
-	    font-size: 20px;
+	    font-size: 30px;
 	    cursor: pointer;
 	    border-radius: 5px;
 	    /* other styles */
@@ -158,18 +157,19 @@
 	.return-btn {
 	    /* 戻るボタンのスタイル */
 	    position: absolute; /* 絶対位置に配置 */
-	    top: 15px; /* 上から15pxの位置に配置 */
-	    left: 15px; /* 左から15pxの位置に配置 */
-	    margin-bottom: 10px;
+	    top: 3px; /* 上から3pxの位置に配置 */
+	    left: 25px; /* 左から25pxの位置に配置 */
 	    background-color: #808080;
 	    color: white;
 	    padding: 10px 15px;
+	    font-size: 25px;
 	    border: none;
-	    cursor: pointer;
-	    border-radius: 20px;
+	    border-radius: 35px;
+	    margin-bottom: 50px;
 	}
 	.return-btn:hover{
 		background-color:#555;
+		 margin-bottom: 50px;
 	}
 
 	.square_btn {
@@ -445,7 +445,6 @@
 	    position: relative; /* bodyを相対的な位置に設定 */
 
 	}
-
 	.member-selection button:hover {
 	    background-color: #555;
 	}
@@ -528,33 +527,58 @@
 
 
 	/*--- ticketApplication.jspのスタイル ---*/
+	.apply-title{
+		/* h1のスタイル */
+		margin-top: 50px;
+	}
+
+	.ticket-summary{
+		/* table全体の枠 */
+		margin: 5px auto;
+		margin-top: 50px;
+		width: 800px;
+	}
+
 	.content-selection {
 	    /* h2のスタイル */
 	    background-color: #ffe4c4;
 	    color: #808080;
-	    padding: 7px;
-	    font-size: 25px;
+	    padding: 10px;
+	    font-size: 35px;
 	    margin-top: 0;
 	    border-radius: 15px;
 	    text-align: left;
 	}
 
+	.ticket-price{
+		/* チケットの値段一覧 */
+		margin: 0;
+		font-size: 25px;
+	}
+
 	.seat-selection {
 	    background-color: #fff5ee;
-	    width: 700px;
-	    margin-left: 75px;
+	    width: 800px;;
 	    border: 3px solid #a9a9a9;
 	    border-radius: 20px;
-	     margin: 15px auto; /* 左右のマージンをautoにして中央寄せに修正 */
+	    margin: 10px auto; /* 左右のマージンをautoにして中央寄せに修正 */
+	    margin-top: 50px;
 	}
 
 	.ticket-element {
 	    margin: 18px;
+	    margin-left: 45px;
+	    font-size: 25px;
 	}
+
+	.element{
+		font-size: 25px;
+	}
+
 
 	.tiket-soldout {
 	    color: #dc143c;
-	    font-size: 20px;
+	    font-size: 30px;
 	}
 
 	.choice-button {
@@ -562,15 +586,35 @@
 	    border: 3px solid transparent;
 	    color: #ffffff;
 	    background: #808080;
+	    font-size: 20px;
 	    padding: 10px 15px;
 	    cursor: pointer;
 	    border-radius: 20px;
 	    /* other styles */
 	}
-
 	.choice-button:hover {
 	    background-color: #555;
 	}
+
+
+
+	/*--- ticketComplete.jspのスタイル ---*/
+		.apply-details{
+			width: 80%;
+			margin-top: 50px;
+			margin-bottom: 50px;
+		}
+
+
+		.ticket-comp-come{
+	 	border:5px double #a4c3b2;
+	 	background-color:#F3F7F5;
+	 	padding:60px;
+	 	margin:60px;
+	 	font-size: 30px;
+		}
+
+
 
 
 	/*---ticketConfirm.jspのスタイル ---*/
@@ -578,14 +622,15 @@
 	    /* ボタンのスタイル */
 	    padding: 10px 15px;
 	    background-color: #808080;
-		width: 170px;
+		width: 300px;
 	    color: white;
 	    border: none;
 	    cursor: pointer;
 	    border-radius: 5px;
-	    margin: 50px;
+	    margin: 100px;
 	    flex: 1; /* ボタンを同じサイズにするための追加 */
 	    margin: 20 5px; /* ボタンの間に余白を設定 */
+	    font-size: 25px;
 	}
 
 	.ticket-selectmenu:hover {
@@ -646,48 +691,62 @@
 
 
 	/*--- tiketPurchase.jspのスタイル ---*/
-	.pre-order {
+	.match-title{	/* h1のスタイル */
+		font-size: 33px;
+		width: 96%;
+	}
+
+	.pre-order {	/* 1日ごとのくくり */
 	    border: 3px solid #a9a9a9;
-	    box-shadow: 0px 0px 15px #a9a9a9;
+	    box-shadow: 0px 0px 23px #a9a9a9;
 	    margin: 20px;
-	    margin-left: 75px;
-	    border-left: solid 15px #696969;
-	    padding: 10px;
-	    width: 800px;
+	    margin-left: 45px;
+	    border-left: solid 25px #696969;
+	    padding: 20px;
+	    width: 85%;
 	    background: #f0f8ff;
 	    font-weight: bold;
 	}
 
-	.now-reception {
+	.match-buy{		/* pタグ(チケット概要) */
+		font-size: 30px;
+		margin: 10px;
+	}
+
+	.now-reception {	/* 受付中 */
 	    color: #008080;
 	    background-color: #ccffcc;
+	    font-size: 30px;
 	    font-weight: bold;
-	    margin-right: 500px; /* テキストとボタンの間隔を調整 */
-	    margin-left: 20px;
-	    border: 2px solid #66cdaa;
+	    margin-right: 450px; /* テキストとボタンの間隔を調整 */
+	    margin-left: 40px;
+	    border: 4px solid #66cdaa;
 	    padding: 5px;
 	}
 
 
-	.before-reception {
+	.before-reception {		/* 受付前 */
 	    color: #696969;
 	    background-color: #ffcccc;
+	    font-size: 30px;
 	    font-weight: bold;
-	    margin-right: 500px; /* テキストとボタンの間隔を調整 */
-	    margin-left: 20px;
-	    border: 2px solid #ffcccc;
+	    margin-right: 450px; /* テキストとボタンの間隔を調整 */
+	    margin-left: 40px;
+	    border: 4px solid #ffcccc;
 	    padding: 5px;
 	}
 
-	.apply {
+	.apply {	/* pタグ以外(受付状況とボタン) */
 	    display: flex;
 	    align-items: center;
 	}
 
 	.apply-btn {
+		/* 申し込むボタン */
 	    margin-right: 0; /* ボタンを右端に配置 */
 	    margin-bottom: 10px;
 	    background-color: #808080;
+	    font-size: 20px;
 	    color: white;
 	    padding: 15px 25px;
 	    border: none;
@@ -699,6 +758,7 @@
 	}
 
 
+
 	/*--- ticketQr.jsp ---*/
 	.ticket-qr{
 		margin-top: 100px;
@@ -708,9 +768,31 @@
 
 	/*--- ticketSelectAll.jspのスタイル ---*/
 	.seat-type-img{
-		width:80%;
-		height:10%;
+		margin-top: 100px;
+		width:90%;
+		height:20%;
 	}
+
+	.select-title{
+		/* h1のスタイル */
+		margin-top: 100px;
+	}
+
+	.not-buy{
+		font-size: 30px;
+	}
+
+	.select-all-seat{
+		margin: 50px;
+		display: flex;
+		font-size: 45px;
+	}
+
+	.ticket-all-se{
+		font-size:45px;
+
+	}
+
 
 
 	/*--- ticketSelectSeat.jspのスタイル ---*/
@@ -1308,6 +1390,18 @@
 	.choice-button:hover {
 	    background-color: #555;
 	}
+
+
+
+	/*--- ticketComplete.jspのスタイル ---*/
+		.ticket-comp-come{
+	 	border:5px double #a4c3b2;
+	 	background-color:#F3F7F5;
+	 	padding:16px;
+	 	margin:30px;
+	 	margin-top:450px;
+	 	font-size: 36px;
+		}
 
 
 	/*---ticketConfirm.jspのスタイル ---*/

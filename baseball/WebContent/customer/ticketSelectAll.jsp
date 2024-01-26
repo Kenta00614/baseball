@@ -15,7 +15,7 @@
     	<button type="submit" class="return-btn">戻る</button>
 	</form>
 <%-- 大会名 --%>
-    <h1>第${tour.ordinalNum }回　${tour.name }</h1>
+    <h1 class="select-title">第${tour.ordinalNum }回　${tour.name }</h1>
 
 <%-- 指定された座種の画像。クソデカなのでclass="seat-type-img"で指定してます --%>
 <c:choose>
@@ -37,23 +37,23 @@
 </c:choose>
     <hr>
 
-    <c:if test="${remain <= count && remain != -1}">
-    	購入枚数分用意できません
+    <c:if test="${remain <= count && remain != -1}" >
+    	<p class="not-buy"> 購入枚数分用意できません</p>
     </c:if>
 
-	<div id="app">
-		<form name="myForm" action="TicketSelectSeat" method="post">
+	<div id="app" class="select-all-seat">
+		<form name="myForm" action="TicketSelectSeat" method="post" >
 
 		<%-- 左のドロップダウン --%>
 			段数
-            <select id="leftDropdown" v-model="selectedLeft" @change="updateRightDropdown">
-                <option v-for="(num, index) in leftNumbers" :value="num">{{ num }}</option>
+            <select id="leftDropdown" v-model="selectedLeft" @change="updateRightDropdown" class="ticket-all-se">
+                <option v-for="(num, index) in leftNumbers" :value="num" class="element-option">{{ num }}</option>
             </select>
 
 		<%-- 右のドロップダウン --%>
-			番号
-            <select id="rightDropdown" v-model="selectedRight">
-                <option v-for="(num, index) in rightNumbers" :value="num">{{ num }}</option>
+			 番号
+            <select id="rightDropdown" v-model="selectedRight" class="ticket-all-se">
+                <option v-for="(num, index) in rightNumbers" :value="num" >{{ num }}</option>
             </select>
 			<input type="hidden" id="block" name="block" value="" >
 
