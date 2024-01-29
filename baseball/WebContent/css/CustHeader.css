@@ -9,7 +9,6 @@
 		  margin:15px ;
 	}
 
-
 	body{
 		  position: fixed;
 	}
@@ -55,11 +54,6 @@
 	    color: #4b4b4b;
 	}
 
-	li {
-	    margin: 0 15px 0 0; /* 右側のmarginを15pxに設定 */
-	    font-size: 14px;
-	}
-
 	.nav-menu {
 	    /* ulタグの文頭の「・」を削除 */
 	    list-style: none;
@@ -82,24 +76,13 @@
 	    background-color: #e4ffd7;
 	    top: 0;
 	    left: 0;
-
-
-	}
-
-	.baseball {
-	    font-weight: bold;
-	    font-size: 20px;
 	}
 
 	.logo {
 	    margin: 10px;
-	    display: flex; /*横並び*/
 	    align-items: center;
 	}
 
-	.menu {
-	    margin: 0 0 0 auto;
-	}
 
 	.logo-image {
 	    display: flex;
@@ -121,24 +104,13 @@
 
 	/* 追加設定 */
 	.cust__wrapper {
-	    padding-top: 1rem;
-	    padding-bottom: 1rem;
+
 	    display: flex;
 	    justify-content: space-between;
 	    align-items: center;
 	    padding-top: 0;
 	    padding-bottom: 0;
 	}
-
-	.nav__wrapper {
-	    display: flex;
-	}
-
-	.nav__toggle {
-	    display: none;
-	}
-
-
 
 
 
@@ -204,22 +176,6 @@
 
 	li {
 	    margin: 0 30px 0 0; /* 右側のmarginを30pxに設定 */
-	    font-size: 14px;
-	}
-
-	.nav-menu {
-	    /* ulタグの文頭の「・」を削除 */
-	    list-style: none;
-	    margin: 0;
-	    justify-content: flex-end;
-	    align-items: center;
-
-	    /* 項目を横並びに */
-	    display: flex;
-	}
-
-	* {
-	    box-sizing: border-box;
 	}
 
 	.cust-header {
@@ -229,61 +185,39 @@
 	    background-color: #e4ffd7;
 	    top: 0;
 	    left: 0;
-
-
-	}
-
-
-	.baseball {
-	    font-weight: bold;
-	    font-size: 20px;
 	}
 
 	.logo {
 	    margin: 20px;
-	    display: flex; /*横並び*/
 	    align-items: center;
 	}
 
-	.menu {
-	    margin: 0 0 0 auto;
-	}
-
 	.logo-image {
-	    display: flex;
+	    display: flex; /*横並び*/
 	    padding: 0;
 	    margin-left: 2px;
 	    height: 65px;
-
 	    /* 必要に応じてwidthを追加 */
 	}
 
 	/* ナビゲーションメニューのスタイル */
-	.nav-menu {
-	    list-style-type: none;
+		.nav-menu {
+	    /* ulタグの文頭の「・」を削除 */
+	    list-style: none;
 	    margin: 0;
+	    justify-content: flex-end;
+	    align-items: center;
 	    padding: 0;
 	    padding-right: 20px;
-
+	    list-style-type: none;
 	}
 
 	/* 追加設定 */
 	.cust__wrapper {
-	    padding-top: 1rem;
-	    padding-bottom: 1rem;
 	    display: flex;
 	    justify-content: space-between;
 	    align-items: center;
 	    padding-top: 0;
 	    padding-bottom: 0;
 	}
-
-	.nav__wrapper {
-	    display: flex;
-	}
-
-	.nav__toggle {
-	    display: none;
-	}
-
 }

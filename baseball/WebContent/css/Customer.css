@@ -775,9 +775,7 @@
 	    flex-direction: column;
 	    align-items: center;
 	     position: relative; /* bodyを相対的な位置に設定 */
-
 	     width: 100%; /* 幅を100%に設定 */
-
 	}
 
 	h1 {
@@ -852,7 +850,14 @@
 		font-family: '游明朝';
 		margin-top: 5px;
 		font-size: 25px;
+	}
 
+
+	option{
+		font-size: 10px;
+		padding: 0px;
+		height: 3px;
+		width: 30px;
 	}
 
 
@@ -863,7 +868,7 @@
 	    border: 3px solid transparent;
 	    margin: 15px auto; /* 左右のマージンをautoにして中央寄せに修正 */
 	    display: flex;
-	    color: #808080;
+	    color: #ffffff;
 	    background: #808080;
 	    padding: 8px 10px;
 	    font-size: 30px;
@@ -906,7 +911,6 @@
 	    /* other styles */
 	    align-items: center;
 	    position: relative; /* bodyを相対的な位置に設定 */
-
 	}
 
 
@@ -926,17 +930,6 @@
 	.return-btn:hover{
 		background-color:#555;
 		 margin-bottom: 50px;
-	}
-
-	.square_btn {
-		/* ☒ボタンのスタイル */
-	    display: block;
-	    position: relative;
-	    width: 30px;
-	    height: 30px;
-	    border: 2px solid #333;
-	    background: #fff;
-	    float: right;
 	}
 
 	.square_btn::before,
@@ -979,9 +972,6 @@
 
 	/*--- informationChangeConfirm.jspのスタイル ---*/
 
-
-
-
 	.form-inline{
 		 border: 2px solid #156bb3;
 		 border-radius: 20px;
@@ -990,7 +980,6 @@
 	     align-items: center;
 	     padding: 40px;
 	     margin-top: 80px;
-
 	}
 
 	.inline{
@@ -1023,10 +1012,6 @@
 	    padding-top: 2px;
 
 	}
-
-
-
-
 
 	.infor-change-btn{/*ボタン個々のスタイル*/
 	    background-color: black;
@@ -1136,6 +1121,7 @@
 	.tournament {/*大会名*/
 	    text-align: center;
 	    font-size: 20px;
+	    margin-top: 10px;
 	    margin: 8px 0;
 	    margin-bottom: 10px;
 	    display: flex;
@@ -1323,7 +1309,7 @@
 	.ticket-price{
 		/* チケットの値段一覧 */
 		margin: 0;
-		font-size: 25px;
+		font-size: 20px;
 	}
 
 	.seat-selection {

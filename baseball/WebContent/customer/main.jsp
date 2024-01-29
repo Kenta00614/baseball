@@ -10,74 +10,6 @@
     <title>メイン画面</title>
     <link rel="stylesheet" type="text/css"  href="/baseball/css/Customer.css">
 <style>
-@media screen and (max-width: 1050px){
-	/* スマートフォン用CSS記述 */
-
-	/*テーブル設定*/
-
-	table{
-		border: initial;
-	    width: initial;
-	    margin: initial;
-
-
-	}
-
-	table th {
-	    background-color:initial;
-	    width:initial;
-	    color: initial;
-	    padding: 20px;
-	}
-
-	table td {
-	    background-color: initial;
-	    width: initial;
-	    width: 28%;/*要素の横幅*/
-	    font-size: 8px;
-	    margin: 3px;
-	}
-
-	table th,
-	table td {
-	    border-bottom:  initial;
-	}
-
-	table tr:last-child * {
-	    border-bottom: none;
-
-	}
-
-
-        .schedule {		/*1試合ごとの枠*/
-            border: 3px solid #000000;
-            padding: 2px;
-            margin-bottom: 5px;
-            margin-top: 20px;
-            border-radius: 20px;
-            width: 98%;
-        }
-
-        .schedule > div {
-            margin-bottom: 5px;
-        }
-
-        .date-center {/* 日付 */
-            font-weight: bold;
-            margin-top: 10px;
-            margin-bottom: 10px;
-        }
-
-        .num_match{/* 〇試合目 */
-			width: 23%;
-        }
-
-}
-
-
-
-@media screen and (min-width: 1050px){
-
 		/* PC用CSS記述 */
 /*テーブル設定*/
 
@@ -88,30 +20,23 @@
 	}
 
 	table th {
-	    background-color:initial;
-	    width:initial;
 	    color: initial;
 	    padding: 30px;
 	}
-
+	table th,
 	table td {
+		width: initial;
+	    border-bottom:  initial;
 	    background-color: initial;
-	    width: initial;
+	}
+	table td {
 	    width: 180px;/*枠の横幅*/
 	    padding: 20px;
 	}
 
-	table th,
-	table td {
-	    border-bottom:  initial;
-	}
-
 	table tr:last-child * {
 	    border-bottom: none;
-
 	}
-
-
 
         .tournament {
             margin-bottom: 10px;
@@ -135,7 +60,73 @@
             margin-top: 20px;
             margin-bottom: 10px;
         }
+
+@media screen and (max-width: 1050px){
+	/* スマートフォン用CSS記述 */
+
+	/*テーブル設定*/
+	table td {
+	    width: 28%;/*要素の横幅*/
+	    font-size: 11px;
+	    padding: 7px;
+	}
+	table tr:last-child * {
+	    border-bottom: none;
+	}
+	table th {
+	    padding: 15px;
+	}
+
+    .schedule {		/*1試合ごとの枠*/
+        border: 3px solid #000000;
+        padding: 2px;
+        margin-bottom: 5px;
+        margin-top: 20px;
+        border-radius: 20px;
+        width: 93%;
+     }
+
+        .schedule > div {
+            margin-bottom: 5px;
+        }
+
+        .date-center {/* 日付 */
+            font-weight: bold;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        .num_match{/* 〇試合目 */
+			width: 23%;
+        }
+
+	/*header*/
+    .nav__item{
+		  margin:3px ;
+		  font-size: 12px;
+		  margin-right: 1px;
+		  margin-top: 10px;;
+	}
+	.logo-image {
+	    margin-left: 0px;
+	    height: 25px;
+	    /* 必要に応じてwidthを追加 */
+	}
+	.cust-header {
+	    height: 35px;
+	}
+
+	.logo {
+	    margin: 0px;
+	    margin-top: 5px;
+	    margin-left: 10px;
+	 }
+
+	 body{
+	 	margin-top: 50px;
+	 }
 }
+
 </style>
 </head>
 <body>
