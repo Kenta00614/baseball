@@ -1,6 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.util.HashMap" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%
+@SuppressWarnings("unchecked")
+HashMap<Character,String> seatTypeList=(HashMap<Character,String>)request.getAttribute("seatTypeList");
+String seatType = "";
+if(request.getAttribute("seatType") != null){
+	seatType = request.getAttribute("seatType").toString();
+}
+
+%>
+<%! HashMap<Integer,String> map=new HashMap<Integer,String>(){
+	{
+		put(1,"0B");
+		put(2,"0F");
+		put(3,"0T");
+		put(4,"0R");
+		put(5,"0L");
+	}
+}; %>
 <html>
 <head>
 	<style>
@@ -86,13 +105,12 @@
   <% if(request.getAttribute("massage") != null){ %><div id="${classStr}">${massage}</div><%}%>
   <form id="form" action="EntryConduct">
 	<select name="seatType">
-	<c:forEach var="seatType" items="${seatTypeList}">
-	<option value="${seatType.key}">${seatType.value}</option>
-	</c:forEach>
+	<% for(int i=1;i<=5;i++){ %>
+		<option value="<%= map.get(i) %>" <%if(map.get(i).equals(seatType)){ %> <%="selected"%> <%} %>><%= seatTypeList.get(map.get(i)) %></option>
+	<% } %>
 	</select>
   <canvas id="canvas" hidden></canvas>
   <div id="output"></div>
-
   	<input type="hidden" id="ticketId" name="ticketId" value="">
   </form>
   <script src="../js/jsQR.js"></script>

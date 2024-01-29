@@ -409,7 +409,7 @@ public class TicketsDAO extends DAO{
 
 		while(rs.next()){
 			ticket.setStatus(rs.getString("status"));
-			ticket.setTicketsId(rs.getString("id"));
+			ticket.setTicketsId(rs.getString("tickets_id"));
 		}
 
 		st.close();
