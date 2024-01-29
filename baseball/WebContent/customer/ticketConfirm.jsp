@@ -12,7 +12,7 @@
 </head>
 <body>
 <%-- 大会名 --%>
-	<h1>第${tour.ordinalNum }回　${tour.name }</h1>
+	<h1>第${tour.ordinalNum }回${tour.name }</h1>
 	<hr>
 	<div>
 	<table>
