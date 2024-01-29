@@ -48,7 +48,7 @@
 </head>
 <body>
     <div style="margin: 20px; padding: 20px; background-color: white; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
-        <h2><%=t.getOrdinalNum() %>回　<%=t.getName() %></h2>
+        <h2>第<%=t.getOrdinalNum() %>回　<%=t.getName() %></h2>
         <p><%=date.substring(0,4) %>年<%=date.substring(5,7) %>月<%=date.substring(8,10) %>日の試合情報を削除します。</p>
 
         <form action="MatchUpdateInput" method="post" id="returnButton">
