@@ -7,32 +7,25 @@
     <!-- Bootstrap CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 <style>
+
     body {
         font-family: 'Arial', sans-serif;
-        margin: 0;
-        padding: 0;
         background-color:#F5F5F5;
-       	display: flex;
-	    flex-direction: column;
 	    min-height: 100vh;
     }
 
-    .header {
-        background-color: #F5F5F5;
-        color: #555555;
-        padding: 6px;
-        text-align: center;
-        flex: 1;
-    }
+	h1{
+		margin-top: 20px;
+	}
 
     .form-container {
-        flex-grow: 1;
-        max-width: 1200px;
         margin: 20px auto;
-        padding: 40px;
+        padding: 30px 100px 30px 100px;
         background-color: #FFF;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         border-radius: 5px;
+        width: 500px;
+
     }
 
     .control {
@@ -40,10 +33,10 @@
     }
 
     label {
-        display: block;
         margin-bottom: 5px	;
         font-weight: bold;
-        color:  #555555
+        color:  #555555;
+        margin-right: auto;
     }
 
     input[type="text"],
@@ -57,6 +50,7 @@
 
     select {
         cursor: pointer;
+        text-align: center;
     }
 
     button {
@@ -67,14 +61,21 @@
         border-radius: 5px;
         cursor: pointer;
         width: 100%;
+        margin-top: 10px;
     }
+
+    input{
+    	text-align: center;
+    }
+
+
 </style>
 
 </head>
 
 <body>
     <div class="header">
-        <h1>大会情報変更</h1>
+        <h1 align="center">大会情報変更</h1>
     </div>
 
     <div class="form-container">

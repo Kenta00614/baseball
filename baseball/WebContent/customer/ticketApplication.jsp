@@ -51,6 +51,12 @@
 	      	</c:when>
 		</c:choose>
 
+		<c:if test="${countTic >= 0}">
+			<p>チケットを購入できるのはお一人様、開催日ごとに6枚までです。<c:if test="${countTic > 0}">あと${countTic }枚までのチケットが購入できます。</c:if></p>
+		</c:if>
+
+
+
 		<p class="ticket-element">座種：
 			<select name="seat" class="element">
 			<c:forEach begin="0" end="${fn:length(seatType)-1}" step="1" var="i">
