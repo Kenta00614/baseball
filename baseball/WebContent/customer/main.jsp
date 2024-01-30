@@ -48,6 +48,7 @@
             margin-bottom: 10px;
             margin-top: 25px;
             border-radius: 20px;
+            width: 98%;
 
         }
 
@@ -59,6 +60,10 @@
             font-weight: bold;
             margin-top: 20px;
             margin-bottom: 10px;
+        }
+
+        .not-match-main{
+        	width: 90%;
         }
 
 @media screen and (max-width: 1050px){
@@ -134,7 +139,7 @@
     <c:choose>
         <%-- 試合情報がないとき --%>
         <c:when test="${fn:length(matchList) == 0 }">
-            試合情報が登録されていません
+            <h2 class="poster2">試合情報が登録されていません</h2>
         </c:when>
         <%-- 試合情報があるとき --%>
         <c:when test="${fn:length(matchList) > 0 }">
@@ -154,7 +159,7 @@
 								</c:if>
                         </c:forEach>
 						<c:if test="${duelList[i][0].roundStr == null}">
-							<tr><td>試合情報は未定です</td></tr>
+							<tr><td class="not-match-main">試合情報は未定です</td></tr>
 						</c:if>
                     </table>
                 </div>

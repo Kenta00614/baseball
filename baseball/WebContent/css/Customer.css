@@ -73,12 +73,11 @@
 	    padding: 8px 10px;
 	    cursor: pointer;
 	    border-radius: 5px;
+	    z-index: -1;
 	    /* other styles */
 	    align-items: center;
 	    position: relative; /* bodyを相対的な位置に設定 */
 	}
-
-
 	.home-btn:hover{
 		background-color:#555;
 	}
@@ -127,20 +126,10 @@
 	    border: none;
 	    cursor: pointer;
 	    border-radius: 20px;
+	    z-index: -1;
 	}
 	.return-btn:hover{
 		background-color:#555;
-	}
-
-	.square_btn {
-		/* ☒ボタンのスタイル */
-	    display: block;
-	    position: relative;
-	    width: 30px;
-	    height: 30px;
-	    border: 2px solid #333;
-	    background: #fff;
-	    float: right;
 	}
 
 	.square_btn::before,
@@ -840,6 +829,14 @@
 	 	margin:30px;
 	 	margin-top:450px;
 	 	font-size: 40px;
+	}
+	.poster2{
+		border:5px double #a4c3b2;
+	 	background-color:#F3F7F5;
+	 	padding:16px;
+	 	margin:30px;
+	 	margin-top: 300px;
+	 	font-size: 20px;
 	}
 
 
