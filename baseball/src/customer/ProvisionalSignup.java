@@ -55,10 +55,10 @@ public class ProvisionalSignup extends HttpServlet {
             } else {
                 // 仮登録失敗ページへリダイレクト
             	request.setAttribute("situFlg","2");
-            	request.getRequestDispatcher("/customer/signupError.jsp").forward(request, response);
+            	request.getRequestDispatcher("/customer/error.jsp").forward(request, response);
             }
         } catch (Exception e) {
-            e.printStackTrace(); // 本番環境では、適切なロギングに置き換えてください。
+            e.printStackTrace();
             response.sendRedirect("/customer/error.jsp"); // エラーページへリダイレクト
         }
     }
