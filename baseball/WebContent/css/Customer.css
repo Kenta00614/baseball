@@ -110,7 +110,6 @@
 	    /* other styles */
 	    align-items: center;
 	    position: relative; /* bodyを相対的な位置に設定 */
-
 	}
 
 
@@ -217,7 +216,6 @@
 	    margin-bottom: 1px;
 	    padding-bottom: 2px;
 	    padding-top: 2px;
-
 	}
 
 
@@ -235,7 +233,6 @@
 	    margin: 50px ;
 	    margin-bottom: 20px;
 	    position: relative; /* bodyを相対的な位置に設定 */
-
 	}
 	.infor-change{/*ボタンのくくりのスタイル*/
 		text-align:center;
@@ -518,13 +515,13 @@
 
 
 	/*--- ticketComplete.jspのスタイル ---*/
-		.ticket-comp-come{
+	.ticket-comp-come{
 	 	border:5px double #a4c3b2;
 	 	background-color:#F3F7F5;
 	 	padding:16px;
-	 	margin:30px;
+	 	margin:20px;
 	 	margin-top:450px;
-	 	font-size: 36px;
+	 	font-size: 32px;
 		}
 
 
