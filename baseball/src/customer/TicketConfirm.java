@@ -28,6 +28,8 @@ public class TicketConfirm extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session=request.getSession();
 		String seat = (String)session.getAttribute("seat");
+		Match match = (Match)session.getAttribute("match");
+		Tournament tour = (Tournament)session.getAttribute("tour");
 
 //		チケット購入のID
 		String[] selTickets = request.getParameter("tickets").split(",");
@@ -40,9 +42,9 @@ public class TicketConfirm extends HttpServlet {
 		int point = 0;
 
 //    	ログインしていないとき購入画面へ
-    	if (specId == null) {
+    	if (specId == null || seat == null || match == null || tour == null) {
     		List<Tournament> list=new ArrayList<>();
-    		List<Match> match=new ArrayList<>();
+    		List<Match> match1=new ArrayList<>();
     		Tournament lastTour=null;
 
     		if(session.getAttribute("match") !=null){
@@ -54,16 +56,16 @@ public class TicketConfirm extends HttpServlet {
     			TournamentDAO tourDao=new TournamentDAO();
     			list=tourDao.getTournamentDetail();
 //    			最後の大会情報
-    			for(Tournament tour: list){
-    				lastTour=tour;
+    			for(Tournament tour1: list){
+    				lastTour=tour1;
     			}
 
 //    			同じ大会の試合日情報を取得
     			MatchDAO matDao=new MatchDAO();
-    			match=matDao.searchMatchTournament(lastTour.getTournamentId());
+    			match1=matDao.searchMatchTournament(lastTour.getTournamentId());
 
     			session.setAttribute("tour", lastTour);
-    			request.setAttribute("match",match);
+    			request.setAttribute("match",match1);
     			request.setAttribute("canselPurchase","1");
     		} catch (Exception e) {
     			e.printStackTrace();

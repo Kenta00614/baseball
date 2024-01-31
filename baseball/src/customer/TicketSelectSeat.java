@@ -36,10 +36,19 @@ public class TicketSelectSeat extends HttpServlet {
 
 // 		セッションからspectatoridを取得
     	List<Spectator> spectatorIds =  (List<Spectator>)session.getAttribute("spectatorIds");
-//    	ログインしていないとき購入画面へ
-    	if (spectatorIds == null) {
+    	String countStr = (String) session.getAttribute("count");
+    	int count = 0;
+    	if(countStr != null){
+    		count = Integer.parseInt(countStr);
+    	}
+    	Tournament tour = (Tournament)session.getAttribute("tour");
+    	String seat = (String)session.getAttribute("seat");
+    	Match match = (Match)session.getAttribute("match");
+
+//    	セッション切れのとき購入画面へ
+    	if (spectatorIds == null || countStr == null || seat == null || match == null || tour == null) {
     		List<Tournament> list=new ArrayList<>();
-    		List<Match> match=new ArrayList<>();
+    		List<Match> match1=new ArrayList<>();
     		Tournament lastTour=null;
 
     		if(session.getAttribute("match") !=null){
@@ -51,16 +60,16 @@ public class TicketSelectSeat extends HttpServlet {
     			TournamentDAO tourDao=new TournamentDAO();
     			list=tourDao.getTournamentDetail();
 //    			最後の大会情報
-    			for(Tournament tour: list){
-    				lastTour=tour;
+    			for(Tournament tour1: list){
+    				lastTour=tour1;
     			}
 
 //    			同じ大会の試合日情報を取得
     			MatchDAO matDao=new MatchDAO();
-    			match=matDao.searchMatchTournament(lastTour.getTournamentId());
+    			match1=matDao.searchMatchTournament(lastTour.getTournamentId());
 
     			session.setAttribute("tour", lastTour);
-    			request.setAttribute("match",match);
+    			request.setAttribute("match",match1);
     			request.setAttribute("canselPurchase","1");
     		} catch (Exception e) {
     			e.printStackTrace();
@@ -68,9 +77,6 @@ public class TicketSelectSeat extends HttpServlet {
     		request.getRequestDispatcher("/customer/ticketPurchase.jsp").forward(request, response);
             return;
     	}else{
-	    	int count = (int)session.getAttribute("count");
-	    	String seat = (String)session.getAttribute("seat");
-	    	Match match = (Match)session.getAttribute("match");
 	    	String block = request.getParameter("block");
 
 			List<Tickets> blockRemain=new ArrayList<>();

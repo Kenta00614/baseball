@@ -15,10 +15,13 @@ import bean.Match;
 import bean.PurchaseExp;
 import bean.Spectator;
 import bean.Tickets;
+import bean.Tournament;
 import common.Constants;
+import dao.MatchDAO;
 import dao.PurchaseDAO;
 import dao.SeatDAO;
 import dao.TicketsDAO;
+import dao.TournamentDAO;
 
 @WebServlet("/customer/TicketSelectAll")
 public class TicketSelectAll extends HttpServlet {
@@ -27,9 +30,43 @@ public class TicketSelectAll extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //    	値の取得
     	HttpSession session=request.getSession();
-    	int count = Integer.parseInt(request.getParameter("count"));
+    	String countStr = request.getParameter("count");
+    	int count=0;
+    	if(countStr != null){
+    		count = Integer.parseInt(countStr);
+    	}
+
     	String seat = request.getParameter("seat");
     	Match match=(Match)session.getAttribute("match");
+		Tournament tour = (Tournament) session.getAttribute("tour");
+
+		if(countStr == null || seat == null || match == null || tour == null){
+			List<Tournament> list=new ArrayList<>();
+			Tournament lastTour=null;
+			List<Match> match1=new ArrayList<>();
+			try {
+//				大会情報取得
+				TournamentDAO tourDao=new TournamentDAO();
+				list=tourDao.getTournamentDetail();
+//				最後の大会情報
+				for(Tournament tour1: list){
+					lastTour=tour1;
+				}
+
+//				同じ大会の試合日情報を取得
+				MatchDAO matDao=new MatchDAO();
+				match1=matDao.searchMatchTournament(lastTour.getTournamentId());
+
+				session.setAttribute("tour", lastTour);
+				request.setAttribute("match",match1);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			request.setAttribute("canselPurchase",1);
+	        request.getRequestDispatcher("/customer/ticketPurchase.jsp").forward(request, response);
+	        return;
+		}
+
 
     	// セッションからspectatoridを取得
     	List<Spectator> spectatorIds =  (List<Spectator>)session.getAttribute("spectatorIds");
@@ -45,22 +82,7 @@ public class TicketSelectAll extends HttpServlet {
     		tickets = ticketDAO.getTypeSurplus(seat,match.getMatchId());
 			remaining=tickets.size();
 
-////			希望枚数よりチケットが少ない場合前の画面に戻る
-//			if(remaining<count){
-//				List<String> seatType = new ArrayList<>();
-//
-//				String[] seatOrder = {"0B","0F","0T","0R","0L"};
-//
-//		        for (String key : seatOrder) {
-//		            String value = Constants.SEAT_TYPE.get(key);
-//		            seatType.add(value);
-//		        }
-//		        request.setAttribute("seatOrder", seatOrder);
-//				request.setAttribute("seatType",seatType );
-//				request.setAttribute("remaining", remaining);
-//				request.getRequestDispatcher("/customer/ticketApplication.jsp").forward(request, response);
-//				return;
-//			}
+
 
 //	    	ログインしていないときログイン画面へ
 	    	if (spectatorIds == null) {
@@ -93,6 +115,9 @@ public class TicketSelectAll extends HttpServlet {
 				}
 				if(count+purchaseList.size()>6){
 					request.setAttribute("countTic", 6-purchaseList.size());
+					if(remaining >= count){
+						request.setAttribute("remaining", -1);
+					}
 				}
 				request.getRequestDispatcher("/customer/ticketApplication.jsp").forward(request, response);
 				return;

@@ -39,6 +39,8 @@ public class TicketComplete extends HttpServlet {
 		String[] selChils = (String[])session.getAttribute("selChils");
 //		ログイン情報
 		List<Spectator> spectator = (List<Spectator>)session.getAttribute("spectatorIds");
+//		トーナメント情報
+		Tournament tour = (Tournament)session.getAttribute("tour");
 //		使ったポイント
 		String point = request.getParameter("usePointNum");
 		int usePoint=0;
@@ -46,8 +48,8 @@ public class TicketComplete extends HttpServlet {
 			usePoint = Integer.parseInt("-"+point);
 		}
 
-//    	ログインしていないとき購入画面へ
-    	if (spectator == null) {
+//    	セッション切れのとき購入画面へ
+    	if (spectator == null || selTickets == null || selChils == null || tour == null) {
     		List<Tournament> list=new ArrayList<>();
     		List<Match> match=new ArrayList<>();
     		Tournament lastTour=null;
@@ -61,8 +63,8 @@ public class TicketComplete extends HttpServlet {
     			TournamentDAO tourDao=new TournamentDAO();
     			list=tourDao.getTournamentDetail();
 //    			最後の大会情報
-    			for(Tournament tour: list){
-    				lastTour=tour;
+    			for(Tournament tour1: list){
+    				lastTour=tour1;
     			}
 
 //    			同じ大会の試合日情報を取得
