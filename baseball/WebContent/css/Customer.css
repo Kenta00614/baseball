@@ -120,7 +120,7 @@
 	    border: none;
 	    cursor: pointer;
 	    border-radius: 20px;
-	    z-index: -1;
+
 	}
 	.return-btn:hover{
 		background-color:#555;
@@ -875,7 +875,7 @@
 	}
 
 	.infor-change-label{
-		margin-top:100px;
+		margin-top:50px;
 		font-size: 50px;
 		margin-bottom: 20px;
 	}
