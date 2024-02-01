@@ -815,13 +815,18 @@
 		/* その他ボタン */
 	    font-size: 30px;
 	    border-radius: 5px;
-	    z-index: -1; 	/* ボタンを背面に */
 	}
 
 
 	.form-btn{ /* フォームのボタン(大きめ) */
 	    font-size: 20px;
 	   }
+
+	  .form-change-btn{
+	  	font-size: 30px;
+	  	width: 100% auto ;
+	  	margin-top: 100px;
+	  }
 
 	.return-btn {
 	    /* 戻るボタンのスタイル */
@@ -840,7 +845,7 @@
 		font-size: 35px;
 		padding-bottom: 25px;
 		padding-top: 25px;
-		margin-bottom: 100px;
+		margin-bottom: 50px;
 	}
 
 
