@@ -1072,26 +1072,13 @@
 	    text-align: center;
 	}
 
-<<<<<<< HEAD
-	.login-btn input {
-	    padding: 10px 20px;
-	    background-color: #000;
-	    color: white;
-	    border: none;
-	    cursor: pointer;
-=======
+
 	.login-input-btn {
->>>>>>> branch 'master' of https://github.com/Kenta00614/baseball.git
 	    font-size: 25px;
 	}
 
-<<<<<<< HEAD
-	.login-btn input:active {
-	    top: 3px;
-	    box-shadow: none;
-=======
+
 	.login-input-btn:active {
->>>>>>> branch 'master' of https://github.com/Kenta00614/baseball.git
 	    font-size: 20px;
 	}
 
@@ -1118,7 +1105,6 @@
 	    margin-top: 10px;
 	    margin: 8px 5px;
 	    margin-bottom: 10px;
-<<<<<<< HEAD
 	    display: flex;
 	    justify-content: center;
 	}
@@ -1135,8 +1121,7 @@
 
 	.schedule > div {
 	    margin: 0 5px;
-=======
->>>>>>> branch 'master' of https://github.com/Kenta00614/baseball.git
+
 	}
 
 	.date-center {/*試合日*/
@@ -1240,13 +1225,8 @@
 	    box-shadow: 0px 0px 10px #ccc;
 	}
 
-<<<<<<< HEAD
-	.container>form {
-	    display: flex;
-	    flex-direction: column;
-=======
+
 	.signup-form{
->>>>>>> branch 'master' of https://github.com/Kenta00614/baseball.git
 	    font-size: 30px;
 	}
 
