@@ -172,9 +172,10 @@
 	/*--- informationChangeConfirm.jspのスタイル ---*/
 
 	.form-comment{	/*コメントのスタイル*/
-		margin: 15px auto; /* 左右のマージンをautoにして中央寄せに修正 */
+		 margin: 50px auto ;
 		font-family: '游明朝';
 		margin-top: 2px;
+		text-align: center;
 	}
 
 
@@ -230,7 +231,7 @@
 	    border: none;
 	    cursor: pointer;
 	    border: 3px solid transparent;
-	    margin: 50px ;
+	    margin: 50px auto ;
 	    margin-bottom: 20px;
 	    position: relative; /* bodyを相対的な位置に設定 */
 	}
@@ -255,7 +256,7 @@
 	    box-shadow: 0px 0px 10px #ccc;
 	}
 
-	.login-box>form {
+	.login-form {
 	    display: flex;
 	    flex-direction: column;
 	}
@@ -264,7 +265,7 @@
 	    margin-top: 10px;
 	}
 
-	.login-box>label {
+	.login-label {
 	    margin-bottom: 5px;
 	}
 
@@ -281,7 +282,7 @@
 	    text-align: center;
 	}
 
-	.login-btn input {
+	.login-input-btn {
 	    padding: 10px 20px;
 	    background-color: #000;
 	    color: white;
@@ -289,10 +290,11 @@
 	    cursor: pointer;
 	}
 
-	.login-btn input:active {
+	.login-input-btn:active {
 	    top: 3px;
 	    box-shadow: none;
 	}
+
 
 	.registration {
 	    margin-top: 20px;
@@ -323,14 +325,9 @@
 	    display: flex;
 	    align-items: center;
 	    justify-content: center;
+	     margin: 0 10px;
 	    margin-bottom: 10px;
 	    flex-wrap: wrap;
-	}
-
-
-
-	.schedule > div {
-	    margin: 0 10px;
 	}
 
 	.date-center {
@@ -407,7 +404,7 @@
 		width: 800px;
 	}
 
-	.history-list td{
+	.history-td{
 		text-align:center;
 	    white-space: normal; /* テキストが領域外にはみ出した場合、折り返し表示する */
 	}
@@ -427,7 +424,7 @@
 
 
 	/*--- signup.jspのスタイル ---*/
-	.container {
+	.container {/*フォームの枠*/
 	    width: 600px;
 	    margin: 30px auto;
 	    padding: 20px;
@@ -435,26 +432,20 @@
 	    box-shadow: 0px 0px 10px #ccc;
 	}
 
-	.container>form {
+	.signup-form{
 	    display: flex;
 	    flex-direction: column;
 	}
 
-	.signup-container .signup-label,
 	.signup-label {
 	    margin-top: 20px;
 	}
 
-	.signup-container
 	.custom-input {
 	    padding: 5px;
 	    margin-top: 3px;
 	}
 
-	.custom-input{
-		padding: 5px;
-	    margin-top: 0px;
-	}
 
 	.signup-container .submit-button,
 	.submit-button {
@@ -1048,9 +1039,13 @@
 	    box-shadow: 0px 0px 10px #ccc;
 	}
 
+<<<<<<< HEAD
 	.login-box>form {
 	    display: flex;
 	    flex-direction: column;
+=======
+	.login-form {
+>>>>>>> branch 'master' of https://github.com/Kenta00614/baseball.git
 	    font-size: 30px;
 	}
 
@@ -1080,18 +1075,26 @@
 	    text-align: center;
 	}
 
+<<<<<<< HEAD
 	.login-btn input {
 	    padding: 10px 20px;
 	    background-color: #000;
 	    color: white;
 	    border: none;
 	    cursor: pointer;
+=======
+	.login-input-btn {
+>>>>>>> branch 'master' of https://github.com/Kenta00614/baseball.git
 	    font-size: 25px;
 	}
 
+<<<<<<< HEAD
 	.login-btn input:active {
 	    top: 3px;
 	    box-shadow: none;
+=======
+	.login-input-btn:active {
+>>>>>>> branch 'master' of https://github.com/Kenta00614/baseball.git
 	    font-size: 20px;
 	}
 
@@ -1116,8 +1119,9 @@
 	    text-align: center;
 	    font-size: 20px;
 	    margin-top: 10px;
-	    margin: 8px 0;
+	    margin: 8px 5px;
 	    margin-bottom: 10px;
+<<<<<<< HEAD
 	    display: flex;
 	    justify-content: center;
 	}
@@ -1134,6 +1138,8 @@
 
 	.schedule > div {
 	    margin: 0 5px;
+=======
+>>>>>>> branch 'master' of https://github.com/Kenta00614/baseball.git
 	}
 
 	.date-center {/*試合日*/
@@ -1237,9 +1243,13 @@
 	    box-shadow: 0px 0px 10px #ccc;
 	}
 
+<<<<<<< HEAD
 	.container>form {
 	    display: flex;
 	    flex-direction: column;
+=======
+	.signup-form{
+>>>>>>> branch 'master' of https://github.com/Kenta00614/baseball.git
 	    font-size: 30px;
 	}
 
