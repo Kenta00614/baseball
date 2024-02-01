@@ -167,9 +167,10 @@
 	/*--- informationChangeConfirm.jspのスタイル ---*/
 
 	.form-comment{	/*コメントのスタイル*/
-		margin: 15px auto; /* 左右のマージンをautoにして中央寄せに修正 */
+		 margin: 50px auto ;
 		font-family: '游明朝';
 		margin-top: 2px;
+		text-align: center;
 	}
 
 
@@ -220,7 +221,7 @@
 	    border: none;
 	    cursor: pointer;
 	    border: 3px solid transparent;
-	    margin: 50px ;
+	    margin: 50px auto ;
 	    margin-bottom: 20px;
 	    position: relative; /* bodyを相対的な位置に設定 */
 	}
@@ -245,7 +246,7 @@
 	    box-shadow: 0px 0px 10px #ccc;
 	}
 
-	.login-box>form {
+	.login-form {
 	    display: flex;
 	    flex-direction: column;
 	}
@@ -254,7 +255,7 @@
 	    margin-top: 10px;
 	}
 
-	.login-box>label {
+	.login-label {
 	    margin-bottom: 5px;
 	}
 
@@ -270,7 +271,7 @@
 	    text-align: center;
 	}
 
-	.login-btn input {
+	.login-input-btn {
 	    padding: 10px 20px;
 	    background-color: #000;
 	    color: white;
@@ -278,10 +279,11 @@
 	    cursor: pointer;
 	}
 
-	.login-btn input:active {
+	.login-input-btn:active {
 	    top: 3px;
 	    box-shadow: none;
 	}
+
 
 	.registration {
 	    margin-top: 20px;
@@ -312,14 +314,9 @@
 	    display: flex;
 	    align-items: center;
 	    justify-content: center;
+	     margin: 0 10px;
 	    margin-bottom: 10px;
 	    flex-wrap: wrap;
-	}
-
-
-
-	.schedule > div {
-	    margin: 0 10px;
 	}
 
 	.date-center {
@@ -416,7 +413,7 @@
 
 
 	/*--- signup.jspのスタイル ---*/
-	.container {
+	.container {/*フォームの枠*/
 	    width: 600px;
 	    margin: 30px auto;
 	    padding: 20px;
@@ -424,26 +421,20 @@
 	    box-shadow: 0px 0px 10px #ccc;
 	}
 
-	.container>form {
+	.signup-form{
 	    display: flex;
 	    flex-direction: column;
 	}
 
-	.signup-container .signup-label,
 	.signup-label {
 	    margin-top: 20px;
 	}
 
-	.signup-container
 	.custom-input {
 	    padding: 5px;
 	    margin-top: 3px;
 	}
 
-	.custom-input{
-		padding: 5px;
-	    margin-top: 0px;
-	}
 
 	.submit-button {
 	    margin-top: 30px;
@@ -905,7 +896,7 @@
 	    height: 1300px;
 	}
 
-	.login-box>form {
+	.login-form {
 	    font-size: 30px;
 	}
 
@@ -927,11 +918,11 @@
 	    margin-top: 100px;
 	}
 
-	.login-btn input {
+	.login-input-btn {
 	    font-size: 25px;
 	}
 
-	.login-btn input:active {
+	.login-input-btn:active {
 	    font-size: 20px;
 	}
 
@@ -939,14 +930,8 @@
 	.tournament {/*大会名*/
 	    font-size: 20px;
 	    margin-top: 10px;
-	    margin: 8px 0;
+	    margin: 8px 5px;
 	    margin-bottom: 10px;
-	}
-
-
-
-	.schedule > div {
-	    margin: 0 5px;
 	}
 
 	.date-center {/*試合日*/
@@ -1006,7 +991,7 @@
 	    padding-bottom: 1400px;
 	}
 
-	.container>form {
+	.signup-form{
 	    font-size: 30px;
 	}
 
