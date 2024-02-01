@@ -23,18 +23,17 @@
 	    color: initial;
 	    padding: 30px;
 	}
-	table th,
-	table td {
+	th,td {
 		width: initial;
 	    border-bottom:  initial;
 	    background-color: initial;
 	}
-	table td {
+	td {
 	    width: 180px;/*枠の横幅*/
 	    padding: 20px;
 	}
 
-	table tr:last-child * {
+	tr:last-child * {
 	    border-bottom: none;
 	}
 
@@ -52,10 +51,6 @@
 
         }
 
-        .schedule > div {
-            margin-bottom: 10px;
-        }
-
         .date-center {
             font-weight: bold;
             margin-top: 20px;
@@ -70,15 +65,15 @@
 	/* スマートフォン用CSS記述 */
 
 	/*テーブル設定*/
-	table td {
+	td {
 	    width: 28%;/*要素の横幅*/
 	    font-size: 11px;
 	    padding: 7px;
 	}
-	table tr:last-child * {
+	tr:last-child * {
 	    border-bottom: none;
 	}
-	table th {
+	th {
 	    padding: 15px;
 	}
 
@@ -90,10 +85,6 @@
         border-radius: 20px;
         width: 93%;
      }
-
-        .schedule > div {
-            margin-bottom: 5px;
-        }
 
         .date-center {/* 日付 */
             font-weight: bold;

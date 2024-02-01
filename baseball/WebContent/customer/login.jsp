@@ -19,11 +19,11 @@
     　　<form action="Login" method="post">
 	        <div class="login-input">
 	            <label for="user-id" >ID(email)</label>
-	            <input name="mail" type="email" id="user-id" placeholder="✉Mail" class="login-email" required>
+	            <input name="mail" type="email" id="user-id" placeholder="✉Mail" class="login-input-element" required>
 	        </div>
 	        <div class="login-input">
 	            <label for="password">Password</label>
-	            <input name="password" type="password" id="password" placeholder="🔒Password" class="login-pass" required>
+	            <input name="password" type="password" id="password" placeholder="🔒Password" class="login-input-element" required>
 	        </div>
 	        <p class="login-btn"><input type="submit" value="Login"></p>
 	        <br><p>初めてご利用の方はこちら<br><a href="ProvisionalSignupDisplay" class="btn">→新規会員登録へ</a></p>
