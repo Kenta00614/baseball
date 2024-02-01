@@ -393,7 +393,7 @@
 		width: 800px;
 	}
 
-	.history-list td{
+	.history-td{
 		text-align:center;
 	    white-space: normal; /* テキストが領域外にはみ出した場合、折り返し表示する */
 	}
