@@ -20,7 +20,11 @@
 	     position: relative; /* bodyを相対的な位置に設定 */
 	}
 
-	h1,h2 {
+	h1 {
+	    text-align: center;
+	}
+
+	h2 {
 	    text-align: center;
 	}
 
@@ -37,27 +41,27 @@
 	    margin: 20px;
 	}
 
-	th {
+	table th {
 	    background-color: #99FFCC;
 	    width: 250px;
 	    color: cadetblue;
 	}
 
-	td {
+	table td {
 	    background-color: #f0fff0;
 	    width: 550px;
 	    text-align: center; /* ブロック内の中央寄せ */
 	}
 
-	th,td {
+	table th,
+	table td {
 	    border-bottom: 2px solid #a9a9a9;
 	    padding: 10px; /* 枠線指定 */
 	}
 
-	tr:last-child * {
+	table tr:last-child * {
 	    border-bottom: none;
 	}
-
 
 	.home-btn{
 		/* その他ボタン */
@@ -69,6 +73,7 @@
 	    padding: 8px 10px;
 	    cursor: pointer;
 	    border-radius: 5px;
+	    z-index: -1;
 	    /* other styles */
 	    align-items: center;
 	    position: relative; /* bodyを相対的な位置に設定 */
@@ -120,7 +125,7 @@
 	    border: none;
 	    cursor: pointer;
 	    border-radius: 20px;
-
+	    z-index: -1;
 	}
 	.return-btn:hover{
 		background-color:#555;
@@ -196,6 +201,7 @@
 	}
 
 	.form-input{/*入力内容のスタイル*/
+
 		font-weight: bold;
 	}
 
@@ -211,6 +217,10 @@
 	    padding-bottom: 2px;
 	    padding-top: 2px;
 	}
+
+
+
+
 
 	.infor-change-btn{/*ボタン個々のスタイル*/
 	    background-color: black;
@@ -258,7 +268,8 @@
 	    margin-bottom: 5px;
 	}
 
-	.login-input-element{
+	.login-email,
+	.login-pass {
 	    padding: 10px;
 	    margin-top: 5px;
 	    width: 100%;
@@ -358,7 +369,7 @@
 	    font-size: 20px;
 	}
 
-	.memberinfo-btn{
+	.member-selection button {
 	    /* ボタンのスタイル */
 	    padding: 10px 15px;
 	    background-color: #808080;
@@ -372,7 +383,7 @@
 
 	}
 
-	.memberinfo-btn:hover {
+	.member-selection button:hover {
 	    background-color: #555;
 	}
 
@@ -445,6 +456,7 @@
 	    margin-top: 0px;
 	}
 
+	.signup-container .submit-button,
 	.submit-button {
 	    margin-top: 30px;
 	    padding: 10px 20px;
@@ -681,17 +693,17 @@
 		width: 800px;
 	}
 
-	.share-th{
+	table.ticket-shard  th{
 		width: 150px;
 	}
 
-	.share-td{
+	table.ticket-shard  td{
 		display: flex;
 		width: 800px;
 	}
 
 	.copy-btn{
-		margin: 3px auto; /* 左右のマージンをautoにして中央寄せに修正 */
+		 margin: 3px auto; /* 左右のマージンをautoにして中央寄せに修正 */
 		border: 3px solid transparent;
 	    display: flex;
 	    color: #ffffff;
@@ -734,38 +746,69 @@
 @media screen and (max-width: 1050px){
 	/* スマートフォン用CSS記述 */
 
+	* {
+	    box-sizing: border-box;
+	}
+
 	body {
+	    background-color: #f2fffc;
 	    width: 960px;
 	    margin: 10px auto; /* 左右のマージンをautoにして中央寄せに修正 */
 	    margin-top:175px;
+	    padding: 0;
+	    font-family: 'Arial', sans-serif;
 	    display: flex;
-	    width: 100%; /* 幅を100%に設定 */
+	    flex-direction: column;
+	    align-items: center;
+	     position: relative; /* bodyを相対的な位置に設定 */
+	     width: 100%; /* 幅を100%に設定 */
 	}
 
 	h1 {
+	    text-align: center;
 	    font-size: 50px;
 	}
 
 	h2 {
+	    text-align: center;
 	    font-size: 28px;
+	}
+
+	.btn {
+	    text-decoration: underline;
 	}
 
 
 	/*テーブル設定*/
 
-	th {
+	table{
+		border: 3px solid #a9a9a9;
+	}
+
+	table th {
+	    background-color: #99FFCC;
+	    color: cadetblue;
 	    font-size: 20px;
 	}
 
-	td {
+	table td {
+	    background-color: #f0fff0;
+	    text-align: center; /* ブロック内の中央寄せ */
 	    font-size: 25px;
 	}
 
-	th,td {
+	table th,
+	table td {
 	    border-bottom: 4px solid #a9a9a9;
 	    padding-top: 25px; /* 枠線指定 */
 	    padding-bottom: 25px;
 	}
+
+	table tr:last-child * {
+	    border-bottom: none;
+	}
+
+
 
 	/*--- 張り紙スタイル ---*/
 	.poster{
@@ -811,50 +854,112 @@
 		width: 30px;
 	}
 
+
+
+
 	.home-btn{
 		/* その他ボタン */
+	    border: 3px solid transparent;
+	    margin: 15px auto; /* 左右のマージンをautoにして中央寄せに修正 */
+	    display: flex;
+	    color: #ffffff;
+	    background: #808080;
+	    padding: 8px 10px;
 	    font-size: 30px;
+	    cursor: pointer;
 	    border-radius: 5px;
+	    /* other styles */
+	    align-items: center;
+	    position: relative; /* bodyを相対的な位置に設定 */
+	}
+	.home-btn:hover{
+		background-color:#555;
 	}
 
 
 	.form-btn{ /* フォームのボタン(大きめ) */
+	 	border: 3px solid transparent;
+	    margin: 15px auto; /* 左右のマージンをautoにして中央寄せに修正 */
+	    display: flex;
+	    color: #ffffff;
+	    background: #000000;
 	    font-size: 20px;
-	   }
+	    padding: 8px 10px;
+	    cursor: pointer;
+	    border-radius: 5px;
+	    /* other styles */
+	    align-items: center;
+	    position: relative; /* bodyを相対的な位置に設定 */
+	}
 
-	  .form-change-btn{
-	  	font-size: 30px;
-	  	width: 100% auto ;
-	  	margin-top: 100px;
-	  }
+	.form-change-btn{
+		border: 3px solid transparent;
+	    margin: 15px auto; /* 左右のマージンをautoにして中央寄せに修正 */
+	    margin-top: 30px;
+	    display: flex;
+	    color: #ffffff;
+	    background: #000000;
+	    padding: 7px 210px;
+	    cursor: pointer;
+	    border-radius: 3px;
+	    /* other styles */
+	    align-items: center;
+	    position: relative; /* bodyを相対的な位置に設定 */
+	}
+
 
 	.return-btn {
 	    /* 戻るボタンのスタイル */
+	    position: absolute; /* 絶対位置に配置 */
 	    top: 3px; /* 上から3pxの位置に配置 */
 	    left: 25px; /* 左から25pxの位置に配置 */
+	    background-color: #808080;
+	    color: white;
+	    padding: 10px 15px;
 	    font-size: 25px;
+	    border: none;
 	    border-radius: 35px;
 	    margin-bottom: 50px;
 	}
 	.return-btn:hover{
+		background-color:#555;
 		 margin-bottom: 50px;
 	}
 
+	.square_btn::before,
+	.square_btn::after {
+	    content: "";
+	    position: absolute;
+	    top: 50%;
+	    left: 50%;
+	    width: 3px;
+	    height: 27px;
+	    background: #333;
+	}
 
-	.field{/* 入力欄のスタイル */
-		font-size: 35px;
-		padding-bottom: 25px;
-		padding-top: 25px;
-		margin-bottom: 50px;
+	.square_btn::before {
+	    transform: translate(-50%, -50%) rotate(45deg);
+	}
+
+	.square_btn::after {
+	    transform: translate(-50%, -50%) rotate(-45deg);
 	}
 
 
-	/*--- informationChange.jspのスタイル ---*/
+	/*--- 入力欄のスタイル ---*/
+	.field{
+	    padding: 10px;
+	    margin-top: 5px;
+	    width: 100%;
+	    box-sizing: border-box;
+	}
 
-	.infochange-input-element{
-		font-size: 30px;
-		margin-top:100px;
-		margin-bottom: 20px;
+
+	/*--- emailChangeRequestComplete.jspのスタイル ---*/
+
+	.email-change-send{
+		text-align:center;
+		line-height:calc( 300px - 60px );
 	}
 
 
@@ -862,7 +967,11 @@
 	/*--- informationChangeConfirm.jspのスタイル ---*/
 
 	.form-inline{
+		 border: 2px solid #156bb3;
+		 border-radius: 20px;
 		 width: 95%;
+		 margin: 10px auto; /* 左右のマージンをautoにして中央寄せに修正 */
+	     align-items: center;
 	     padding: 40px;
 	     margin-top: 80px;
 	}
@@ -871,24 +980,54 @@
 		width: 98%;
 	}
 
+	.form-element{/*「氏名」「電話番号」のスタイル*/
+		font-family: monospace;
+		width: 200px;
+		font-size: 15px;
+		margin-right: 30px;
+		margin-left: 10px;
+	}
+
+	.form-input{/*入力内容のスタイル*/
+
+		font-weight: bold;
+	}
+
 	.form-cfm{/*要素ごとのスタイル*/
 		width: 90%;
+		text-align:center;
+		display:flex;
+		gap: 5px; /* 隙間を設定 */
+		margin: 10px auto; /* 左右のマージンをautoにして中央寄せに修正 */
+	    align-items: center;
+	    margin-top: 1px;
+	    margin-bottom: 1px;
+	    padding-bottom: 2px;
+	    padding-top: 2px;
+
 	}
 
+	.infor-change-btn{/*ボタン個々のスタイル*/
+	    background-color: black;
+	    width: 150px;
+	    color: white;
+	    padding: 10px 15px;
+	    border: none;
+	    cursor: pointer;
+	    border: 3px solid transparent;
+	    margin: 50px ;
+	    margin-bottom: 20px;
+	    position: relative; /* bodyを相対的な位置に設定 */
+
+	}
 	.infor-change{/*ボタンのくくりのスタイル*/
+		text-align:center;
+		display:flex;
+		gap: 10px; /* ボタン間の隙間を設定 */
+		margin: 15px auto; /* 左右のマージンをautoにして中央寄せに修正 */
 		margin-top: 50px;
+	    align-items: center;
 	}
-
-	.infor-change-label{
-		margin-top:50px;
-		font-size: 50px;
-		margin-bottom: 20px;
-	}
-
-	.infor-change-btn{
-		font-size: 30px;
-	}
-
 
 
 
@@ -903,9 +1042,15 @@
 	.login-box {
 	    width: 80%;
 	    height: 1300px;
+	    margin: 30px auto;
+	    padding: 20px;
+	    border: 1px solid #ccc;
+	    box-shadow: 0px 0px 10px #ccc;
 	}
 
 	.login-box>form {
+	    display: flex;
+	    flex-direction: column;
 	    font-size: 30px;
 	}
 
@@ -917,30 +1062,72 @@
 		margin-bottom: 20px;
 	}
 
+	.login-box>label {
+	    margin-bottom: 5px;
+	}
 
-	.login-input-element {
+	.login-email,
+	.login-pass {
 	    padding: 30px;
+	    margin-top: 5px;
+	    width: 100%;
+	    box-sizing: border-box;
 	    font-size: 30px;	/* 入力された文字のサイズ */
 	}
 
 	.login-btn {
 	    margin-top: 100px;
+	    text-align: center;
 	}
 
 	.login-btn input {
+	    padding: 10px 20px;
+	    background-color: #000;
+	    color: white;
+	    border: none;
+	    cursor: pointer;
 	    font-size: 25px;
 	}
 
 	.login-btn input:active {
+	    top: 3px;
+	    box-shadow: none;
 	    font-size: 20px;
 	}
 
+	.registration {
+	    margin-top: 20px;
+	    text-align: center;
+	}
+
+	.registration a {
+	    text-decoration: none;
+	    color: #000;
+	    font-weight: bold;
+	}
+
+	.registration a:hover {
+	    text-decoration: underline;
+	}
+
+
 	/*--- main.jspのスタイル ---*/
 	.tournament {/*大会名*/
+	    text-align: center;
 	    font-size: 20px;
 	    margin-top: 10px;
 	    margin: 8px 0;
 	    margin-bottom: 10px;
+	    display: flex;
+	    justify-content: center;
+	}
+
+	.schedule {/*1試合の枠*/
+	    display: flex;
+	    align-items: center;
+	    justify-content: center;
+	    margin-bottom: 10px;
+	    flex-wrap: wrap;
 	}
 
 
@@ -950,66 +1137,113 @@
 	}
 
 	.date-center {/*試合日*/
+	    text-align: center;
 	    font-size: 15px;
 	    margin: 5px 0;
 	}
 
+	.main_display {/*画面全体*/
+	    display: flex;
+	    flex-direction: column;
+	    align-items: center;
+	    justify-content: center;
+	}
+
+
+
 
 
 	/*--- memberInformation.jspのスタイル ---*/
-	.memberinfo-table{
-		width:95%;
-		margin-top:100px;
+
+	.member-selection {
+	    display: flex;
+	    gap: 10px; /* ボタン間の隙間を設定 */
 	}
 
-	.memberinfo-th{
-		font-size: 30px;
-		width: 30%;
+	.member-selection form {
+	    margin: 0; /* フォームの余白をリセット */
 	}
 
-	.memberinfo-td{
-		font-size: 30px;
-		padding-top: 50px;
-		padding-bottom: 50px
+	.memberinfo-else {/*ログイン前*/
+	    font-size: 20px;
 	}
 
-	.memberinfo-btn{
-		font-size: 30px;
-		width: 300px;
-		margin-top: 100px;
-		padding-top: 20px;
-		padding-bottom: 20px
+	.member-selection button {
+	    /* ボタンのスタイル */
+	    padding: 10px 15px;
+	    background-color: #808080;
+		width: 150px;
+	    color: white;
+	    border: none;
+	    cursor: pointer;
+	    border-radius: 5px;
+	    margin: 50px;
+	    position: relative; /* bodyを相対的な位置に設定 */
+
+	}
+	.member-selection button:hover {
+	    background-color: #555;
 	}
 
-	.member-selection{
-		width: 90% auto;
+
+	/*--- passwordChangeForm.jspのスタイル ---*/
+	.pass-change-box {
+	    width: 600px;
+	    margin: 45px auto;
+	    padding: 20px;
+	    border: 1px solid #ccc;
+	    box-shadow: 0px 0px 10px #ccc;
 	}
 
 
 	/*--- purchaseHistory.jspのスタイル  ---*/
 	.history-list{
+		text-align:center;
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
 		width: 90%;
 	}
 
-	.history-td{
+	.history-list td{
+		text-align:center;
+	    white-space: normal; /* テキストが領域外にはみ出した場合、折り返し表示する */
 		font-size: 18px;
+	}
+
+	.history-title{
+		width: 120em;
+	}
+	.history-date{
+		width: 70em;
 	}
 	.history-number{
 		width: 2px;
 	}
+	.history-price{
+		width: 30em;
+	}
+
 
 	/*--- signup.jspのスタイル ---*/
 	.container {
 	    width: 85%;
 	    height: 1300px;
+	    margin: 30px auto;
+	    padding: 20px;
 	    padding-top: 80px;
 	    padding-bottom: 1400px;
+	    border: 1px solid #ccc;
+	    box-shadow: 0px 0px 10px #ccc;
 	}
 
 	.container>form {
+	    display: flex;
+	    flex-direction: column;
 	    font-size: 30px;
 	}
 
+	.signup-container .signup-label,
 	.signup-label {
 	    margin-top: 40px;
 	    font-size: 30px;
@@ -1057,8 +1291,13 @@
 
 	.content-selection {
 	    /* h2のスタイル */
+	    background-color: #ffe4c4;
+	    color: #808080;
 	    padding: 10px;
 	    font-size: 35px;
+	    margin-top: 0;
+	    border-radius: 15px;
+	    text-align: left;
 	}
 
 	.ticket-price{
@@ -1068,13 +1307,16 @@
 	}
 
 	.seat-selection {
-	    width: 800px;
+	    background-color: #fff5ee;
+	    width: 800px;;
+	    border: 3px solid #a9a9a9;
 	    border-radius: 20px;
 	    margin: 10px auto; /* 左右のマージンをautoにして中央寄せに修正 */
 	    margin-top: 50px;
 	}
 
 	.ticket-element {
+	    margin: 18px;
 	    margin-left: 45px;
 	    font-size: 25px;
 	}
@@ -1085,11 +1327,23 @@
 
 
 	.tiket-soldout {
+	    color: #dc143c;
 	    font-size: 30px;
 	}
 
 	.choice-button {
+	    margin: 10px;
+	    border: 3px solid transparent;
+	    color: #ffffff;
+	    background: #808080;
 	    font-size: 20px;
+	    padding: 10px 15px;
+	    cursor: pointer;
+	    border-radius: 20px;
+	    /* other styles */
+	}
+	.choice-button:hover {
+	    background-color: #555;
 	}
 
 
@@ -1100,6 +1354,7 @@
 			margin-top: 50px;
 			margin-bottom: 50px;
 		}
+
 
 		.ticket-comp-come{
 	 	border:5px double #a4c3b2;
@@ -1294,6 +1549,60 @@
 
 	.ticket-all-se{
 		font-size:45px;
+	}
+
+
+
+	/*--- ticketSelectSeat.jspのスタイル ---*/
+	.ticket-select{
+		font-size: 36px;
+		background-color: #CCFFCC;
+	    margin-left: 75px;
+	    border: 3px solid #a9a9a9;
+	    border-radius: 20px;
+	    margin: 15px auto; /* 左右のマージンをautoにして中央寄せに修正 */
+	}
+
+
+	/*--- ticketShare.jspのスタイル ---*/
+	.shared-link{
+	    text-align:center;
+	    width: 85%; /*親要素いっぱい広げる*/
+	    padding: 10px 10px; /*ボックスを大きくする*/
+	    font-size: 16px;
+	    border-radius: 3px; /*ボックス角の丸み*/
+	    border: 2px solid #ddd; /*枠線*/
+	    box-sizing: border-box; /*横幅の解釈をpadding, borderまでとする*/
+	}
+
+	.ticket-shard{
+		width: 800px;
+	}
+
+	table.ticket-shard  th{
+		width: 150px;
+	}
+
+	table.ticket-shard  td{
+		display: flex;
+		width: 800px;
+	}
+
+	.copy-btn{
+		 margin: 3px auto; /* 左右のマージンをautoにして中央寄せに修正 */
+		border: 3px solid transparent;
+	    display: flex;
+	    color: #ffffff;
+	    background: #808080;
+	    padding: 8px 15px;
+	    cursor: pointer;
+	    border-radius: 5px;
+		    /* other styles */
+	    align-items: center;
+	    position: relative; /* bodyを相対的な位置に設定 */
+	}
+	.copy-btn:hover{
+		background-color:#555;
 	}
 
 }
