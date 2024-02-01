@@ -54,5 +54,10 @@
 	      	alert('セッションが切れています、もう一度最初から購入してください。');
 	   </script>
    </c:if>
+      <c:if test="${canselPurchase == 2 }">
+	   <script>
+	      	alert('最初から購入してください。');
+	   </script>
+   </c:if>
 </body>
 </html>

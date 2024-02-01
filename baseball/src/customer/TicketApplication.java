@@ -19,6 +19,9 @@ import dao.TournamentDAO;
 
 @WebServlet("/customer/TicketApplication")
 public class TicketApplication extends HttpServlet {
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doPost(request, response);
+	}
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session=request.getSession();
 		Match match = (Match) session.getAttribute("match");
