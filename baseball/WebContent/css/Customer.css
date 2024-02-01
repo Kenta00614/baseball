@@ -161,6 +161,7 @@
 	}
 
 
+
 	/*--- informationChangeConfirm.jspのスタイル ---*/
 
 	.form-comment{	/*コメントのスタイル*/
@@ -229,6 +230,8 @@
 		margin: 15px auto; /* 左右のマージンをautoにして中央寄せに修正 */
 	    align-items: center;
 	}
+
+
 
 
 
@@ -334,6 +337,7 @@
 
 
 
+
 	/*--- memberInformation.jspのスタイル ---*/
 
 	.member-selection {
@@ -431,12 +435,13 @@
 
 
 	.submit-button {
+		margin: 5px auto;
 	    margin-top: 30px;
 	    padding: 10px 20px;
 	    background-color: #000;
 	    color: white;
 	    border: none;
-	    cursor: pointer;
+	    text-align: center;
 	}
 
 
@@ -486,15 +491,19 @@
 	}
 
 
+
 	/*--- ticketComplete.jspのスタイル ---*/
 	.ticket-comp-come{
-	 	border:5px double #a4c3b2;
-	 	background-color:#F3F7F5;
-	 	padding:16px;
-	 	margin:20px;
-	 	margin-top:450px;
-	 	font-size: 32px;
-		}
+		margin: 15px auto; /* 左右のマージンをautoにして中央寄せに修正 */
+		font-family: '游明朝';
+		margin-top: 20px;
+	}
+
+	.apply-details{
+		padding: 20px auto;
+		width: 400px;
+	}
+
 
 
 	/*---ticketConfirm.jspのスタイル ---*/
@@ -565,6 +574,7 @@
 	.ticketElement-btn:hover{
 		background-color:#555;
 	}
+
 
 
 	/*--- tiketPurchase.jspのスタイル ---*/
@@ -647,6 +657,7 @@
 	}
 
 
+
 	/*--- ticketShare.jspのスタイル ---*/
 	.shared-link{
 	    text-align:center;
@@ -689,6 +700,7 @@
 	}
 
 
+
 	/*--- 張り紙スタイル ---*/
 	.poster{
 	 	border:5px double #a4c3b2;
@@ -705,6 +717,8 @@
 	 	margin:20px;
 	 	margin-top:100px;
 	}
+
+
 
 
 
@@ -772,6 +786,7 @@
 	}
 
 
+
 	.form-comment{	/*コメントのスタイル*/
 		margin: 25px;
 		margin: 15px auto; /* 左右のマージンをautoにして中央寄せに修正 */
@@ -835,6 +850,7 @@
 	}
 
 
+
 	/*--- informationChangeConfirm.jspのスタイル ---*/
 
 	.form-inline{
@@ -864,6 +880,8 @@
 	.infor-change-btn{
 		font-size: 30px;
 	}
+
+
 
 
 
@@ -921,6 +939,7 @@
 	    font-size: 15px;
 	    margin: 5px 0;
 	}
+
 
 
 	/*--- memberInformation.jspのスタイル ---*/
@@ -996,9 +1015,9 @@
 	    background-color: #000;
 	    color: white;
 	    border: none;
-	    cursor: pointer;
 	    font-size: 25px;
 	}
+
 
 
 
@@ -1053,9 +1072,10 @@
 	}
 
 
+
 	/*--- ticketComplete.jspのスタイル ---*/
 		.apply-details{
-			width: 80%;
+			width: ;
 			margin-top: 50px;
 			margin-bottom: 50px;
 		}
@@ -1067,6 +1087,7 @@
 	 	margin:60px;
 	 	font-size: 30px;
 		}
+
 
 
 
@@ -1141,6 +1162,7 @@
 	}
 
 
+
 	/*--- tiketPurchase.jspのスタイル ---*/
 	.match-title{	/* h1のスタイル */
 		font-size: 33px;
@@ -1207,6 +1229,7 @@
 	.apply-btn:hover{
 		background-color:#555;
 	}
+
 
 
 	/*--- ticketQr.jsp ---*/
