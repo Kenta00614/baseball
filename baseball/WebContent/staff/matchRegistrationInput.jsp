@@ -163,7 +163,7 @@
                         </c:forEach>
                     </table>
                     <c:if test="${insertNum == 0 }">
-                        <div class="error-message">同じ日付が登録されています</div>
+                        <div class="error-message">同じ開催日が登録されています。</div>
                     </c:if>
                     <c:if test="${insertNum == 1 }">
                         <div class="error-message">同じ高校は登録できません</div>
