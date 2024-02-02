@@ -20,11 +20,11 @@ public class InsertData {
 		//SQLに投げる席情報のリスト
 		List<Seat> list = new ArrayList<>();
 		//席種　0F⇒1塁　0T⇒3塁　0B⇒バックネット裏　0R⇒外野ライト　0L⇒外野レフト
-		String seatType = "0F";//実行するときに書き換える
+		String seatType = "0L";//実行するときに書き換える
 
 		// CSVファイルの読み込み　Fileのパスを実行するときに書き換える
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(
-                new FileInputStream("C:\\work\\first.csv"), Charset.forName("Shift-JIS")))) {
+                new FileInputStream("C:\\work\\left.csv"), Charset.forName("Shift-JIS")))) {
             String line;
             int index = 0;
             String blockStr = "";
