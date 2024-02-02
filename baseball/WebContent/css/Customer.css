@@ -435,12 +435,13 @@
 
 
 	.submit-button {
+		margin: 5px auto;
 	    margin-top: 30px;
 	    padding: 10px 20px;
 	    background-color: #000;
 	    color: white;
 	    border: none;
-	    cursor: pointer;
+	    text-align: center;
 	}
 
 
@@ -493,13 +494,16 @@
 
 	/*--- ticketComplete.jspのスタイル ---*/
 	.ticket-comp-come{
-	 	border:5px double #a4c3b2;
-	 	background-color:#F3F7F5;
-	 	padding:16px;
-	 	margin:20px;
-	 	margin-top:450px;
-	 	font-size: 32px;
-		}
+		margin: 15px auto; /* 左右のマージンをautoにして中央寄せに修正 */
+		font-family: '游明朝';
+		margin-top: 20px;
+	}
+
+	.apply-details{
+		padding: 20px auto;
+		width: 400px;
+	}
+
 
 
 	/*---ticketConfirm.jspのスタイル ---*/
@@ -1011,7 +1015,6 @@
 	    background-color: #000;
 	    color: white;
 	    border: none;
-	    cursor: pointer;
 	    font-size: 25px;
 	}
 
@@ -1072,20 +1075,20 @@
 
 	/*--- ticketComplete.jspのスタイル ---*/
 		.apply-details{
-			width: 80%;
+			width: 800px;
+			padding: 20px auto;
 			margin-top: 50px;
 			margin-bottom: 50px;
 		}
 
-		.ticket-comp-come{
-	 	border:5px double #a4c3b2;
-	 	background-color:#F3F7F5;
-	 	padding:60px;
-	 	margin:60px;
-	 	font-size: 30px;
-		}
 
-
+	.ticket-comp-come{
+		margin: 25px;
+		margin: 15px auto; /* 左右のマージンをautoにして中央寄せに修正 */
+		font-family: '游明朝';
+		margin-top: 5px;
+		font-size: 30px;
+	}
 
 
 	/*---ticketConfirm.jspのスタイル ---*/
