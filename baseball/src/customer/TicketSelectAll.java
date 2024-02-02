@@ -22,7 +22,9 @@ import dao.TicketsDAO;
 
 @WebServlet("/customer/TicketSelectAll")
 public class TicketSelectAll extends HttpServlet {
-
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doPost(request, response);
+	}
     @SuppressWarnings( "unchecked")
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //      値の取得

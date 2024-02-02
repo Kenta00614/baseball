@@ -27,6 +27,39 @@ import dao.TournamentDAO;
 
 @WebServlet("/customer/TicketComplete")
 public class TicketComplete extends HttpServlet {
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session=request.getSession();
+
+		List<Tournament> list=new ArrayList<>();
+		List<Match> match1=new ArrayList<>();
+		Tournament lastTour=null;
+
+		if(session.getAttribute("match") !=null){
+			session.removeAttribute("match");
+		}
+
+		try {
+//			大会情報取得
+			TournamentDAO tourDao=new TournamentDAO();
+			list=tourDao.getTournamentDetail();
+//			最後の大会情報
+			for(Tournament tour1: list){
+				lastTour=tour1;
+			}
+
+//			同じ大会の試合日情報を取得
+			MatchDAO matDao=new MatchDAO();
+			match1=matDao.searchMatchTournament(lastTour.getTournamentId());
+
+			session.setAttribute("tour", lastTour);
+			request.setAttribute("match",match1);
+			request.setAttribute("canselPurchase","2");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		request.getRequestDispatcher("/customer/ticketPurchase.jsp").forward(request, response);
+        return;
+	}
 
     @SuppressWarnings("unchecked")
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -26,10 +26,11 @@
 			</tr>
 			<c:forEach begin="0" end="${fn:length(ticketNumList)-1 }" step="1" var="i">
 				<tr>
-					<td>第${purchaseList[i].ordinalNum }回<br>${purchaseList[i].tournamentName }</td>
-					<td>　${purchaseList[i].dateStr }</td><td>${purchaseList[i].purchaseStr }</td>
-					<td>${ticketNumList[i] }枚</td>
-					<td><fmt:formatNumber value="${ticketPrice[i] }" maxFractionDigits="0" groupingUsed="true" />円</td>
+					<td class="history-td">第${purchaseList[i].ordinalNum }回<br>${purchaseList[i].tournamentName }</td>
+					<td class="history-td">　${purchaseList[i].dateStr }</td>
+					<td class="history-td">${purchaseList[i].purchaseStr }</td>
+					<td class="history-td">${ticketNumList[i] }枚</td>
+					<td class="history-td"><fmt:formatNumber value="${ticketPrice[i] }" maxFractionDigits="0" groupingUsed="true" />円</td>
 				</tr>
 			</c:forEach>
 			</table>

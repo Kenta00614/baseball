@@ -85,9 +85,30 @@ public class MatchRegistrationCompletion extends HttpServlet {
 	    	duel4.setSchool2(duel4School2);
 	    	duel4.setRound(duel4Round);
 
-	//		試合日情報
-	    	match.setEventDate(Date.valueOf(tournament.getYear()+"-"+eventDateMonth+"-"+eventDateDate));
-	    	match.setSaleStartAt(Date.valueOf(tournament.getYear()+"-"+saleAtMonth+"-"+saleAtDate));
+	//		一桁の時0つける
+	    	if(eventDateMonth.length()==1){
+	    		eventDateMonth = "0"+eventDateMonth;
+	    	}
+	    	if(eventDateDate.length()==1){
+	    		eventDateDate = "0"+eventDateDate;
+	    	}
+	    	if(saleAtMonth.length()==1){
+	    		saleAtMonth = "0"+saleAtMonth;
+	    	}
+	    	if(saleAtDate.length()==1){
+	    		saleAtDate = "0"+saleAtDate;
+	    	}
+
+	    	String eventCheckStr=Date.valueOf(tournament.getYear()+"-"+eventDateMonth+"-"+eventDateDate).toString();
+	    	String slaleCheckStr=Date.valueOf(tournament.getYear()+"-"+saleAtMonth+"-"+saleAtDate).toString();
+
+//	    	存在しない日付の時はじく
+	    	if(eventCheckStr.equals(tournament.getYear()+"-"+eventDateMonth+"-"+eventDateDate)){
+	    		match.setEventDate(Date.valueOf(tournament.getYear()+"-"+eventDateMonth+"-"+eventDateDate));
+	    	}
+	    	if(slaleCheckStr.equals(tournament.getYear()+"-"+saleAtMonth+"-"+saleAtDate)){
+	    		match.setSaleStartAt(Date.valueOf(tournament.getYear()+"-"+saleAtMonth+"-"+saleAtDate));
+	    	}
 	    	match.setTournamentId(tournament.getTournamentId());
 
 	    	try {
@@ -122,6 +143,19 @@ public class MatchRegistrationCompletion extends HttpServlet {
 					duelRound.add(Constants.DUEL_ROUND.get("5"));
 					duelRound.add(Constants.DUEL_ROUND.get("6"));
 
+					int dateCheck=0;
+					int saleCheck=0;
+					if(!eventCheckStr.equals(tournament.getYear()+"-"+eventDateMonth+"-"+eventDateDate)){
+						dateCheck = -1;
+						num = -1;
+					}
+					if(!slaleCheckStr.equals(tournament.getYear()+"-"+saleAtMonth+"-"+saleAtDate)){
+						saleCheck = -1;
+						num = -1;
+					}
+
+					request.setAttribute("saleCheck", saleCheck);
+					request.setAttribute("dateCheck", dateCheck);
 					request.setAttribute("insertNum", num);
 					request.setAttribute("schoolList",schoolList );
 					request.setAttribute("duelRound",duelRound );
