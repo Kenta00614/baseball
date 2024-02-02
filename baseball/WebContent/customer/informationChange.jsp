@@ -12,10 +12,10 @@
     <div class="container">
         <h1>会員情報変更</h1>
         <form id="memberChangeForm" action="InformationChangeConfirm" method="post">
-            <label for="name">氏名</label>
+            <label for="name" class="infochange-input-element">氏名</label>
             <input type="text" id="name" name="name" value="${param.name}"  class="field" required>
 
-            <label for="tel">電話番号</label>
+            <label for="tel" class="infochange-input-element">電話番号</label>
             <input type="tel" id="tel" name="tel" value="${param.tel}" pattern="\d{10}|\d{11}" class="field" required>
 
             <input type="submit" value="確認" class="submit-button">

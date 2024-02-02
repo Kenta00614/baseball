@@ -23,18 +23,17 @@
 	    color: initial;
 	    padding: 30px;
 	}
-	table th,
-	table td {
+	th,td {
 		width: initial;
 	    border-bottom:  initial;
 	    background-color: initial;
 	}
-	table td {
+	td {
 	    width: 180px;/*枠の横幅*/
 	    padding: 20px;
 	}
 
-	table tr:last-child * {
+	tr:last-child * {
 	    border-bottom: none;
 	}
 
@@ -48,11 +47,8 @@
             margin-bottom: 10px;
             margin-top: 25px;
             border-radius: 20px;
+            width: 98%;
 
-        }
-
-        .schedule > div {
-            margin-bottom: 10px;
         }
 
         .date-center {
@@ -61,19 +57,23 @@
             margin-bottom: 10px;
         }
 
+        .not-match-main{
+        	width: 90%;
+        }
+
 @media screen and (max-width: 1050px){
 	/* スマートフォン用CSS記述 */
 
 	/*テーブル設定*/
-	table td {
+	td {
 	    width: 28%;/*要素の横幅*/
 	    font-size: 11px;
 	    padding: 7px;
 	}
-	table tr:last-child * {
+	tr:last-child * {
 	    border-bottom: none;
 	}
-	table th {
+	th {
 	    padding: 15px;
 	}
 
@@ -85,10 +85,6 @@
         border-radius: 20px;
         width: 93%;
      }
-
-        .schedule > div {
-            margin-bottom: 5px;
-        }
 
         .date-center {/* 日付 */
             font-weight: bold;
@@ -134,7 +130,7 @@
     <c:choose>
         <%-- 試合情報がないとき --%>
         <c:when test="${fn:length(matchList) == 0 }">
-            試合情報が登録されていません
+            <h2 class="poster2">試合情報が登録されていません</h2>
         </c:when>
         <%-- 試合情報があるとき --%>
         <c:when test="${fn:length(matchList) > 0 }">
@@ -154,7 +150,7 @@
 								</c:if>
                         </c:forEach>
 						<c:if test="${duelList[i][0].roundStr == null}">
-							<tr><td>試合情報は未定です</td></tr>
+							<tr><td class="not-match-main">試合情報は未定です</td></tr>
 						</c:if>
                     </table>
                 </div>

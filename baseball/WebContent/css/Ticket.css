@@ -186,7 +186,7 @@
 
 
 	.ground{	/* グラウンド側の文字 */
-		width: 800px;
+		width: 90%;
 		margin-top: 5px;
 		margin: 15px auto; /* 左右のマージンをautoにして中央寄せに修正 */
 		margin-bottom: 60px;;

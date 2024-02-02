@@ -8,7 +8,7 @@
 </head>
 <body>
     <div class="container">
-        <h1 >新規会員登録確認</h1>
+        <h1>新規会員登録確認</h1>
         <form id="registrationForm" action="ProvisionalSignup" method="post">
         <p class="form-comment">以下の内容で登録してよろしいですか？</p>
         <div class="form-inline">
