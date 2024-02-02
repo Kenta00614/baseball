@@ -16,6 +16,7 @@ public class EmailUtility{
         String host = "smtp.gmail.com";
         String username = "jantaroukanta@gmail.com"; // Gmailのメールアドレス
         String password = "vwob boyf axve fpkm"; // Gmailのパスワード
+        String fromname = "甲子園チケット販売システム";
         int port = 587;
 
         // SMTPサーバーの設定を行います。
@@ -35,7 +36,8 @@ public class EmailUtility{
         try {
             // メールの内容を設定
             Message message = new MimeMessage(session);
-            message.setFrom(new InternetAddress(username));
+            InternetAddress fromAddress = new InternetAddress(username, fromname);
+            message.setFrom(fromAddress);
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
             message.setSubject(subject);
             message.setText(content);
