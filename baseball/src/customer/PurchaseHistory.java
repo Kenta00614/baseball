@@ -57,8 +57,17 @@ public class PurchaseHistory extends HttpServlet {
     	                ticketNum = 1;
     	                purchaseList.add(purchase);
     	                ticketPrice.add(Constants.SEAT_PRICE.get(purchase.getSeatType()));
-    	            } else {
+    	            } else{
     	                ticketNum++;
+//    	                合計料金計算
+    	                int nowPrice=ticketPrice.get(ticketPrice.size()-1);
+//    	                子供チケットの時
+    	                if(purchase.isChild()){
+    	                	nowPrice += Constants.CHILD_SEAT_PRICE.get(purchase.getSeatType());
+    	                }else{
+    	                	nowPrice += Constants.SEAT_PRICE.get(purchase.getSeatType());
+    	                }
+    	                ticketPrice.set(ticketPrice.size()-1,nowPrice);
     	            }
     	        }
 
