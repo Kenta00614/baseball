@@ -104,11 +104,26 @@ if(request.getAttribute("seatType") != null){
   </div>
   <% if(request.getAttribute("massage") != null){ %><div id="${classStr}">${massage}</div><%}%>
   <form id="form" action="EntryConduct">
-	<select name="seatType">
-	<% for(int i=1;i<=5;i++){ %>
-		<option value="<%= map.get(i) %>" <%if(map.get(i).equals(seatType)){ %> <%="selected"%> <%} %>><%= seatTypeList.get(map.get(i)) %></option>
-	<% } %>
-	</select>
+<select name="seatType" style="
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: #f8f8f8;
+    color: #333;
+    outline: none;
+    transition: border-color 0.3s;
+    width: 200px; /* Adjust the width as needed */
+">
+
+<% for (int i = 1; i <= 5; i++) { %>
+    <option value="<%= map.get(i) %>" <% if (map.get(i).equals(seatType)) { %> <%= "selected" %> <% } %>>
+        <%= seatTypeList.get(map.get(i)) %>
+    </option>
+<% } %>
+
+</select>
+
   <canvas id="canvas" hidden></canvas>
   <div id="output"></div>
   	<input type="hidden" id="ticketId" name="ticketId" value="">
