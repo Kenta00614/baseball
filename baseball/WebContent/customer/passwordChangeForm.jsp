@@ -25,10 +25,13 @@ function CheckEmail_1() {
     　　<form action="PasswordChangeMail" method="post" onsubmit="return CheckEmail_1();">
 			<p class="form-comment">本人確認の為、IDを入力してください。</p>
 	        <div class="login-input">
-	            <label for="user-id">ID(email)</label>
-	            <input name="newMail" type="email" id="email_1" placeholder="✉Mail" class="login-email" required>
-	            <label for="user-id">確認用ID(email)</label>
-	            <input name="newMail" type="email" id="emailConfirm_1" placeholder="✉Mail" class="login-email" required>
+	            <label for="user-id" class="infochange-input-element">ID(email)</label>
+	            <input name="newMail" type="email" id="email_1" placeholder="✉Mail" class="login-input-element" required>
+	        </div>
+
+	        <div class="login-input">
+	            <label for="user-id" class="infochange-input-element">確認用ID(email)</label>
+	            <input name="newMail" type="email" id="emailConfirm_1" placeholder="✉Mail" class="login-input-element" required>
 
 	            <button type="submit" class="form-change-btn">変更</button>
 	        </div>

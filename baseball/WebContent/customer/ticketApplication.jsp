@@ -60,14 +60,14 @@
 		<p class="ticket-element">座種：
 			<select name="seat" class="element">
 			<c:forEach begin="0" end="${fn:length(seatType)-1}" step="1" var="i">
-				<option value="${seatOrder[i] }">${seatType[i] }</option>
+				<option value="${seatOrder[i] }" class="element-option">${seatType[i] }</option>
 			</c:forEach>
 			</select>
 		</p>
 		<p class="ticket-element">枚数：
 			<select name="count" class="element">
 				<c:forEach begin="1" end="6" step="1" var="i">
-				<option value="${i }" >${i }</option>
+				<option value="${i }"  class="element-option">${i }</option>
 				</c:forEach>
 			</select>
 		</p>
