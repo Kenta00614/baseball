@@ -302,25 +302,35 @@
 	/*--- main.jspのスタイル ---*/
 	.tournament {
 	    text-align: center;
-	    font-size: 30px;
 	    margin: 20px 0;
 	    display: flex;
 	    justify-content: center;
+	    margin-bottom: 10px;
 	}
 
 	.schedule {
-	    display: flex;
-	    align-items: center;
-	    justify-content: center;
-	     margin: 0 10px;
-	    margin-bottom: 10px;
-	    flex-wrap: wrap;
+		margin: 2em auto; /* ボックスの余白 */
+		background-color: #fff; /* ボックス背景色 */
+		padding: 20px auto;
+		padding-top: 60px;
+		padding-left: 30px;
+		position:relative; /*配置(ここを基準に)*/
+		box-shadow: 0px 2px 15px rgba(0,0,0,0.3);/*ボックス影*/
+		width: 82%;
+		text-align: center;	/* 中央寄せ */
+		z-index: -1;
 	}
 
 	.date-center {
-	    text-align: center;
-	    font-size: 18px;
-	    margin: 20px 0;
+	    background-color: #A7B4AF; /* タイトル背景色 */
+		font-size: 1em;/* タイトル文字の大きさ */
+		color: #fff; /* タイトル文字色 */
+		padding:15px;/*タイトル余白*/
+		text-align: center;	/* タイトル中央寄せ */
+		position:absolute;	/* 配置(ここを動かす) */
+		top:0;	/*上から(0px)に配置 */
+		left:0; /*左から(0px)に配置 */
+		width:100%;/*横幅最大幅 */
 	}
 
 	.main_display {
@@ -437,12 +447,18 @@
 	.submit-button {
 		margin: 5px auto;
 	    margin-top: 30px;
-	    padding: 10px 20px;
-	    background-color: #000;
-	    color: white;
-	    border: none;
+	    padding: 7px 265px;
+	    background-color: #000000;
+	    color: #ffffff;
+	    border: 3px solid transparent;
 	    text-align: center;
+	    cursor: pointer;
+	    border-radius: 3px;
+	    /* other styles */
+	    align-items: center;
+	    position: relative; /* bodyを相対的な位置に設定 */
 	}
+
 
 
 	/*--- ticketApplication.jspのスタイル ---*/
@@ -529,6 +545,11 @@
 	.button-container {
 	    display: flex;
 	    justify-content: space-between;
+	}
+
+
+	.ticket-conf-table{
+		width: 825px;
 	}
 
 
@@ -822,6 +843,7 @@
 
 	.return-btn {
 	    /* 戻るボタンのスタイル */
+	    position: absolute; /* 絶対位置に配置 */
 	    top: 3px; /* 上から3pxの位置に配置 */
 	    left: 25px; /* 左から25pxの位置に配置 */
 	    font-size: 25px;
@@ -846,7 +868,7 @@
 	.infochange-input-element{
 		font-size: 30px;
 		margin-top:100px;
-		margin-bottom: 20px;
+		margin-bottom: 30px;
 	}
 
 
@@ -878,9 +900,16 @@
 	}
 
 	.infor-change-btn{
-		font-size: 30px;
+		font-size: 25px;
 	}
 
+	.form-element{
+		font-size: 25px;
+	}
+
+	.form-input{
+		font-size: 30px;
+	}
 
 
 
@@ -930,14 +959,16 @@
 	/*--- main.jspのスタイル ---*/
 	.tournament {/*大会名*/
 	    font-size: 20px;
-	    margin-top: 10px;
-	    margin: 8px 5px;
-	    margin-bottom: 10px;
+	}
+
+	.schedule{
+		width: 80%;
+		margin: 20px auto;
+		padding-left: 3px;
 	}
 
 	.date-center {/*試合日*/
 	    font-size: 15px;
-	    margin: 5px 0;
 	}
 
 
@@ -1010,12 +1041,13 @@
 
 
 	.submit-button {
+		margin: 10px auto;
 	    margin-top: 80px;
-	    padding: 10px 20px;
+	    padding: 20px 365px;
 	    background-color: #000;
 	    color: white;
 	    border: none;
-	    font-size: 25px;
+	    font-size: 30px;
 	}
 
 
@@ -1073,13 +1105,15 @@
 
 
 
+
 	/*--- ticketComplete.jspのスタイル ---*/
 		.apply-details{
-			width: 800px;
+			width: 600px;
 			padding: 20px auto;
 			margin-top: 50px;
 			margin-bottom: 50px;
 		}
+
 
 
 	.ticket-comp-come{
@@ -1115,6 +1149,14 @@
 	.button-container {
 	    display: flex;
 	    justify-content: space-between;
+	}
+
+	.ticket-conf-table{
+		width: 950px;
+	}
+
+	.point-num{
+		font-size: 30px;
 	}
 
 
@@ -1272,7 +1314,11 @@
 	}
 
 	.ticket-all-se{
-		font-size:45px;
+		font-size:25px;
+	}
+
+	.element-option{
+		font-size:8px;
 	}
 
 }
