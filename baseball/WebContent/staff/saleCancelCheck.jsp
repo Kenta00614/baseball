@@ -88,7 +88,7 @@
         <div class="button-container">
             <a href="SaleStop" class="link-btn">戻る</a>
         </div>
-        <form action="SaleStopComplete" method="post">
+        <form action="SaleCancelComplete" method="post">
             <h1>雨天時などの試合中止</h1>
             <p>当日券・リセール席の販売を停止します。</p>
             <p>よろしいですか？</p>
