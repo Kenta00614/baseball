@@ -7,7 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>メイン画面</title>	
+    <title>メイン画面</title>
     <link rel="stylesheet" type="text/css"  href="/baseball/css/Customer.css">
 <style>
 		/* PC用CSS記述 */
@@ -37,29 +37,11 @@
 	    border-bottom: none;
 	}
 
-        .tournament {
-            margin-bottom: 10px;
-        }
-
-        .schedule {
-            border: 3px solid #000000;
-            padding: 7px;
-            margin-bottom: 10px;
-            margin-top: 25px;
-            border-radius: 20px;
-            width: 98%;
-
-        }
-
-        .date-center {
-            font-weight: bold;
-            margin-top: 20px;
-            margin-bottom: 10px;
-        }
-
-        .not-match-main{
-        	width: 90%;
-        }
+    .not-match-main{
+    	width: 1000px;
+    	padding-left: 0;
+    	padding-right: 30px;
+    }
 
 @media screen and (max-width: 1050px){
 	/* スマートフォン用CSS記述 */
@@ -77,31 +59,16 @@
 	    padding: 15px;
 	}
 
-    .schedule {		/*1試合ごとの枠*/
-        border: 3px solid #000000;
-        padding: 2px;
-        margin-bottom: 5px;
-        margin-top: 20px;
-        border-radius: 20px;
-        width: 93%;
-     }
-
-        .date-center {/* 日付 */
-            font-weight: bold;
-            margin-top: 10px;
-            margin-bottom: 10px;
-        }
-
         .num_match{/* 〇試合目 */
-			width: 23%;
+			width: 22%;
         }
 
 	/*header*/
     .nav__item{
 		  margin:3px ;
-		  font-size: 12px;
-		  margin-right: 1px;
-		  margin-top: 10px;;
+		  font-size: 11px;
+		  margin-right: 2px;
+		  margin-top: 12px;
 	}
 	.logo-image {
 	    margin-left: 0px;
@@ -121,6 +88,11 @@
 	 body{
 	 	margin-top: 50px;
 	 }
+
+	.not-match-main{
+    	padding-left: 30px;
+    	padding-bottom: 20px;
+    }
 }
 
 </style>
