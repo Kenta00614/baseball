@@ -15,8 +15,8 @@
 	<h1>第${tour.ordinalNum }回${tour.name }</h1>
 	<hr>
 	<div>
-	<table>
-		<tr><th colspan="4" style="background-color:#6BEF9E;color:cadetblue;">申込内容</th></tr>
+	<table class="ticket-conf-table">
+		<tr><th colspan="4" style="backgrund-color:#6BEF9E;color:cadetblue;" >申込内容</th></tr>
 		<%-- 日付と曜日 --%>
 		<tr><th>開催日</th><td colspan="3">${match.eventDate }(${match.eventDayOfWeek })</td></tr>
 		<%-- 座種 --%>
@@ -45,7 +45,7 @@
 			<c:if test="${point > 0}">
 				<th>ポイント</th>
 				<td><fmt:formatNumber value="${point }" maxFractionDigits="0" groupingUsed="true" />ポイント(<fmt:formatNumber value="${point }" type="CURRENCY" currencySymbol="¥" maxFractionDigits="0" groupingUsed="true" />相当)利用可能
-					<input type="number" v-model="inputValue">
+					<input type="number" v-model="inputValue" class="point-num">
 					<button type="button" v-on:click="addPoint" :disabled="!isButtonEnabled">適用</button>
 				</td>
 			</c:if>
