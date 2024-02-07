@@ -739,6 +739,14 @@
 	 	margin-top:100px;
 	}
 
+	.poster2{
+		border:5px double #a4c3b2;
+	 	background-color:#F3F7F5;
+	 	padding:16px;
+	 	margin:20px;
+	 	margin-top: 90px;
+	}
+
 
 
 
@@ -802,7 +810,7 @@
 	 	background-color:#F3F7F5;
 	 	padding:16px;
 	 	margin:30px;
-	 	margin-top: 300px;
+	 	margin-top: 200px;
 	 	font-size: 20px;
 	}
 
