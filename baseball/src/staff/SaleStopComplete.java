@@ -36,8 +36,13 @@ public class SaleStopComplete extends HttpServlet {
 		            // 現在の日付で販売停止処理を行う
 		            int num = dao.changeStopSales(today);
 
-		            request.getRequestDispatcher("/staff/saleStopComplete.jsp").forward(request, response);
-		        } catch (Exception e) {
+		            if (num == 0) {
+		                request.getRequestDispatcher("/staff/saleStopError.jsp").forward(request, response);
+		            } else {
+		                request.getRequestDispatcher("/staff/saleStopComplete.jsp").forward(request, response);
+		            }
+
+		    	} catch (Exception e) {
 		            // 予期せぬ例外のハンドリング
 		            throw new ServletException("サーブレット内でエラーが発生しました: " + e.getMessage(), e);
 		        }

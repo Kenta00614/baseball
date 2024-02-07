@@ -16,7 +16,7 @@ import dao.TicketsDAO;
 @WebServlet("/staff/SaleCancelComplete")
 public class SaleCancelComplete extends HttpServlet {
 
-	    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	    	HttpSession session=request.getSession();
 
 //	    	ログインしているか
@@ -36,7 +36,12 @@ public class SaleCancelComplete extends HttpServlet {
 		            // 現在の日付で販売停止処理を行う
 		            int num = dao.changePostpone(today);
 
-		            request.getRequestDispatcher("/staff/saleCancelComplete.jsp").forward(request, response);
+		            if (num == 0) {
+		                request.getRequestDispatcher("/staff/saleCancelError.jsp").forward(request, response);
+		            } else {
+		                request.getRequestDispatcher("/staff/saleCancelComplete.jsp").forward(request, response);
+		            }
+
 		        } catch (Exception e) {
 		            // 予期せぬ例外のハンドリング
 		            throw new ServletException("サーブレット内でエラーが発生しました: " + e.getMessage(), e);
