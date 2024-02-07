@@ -317,4 +317,30 @@ public class MatchDAO extends DAO{
 		return list;
 	}
 
+	//開催日から試合情報を取得
+	public List<Match> searchSaleStartDate(Date saleStartDate)throws Exception{
+
+		Connection con=getConnection();
+		PreparedStatement st=con.prepareStatement("SELECT * FROM MATCH WHERE sale_start_at = ?");
+		st.setDate(1, saleStartDate);
+
+		ResultSet rs=st.executeQuery();
+
+		List<Match> list=new ArrayList<>();
+
+		while(rs.next()){
+			Match m = new Match();
+			m.setMatchId(rs.getInt("match_id"));
+			m.setSaleStartAt(rs.getDate("sale_start_at"));
+			m.setEventDate(rs.getDate("event_date"));
+			list.add(m);
+		}
+
+		st.close();
+		con.close();
+
+		return list;
+
+	}
+
 }

@@ -13,7 +13,7 @@
 	<c:if test="${fn:length(match) > 0}"><h1 class="match-title">第${tour.ordinalNum }回${tour.name }</h1></c:if>
 
     <%-- 試合日情報がないとき --%>
-    <c:if test="${fn:length(match) <= 0}"><h1 class="match-title">販売中のチケットはありません</h1></c:if>
+    <c:if test="${fn:length(match) <= 0}"><h2 class="match-title">販売中のチケットはありません</h2></c:if>
     <c:forEach var="mat" items="${match}">
 	    <c:choose>
 

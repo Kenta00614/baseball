@@ -9,7 +9,7 @@
 
 	body{
 		  position: fixed;
-		  z-index: 100000;
+		  z-index: 9999;
 	}
 
 
@@ -75,6 +75,7 @@
 	    background-color: #e4ffd7;
 	    top: 0;
 	    left: 0;
+	    z-index: 9999;
 	}
 
 	.logo {
