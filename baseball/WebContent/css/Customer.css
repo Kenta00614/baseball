@@ -308,9 +308,9 @@
 	    margin-bottom: 10px;
 	}
 
-	.schedule {
+	.schedule {	/* 大会情報の日付ごとの全体枠 */
 		margin: 2em auto; /* ボックスの余白 */
-		background-color: #fff; /* ボックス背景色 */
+		background-color: rgba(255,255,255,0.5); /* ボックス背景色 */
 		padding: 20px auto;
 		padding-top: 60px;
 		padding-left: 30px;
@@ -321,8 +321,8 @@
 		z-index: -1;
 	}
 
-	.date-center {
-	    background-color: #A7B4AF; /* タイトル背景色 */
+	.date-center {	/* 大会情報の日付だけの枠 */
+	    background-color: rgba(120,120,125,0.5); /* タイトル背景色 */
 		font-size: 1em;/* タイトル文字の大きさ */
 		color: #fff; /* タイトル文字色 */
 		padding:15px;/*タイトル余白*/
@@ -479,7 +479,7 @@
 	    margin-left: 75px;
 	    border: 3px solid #a9a9a9;
 	    border-radius: 20px;
-	     margin: 15px auto; /* 左右のマージンをautoにして中央寄せに修正 */
+	    margin: 15px auto; /* 左右のマージンをautoにして中央寄せに修正 */
 	}
 
 	.ticket-element {
@@ -488,6 +488,12 @@
 
 	.tiket-soldout {
 	    color: #dc143c;
+	    font-size: 20px;
+	}
+	.soldout-ticket{
+
+	    text-align: center;
+	    margin:10px auto;
 	    font-size: 20px;
 	}
 
