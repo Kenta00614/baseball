@@ -18,7 +18,7 @@
     <h1 class="select-title">第${tour.ordinalNum }回　${tour.name }</h1>
 
      <c:if test="${remain <= count && remain != -1}" >
-    	<b class="tiket-soldout"> 購入枚数分用意できません<br>　</b>
+    	<b class="tiket-soldout"> ※購入枚数分用意できません<br>　</b>
     </c:if>
 
 <%-- 指定された座種の画像。クソデカなのでclass="seat-type-img"で指定してます --%>

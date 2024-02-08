@@ -29,7 +29,7 @@
 				<b class="tiket-soldout">※完売しています。</b>
 			</c:when>
 			<c:when test="${remaining > 0}">
-	      		<p class="tiket-soldout">残数：${remaining }枚</p>
+				<b class="tiket-soldout">※購入枚数分用意できません。 　残数：${remaining }枚</b>
 	      	</c:when>
 		</c:choose>
 
