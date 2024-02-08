@@ -28,6 +28,7 @@ public class CreateTickets extends HttpServlet{
 	}
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //		次の日の販売開始情報がある時チケットを生成
+		System.out.println("起動");
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
 		SimpleDateFormat compareDate = new SimpleDateFormat("yyyy-MM-dd");
         Date date = new Date();
@@ -48,38 +49,38 @@ public class CreateTickets extends HttpServlet{
 //		次の日に販売開始日が登録されているか
 		try {
 			searchMatch = matchDAO.searchSaleStartDate(java.sql.Date.valueOf(compareDate.format(d1)));
+
+	//		登録されているときだけチケット生成
+			if(searchMatch.size() > 0){
+				for(int i = 0; searchMatch.size()>i; i++){
+			        ArrayList<Tickets> ticketsList = new ArrayList<>();
+
+					//daoから席のIDを取ってくる(35000件ぐらいｗ)
+			        SeatDAO seatDao = new SeatDAO();
+					ArrayList<Seat> seatList = seatDao.getAllId();
+					//System.out.println(seatList.size());
+
+					//seatListの分だけ回す
+					for(Seat seat:seatList){
+						Tickets ticket = new Tickets();
+						ticket.setSeatId(seat.getSeatId());
+						ticket.setTicketsId(seat.getSeatId()+"r00"+sdf.format(searchMatch.get(i).getEventDate()));
+						ticket.setMatchId(searchMatch.get(i).getMatchId());
+						ticket.setPurchaseId(0);
+						ticket.setShared(false);
+						ticket.setStatus("2");
+						ticket.setUuid(null);
+						//System.out.println(ticket);
+						ticketsList.add(ticket);
+					}
+
+					//SQLに流す
+					TicketsDAO dao = new TicketsDAO();
+					dao.insert(ticketsList);
+				}
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
-		}
-
-//		登録されているときだけチケット生成
-		if(searchMatch.size() > 0){
-			for(int i = 0; searchMatch.size()>i; i++){
-		        ArrayList<Tickets> ticketsList = new ArrayList<>();
-
-				//daoから席のIDを取ってくる(35000件ぐらいｗ)
-		        SeatDAO seatDao = new SeatDAO();
-				ArrayList<Seat> seatList = seatDao.getAllId();
-				//System.out.println(seatList.size());
-
-				//seatListの分だけ回す
-				for(Seat seat:seatList){
-					Tickets ticket = new Tickets();
-					ticket.setSeatId(seat.getSeatId());
-					ticket.setTicketsId(seat.getSeatId()+"r00"+sdf.format(searchMatch.get(i).getEventDate()));
-					ticket.setMatchId(searchMatch.get(i).getMatchId());
-					ticket.setPurchaseId(0);
-					ticket.setShared(false);
-					ticket.setStatus("2");
-					ticket.setUuid(null);
-					//System.out.println(ticket);
-					ticketsList.add(ticket);
-				}
-
-				//SQLに流す
-				TicketsDAO dao = new TicketsDAO();
-				dao.insert(ticketsList);
-			}
 		}
 	}
 }
