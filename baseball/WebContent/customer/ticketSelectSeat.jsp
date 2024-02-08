@@ -41,7 +41,7 @@
 			    <li v-for="(ticket, index) in selectedTickets" v-bind:key="ticket.ticketsId" class="selected-ticket">
 			        <p>
 			             {{ ticket.typeStr }} {{ ticket.step }}段 {{ ticket.number }}番
-			             {{ ticket.gate }}番ゲート {{ ticket.passage }}通路
+			             {{ ticket.gate }}番ゲート {{ ticket.passage }}通路　
 			             <button id="childBtn" value="index" v-bind:value="ticket.check" v-on:click="changeChild(index)" v-bind:class="{ 'age': ticket.checkStr === '大人', 'kids': ticket.checkStr === '子供' }">
 			                {{ ticket.checkStr }}<br>
 			            </button>

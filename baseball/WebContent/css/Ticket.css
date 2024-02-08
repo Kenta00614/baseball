@@ -40,7 +40,6 @@
 	    border-radius: 5px;
 	    /* other styles */
 	    align-items: center;
-	      z-index: -1;
 	}
 	.home-btn:hover{
 		background-color:#555;
@@ -111,7 +110,6 @@
 
 		display: block;
 	    position: relative;
-
 	    border-right: 27px solid #75ffb3;
 	    background-color: #dbffeb;
 	    color: #333333;
@@ -123,18 +121,6 @@
 
     }
 
-    .selected-ticket::before {
-    position: absolute;
-    right: -20px;
-    bottom: 4px;
-    z-index: -1;
-    transform: rotate(5deg);
-    width: 100%;
-    height: 50%;
-    background-color: #d0d0d0;
-    content: "";
-    filter: blur(4px);
-	}
 
 	.selected-ticket p{
 		line-height: 40px;
