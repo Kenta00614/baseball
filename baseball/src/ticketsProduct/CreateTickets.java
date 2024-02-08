@@ -1,6 +1,7 @@
 package ticketsProduct;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -28,7 +29,6 @@ public class CreateTickets extends HttpServlet{
 	}
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //		次の日の販売開始情報がある時チケットを生成
-		System.out.println("起動");
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
 		SimpleDateFormat compareDate = new SimpleDateFormat("yyyy-MM-dd");
         Date date = new Date();
@@ -80,7 +80,8 @@ public class CreateTickets extends HttpServlet{
 				}
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			PrintWriter out=response.getWriter();
+			out.print(e.getMessage());
 		}
 	}
 }
