@@ -1,6 +1,7 @@
 package ticketsProduct;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -27,27 +28,28 @@ public class CreateTickets extends HttpServlet{
 		doGet(request, response);
 	}
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		次の日の販売開始情報がある時チケットを生成
-		System.out.println("起動");
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
-		SimpleDateFormat compareDate = new SimpleDateFormat("yyyy-MM-dd");
-        Date date = new Date();
-
-        // Date型の日時をCalendar型に変換
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(date);
-
-        // 日時を加算する
-        calendar.add(Calendar.DATE, 1);
-
-        // Calendar型の日時をDate型に戻す
-        Date d1 = calendar.getTime();
-
-		MatchDAO matchDAO = new MatchDAO();
-		List<Match> searchMatch=new ArrayList<>();
-
-//		次の日に販売開始日が登録されているか
+		PrintWriter out=response.getWriter();
 		try {
+	//		次の日の販売開始情報がある時チケットを生成
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+			SimpleDateFormat compareDate = new SimpleDateFormat("yyyy-MM-dd");
+	        Date date = new Date();
+
+	        // Date型の日時をCalendar型に変換
+	        Calendar calendar = Calendar.getInstance();
+	        calendar.setTime(date);
+
+	        // 日時を加算する
+	        calendar.add(Calendar.DATE, 1);
+
+	        // Calendar型の日時をDate型に戻す
+	        Date d1 = calendar.getTime();
+
+			MatchDAO matchDAO = new MatchDAO();
+			List<Match> searchMatch=new ArrayList<>();
+
+	//		次の日に販売開始日が登録されているか
+
 			searchMatch = matchDAO.searchSaleStartDate(java.sql.Date.valueOf(compareDate.format(d1)));
 
 	//		登録されているときだけチケット生成
@@ -80,7 +82,8 @@ public class CreateTickets extends HttpServlet{
 				}
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+
+			out.print(e.getMessage());
 		}
 	}
 }
