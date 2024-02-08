@@ -28,6 +28,7 @@ public class CreateTickets extends HttpServlet{
 		doGet(request, response);
 	}
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		PrintWriter out=response.getWriter();
 //		次の日の販売開始情報がある時チケットを生成
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
 		SimpleDateFormat compareDate = new SimpleDateFormat("yyyy-MM-dd");
@@ -80,7 +81,7 @@ public class CreateTickets extends HttpServlet{
 				}
 			}
 		} catch (Exception e) {
-			PrintWriter out=response.getWriter();
+
 			out.print(e.getMessage());
 		}
 	}
