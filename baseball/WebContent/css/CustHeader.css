@@ -5,7 +5,12 @@
 	.nav__item{
 		  font-family: "游教科書体","YuKyokasho"; font-weight: bold;
 		  margin:15px ;
+
+		   /* カーソルを離した際のアニメーションの速度調整 */
+  			transition:.2s all;
 	}
+
+
 
 	body{
 		  position: fixed;
@@ -47,6 +52,9 @@
 	    text-decoration: none;
 	    color: #4b4b4b;
 	}
+	a:hover{
+		text-color: #CECECE;
+	}
 
 	.nav-menu {
 	    /* ulタグの文頭の「・」を削除 */
@@ -63,6 +71,15 @@
 	    padding-right: 30px;
 
 	}
+
+
+	.nav-menu:hover .nav__item:hover{
+	  transition: .5s;
+	  /* hover時の速度調整 */
+	  opacity:1;
+
+	}
+
 
 	* {
 	    box-sizing: border-box;
@@ -104,6 +121,21 @@
 	    padding-top: 0;
 	    padding-bottom: 0;
 	}
+
+@media screen and (min-width: 1000px){
+
+	.nav__item > a:hover{
+		font-size: 15px;
+		color:#B7B7B7;
+		margin: 3px;
+	}
+
+	.logo-image:hover{
+		height: 25px;
+		margin-left:13px;
+	}
+
+}
 
 
 
