@@ -29,26 +29,27 @@ public class CreateTickets extends HttpServlet{
 	}
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out=response.getWriter();
-//		次の日の販売開始情報がある時チケットを生成
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
-		SimpleDateFormat compareDate = new SimpleDateFormat("yyyy-MM-dd");
-        Date date = new Date();
-
-        // Date型の日時をCalendar型に変換
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(date);
-
-        // 日時を加算する
-        calendar.add(Calendar.DATE, 1);
-
-        // Calendar型の日時をDate型に戻す
-        Date d1 = calendar.getTime();
-
-		MatchDAO matchDAO = new MatchDAO();
-		List<Match> searchMatch=new ArrayList<>();
-
-//		次の日に販売開始日が登録されているか
 		try {
+	//		次の日の販売開始情報がある時チケットを生成
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+			SimpleDateFormat compareDate = new SimpleDateFormat("yyyy-MM-dd");
+	        Date date = new Date();
+
+	        // Date型の日時をCalendar型に変換
+	        Calendar calendar = Calendar.getInstance();
+	        calendar.setTime(date);
+
+	        // 日時を加算する
+	        calendar.add(Calendar.DATE, 1);
+
+	        // Calendar型の日時をDate型に戻す
+	        Date d1 = calendar.getTime();
+
+			MatchDAO matchDAO = new MatchDAO();
+			List<Match> searchMatch=new ArrayList<>();
+
+	//		次の日に販売開始日が登録されているか
+
 			searchMatch = matchDAO.searchSaleStartDate(java.sql.Date.valueOf(compareDate.format(d1)));
 
 	//		登録されているときだけチケット生成
