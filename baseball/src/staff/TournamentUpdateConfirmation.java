@@ -46,7 +46,7 @@ public class TournamentUpdateConfirmation extends HttpServlet {
 
 			try {
 				int searchSameTour = tournamentDAO.getTournamentId(Integer.parseInt(year),season);
-				if(searchSameTour==0){
+				if(searchSameTour>0){
 	//		    	すでに同じ年と季節の大会情報がある
 			    	request.setAttribute("sameTour","1");
 			    	request.getRequestDispatcher("/staff/tournamentUpdateInput.jsp").forward(request, response);

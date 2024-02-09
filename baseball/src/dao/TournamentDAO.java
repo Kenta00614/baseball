@@ -134,7 +134,7 @@ public class TournamentDAO extends DAO{
 		int num = 0;
 
 		try{
-			if(searchSameTour > 0){
+			if(searchSameTour == 0){
 				Connection con=getConnection();
 				PreparedStatement st=con.prepareStatement("UPDATE TOURNAMENT SET YEAR = ?,ORDINAL_NUM = ?,NAME = ?,SEASON = ? WHERE TOURNAMENT_ID = ?");
 				st.setInt(1, tournament.getYear());
@@ -145,11 +145,10 @@ public class TournamentDAO extends DAO{
 
 				num =st.executeUpdate();
 			}
-			return num;
 		}catch(Exception e){
-			num = 0;
-			return num;
+			num = -1;
 		}
+		return num;
 
 	}
 
@@ -176,7 +175,7 @@ public class TournamentDAO extends DAO{
 			return tournamentId;
 
 		}catch(Exception e){
-			int num = 0;
+			int num = -1;
 			return num;
 		}
 
