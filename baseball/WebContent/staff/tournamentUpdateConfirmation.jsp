@@ -102,6 +102,7 @@
         <input type="hidden" name="ordinalNum" value="${requestScope.ordinalNum}">
         <input type="hidden" name="season" value="${requestScope.season}">
         <input type="hidden" name="name" value="${requestScope.name}">
+        <input type="hidden" name="tournamentId" value="${tournamentId}">
         <button type="submit">変更</button>
     </form>
 </body>

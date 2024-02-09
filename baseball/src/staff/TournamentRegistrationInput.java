@@ -61,7 +61,11 @@ public class TournamentRegistrationInput extends HttpServlet {
 	            if (result > 0) {
 	                // 登録成功
 	                response.sendRedirect("/baseball/staff/tournamentRegistrationCompletion.jsp"); // 成功画面へリダイレクト
-	            } else {
+	            }else if(result == 0){
+//	            	すでに同じ年と季節の大会情報がある
+	            	request.setAttribute("sameTour","1");
+	            	request.getRequestDispatcher("/staff/tournamentRegistrationInput.jsp").forward(request, response);
+	            }else {
 	                // 登録失敗
 	                response.sendRedirect("/baseball/staff/error.jsp"); // エラー画面へリダイレクト
 	            }

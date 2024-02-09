@@ -93,6 +93,8 @@
 	                </select>
 	            </div>
 	            <button type="submit">登録</button>
+	            <c:if test="${sameTour == 1 }">開催年と季節が同じ大会がすでに登録されています</c:if>
+	            <c:if test="${sameTour == 2 }">過去の開催年は登録できません</c:if>
 	        </form>
 	    </div> <!-- form-container を追加 -->
 	</div>

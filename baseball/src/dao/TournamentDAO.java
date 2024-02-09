@@ -105,21 +105,27 @@ public class TournamentDAO extends DAO{
 
 	//大会情報を登録する（大会IDはセットしない）
 	public int insertTournament(Tournament tournament)throws Exception{
+		int searchSameTour = getTournamentId(tournament.getYear(),tournament.getSeason());
+		int num = 0;
+		try{
+			if(searchSameTour > 0){
+				Connection con=getConnection();
+				PreparedStatement st=con.prepareStatement("INSERT INTO TOURNAMENT VALUES(NULL,?,?,?,?)");
+				st.setInt(1, tournament.getYear());
+				st.setInt(2, tournament.getOrdinalNum());
+				st.setString(3, tournament.getName());
+				st.setString(4, tournament.getSeason());
 
-		Connection con=getConnection();
-		PreparedStatement st=con.prepareStatement("INSERT INTO TOURNAMENT VALUES(NULL,?,?,?,?)");
-		st.setInt(1, tournament.getYear());
-		st.setInt(2, tournament.getOrdinalNum());
-		st.setString(3, tournament.getName());
-		st.setString(4, tournament.getSeason());
+				num=st.executeUpdate();
 
-		int num=st.executeUpdate();
+				st.close();
+				con.close();
 
-		st.close();
-		con.close();
-
+			}
+		}catch(Exception e){
+			num = -1;
+		}
 		return num;
-
 	}
 
 	//大会情報を変更する

@@ -83,7 +83,7 @@
             <%-- セッションから大会情報を取得 --%>
             <c:set var="tournament" value="${sessionScope.tournament}" />
 
-            <input type="hidden" name="tournamentId" value="${tournament.tournamentId}" />
+            <input type="hidden" name="tournamentId" value="${tournament.tournamentId}">
 
             <div class="control">
                 <label for="year">開催年</label>
@@ -109,6 +109,8 @@
             </div>
 
             <button type="submit" class="btn btn-primary">変更</button>
+           	<c:if test="${sameTour == 1 }">開催年と季節が同じ大会がすでに登録されています</c:if>
+	        <c:if test="${sameTour == 2 }">過去の開催年に変更できません</c:if>
         </form>
     </div>
 </body>
