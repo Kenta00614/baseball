@@ -22,7 +22,7 @@
 	    padding: 10px 15px;
 	    border: none;
 	    cursor: pointer;
-	    border-radius: 20px;
+	    border-radius: 30px;
 	}
 	.return-btn:hover{
 		background-color:#555;
@@ -193,8 +193,7 @@
 	    margin-left: 7px; /* 左から25pxの位置に配置 */
 	    background-color: #808080;
 	    color: white;
-	    padding: 10px 15px;
-	    font-size: 25px;
+	    font-size: 30px;
 	    border: none;
 	    border-radius: 35px;
 	    margin-bottom: 50px;
@@ -324,22 +323,9 @@
 
     }
 
-    .selected-ticket::before {
-    position: absolute;
-    right: -20px;
-    bottom: 3px;
-    z-index: -1;
-    transform: rotate(5deg);
-    width: 100%;
-    height: 50%;
-    background-color: #d0d0d0;
-    content: "";
-    filter: blur(4px);
-
-	}
 
 	.selected-ticket p{
-		line-height: 40px;
+		line-height: 55px;
 	}
 
 
@@ -360,10 +346,10 @@
 
 
 	.ground{	/* グラウンド側の文字 */
-		width: 90%;
+		width: 700px;
 		margin-top: 5px;
 		margin: 15px auto; /* 左右のマージンをautoにして中央寄せに修正 */
-		margin-bottom: 60px;;
+		margin-bottom: 60px;
 
 		padding:3px ;/*内側余白*/
 

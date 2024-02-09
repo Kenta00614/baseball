@@ -35,6 +35,7 @@
 		</tr>
 		</transition-group>
 		</table>
+		<br>
 		<p class="ground">グラウンド側</p>
 		<%-- 選択したら出てくる情報 --%>
           <transition-group>
