@@ -27,9 +27,11 @@
     　　<form action="PasswordChange" method="post">
 	        <div class="login-input">
 	            <label for="password">パスワード</label>
-	            <input name="newPassword" type="password" id="password" placeholder="🔒Password" class="login-pass" pattern="[!-~]{8,}" required>
+	            <input name="newPassword" type="password" id="password" placeholder="🔒Password" class="login-input-element" pattern="[!-~]{8,}" required>
+	            </div>
+	            <div class="login-input">
 	            <label for="password"  >パスワード確認</label>
-	            <input name="newPassword" type="password" id="confirm_password" placeholder="🔒Password" class="login-pass" pattern="[!-~]{8,}" required>
+	            <input name="newPassword" type="password" id="confirm_password" placeholder="🔒Password" class="login-input-element" pattern="[!-~]{8,}" required>
 	            <button type="submit" class="form-change-btn">変更</button>
 	        </div>
 	    	<input type="hidden" name="uuid" value="${uuid}">
