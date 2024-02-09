@@ -87,12 +87,12 @@
 
             <div class="control">
                 <label for="year">開催年</label>
-                <input type="text" class="form-control" id="year" name="year" value="${tournament.year}" required />
+                <input type="number" class="form-control" id="year" name="year" value="${tournament.year}" required />
             </div>
 
             <div class="control">
                 <label for="ordinalNum">第何回</label>
-                <input type="text" class="form-control" id="ordinalNum" name="ordinalNum" value="${tournament.ordinalNum}" required />
+                <input type="number" class="form-control" id="ordinalNum" name="ordinalNum" value="${tournament.ordinalNum}" required />
             </div>
 
             <div class="control">

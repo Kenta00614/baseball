@@ -75,11 +75,11 @@
 	        <form action="TournamentRegistrationInputConfirm" method="post">
 	            <div class="control">
 	                <label for="year">開催年</label>
-	                <input type="text" id="year" name="year" required>
+	                <input type="number id="year" name="year" required>
 	            </div>
 	            <div class="control">
 	                <label for="ordinalNum">第何回</label>
-	                <input type="text" id="ordinalNum" name="ordinalNum" required>
+	                <input type="number" id="ordinalNum" name="ordinalNum" required>
 	            </div>
 	            <div class="control">
 	                <label for="name">大会名</label>
