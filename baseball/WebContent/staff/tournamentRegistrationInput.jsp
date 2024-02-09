@@ -73,14 +73,16 @@
 	    <h2>大会情報登録　入力画面</h2>
 	    <div class="form-container"> <!-- form-container を追加 -->
 	        <form action="TournamentRegistrationInputConfirm" method="post">
-	            <div class="control">
-	                <label for="year">開催年</label>
-	                <input type="number id="year" name="year" required>
-	            </div>
-	            <div class="control">
-	                <label for="ordinalNum">第何回</label>
-	                <input type="number" id="ordinalNum" name="ordinalNum" required>
-	            </div>
+				<div class="control">
+				    <label for="year">開催年</label>
+				    <input type="number" id="year" name="year" required style="width: 66%; padding: 7.7px; border: 1px solid #ccc; border-radius: 4px;">
+				</div>
+				<div class="control">
+				    <label for="ordinalNum">第何回</label>
+				    <input type="number" id="ordinalNum" name="ordinalNum" required style="width: 66%; padding: 7.7px; border: 1px solid #ccc; border-radius: 4px;">
+				</div>
+
+
 	            <div class="control">
 	                <label for="name">大会名</label>
 	                <input type="text" id="name" name="name" required>
