@@ -130,23 +130,24 @@ public class TournamentDAO extends DAO{
 
 	//大会情報を変更する
 	public int changeTournament(Tournament tournament)throws Exception{
-
-		Connection con=getConnection();
-		PreparedStatement st=con.prepareStatement("UPDATE TOURNAMENT SET YEAR = ?,ORDINAL_NUM = ?,NAME = ?,SEASON = ? WHERE TOURNAMENT_ID = ?");
+		int searchSameTour = getTournamentId(tournament.getYear(),tournament.getSeason());
+		int num = 0;
 
 		try{
-		st.setInt(1, tournament.getYear());
-		st.setInt(2, tournament.getOrdinalNum());
-		st.setString(3, tournament.getName());
-		st.setString(4, tournament.getSeason());
-		st.setInt(5, tournament.getTournamentId());
+			if(searchSameTour > 0){
+				Connection con=getConnection();
+				PreparedStatement st=con.prepareStatement("UPDATE TOURNAMENT SET YEAR = ?,ORDINAL_NUM = ?,NAME = ?,SEASON = ? WHERE TOURNAMENT_ID = ?");
+				st.setInt(1, tournament.getYear());
+				st.setInt(2, tournament.getOrdinalNum());
+				st.setString(3, tournament.getName());
+				st.setString(4, tournament.getSeason());
+				st.setInt(5, tournament.getTournamentId());
 
-		int num =st.executeUpdate();
-
-		return num;
-
+				num =st.executeUpdate();
+			}
+			return num;
 		}catch(Exception e){
-			int num = 0;
+			num = 0;
 			return num;
 		}
 
