@@ -5,24 +5,7 @@
 <html>
 <head>
 	<link rel="stylesheet" type="text/css"  href ="/baseball/css/Customer.css">
-	<style>
-	/*--- 張り紙スタイル ---*/
-	.poster{
-	 	border:5px double #a4c3b2;
-	 	background-color:#F3F7F5;
-	 	padding:16px;
-	 	margin:20px;
-	 	margin-top:100px;
-	}
 
-	.error{
-		border:5px double #fb8883;
-	 	background-color:#fee7e6;
-	 	padding:16px;
-	 	margin:20px;
-	 	margin-top:100px;
-	}
-	</style>
 </head>
 <body>
 	<c:choose>
