@@ -5,6 +5,13 @@
 <%@include file="header.jsp"%>
 <html>
 <head>
+<style>
+@media screen and (max-width: 1000px){
+	table th{
+		width: 20%;
+	}
+}
+</style>
 	<link rel="stylesheet" type="text/css"  href ="/baseball/css/Customer.css">
 </head>
 <body>
@@ -15,6 +22,22 @@
     <h1 class="apply-title">第${tour.ordinalNum }回${tour.name }</h1>
 
 	<div >
+	<div class="soldout-ticket">
+		<%-- 残数があれば表示 --%>
+		<c:choose>
+			<c:when test="${remaining == 0}">
+				<b class="tiket-soldout">※完売しています。</b>
+			</c:when>
+			<c:when test="${remaining > 0}">
+				<b class="tiket-soldout">※購入枚数分用意できません。 　残数：${remaining }枚</b>
+	      	</c:when>
+		</c:choose>
+
+		<c:if test="${countTic >= 0}">
+			<p class="tiket-soldout">チケットを購入できるのはお一人様、開催日ごとに6枚までです。<br><c:if test="${countTic > 0}">あと${countTic }枚までのチケットが購入できます。</c:if></p>
+		</c:if>
+	</div>
+
 	<table class="ticket-summary">
 	<%-- 日付 --%>
 		<tr><th>公演名</th><td><b>第${tour.ordinalNum }回${tour.name }</b></td></tr>
@@ -41,19 +64,7 @@
 		<h2 class="content-selection">申し込み内容選択</h2>
 	<%-- 座席選択 --%>
 	    <form action="TicketSelectAll" method="post">
-	<%-- 残数があれば表示 --%>
-		<c:choose>
-			<c:when test="${remaining == 0}">
-				<b class="tiket-soldout">※完売しています。</b>
-			</c:when>
-			<c:when test="${remaining > 0}">
-	      		<p class="tiket-rest">残数：${remaining }枚</p>
-	      	</c:when>
-		</c:choose>
 
-		<c:if test="${countTic >= 0}">
-			<p>チケットを購入できるのはお一人様、開催日ごとに6枚までです。<c:if test="${countTic > 0}">あと${countTic }枚までのチケットが購入できます。</c:if></p>
-		</c:if>
 
 
 
