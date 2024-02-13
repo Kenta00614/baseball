@@ -75,11 +75,11 @@
         </div>
         <div class="control">
             <label for="password">パスワード</label>
-            <input id="password" type="password" name="password" pattern="[!-~]{8,}" required>
+            <input id="password" type="password" name="password" pattern="[!-~]{8,}" title="8文字以上で入力してください。" required>
         </div>
         <div class="control">
             <label for="password2">パスワード確認</label>
-            <input id="password2" type="password" name="password2" pattern="[!-~]{8,}" required>
+            <input id="password2" type="password" name="password2" pattern="[!-~]{8,}" title="8文字以上で入力してください。" required>
             <p class="error-message" id="passwordError"></p>
         </div>
         <p><input type="submit" value="Reset"></p>
