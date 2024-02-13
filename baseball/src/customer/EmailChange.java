@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import bean.Spectator;
 import dao.ProvisionalDAO;
+import dao.SpectatorDAO;
 import utils.EmailUtility;
 
 @WebServlet("/customer/EmailChange")
@@ -44,6 +45,15 @@ public class EmailChange extends HttpServlet {
 
         try {
             ProvisionalDAO provisionalDAO = new ProvisionalDAO();
+            SpectatorDAO spectatorDAO = new SpectatorDAO();
+
+//          同じメールがすでに登録されている時変更画面にもどす
+            String searchMail = spectatorDAO.searchSameMail(newMail);
+            if(searchMail.equals(newMail)){
+            	request.setAttribute("sameFlg", "1");
+            	request.getRequestDispatcher("/customer/emailChangeForm.jsp").forward(request, response);
+                return;
+            }
 
             // UUIDを生成し、DBに一時データを登録
             UUID uuid = provisionalDAO.insertIdAndMail(spectatorId, newMail);
