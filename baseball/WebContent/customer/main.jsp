@@ -11,12 +11,28 @@
     <link rel="stylesheet" type="text/css"  href="/baseball/css/Customer.css">
 <style>
 		/* PC用CSS記述 */
+
+	 .main_display {
+    	margin-top:-10px;
+	    background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed; /* 背景画像を固定 */
+        background-color: rgba(255,255,255,0.3);
+  		background-blend-mode: lighten;
+	    background-image: url("${pageContext.request.contextPath}/customer/image/main_background.JPG") ;
+	    z-index:1;
+	    width: 100%;
+	}
+
 /*テーブル設定*/
 
 	table{
 		border: initial;
 	    width: initial;
 	    margin: initial;
+	    z-index:2;
+	    width: 95%;
 	}
 
 	table th {
@@ -30,7 +46,7 @@
 	}
 	td {
 	    width: 180px;/*枠の横幅*/
-	    padding: 20px;
+	    padding: 20px ;
 	}
 
 	tr:last-child * {
@@ -39,12 +55,37 @@
 
     .not-match-main{
     	width: 1000px;
-    	padding-left: 0;
-    	padding-right: 30px;
+    	padding-left: 15px;
+    	padding-right: 0px;
     }
+    body{
+		 background-color: initial;
+
+    }
+
+	h1{
+		padding: 10px;
+		background-color: white;
+		border-radius: 20px;
+		opacity: 0.9
+	}
+
 
 @media screen and (max-width: 1050px){
 	/* スマートフォン用CSS記述 */
+
+	.main_display {
+    	margin-top:-10px;
+	    background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed; /* 背景画像を固定 */
+        background-color: rgba(255,255,255,0.5);
+  		background-blend-mode: lighten;
+	    background-image: url("${pageContext.request.contextPath}/customer/image/main_background2.jpg") ;
+	    z-index:1;
+	    width: 100%;
+	}
 
 	/*テーブル設定*/
 	td {
@@ -59,9 +100,11 @@
 	    padding: 15px;
 	}
 
-        .num_match{/* 〇試合目 */
-			width: 22%;
-        }
+    .num_match{/* 〇試合目 */
+		width: 22%;
+    }
+
+
 
 	/*header*/
     .nav__item{
@@ -93,6 +136,7 @@
     	padding-left: 30px;
     	padding-bottom: 20px;
     }
+
 }
 
 </style>
