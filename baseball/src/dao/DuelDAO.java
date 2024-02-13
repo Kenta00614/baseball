@@ -28,6 +28,7 @@ public class DuelDAO extends DAO{
 			duel.setRound(rs.getString("round"));
 			duel.setRoundStr();
 			duel.setStatusStr();
+			duel.setDuelId(duel_id);
 		}
 
 		return duel;
