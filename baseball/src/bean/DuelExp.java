@@ -14,8 +14,15 @@ public class DuelExp extends Duel {
 	private String round;
 	private String statusStr;
 	private String roundStr;
+	private int duelId;
 
 
+	public int getDuelId() {
+		return duelId;
+	}
+	public void setDuelId(int duelId) {
+		this.duelId = duelId;
+	}
 	public String getStatusStr() {
 		return statusStr;
 	}
