@@ -7,7 +7,7 @@
 
 	body {
 	    background-color: #f2fffc;
-	    width: 960px;
+	    width: 100%;
 	    margin: 15px auto; /* 左右のマージンをautoにして中央寄せに修正 */
 	    margin-top: 60px;
 	    padding: 0;
@@ -310,19 +310,20 @@
 
 	.schedule {	/* 大会情報の日付ごとの全体枠 */
 		margin: 2em auto; /* ボックスの余白 */
-		background-color: rgba(255,255,255,0.5); /* ボックス背景色 */
+		background-color: rgba(255,255,255,0.8); /* ボックス背景色 */
 		padding: 20px auto;
 		padding-top: 60px;
 		padding-left: 30px;
 		position:relative; /*配置(ここを基準に)*/
 		box-shadow: 0px 2px 15px rgba(0,0,0,0.3);/*ボックス影*/
-		width: 82%;
+		width: 65%;
 		text-align: center;	/* 中央寄せ */
 		z-index: -1;
 	}
 
 	.date-center {	/* 大会情報の日付だけの枠 */
-	    background-color: rgba(120,120,125,0.5); /* タイトル背景色 */
+	    /* タイトル背景色 */
+	    background-color:rgba(32,81,36,0.65);
 		font-size: 1em;/* タイトル文字の大きさ */
 		color: #fff; /* タイトル文字色 */
 		padding:15px;/*タイトル余白*/
@@ -976,9 +977,10 @@
 	}
 
 	.schedule{
-		width: 80%;
+		width: 85%;
 		margin: 20px auto;
 		padding-left: 3px;
+		background-color: rgba(255,255,255,0.8); /* ボックス背景色 */
 	}
 
 	.date-center {/*試合日*/
