@@ -100,7 +100,7 @@
         <c:when test="${tournament == null }">
             <!-- 大会情報がないとき -->
             <div class="header">
-                <h2>大会情報は登録されていません</h2>
+                <h2>大会情報が登録されていません</h2>
             </div>
             <div class="form-container">
                 <form action="TournamentRegistrationInputDisplay" method="get">
