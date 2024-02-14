@@ -23,6 +23,7 @@
 	    background-image: url("${pageContext.request.contextPath}/customer/image/main_background.JPG") ;
 	    z-index:1;
 	    width: 100%;
+	    height:100%;
 	}
 
 /*テーブル設定*/
@@ -57,7 +58,9 @@
     	width: 1000px;
     	padding-left: 15px;
     	padding-right: 0px;
+
     }
+
     body{
 		 background-color: initial;
 
@@ -145,7 +148,7 @@
 <div class="main_display">
     <c:choose>
         <%-- 試合情報がないとき --%>
-        <c:when test="${fn:length(matchList) == 0 }">
+        <c:when test="${fn:length(matchList) == 0 }" >
             <h2 class="poster2">試合情報が登録されていません</h2>
         </c:when>
         <%-- 試合情報があるとき --%>
