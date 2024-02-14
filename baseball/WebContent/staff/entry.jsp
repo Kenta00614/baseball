@@ -103,7 +103,7 @@ if(request.getAttribute("seatType") != null){
    <form action="EntryExit" method="get"><button type="submit">戻る</button></form>
   </div>
   <% if(request.getAttribute("massage") != null){ %><div id="${classStr}">${massage}</div><%}%>
-  <select name="seatType" style="
+  <select form="form" name="seatType" style="
     padding: 12px;
     font-size: 16px;
     border-radius: 5px;
@@ -122,7 +122,7 @@ if(request.getAttribute("seatType") != null){
 <% } %>
 
 </select>
-  <form id="form" action="EntryConduct">
+  <form id="form" name="form" action="EntryConduct">
 
   <canvas id="canvas" hidden></canvas>
   <div id="output"></div>
