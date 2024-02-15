@@ -56,6 +56,10 @@ public class ExitConduct extends HttpServlet {
 	    	}else{//当日のチケットだった場合
 	    		//チケットのステータスを退場済みにする
 	    		TicketsExp tickets = tDao.statusLeave(ticketId,con);
+//	    		デプロイ用テスト
+	    		int testStr = tickets.getSpectatorId();
+	    		request.setAttribute("testStr", testStr);
+
 	    		//途中退場チケットの購入者にポイントの付与をする
 	    		int price = 0;
 	    		if (tickets.isChild()){

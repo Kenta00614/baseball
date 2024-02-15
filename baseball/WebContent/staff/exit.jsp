@@ -88,6 +88,8 @@
     <input type="hidden" id="ticketId" name="ticketId" value="">
     <input type="hidden" id="sound" name="sound" value="${sound}">
   </form>
+  <%String a =(String)request.getAttribute("testStr");
+  if(a!=null){ %><%=a %><%} %>
   <script src="../js/jsQR.js"></script>
   <script src="../js/ticketEntry.js"></script>
 </body>
