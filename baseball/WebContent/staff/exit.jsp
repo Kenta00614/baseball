@@ -86,7 +86,6 @@
   <% if(request.getAttribute("massage") != null){ %><div id="${classStr}">${massage}</div><%}%>
   <canvas id="canvas" hidden></canvas>
   <form id="form" action="ExitConduct" >
-  <p>${testId } ${test } ${test.status } ${test.ticketsId } ${test.purchaseId } ${testupdate }</p>
     <input type="hidden" id="ticketId" name="ticketId" value="">
     <input type="hidden" id="sound" name="sound" value="${sound}">
   </form>
