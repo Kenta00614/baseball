@@ -13,8 +13,9 @@
 		/* PC用CSS記述 */
 
 	 .main_display {
-    	margin-top:-10px;
-	    background-size: cover;
+    	margin-top:-20px;
+    	margin-bottom:-20px;
+
         background-position: center;
         background-repeat: no-repeat;
         background-attachment: fixed; /* 背景画像を固定 */
@@ -24,6 +25,7 @@
 	    z-index:1;
 	    width: 100%;
 	    height:100%;
+	    background-size: cover;
 	}
 
 /*テーブル設定*/
@@ -73,12 +75,17 @@
 		opacity: 0.9
 	}
 
+	.not-match-element{
+		padding-bottom:335px;
+		padding-top:20px;
+	}
+
 
 @media screen and (max-width: 1050px){
 	/* スマートフォン用CSS記述 */
 
 	.main_display {
-    	margin-top:-10px;
+    	margin-top:-15px;
 	    background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
@@ -88,6 +95,10 @@
 	    background-image: url("${pageContext.request.contextPath}/customer/image/main_background2.jpg") ;
 	    z-index:1;
 	    width: 100%;
+	}
+	.not-match-element{
+		padding-bottom:550px;
+		padding-top:50px;
 	}
 
 	/*テーブル設定*/
@@ -149,7 +160,9 @@
     <c:choose>
         <%-- 試合情報がないとき --%>
         <c:when test="${fn:length(matchList) == 0 }" >
+        <div  class="not-match-element" >
             <h2 class="poster2">試合情報が登録されていません</h2>
+        </div>
         </c:when>
         <%-- 試合情報があるとき --%>
         <c:when test="${fn:length(matchList) > 0 }">
