@@ -59,6 +59,7 @@ public class ExitConduct extends HttpServlet {
 //	    		デプロイ用テスト
 	    		int testStr = tickets.getSpectatorId();
 	    		request.setAttribute("testStr", testStr);
+	    		request.setAttribute("test", ticketId);
 
 	    		//途中退場チケットの購入者にポイントの付与をする
 	    		int price = 0;
