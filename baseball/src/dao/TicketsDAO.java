@@ -477,7 +477,7 @@ public class TicketsDAO extends DAO{
 		}
 		String newTicketsId = ticketsId.substring(0,8) + resaleNoStr + ticketsId.substring(10,18);
 
-		PreparedStatement st3=con.prepareStatement("insert into tickets values (?,null,?,?,2,FALSE,FALSE,null)");
+		PreparedStatement st3=con.prepareStatement("insert into tickets values (?,0,?,?,2,FALSE,FALSE,null)");
 		st3.setString(1, newTicketsId);
 		st3.setInt(2, ticket.getMatchId());
 		st3.setString(3, ticket.getSeatId());

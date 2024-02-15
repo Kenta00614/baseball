@@ -39,16 +39,17 @@ public class ExitConduct extends HttpServlet {
     	TicketsDAO tDao = new TicketsDAO();
     	SpectatorDAO sDao = new SpectatorDAO();
     	PointDAO pDao = new PointDAO();
-    	long miliseconds = System.currentTimeMillis();
+    	//long miliseconds = System.currentTimeMillis();
     	Date date = Date.valueOf("1900-01-01");
-    	date.setTime(miliseconds);
+    	java.util.Date d = new java.util.Date();
+    	//date.setTime(miliseconds);
+    	date.setTime(d.getTime());
     	try {
     		con = dao.getConnection();
     		con.setAutoCommit(false);
     		//照合
     		ticket = tDao.checkTickets(ticketId,date,con);
 			//System.out.println("status:"+status);
-
 	    	//処理分岐
 	    	if(Objects.isNull(ticket.getStatus()) || !ticket.getStatus().equals("4")){//当日のチケット以外の場合
 				//退場できないメッセージを送る
@@ -57,7 +58,6 @@ public class ExitConduct extends HttpServlet {
 	    	}else{//当日のチケットだった場合
 	    		//チケットのステータスを退場済みにする
 	    		TicketsExp tickets = tDao.statusLeave(ticketId,con);
-
 	    		//途中退場チケットの購入者にポイントの付与をする
 	    		int price = 0;
 	    		if (tickets.isChild()){
