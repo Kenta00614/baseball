@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
   <style>
@@ -85,11 +86,10 @@
   <% if(request.getAttribute("massage") != null){ %><div id="${classStr}">${massage}</div><%}%>
   <canvas id="canvas" hidden></canvas>
   <form id="form" action="ExitConduct" >
+  <p>${testStr }</p>
     <input type="hidden" id="ticketId" name="ticketId" value="">
     <input type="hidden" id="sound" name="sound" value="${sound}">
   </form>
-  <%String a =(String)request.getAttribute("testStr");
-  if(a!=null){ %><%=a %><%} %>
   <script src="../js/jsQR.js"></script>
   <script src="../js/ticketEntry.js"></script>
 </body>
