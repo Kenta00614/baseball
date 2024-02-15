@@ -48,6 +48,7 @@ public class ExitConduct extends HttpServlet {
     		//照合
     		ticket = tDao.checkTickets(ticketId,date,con);
 			//System.out.println("status:"+status);
+
 	    	//処理分岐
 	    	if(Objects.isNull(ticket.getStatus()) || !ticket.getStatus().equals("4")){//当日のチケット以外の場合
 				//退場できないメッセージを送る
@@ -56,11 +57,6 @@ public class ExitConduct extends HttpServlet {
 	    	}else{//当日のチケットだった場合
 	    		//チケットのステータスを退場済みにする
 	    		TicketsExp tickets = tDao.statusLeave(ticketId,con);
-//	    		デプロイ用テスト
-	    		request.setAttribute("test", ticket);
-	    		request.setAttribute("testupdate", tickets);
-	    		request.setAttribute("testId", ticketId);
-
 
 	    		//途中退場チケットの購入者にポイントの付与をする
 	    		int price = 0;
