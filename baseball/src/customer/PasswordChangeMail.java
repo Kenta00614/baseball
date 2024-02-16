@@ -30,7 +30,7 @@ public class PasswordChangeMail extends HttpServlet {
 	            UUID uuid = provisionalDAO.insertIdAndUuid(mail);
 
 	            if (uuid != null) {
-	                String verificationLink = "https://" + request.getServerName() + ":" + request.getServerPort() +
+	                String verificationLink = "http://" + request.getServerName() + ":" + request.getServerPort() +
 	                        contextPath + "/customer/PasswordChangeDisplay?uuid=" + uuid.toString();
 
 	                String subject = "パスワードリセットリンク";

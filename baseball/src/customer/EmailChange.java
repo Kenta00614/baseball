@@ -59,7 +59,7 @@ public class EmailChange extends HttpServlet {
             UUID uuid = provisionalDAO.insertIdAndMail(spectatorId, newMail);
 
             // メール認証用のリンクを生成
-            String verificationLink = "https://" + request.getServerName() + ":" + request.getServerPort() +
+            String verificationLink = "http://" + request.getServerName() + ":" + request.getServerPort() +
                     contextPath + "/customer/EmailChangeConfirm?uuid=" + uuid.toString();
 
             // メール内容

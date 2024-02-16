@@ -40,7 +40,7 @@ public class ProvisionalSignup extends HttpServlet {
             // 仮登録が成功した場合にはメールを送信
             if (uuid != null) {
                 // メール認証用のリンクを生成
-            	String verificationLink = "https://" + request.getServerName() + ":" + request.getServerPort() +
+            	String verificationLink = "http://" + request.getServerName() + ":" + request.getServerPort() +
                         contextPath + "/customer/Signup?uuid=" + uuid.toString();
 
                 // メール内容
