@@ -92,7 +92,6 @@ public class TicketsDAO extends DAO{
 
 		}
 
-	//中山先生のチケット情報の追加
 	public int insert(List<Tickets> list){
 		//System.out.println(list.size());
 		if (list == null || list.size() == 0) return 0;
