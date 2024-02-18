@@ -194,7 +194,7 @@ public class TicketsDAO extends DAO{
 	public int changePostpone(Date date)throws Exception{
 
 		Connection con=getConnection();
-		PreparedStatement st=con.prepareStatement("UPDATE tickets SET status = '6' WHERE match_id IN (SELECT match_id FROM match WHERE match.event_date = ?)");
+		PreparedStatement st=con.prepareStatement("update tickets set status = '6' where match.match_id IN (select match_id from match where match.event_date = ?)");
 		st.setDate(1, date);
 
 		int num=st.executeUpdate();
