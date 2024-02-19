@@ -2,6 +2,7 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 import bean.Point;
 
@@ -30,31 +31,44 @@ public class PointDAO extends DAO{
 
 	}
 //	たまったポイントを記帳する
+	@SuppressWarnings("unused")
 	public int insertSavePoint(Point point,Connection con)throws Exception{
 		boolean flg = false;
+		int num=0;
 
-		SpectatorDAO s=new SpectatorDAO();
-		int check = s.updatePoint(point.getSpectatorId(),point.getFluctuation(),con);
+		PreparedStatement st = con.prepareStatement("SELECT point.fluctuation from point left join tickets on tickets.purchase_id = point.purchase_id where tickets.tickets_id=?");
+		st.setString(1, point.getTicketsId());
 
-		if(check < 0){
-			throw new Exception();
+		ResultSet rs=st.executeQuery();
+		Point t=new Point();
+		while(rs.next()){
+			t.setFluctuation(rs.getInt("point.fluctuation"));
 		}
+		if(t.getFluctuation()==0 ){
 
-		if(con == null){
-			con=getConnection();
-			flg = true;
-		}
+			SpectatorDAO s=new SpectatorDAO();
+			int check = s.updatePoint(point.getSpectatorId(),point.getFluctuation(),con);
 
-		PreparedStatement st=con.prepareStatement("insert into point values(null,?,?,null,?)");
+			if(check < 0){
+				throw new Exception();
+			}
 
-		st.setInt(1,point.getSpectatorId());
-		st.setInt(2, point.getFluctuation());
-		st.setString(3, point.getTicketsId());
+			if(con == null){
+				con=getConnection();
+				flg = true;
+			}
 
-		int num=st.executeUpdate();
-		st.close();
-		if(flg){
-			con.close();
+			st=con.prepareStatement("insert into point values(null,?,?,null,?)");
+
+			st.setInt(1,point.getSpectatorId());
+			st.setInt(2, point.getFluctuation());
+			st.setString(3, point.getTicketsId());
+
+			num=st.executeUpdate();
+			st.close();
+			if(flg){
+				con.close();
+			}
 		}
 		return num;
 
