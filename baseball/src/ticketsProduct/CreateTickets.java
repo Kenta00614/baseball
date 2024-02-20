@@ -22,7 +22,7 @@ import dao.SeatDAO;
 import dao.TicketsDAO;
 
 
-@WebServlet("/ticketsProduct/create")
+@WebServlet("/create")
 public class CreateTickets extends HttpServlet{
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
