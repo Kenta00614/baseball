@@ -656,7 +656,6 @@ public class TicketsDAO extends DAO{
 			}else if(rs.getString("seat.type").equals("0L")){
 				seatCount[4] = rs.getInt("count(*)");
 			}
-			System.out.println(rs.getInt("count(*)"));
 		}
         return seatCount;
 	}
