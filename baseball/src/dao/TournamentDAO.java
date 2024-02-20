@@ -108,7 +108,7 @@ public class TournamentDAO extends DAO{
 		int searchSameTour = getTournamentId(tournament.getYear(),tournament.getSeason());
 		int num = 0;
 		try{
-			if(searchSameTour > 0){
+			if(searchSameTour == 0){
 				Connection con=getConnection();
 				PreparedStatement st=con.prepareStatement("INSERT INTO TOURNAMENT VALUES(NULL,?,?,?,?)");
 				st.setInt(1, tournament.getYear());
