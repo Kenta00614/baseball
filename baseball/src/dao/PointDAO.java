@@ -36,8 +36,10 @@ public class PointDAO extends DAO{
 		boolean flg = false;
 		int num=0;
 
-		PreparedStatement st = con.prepareStatement("SELECT point.fluctuation from point left join tickets on tickets.purchase_id = point.purchase_id where tickets.tickets_id=?");
-		st.setString(1, point.getTicketsId());
+		PreparedStatement st = con.prepareStatement("SELECT point.fluctuation from point left join tickets on tickets.purchase_id = point.purchase_id where point.spectator_id=? and point.purchase_id=? and tickets.tickets_id=?");
+		st.setInt(1, point.getSpectatorId());
+		st.setInt(2, point.getPurchaseId());
+		st.setString(3, point.getTicketsId());
 
 		ResultSet rs=st.executeQuery();
 		Point t=new Point();
