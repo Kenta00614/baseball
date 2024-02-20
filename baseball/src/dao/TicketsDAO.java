@@ -635,4 +635,29 @@ public class TicketsDAO extends DAO{
 		return list;
 
 	}
+
+//	全座種別のチケット残数取得
+	public int[] getAllSurplus(int matchId)throws Exception{
+		Connection con=getConnection();
+		int[] seatCount= new int[5];
+
+		PreparedStatement st=con.prepareStatement("select seat.type,count(*) from tickets left join seat on tickets.seat_id = seat.seat_id where tickets.match_id = ? and tickets.status = '2' GROUP BY seat.type");
+		st.setInt(1, matchId);
+		ResultSet rs=st.executeQuery();
+		while(rs.next()){
+			if(rs.getString("seat.type").equals("0B")){
+				seatCount[0] = rs.getInt("count(*)");
+			}else if(rs.getString("seat.type").equals("0F")){
+				seatCount[1] = rs.getInt("count(*)");
+			}else if(rs.getString("seat.type").equals("0T")){
+				seatCount[2] = rs.getInt("count(*)");
+			}else if(rs.getString("seat.type").equals("0R")){
+				seatCount[3] = rs.getInt("count(*)");
+			}else if(rs.getString("seat.type").equals("0L")){
+				seatCount[4] = rs.getInt("count(*)");
+			}
+			System.out.println(rs.getInt("count(*)"));
+		}
+        return seatCount;
+	}
 }

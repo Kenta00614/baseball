@@ -71,7 +71,9 @@
 		<p class="ticket-element">座種：
 			<select name="seat" class="element">
 			<c:forEach begin="0" end="${fn:length(seatType)-1}" step="1" var="i">
-				<option value="${seatOrder[i] }" class="element-option">${seatType[i] }</option>
+				<c:if test="${tickets[i] != 0}">
+					<option value="${seatOrder[i] }" class="element-option">${seatType[i] } <c:if test="${tickets[i] < 20}">残数:${tickets[i] }枚</c:if> </option>
+				</c:if>
 			</c:forEach>
 			</select>
 		</p>
