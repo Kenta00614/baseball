@@ -75,6 +75,7 @@
 					<option value="${seatOrder[i] }" class="element-option">${seatType[i] } <c:if test="${tickets[i] < 20}">残数:${tickets[i] }枚</c:if> </option>
 				</c:if>
 			</c:forEach>
+			<c:if test="${sold == 0 }"><option class="element-option" selected disabled>全席完売です</option></c:if>
 			</select>
 		</p>
 		<p class="ticket-element">枚数：

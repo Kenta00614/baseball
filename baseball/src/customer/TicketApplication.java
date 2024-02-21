@@ -37,6 +37,10 @@ public class TicketApplication extends HttpServlet {
             seatType.add(value);
         }
 
+        TicketsDAO ticketDAO=new TicketsDAO();
+        int[] tickets = null;
+        int allCount=0;
+
         if (match == null) {
             match = new Match();
 
@@ -73,11 +77,12 @@ public class TicketApplication extends HttpServlet {
 
     		int matchId = Integer.parseInt(matchIdStr);
 
-            TicketsDAO ticketDAO=new TicketsDAO();
-            int[] tickets = null;
             try {
 //              座種のチケット残数
             	tickets = ticketDAO.getAllSurplus(matchId);
+            	for(int ticket: tickets){
+            		allCount += ticket;
+            	}
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -103,7 +108,20 @@ public class TicketApplication extends HttpServlet {
     			e.printStackTrace();
     		}
 			session.setAttribute("match", match);
-	        request.setAttribute("tickets", tickets);
+        }else{
+            try {
+//              座種のチケット残数
+            	tickets = ticketDAO.getAllSurplus(match.getMatchId());
+            	for(int ticket: tickets){
+            		allCount += ticket;
+            	}
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        request.setAttribute("tickets", tickets);
+        if(allCount == 0){
+        	request.setAttribute("sold", allCount);
         }
         request.setAttribute("remaining", -1);
         request.setAttribute("seatType",seatType );

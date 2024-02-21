@@ -78,6 +78,23 @@ public class TicketSelectAll extends HttpServlet {
             PurchaseDAO purchaseDAO=new PurchaseDAO();
             purchaseList = purchaseDAO.getDatePurchase(spectatorIds.get(spectatorIds.size()-1).getSpectatorId(),match.getEventDate());
 
+
+            int[] tickets1 = null;
+            int allCount=0;
+            try {
+//              座種のチケット残数
+            	tickets1 = ticketDAO.getAllSurplus(match.getMatchId());
+            	for(int ticket: tickets1){
+            		allCount += ticket;
+            	}
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+	        request.setAttribute("tickets", tickets1);
+	        if(allCount == 0){
+	        	request.setAttribute("sold", allCount);
+	        }
+
             if(count+purchaseList.size()>6 || remaining<count){
 
                 List<String> seatType = new ArrayList<>();
