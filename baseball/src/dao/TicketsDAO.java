@@ -689,20 +689,4 @@ public class TicketsDAO extends DAO{
 		}
         return countType;
 	}
-
-//	ブロック別のチケット残数取得
-	public int getBlockAllSurplus(int matchId, String type)throws Exception{
-		Connection con=getConnection();
-
-		int countType=0;
-		PreparedStatement st=con.prepareStatement("select seat.block ,count(*) from tickets left join seat on tickets.seat_id = seat.seat_id where tickets.match_id = ? and tickets.status = '2' and seat.type=? GROUP BY seat.block");
-		st.setInt(1, matchId);
-		st.setString(2, type);
-		ResultSet rs=st.executeQuery();
-		while(rs.next()){
-			countType = rs.getInt("count(*)");
-		}
-        return countType;
-	}
-
 }
