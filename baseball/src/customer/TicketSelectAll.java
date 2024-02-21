@@ -14,7 +14,6 @@ import javax.servlet.http.HttpSession;
 import bean.Match;
 import bean.PurchaseExp;
 import bean.Spectator;
-import bean.Tickets;
 import common.Constants;
 import dao.PurchaseDAO;
 import dao.SeatDAO;
@@ -37,32 +36,13 @@ public class TicketSelectAll extends HttpServlet {
         List<Spectator> spectatorIds =  (List<Spectator>)session.getAttribute("spectatorIds");
 
         int remaining=0;
-        List<Tickets> tickets=new ArrayList<>();
         List<String> blocks=new ArrayList<>();
 
         TicketsDAO ticketDAO=new TicketsDAO();
         SeatDAO seatDAO=new SeatDAO();
         try {
 //          座種のチケット残数
-            tickets = ticketDAO.getTypeSurplus(seat,match.getMatchId());
-            remaining=tickets.size();
-
-////            希望枚数よりチケットが少ない場合前の画面に戻る
-//          if(remaining<count){
-//              List<String> seatType = new ArrayList<>();
-//
-//              String[] seatOrder = {"0B","0F","0T","0R","0L"};
-//
-//              for (String key : seatOrder) {
-//                  String value = Constants.SEAT_TYPE.get(key);
-//                  seatType.add(value);
-//              }
-//              request.setAttribute("seatOrder", seatOrder);
-//              request.setAttribute("seatType",seatType );
-//              request.setAttribute("remaining", remaining);
-//              request.getRequestDispatcher("/customer/ticketApplication.jsp").forward(request, response);
-//              return;
-//          }
+        	remaining = ticketDAO.getTypeSurplus(match.getMatchId(),seat);
 
 //          ログインしていないときログイン画面へ
             if (spectatorIds == null) {
