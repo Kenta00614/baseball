@@ -74,10 +74,10 @@ public class InsertData {
 			Tickets ticket = new Tickets();
 			ticket.setSeatId(seat.getSeatId());
 			ticket.createTicketsId();
-			ticket.setMatchId(0);
+			ticket.setMatchId(111);
 			ticket.setPurchaseId(0);
 			ticket.setShared(false);
-			ticket.setStatus("3");
+			ticket.setStatus("2");
 			ticket.setUuid(null);
 			//System.out.println(ticket);
 			ticketsList.add(ticket);
