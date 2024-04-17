@@ -12,14 +12,14 @@ import javax.servlet.annotation.WebServlet;
 public class EmailUtility{
 
     public static void sendEmail(String to, String subject, String content) throws Exception {
-        // メール送信に必要な設定値。ここではGmailのSMTPサーバーを例にしています。
+        // メール送信に必要な設定値
         String host = "smtp.gmail.com";
         String username = "jantaroukanta@gmail.com"; // Gmailのメールアドレス
-        String password = "vwob boyf axve fpkm"; // Gmailのパスワード
+        String password = System.getenv("GMAIL_PASSWORD"); // Gmailのパスワード
         String fromname = "甲子園チケット販売システム";
         int port = 587;
 
-        // SMTPサーバーの設定を行います。
+        // SMTPサーバーの設定
         Properties props = new Properties();
         props.put("mail.smtp.auth", "true");
         props.put("mail.smtp.starttls.enable", "true");
