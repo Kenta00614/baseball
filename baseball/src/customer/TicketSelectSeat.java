@@ -15,7 +15,6 @@ import javax.servlet.http.HttpSession;
 import bean.Match;
 import bean.Seat;
 import bean.Spectator;
-import bean.Tickets;
 import bean.TicketsAndSeat;
 import bean.Tournament;
 import dao.MatchDAO;
@@ -109,7 +108,7 @@ public class TicketSelectSeat extends HttpServlet {
     	}else{
 	    	String block = request.getParameter("block");
 
-			List<Tickets> blockRemain=new ArrayList<>();
+			int blockRemain=0;
 			List<String> blockList=new ArrayList<>();
 
 			TicketsDAO ticketDAO=new TicketsDAO();
@@ -117,16 +116,16 @@ public class TicketSelectSeat extends HttpServlet {
 
 			try {
 	//			ブロックの残チケット取得
-				blockRemain=ticketDAO.getBlockSurplus(block, match.getMatchId());
+				blockRemain=ticketDAO.getBlockSurplus(match.getMatchId(),block);
 
 	//			残数が購入枚数より少ないとき
-				if(blockRemain.size()<count){
+				if(blockRemain<count){
 	//				ブロックの取得
 					blockList = seatDAO.getBlock(seat);
 
 	//				前ページに戻るとき必要な情報
 					request.setAttribute("blocks", blockList);
-					request.setAttribute("remain", blockRemain.size());
+					request.setAttribute("remain", blockRemain);
 					request.getRequestDispatcher("/customer/ticketSelectAll.jsp").forward(request, response);
 					return;
 				}

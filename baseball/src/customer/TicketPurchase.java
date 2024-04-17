@@ -1,7 +1,9 @@
 package customer;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -39,9 +41,14 @@ public class TicketPurchase extends HttpServlet {
 				lastTour=tour;
 			}
 
+			Calendar cl = Calendar.getInstance();
+
+	        //SimpleDateFormatクラスでフォーマットパターンを設定する
+	        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
 //			同じ大会の試合日情報を取得
 			MatchDAO matDao=new MatchDAO();
-			match=matDao.searchMatchTournament(lastTour.getTournamentId());
+			match=matDao.searchMatchTickets(lastTour.getTournamentId(),java.sql.Date.valueOf(sdf.format(cl.getTime())));
 
 			session.setAttribute("tour", lastTour);
 			request.setAttribute("match",match);

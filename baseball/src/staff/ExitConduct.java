@@ -39,9 +39,11 @@ public class ExitConduct extends HttpServlet {
     	TicketsDAO tDao = new TicketsDAO();
     	SpectatorDAO sDao = new SpectatorDAO();
     	PointDAO pDao = new PointDAO();
-    	long miliseconds = System.currentTimeMillis();
+    	//long miliseconds = System.currentTimeMillis();
     	Date date = Date.valueOf("1900-01-01");
-    	date.setTime(miliseconds);
+    	java.util.Date d = new java.util.Date();
+    	//date.setTime(miliseconds);
+    	date.setTime(d.getTime());
     	try {
     		con = dao.getConnection();
     		con.setAutoCommit(false);

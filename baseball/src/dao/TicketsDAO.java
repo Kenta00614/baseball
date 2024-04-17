@@ -92,7 +92,6 @@ public class TicketsDAO extends DAO{
 
 		}
 
-	//中山先生のチケット情報の追加
 	public int insert(List<Tickets> list){
 		//System.out.println(list.size());
 		if (list == null || list.size() == 0) return 0;
@@ -195,7 +194,7 @@ public class TicketsDAO extends DAO{
 	public int changePostpone(Date date)throws Exception{
 
 		Connection con=getConnection();
-		PreparedStatement st=con.prepareStatement("UPDATE tickets SET status = '6' WHERE match_id IN (SELECT match_id FROM match WHERE match.event_date = ?)");
+		PreparedStatement st=con.prepareStatement("update tickets set status = '6' where match.match_id IN (select match_id from match where match.event_date = ?)");
 		st.setDate(1, date);
 
 		int num=st.executeUpdate();
@@ -477,7 +476,7 @@ public class TicketsDAO extends DAO{
 		}
 		String newTicketsId = ticketsId.substring(0,8) + resaleNoStr + ticketsId.substring(10,18);
 
-		PreparedStatement st3=con.prepareStatement("insert into tickets values (?,null,?,?,2,FALSE,FALSE,null)");
+		PreparedStatement st3=con.prepareStatement("insert into tickets values (?,0,?,?,2,FALSE,FALSE,null)");
 		st3.setString(1, newTicketsId);
 		st3.setInt(2, ticket.getMatchId());
 		st3.setString(3, ticket.getSeatId());
@@ -635,5 +634,59 @@ public class TicketsDAO extends DAO{
 
 		return list;
 
+	}
+
+//	全座種別のチケット残数取得
+	public int[] getAllSurplus(int matchId)throws Exception{
+		Connection con=getConnection();
+		int[] seatCount= new int[5];
+
+		PreparedStatement st=con.prepareStatement("select seat.type,count(*) from tickets left join seat on tickets.seat_id = seat.seat_id where tickets.match_id = ? and tickets.status = '2' GROUP BY seat.type");
+		st.setInt(1, matchId);
+		ResultSet rs=st.executeQuery();
+		while(rs.next()){
+			if(rs.getString("seat.type").equals("0B")){
+				seatCount[0] = rs.getInt("count(*)");
+			}else if(rs.getString("seat.type").equals("0F")){
+				seatCount[1] = rs.getInt("count(*)");
+			}else if(rs.getString("seat.type").equals("0T")){
+				seatCount[2] = rs.getInt("count(*)");
+			}else if(rs.getString("seat.type").equals("0R")){
+				seatCount[3] = rs.getInt("count(*)");
+			}else if(rs.getString("seat.type").equals("0L")){
+				seatCount[4] = rs.getInt("count(*)");
+			}
+		}
+        return seatCount;
+	}
+
+//	座種別のチケット残数取得
+	public int getTypeSurplus(int matchId, String type)throws Exception{
+		Connection con=getConnection();
+
+		int countType=0;
+		PreparedStatement st=con.prepareStatement("select seat.type,count(*) from tickets left join seat on tickets.seat_id = seat.seat_id where tickets.match_id = ? and tickets.status = '2' GROUP BY seat.type HAVING seat.type=?");
+		st.setInt(1, matchId);
+		st.setString(2, type);
+		ResultSet rs=st.executeQuery();
+		while(rs.next()){
+			countType = rs.getInt("count(*)");
+		}
+        return countType;
+	}
+
+//	ブロック別のチケット残数取得
+	public int getBlockSurplus(int matchId, String block)throws Exception{
+		Connection con=getConnection();
+
+		int countType=0;
+		PreparedStatement st=con.prepareStatement("select seat.type,count(*) from tickets left join seat on tickets.seat_id = seat.seat_id where tickets.match_id = ? and tickets.status = '2' GROUP BY seat.type HAVING seat.block=?");
+		st.setInt(1, matchId);
+		st.setString(2, block);
+		ResultSet rs=st.executeQuery();
+		while(rs.next()){
+			countType = rs.getInt("count(*)");
+		}
+        return countType;
 	}
 }

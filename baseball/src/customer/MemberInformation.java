@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import bean.Spectator;
+import dao.SpectatorDAO;
 
 @WebServlet("/customer/MemberInformation")
 public class MemberInformation extends HttpServlet {
@@ -29,7 +30,19 @@ public class MemberInformation extends HttpServlet {
         } else {
             // 最後にログインしたユーザーの情報を取得
             Spectator spectator = spectatorIds.get(spectatorIds.size() - 1);
-            request.setAttribute("spectator", spectator);
+
+            int spectatorId = spectator.getSpectatorId();
+
+            SpectatorDAO SD = new SpectatorDAO();
+            Spectator SP = new Spectator();
+
+            try {
+				SP = SD.serchSpec(spectatorId);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+            request.setAttribute("spectator", SP);
             request.getRequestDispatcher("/customer/memberInformation.jsp").forward(request, response);
         }
     }

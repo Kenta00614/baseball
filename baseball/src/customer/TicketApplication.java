@@ -15,6 +15,7 @@ import bean.Match;
 import bean.Tournament;
 import common.Constants;
 import dao.MatchDAO;
+import dao.TicketsDAO;
 import dao.TournamentDAO;
 
 @WebServlet("/customer/TicketApplication")
@@ -22,6 +23,7 @@ public class TicketApplication extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 	}
+	@SuppressWarnings("unused")
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session=request.getSession();
 		Match match = (Match) session.getAttribute("match");
@@ -34,6 +36,10 @@ public class TicketApplication extends HttpServlet {
             String value = Constants.SEAT_TYPE.get(key);
             seatType.add(value);
         }
+
+        TicketsDAO ticketDAO=new TicketsDAO();
+        int[] tickets = null;
+        int allCount=0;
 
         if (match == null) {
             match = new Match();
@@ -71,6 +77,16 @@ public class TicketApplication extends HttpServlet {
 
     		int matchId = Integer.parseInt(matchIdStr);
 
+            try {
+//              座種のチケット残数
+            	tickets = ticketDAO.getAllSurplus(matchId);
+            	for(int ticket: tickets){
+            		allCount += ticket;
+            	}
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
 //    			開催日取得
     		 MatchDAO matchDAO=new MatchDAO();
     		 try {
@@ -92,6 +108,20 @@ public class TicketApplication extends HttpServlet {
     			e.printStackTrace();
     		}
 			session.setAttribute("match", match);
+        }else{
+            try {
+//              座種のチケット残数
+            	tickets = ticketDAO.getAllSurplus(match.getMatchId());
+            	for(int ticket: tickets){
+            		allCount += ticket;
+            	}
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        request.setAttribute("tickets", tickets);
+        if(allCount == 0){
+        	request.setAttribute("sold", allCount);
         }
         request.setAttribute("remaining", -1);
         request.setAttribute("seatType",seatType );

@@ -343,4 +343,41 @@ public class MatchDAO extends DAO{
 
 	}
 
+	public List<Match> searchMatchTickets(int tournament_id,Date today)throws Exception{
+
+		Connection con=getConnection();
+		PreparedStatement st=con.prepareStatement("SELECT * FROM MATCH WHERE TOURNAMENT_ID = ? and event_date >= ? order by event_date");
+
+		st.setInt(1, tournament_id);
+		st.setObject(2, today);
+
+		ResultSet rs=st.executeQuery();
+
+		List<Match> list=new ArrayList<>();
+
+		while(rs.next()){
+			Match m=new Match();
+			m.setMatchId(rs.getInt("match_id"));
+			m.setEventDate(rs.getDate("event_date"));
+			m.setSaleStartAt(rs.getDate("sale_start_at"));
+			m.setEventDayOfWeek();
+			m.setSaleDayOfWeek();
+			m.setDispFlg();
+			m.setSaleFlg();
+			m.setDuel1(rs.getInt("duel1"));
+			m.setDuel2(rs.getInt("duel2"));
+			m.setDuel3(rs.getInt("duel3"));
+			m.setDuel4(rs.getInt("duel4"));
+			m.setEventDateStr();
+			m.setSaleStartAtStr();
+			list.add(m);
+		}
+
+		st.close();
+		con.close();
+
+		return list;
+	}
+
+
 }
